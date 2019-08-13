@@ -5,7 +5,8 @@ const jsonParser = bodyParser.json();
 const puppeteer = require('puppeteer');
 const path = require('path');
 const router = express.Router();
-const fs = require('fs')
+const fs = require('fs');
+
 
 createPreview = async (ubicacion, data) => {
     const browser = await puppeteer.launch();
