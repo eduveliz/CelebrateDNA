@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer');
 const path = require('path');
 const router = express.Router();
 const fs = require('fs');
-const tt1 = require('./functions/23andMe/23andMe1');
+const tt1 = require('./Functions/23andMe/23andMe1');
 
 app.post('/', jsonParser, function (req, res) {
 
