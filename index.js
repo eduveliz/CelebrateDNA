@@ -8,24 +8,6 @@ const router = express.Router();
 const fs = require('fs');
 const tt1 = require('./functions/23andMe/23andMe1');
 
-let preview;
-
-
-// createPreview = async (nameFile, data) => {
-//     const browser = await puppeteer.launch();
-//     const page = await browser.newPage();
-//     await page.setViewport({
-//         width: 1152,
-//         height: 1536,
-//         deviceScaleFactor: 1,
-//     });
-//
-//     await page.setContent(``);
-//   //  fs.mkdirSync(ubicacion); create directories
-//     await page.screenshot({path: `previews//${nameFile}.png`});
-//     await browser.close();
-// };
-
 app.post('/', jsonParser, function (req, res) {
 
     console.log("get");
