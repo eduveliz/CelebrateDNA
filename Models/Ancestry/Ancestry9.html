@@ -467,33 +467,33 @@
     </svg>
 </div>
 
-<div>
+<div style="margin-top: 50px">
     <div style="display: flex; justify-content: space-around;">
-        <div style="height:60px; width:100%; border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: -webkit-xxx-large;color: white;">
+        <div style="height:38px; width:100%; border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
             100%
         </div>
-        <div style="height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: -webkit-xxx-large;color: white;">
+        <div style="height:38px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
             100%
         </div>
-        <div style="height:60px; width:100%; border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: -webkit-xxx-large;color: white;">
+        <div style="height:38px; width:100%; border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
             100%
         </div>
-        <div style="height:60px; width:100%; border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: -webkit-xxx-large;color: white;">
+        <div style="height:38px; width:100%; border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
             100%
         </div>
-        <div style="height:60px; width:100%; border-radius: 20px; background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: -webkit-xxx-large;color: white;">
+        <div style="height:38px; width:100%; border-radius: 20px; background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
             100%
         </div>
-        <div style="height:60px; width:100%; border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: -webkit-xxx-large;color: white;">
+        <div style="height:38px; width:100%; border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
             100%
         </div>
-        <div style="height:60px; width:100%; border-radius: 20px; background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: -webkit-xxx-large;color: white;">
+        <div style="height:38px; width:100%; border-radius: 20px; background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
             100%
         </div>
-        <div style="height:60px; width:100%; border-radius: 20px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: -webkit-xxx-large;color: white;">
+        <div style="height:38px; width:100%; border-radius: 20px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
             100%
         </div>
-        <div style="height:60px; width:100%; border-radius: 20px; background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: -webkit-xxx-large;color: white;">
+        <div style="height:38px; width:100%; border-radius: 20px; background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
             100%
         </div>
     </div>
@@ -526,22 +526,40 @@
             <div style="font-size: 25px">Australia</div>
         </div>
     </div>
+    <div style="display: flex ; width: 100%;justify-content: space-around">
+        <label style="font-size: 25px">Greece Balkan</label>
+        <label style="font-size: 25px">France</label>
+        <label style="font-size: 25px">Irish Scottish</label>
+        <label style="font-size: 25px">Germanic Europe</label>
+        <label style="font-size: 25px">Native American</label>
+        <label style="font-size: 25px">Baluchistan</label>
+        <label style="font-size: 25px">Mali</label>
+        <label style="font-size: 25px">S.East Asia</label>
+        <label style="font-size: 25px">Australia</label>
+    </div>
 </div>
 
 
 <script>
     $(function () {
         $(document).ready(function () {
+            //General
             $("#Mapa_del_mundo").attr("fill", "#8DCEAB");
             $("#Regiones").attr("fill", "transparent");
+
+            //first group
             $("#Greece_Balkan").attr("fill", "#27A9E1");
             $("#France").attr("fill", "#6C61AA");
+            //second group
             $("#Irish_Scottish").attr("fill", "#BE1E2D");
             $("#Germanic_Europe").attr("fill", "#F9AF41");
+            //three group
             $("#Native_American").attr("fill", "#00833D");
             $("#Baluchistan").attr("fill", "#9794D2");
+            //four grouo
             $("#Mali").attr("fill", "#699279");
             $("#S.East_Asia-2").attr("fill", "#A4469A");
+            //five group
             $("#Australia").attr("fill", "#CB8DBE");
         });
     });
