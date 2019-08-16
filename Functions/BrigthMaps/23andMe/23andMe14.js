@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
 const regionNames = require('../../RegionNames/RegionNames');
+const fontStyle = require('../../FontStyle/FontStyle');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const properties = propiedades[0].properties;
@@ -67,14 +68,14 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const fourteenRegionNameSelector = regionNames(generalData[27]);
     const fourteenRegionNumber = generalData[28];
 
-
     //Background Map
     const backgroundColor = colorBackground(generalData[29]);
 
     //Headline
     const headline = generalData[31] ? generalData[31] : generalData [30];
     //FontSize
-    const fontSize = generalData[32];
+    const fontStyle = fontStyle(generalData[32]);
+    console.log("font", fontStyle(generalData[32]));
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -90,6 +91,50 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 <head>
     <meta charset="UTF-8">
     <title>23andMe</title>
+    <style>
+        @font-face {
+            font-family: 'baskervillebold';
+            src: url('/Assets/baskerville_bold-webfont.woff2') format('woff2'),
+                 url('/Assets/baskerville_bold-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'embossing_tape_3_brkregular';
+            src: url('/Assets/embosst3-webfont.woff2') format('woff2'),
+                 url('/Assets/embosst3-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        
+        }
+        
+        @font-face {
+            font-family: 'funnierregular';
+            src: url('/Assets/funnier-webfont.woff2') format('woff2'),
+                 url('/Assets/funnier-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        
+        }
+        
+        @font-face {
+            font-family: 'futurabold';
+            src: url('/Assets/futurab-webfont.woff2') format('woff2'),
+                 url('/Assets/futurab-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        
+        }
+        
+        @font-face {
+            font-family: 'noteworthybold';
+            src: url('/Assets/noteworthy_bold-webfont.woff2') format('woff2'),
+                 url('/Assets/noteworthy_bold-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:1152px;height:1536px;">
@@ -680,7 +725,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 <div style="display: flex; justify-content:space-around;width: 11.8in;margin-top: 50px">
     <div id="firstGroup" style="width: 100% ; ">
         <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div style="font-size: 23px; ">${firstRegionName}</div>
+            <div style="font-size: 23px;font-family:Funnier ">${firstRegionName}</div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
             <div style="height:38px; width:0.844in; border-radius: 20px;background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
@@ -691,7 +736,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             </div>
         </div>
         <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div style="font-size: 23px;margin-bottom: 20px;">${secondRegionName}</div>
+            <div style="font-size: 23px;margin-bottom: 20px;font-family: 'futurabold'">${secondRegionName}</div>
         </div>
     </div>
 
@@ -797,7 +842,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
     </div>
 </div>
-
 <script>    
 
     $(function () {

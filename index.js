@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const jsonParser = bodyParser.json();
 const path = require('path');
-const tt1 = require('./Functions/BrigthMaps/23andMe/23andMe1');
+const tt1 = require('./Functions/BrigthMaps/23andMe/23andMe14');
 
 app.get('/previews', jsonParser, function (req, res) {
     //console.log("get");
