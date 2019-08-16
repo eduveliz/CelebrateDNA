@@ -13,8 +13,9 @@ app.get('/previews', jsonParser, function (req, res) {
 });
 
 app.post('/', jsonParser, function (req, res) {
-    console.log("get");
-    console.log("datos completos ", req.body);
+    //console.log("get");
+    console.log(Date.now());
+    //  console.log("datos completos ", req.body);
     tt1(req.body.line_items[0].id, req.body.line_items);
     //res.sendFile(path.join(__dirname + '/previews/29640056471649.png'));
 });

@@ -8,10 +8,10 @@ module.exports = fontStyle = (fontSelected) => {
             return fontStyle = "baskervillebold";
             break;
         case "Funnier":
-            return fontStyle = 'funnierregular';
+            return fontStyle = 'funnier';
             break;
         case "Futura Bold":
-            return fontStyle = "futurabold";
+            return fontStyle = "futura";
             break;
         case "Myriad Pro Bold":
             return fontStyle = "#D87F47";
