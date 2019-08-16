@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
+const regionNames = require('../../RegionNames/RegionNames');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const properties = propiedades[0].properties;
@@ -9,55 +10,72 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     //Map Design
     const company = generalData[0];
 
+    //Regions  */ RegionsNamesSelectors is for Jquery/*
     const firstRegionName = generalData[1];
+    const firstRegionNameSelector = regionNames(generalData[1]);
     const firstRegionNumber = generalData[2];
 
     const secondRegionName = generalData[3];
+    const secondRegionNameSelector = regionNames(generalData[3]);
     const secondRegionNumber = generalData[4];
 
     const threeRegionName = generalData[5];
+    const threeRegionNameSelector = regionNames(generalData[5]);
     const threeRegionNumber = generalData[6];
 
     const fourRegionName = generalData[7];
+    const fourRegionNameSelector = regionNames(generalData[7]);
     const fourRegionNumber = generalData[8];
 
     const fiveRegionName = generalData[9];
+    const fiveRegionNameSelector = regionNames(generalData[9]);
     const fiveRegionNumber = generalData[10];
 
     const sixRegionName = generalData[11];
+    const sixRegionNameSelector = regionNames(generalData[11]);
     const sixRegionNumber = generalData[12];
 
     const sevenRegionName = generalData[13];
+    const sevenRegionNameSelector = regionNames(generalData[13]);
     const sevenRegionNumber = generalData[14];
 
     const eightRegionName = generalData[15];
+    const eightRegionNameSelector = regionNames(generalData[15]);
     const eightRegionNumber = generalData[16];
 
     const nineRegionName = generalData[17];
+    const nineRegionNameSelector = regionNames(generalData[17]);
     const nineRegionNumber = generalData[18];
 
     const tenRegionName = generalData[19];
+    const tenRegionNameSelector = regionNames(generalData[19]);
     const tenRegionNumber = generalData[20];
 
     const elevenRegionName = generalData[21];
+    const elevenRegionNameSelector = regionNames(generalData[21]);
     const elevenRegionNumber = generalData[22];
 
     const twelveRegionName = generalData[23];
+    const twelveRegionNameSelector = regionNames(generalData[23]);
     const twelveRegionNumber = generalData[24];
 
     const thirteenRegionName = generalData[25];
+    const thirteenRegionNameSelector = regionNames(generalData[25]);
     const thirteenRegionNumber = generalData[26];
 
     const fourteenRegionName = generalData[27];
+    const fourteenRegionNameSelector = regionNames(generalData[27]);
     const fourteenRegionNumber = generalData[28];
 
+
+    //Background Map
     const backgroundColor = colorBackground(generalData[29]);
 
+    //Headline
     const headline = generalData[31] ? generalData[31] : generalData [30];
-
+    //FontSize
     const fontSize = generalData[32];
 
-    // const region number
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -781,39 +799,39 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </div>
 
 <script>    
+
     $(function () {
         $(document).ready(function () {
             $("#worldMap").attr("fill", "${backgroundColor}");
             $("#regions").attr("fill", "transparent");
-
+            
             //Primary color
-            $("#britishIrish").attr("fill", "#27A9E1");
-            $("#westAfrican").attr("fill", "#6C61AA");
+            $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
+            $("${secondRegionNameSelector}").attr("fill", "#6C61AA");
             //second color
-            $("#european").attr("stroke", "#BE1E2D").attr("stroke-width", "2");
-            $("#frenchGerman").attr("fill", "#F9AF41");
+            $("${threeRegionNameSelector}").attr("fill", "#BE1E2D");
+            $("${fourRegionNameSelector}").attr("fill", "#F9AF41");
             //three color
-            $("#northEuropean").attr("stroke", "#00833D").attr("stroke-width", "2");
-            $("#filipinoAustronesian").attr("fill", "#9794D2");
+            $("${fiveRegionNameSelector}").attr("fill", "#00833D");
+            $("${sixRegionNameSelector}").attr("fill", "#9794D2");
             //four color
-            $("#southEuropean").attr("stroke", "#699279").attr("stroke-width", "2");
-            $("#iberian").attr("fill", "#A4469A");
+            $("${sevenRegionNameSelector}").attr("fill", "#699279");
+            $("${eightRegionNameSelector}").attr("fill", "#A4469A");
             //five color
-            $("#japan").attr("fill", "#CB8DBE");
-            $("#nativeAmerican").attr("fill", "#58A7B1");
+            $("${nineRegionNameSelector}").attr("fill", "#CB8DBE");
+            $("${tenRegionNameSelector}").attr("fill", "#58A7B1");
             //six color
-            $("#northEastAfrican").attr("stroke", "#98985F").attr("stroke-width", "2");
-            $("#korean").attr("fill", "#EC008B");
+            $("${elevenRegionNameSelector}").attr("fill", "#98985F");
+            $("${twelveRegionNameSelector}").attr("fill", "#EC008B");
             //seven color
-            $("#subSaharan").attr("stroke", "#52C4D2").attr("stroke-width", "2");
-            $("#ashkenazi").attr("fill", "#EE66A2");
+            $("${thirteenRegionNameSelector}").attr("fill", "#52C4D2").attr("stroke-width", "2");
+            $("${fourteenRegionNameSelector}").attr("fill", "#EE66A2");
         });
     });
 </script>
 </body>
 </html>
 `);
-    let random = Math.random();
-    await page.screenshot({path: `previews//${random.toString()}.png`});
+    await page.screenshot({path: `previews//${nameFile}.png`});
     await browser.close();
 };
