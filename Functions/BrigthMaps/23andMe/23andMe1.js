@@ -1,11 +1,10 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
-const colorBackground = require('../ColorsBackground/BrightMap');
+const colorBackground = require('../../ColorsBackground/BrightMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
-    var properties = propiedades[0].properties;
+    const properties = propiedades[0].properties;
     const generalData = toArray(properties);
-    console.log(generalData);
 
     //Map Design
     const company = generalData[0];
@@ -58,9 +57,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     const fontSize = generalData[32];
 
-
     // const region number
-
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
