@@ -64,17 +64,14 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const thirteenRegionNameSelector = regionNames(generalData[25]);
     const thirteenRegionNumber = generalData[26];
 
-    const fourteenRegionName = generalData[27];
-    const fourteenRegionNameSelector = regionNames(generalData[27]);
-    const fourteenRegionNumber = generalData[28];
-
+    console.log(generalData[27]);
     //Background Map
-    const backgroundColor = colorBackground(generalData[29]);
+    const backgroundColor = colorBackground(generalData[27]);
 
     //Headline
-    const headline = generalData[31] ? generalData[31] : generalData [30];
+    const headline = generalData[29] ? generalData[29] : generalData [28];
     //FontSize
-    const font = fontStyle(generalData[32]);
+    const font = fontStyle(generalData[30]);
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -845,16 +842,10 @@ font-family: Embossing;
         <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
             <div style="font-size: 23px; ">${thirteenRegionName}</div>
         </div>
-        <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div style="height:38px; width:100%; border-radius: 20px;background-color: #52C4D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
+        <div style="height: 80px; ">
+            <div style="height:38px; width:50%; border-radius: 20px;background-color: #52C4D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
                 ${thirteenRegionNumber} %
-            </div>
-            <div style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #EE66A2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${fourteenRegionNumber} %
-            </div>
-        </div>
-        <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div style="font-size: 23px">${fourteenRegionName}</div>
+            </div> 
         </div>
     </div>
 </div>
@@ -885,7 +876,6 @@ font-family: Embossing;
             $("${twelveRegionNameSelector}").attr("fill", "#EC008B");
             //seven color
             $("${thirteenRegionNameSelector}").attr("fill", "#52C4D2").attr("stroke-width", "2");
-            $("${fourteenRegionNameSelector}").attr("fill", "#EE66A2");
         });
     });
 </script>

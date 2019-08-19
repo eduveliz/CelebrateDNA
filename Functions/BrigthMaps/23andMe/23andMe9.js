@@ -47,34 +47,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const nineRegionName = generalData[17];
     const nineRegionNameSelector = regionNames(generalData[17]);
     const nineRegionNumber = generalData[18];
-
-    const tenRegionName = generalData[19];
-    const tenRegionNameSelector = regionNames(generalData[19]);
-    const tenRegionNumber = generalData[20];
-
-    const elevenRegionName = generalData[21];
-    const elevenRegionNameSelector = regionNames(generalData[21]);
-    const elevenRegionNumber = generalData[22];
-
-    const twelveRegionName = generalData[23];
-    const twelveRegionNameSelector = regionNames(generalData[23]);
-    const twelveRegionNumber = generalData[24];
-
-    const thirteenRegionName = generalData[25];
-    const thirteenRegionNameSelector = regionNames(generalData[25]);
-    const thirteenRegionNumber = generalData[26];
-
-    const fourteenRegionName = generalData[27];
-    const fourteenRegionNameSelector = regionNames(generalData[27]);
-    const fourteenRegionNumber = generalData[28];
-
     //Background Map
-    const backgroundColor = colorBackground(generalData[29]);
+    const backgroundColor = colorBackground(generalData[19]);
 
     //Headline
-    const headline = generalData[31] ? generalData[31] : generalData [30];
+    const headline = generalData[20] ? generalData[20] : generalData [21];
     //FontSize
-    const font = fontStyle(generalData[32]);
+    const font = fontStyle(generalData[23]);
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -737,129 +716,68 @@ font-family: Embossing;
         </g>
     </svg>
 </div>
-
-<div style="display: flex; justify-content:space-around;width: 11.8in;margin-top: 50px">
-    <div id="firstGroup" style="width: 100% ; ">
-        <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div id="regionOne" style="font-size: 23px;">${firstRegionName}</div>
+<div style="margin-top: 50px">
+    <div style="display: flex;">
+        <div style="height:38px; width:125px; border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+    ${firstRegionNumber}
         </div>
-        <div style="display: flex; justify-content: space-around;height: 80px;">
-            <div style="height:38px; width:0.844in; border-radius: 20px;background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${firstRegionNumber} %
-            </div>
-            <div style="height:38px;width:0.844in; border-radius: 20px;margin-top: 32px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${secondRegionNumber} %
-            </div>
+        <div style="height:38px; width:125px;  border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+    ${secondRegionNumber}
         </div>
-        <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div style="font-size: 23px;margin-bottom: 20px;">${secondRegionName}</div>
+        <div style="height:38px; width:125px;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+    ${threeRegionNumber}    
         </div>
-    </div>
-
-    <div id="secondGroup" style="width: 100%; ">
-        <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div style="font-size: 23px; ">${threeRegionName}</div>
+        <div style="height:38px; width:125px;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+     ${fourRegionNumber}
         </div>
-        <div style="display: flex; justify-content: space-around;height: 80px;">
-            <div style="height:38px; width:100%; border-radius: 20px;background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${threeRegionNumber} %
-            </div>
-            <div style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${fourRegionNumber} %
-            </div>
+        <div style="height:38px; width:125px; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+     ${fiveRegionNumber}
         </div>
-        <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div style="font-size: 23px">${fourRegionName}</div>
+        <div style="height:38px; width:125px;  border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+      ${sixRegionNumber}
+        </div>
+        <div style="height:38px; width:125px;  border-radius: 20px;background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+       ${sevenRegionNumber}
+        </div>
+        <div style="height:38px; width:125px;  border-radius: 20px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+        ${eightRegionNumber}
+        </div>
+        <div style="height:38px; width:125px;  border-radius: 20px;background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+        ${nineRegionNumber}
         </div>
     </div>
-
-    <div id="theeGroup" style="width: 100%;">
-        <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div style="font-size: 23px; ">${fiveRegionName}</div>
+    <div style="display: flex; justify-content: space-around;">
+        <div style="height:60px;display: flex; justify-content: center">
+            <div style="font-size: 25px;">${firstRegionName}</div>
         </div>
-        <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div style="height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${fiveRegionNumber} %
-            </div>
-            <div style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${sixRegionNumber} %
-            </div>
+        <div style="height:60px; display: flex; justify-content: center">
+            <div style="font-size: 25px">${secondRegionName}</div>
         </div>
-        <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div style="font-size: 23px">${sixRegionName}</div>
+        <div style="height:60px;display: flex; justify-content: center">
+            <div style="font-size: 25px">${threeRegionName}</div>
         </div>
-    </div>
-
-    <div id="fourGroup" style="width: 100% ; ">
-        <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div style="font-size: 23px; ">${sevenRegionName}</div>
+        <div style="height:60px;display: flex; justify-content: center">
+            <div style="font-size: 25px">${fourRegionName}</div>
         </div>
-        <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div style="height:38px; width:100%; border-radius: 20px;background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${sevenRegionNumber} %
-            </div>
-            <div style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${eightRegionNumber} %
-            </div>
+        <div style="height:60px;display: flex; justify-content: center">
+            <div style="font-size: 25px">${fiveRegionName}</div>
         </div>
-        <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div style="font-size: 23px">${eightRegionName}</div>
+        <div style="height:60px;display: flex; justify-content: center">
+            <div style="font-size: 25px">${sixRegionName}</div>
         </div>
-    </div>
-
-    <div id="fiveGroup" style="width: 100%; ">
-        <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div style="font-size: 23px; ">${nineRegionName}</div>
+        <div style="height:60px;display: flex; justify-content: center">
+            <div style="font-size: 25px">${sevenRegionName}</div>
         </div>
-        <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div style="height:38px; width:100%; border-radius: 20px;background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${nineRegionNumber} %
-            </div>
-            <div style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #58A7B1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${tenRegionNumber} %
-            </div>
+        <div style="height:60px;display: flex; justify-content: center">
+            <div style="font-size: 25px">${eightRegionName}</div>
         </div>
-        <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div style="font-size: 23px">${tenRegionName}</div>
-        </div>
-    </div>
-
-    <div id="sixGroup" style="width: 100% ; ">
-        <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div style="font-size: 23px; ">${elevenRegionName}</div>
-        </div>
-        <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div style="height:38px; width:100%; border-radius: 20px;background-color: #98985F;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${elevenRegionNumber} %
-            </div>
-            <div style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #EC008B;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${twelveRegionNumber} %
-            </div>
-        </div>
-        <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div style="font-size: 23px">${twelveRegionName}</div>
-        </div>
-    </div>
-
-    <div id="sevenGroup" style="width: 100%; ">
-        <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div style="font-size: 23px; ">${thirteenRegionName}</div>
-        </div>
-        <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div style="height:38px; width:100%; border-radius: 20px;background-color: #52C4D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${thirteenRegionNumber} %
-            </div>
-            <div style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #EE66A2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;color: white;">
-                ${fourteenRegionNumber} %
-            </div>
-        </div>
-        <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div style="font-size: 23px">${fourteenRegionName}</div>
+        <div style="height:60px; display: flex; justify-content: center">
+            <div style="font-size: 25px">${nineRegionName}</div>
         </div>
     </div>
 </div>
-<script>    
 
+<script>    
     $(function () {
         $(document).ready(function () {
             $("#worldMap").attr("fill", "${backgroundColor}");
@@ -879,13 +797,6 @@ font-family: Embossing;
             $("${eightRegionNameSelector}").attr("fill", "#A4469A");
             //five color
             $("${nineRegionNameSelector}").attr("fill", "#CB8DBE");
-            $("${tenRegionNameSelector}").attr("fill", "#58A7B1");
-            //six color
-            $("${elevenRegionNameSelector}").attr("fill", "#98985F");
-            $("${twelveRegionNameSelector}").attr("fill", "#EC008B");
-            //seven color
-            $("${thirteenRegionNameSelector}").attr("fill", "#52C4D2").attr("stroke-width", "2");
-            $("${fourteenRegionNameSelector}").attr("fill", "#EE66A2");
         });
     });
 </script>
