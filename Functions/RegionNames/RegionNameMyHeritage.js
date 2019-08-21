@@ -1,68 +1,56 @@
 module.exports = regionNameMyHeritage = (regionName) => {
     let regionNameId;
     switch (regionName) {
-        case "Central, N.Asia":
-            return regionNameId = "#centralNorthAsia";
+        case "Central Asia":
+            return regionNameId = "#centralAsia";
             break;
-        case "S.S.East Asia":
-            return regionNameId = "#southEastAsia";
+        case "centralAfrican":
+            return regionNameId = "#Central African";
             break;
-        case "Philippines":
-            return regionNameId = "#philippines , #philippines-2,";
+        case "Sierra Leonean":
+            return regionNameId = "#sierraLeonean";
             break;
-        case "Turkey,Caucasus":
-            return regionNameId = "#turkeyCaucasus";
+        case "Nigerian":
+            return regionNameId = "#nigerian";
             break;
-        case "Australia":
-            return regionNameId = "#Australia-2";
+        case "Scandinavian":
+            return regionNameId = "#scandinavian";
             break;
-        case "Korea, N.China":
-            return regionNameId = "#koreaNorthChina";
+        case "Finnish":
+            return regionNameId = "#finnish";
             break;
-        case "Middle East":
-            return regionNameId = "#middleEast";
+        case "East Europe":
+            return regionNameId = "#eastEurope";
             break;
-        case "China":
-            return regionNameId = "#china";
+        case "Balkan":
+            return regionNameId = "#balkan";
             break;
-        case "Iran , Persia":
-            return regionNameId = "#iranPersia";
+        case "Greek":
+            return regionNameId = "#greek";
             break;
-        case "S.East Asia":
-            return regionNameId = "#southEastAsia2";
-            break;
-        case "Greek, Balkan":
-            return regionNameId = "#greekBalkan";
-            break;
-        case "Iberian":
-            return regionNameId = "#iberian";
-            break;
-        case "South Asian":
-            return regionNameId = "#southAsian";
-            break;
-        case "Chinese":
-            return regionNameId = "#chinese";
-            break;
-        case "British, Irish":
-            return regionNameId = "#britishIrish";
-            break;
-        case "Sudanese":
-            return regionNameId = "#sudanese";
-            break;
-        case "ethiopian":
-            return regionNameId = "#ethiopian";
+        case "China, Vietnam":
+            return regionNameId = "#chinaVietnam";
             break;
         case "Somali":
             return regionNameId = "#somali";
             break;
-        case "Ashkenazi":
-            return regionNameId = "#ashkenazi";
+        case "Iberian":
+            return regionNameId = "#iberian";
             break;
-        case "N. Africa-Arabian":
-            return regionNameId = "#northAfricaArabia";
+        case "N. African":
+            return regionNameId = "#NAfrican";
             break;
-        case "Western Asian":
-            return regionNameId = "#westernAsian , #westernAsian2";
+        case "Papuan":
+            return regionNameId = "#papuan";
+            break;
+        case "South Asian":
+            return regionNameId = "#southAsian";
+            break;
+        case "Yemenite Jewish":
+            return regionNameId = "#yemeniteJewish";
+            break;
+        case "Middle Eastern":
+            return regionNameId = "#middleEastern";
             break;
         case "Italian":
             return regionNameId = "#italian";
@@ -70,48 +58,70 @@ module.exports = regionNameMyHeritage = (regionName) => {
         case "Sardinian":
             return regionNameId = "#sardinian";
             break;
-        case "Filipino":
-            return regionNameId = "#filipinoAustronesian";
+        case "Filipino, Indo":
+            return regionNameId = "#filipinoIndo";
             break;
-        case "French, German":
-            return regionNameId = "#frenchGerman";
+        case "N.W. Europe":
+            return regionNameId = "northWestEurope";
             break;
         case "Native American":
             return regionNameId = "#nativeAmerican";
             break;
+        case "Central America":
+            return regionNameId = "#centralAmerica";
+            break;
         case "Mongolian":
-            return regionNameId = "#mongolianManchurian";
+            return regionNameId = "#mongolian";
             break;
-        case "Siberian":
-            return regionNameId = "#siberian";
+        case "Eskimo, Inuit":
+            return regionNameId = "#Eskimo_Inuit-2, #eskimoInuit3";
             break;
-        case "korean":
-            return regionNameId = "#korean";
+        case "Native American":
+            return regionNameId = "#nativeAmerican";
             break;
-        case "Vietnamese":
-            return regionNameId = "#vietnamese";
+        case "Japanese":
+            return regionNameId = "#japanese";
             break;
-        case "Sub-Saharan":
-            return regionNameId = "#subSaharan";
+        case "Maasai":
+            return regionNameId = "#maasai";
             break;
-        case "N. E. African":
-            return regionNameId = "#northEastAfrican";
+        case "Kenyan":
+            return regionNameId = "#kenyan";
             break;
-        case "N.European":
-            return regionNameId = "#northEuropean";
+        case "English":
+            return regionNameId = "#english";
             break;
-        case "European":
-            return regionNameId = "#european";
+        case "Irish, Scottish":
+            return regionNameId = "#irishScottish";
             break;
-        case "S. European":
-            return regionNameId = "#southEuropean";
+        case "Ethiopia Jewish":
+            return regionNameId = "#ethiopiaJewish";
             break;
-        case "S.E. African":
-            return regionNameId = "#southEastAfrican";
+        case "W. African":
+            return regionNameId = "#wAfrican";
             break;
-        case "Congolese":
-            return regionNameId = "#congolese";
+        case "Amazonian":
+            return regionNameId = "#amazonian";
             break;
+        case "Mizrahi Jewish":
+            return regionNameId = "#mizrahiJewish";
+            break;
+        case "Nepali":
+            return regionNameId = "#nepali";
+            break;
+        case "Melanesian":
+            return regionNameId = "#melanesian";
+            break;
+        case "Polynesian":
+            return regionNameId = "#polynesian";
+            break;
+        case "Ashkenazi":
+            return regionNameId = "#ashkenazi";
+            break;
+        case "Sephardic":
+            return regionNameId = "#sephardic";
+            break;
+
     }
 };
 
