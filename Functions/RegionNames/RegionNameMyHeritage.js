@@ -1,35 +1,35 @@
 module.exports = regionNameMyHeritage = (regionName) => {
     let regionNameId;
     switch (regionName) {
-        case "Indonesian":
-            return regionNameId = "#indonesian, #indonesian-2 ,#indonesian-3 , #indonesian-4";
+        case "Central, N.Asia":
+            return regionNameId = "#centralNorthAsia";
             break;
-        case "W. African":
-            return regionNameId = "#westAfrican";
+        case "S.S.East Asia":
+            return regionNameId = "#southEastAsia";
             break;
-        case "Hunter-Gatherer":
-            return regionNameId = "#hunterGatherer";
+        case "Philippines":
+            return regionNameId = "#philippines , #philippines-2,";
             break;
-        case "Senegambian":
-            return regionNameId = "#senegambian";
+        case "Turkey,Caucasus":
+            return regionNameId = "#turkeyCaucasus";
             break;
-        case "Nigerian":
-            return regionNameId = "#nigerian";
+        case "Australia":
+            return regionNameId = "#Australia-2";
             break;
-        case "Sierra Leon":
-            return regionNameId = "#sierraLeon";
+        case "Korea, N.China":
+            return regionNameId = "#koreaNorthChina";
             break;
-        case "Scandinavian":
-            return regionNameId = "#scandinavian";
+        case "Middle East":
+            return regionNameId = "#middleEast";
             break;
-        case "Finnish":
-            return regionNameId = "#finnish";
+        case "China":
+            return regionNameId = "#china";
             break;
-        case "E. European":
-            return regionNameId = "#eastEuropean";
+        case "Iran , Persia":
+            return regionNameId = "#iranPersia";
             break;
-        case "Japan":
-            return regionNameId = "#japan , #japan2 ";
+        case "S.East Asia":
+            return regionNameId = "#southEastAsia2";
             break;
         case "Greek, Balkan":
             return regionNameId = "#greekBalkan";
