@@ -4,6 +4,7 @@ const app = express();
 const jsonParser = bodyParser.json();
 const path = require('path');
 const ttSelector = require('./Functions/BrigthMaps/23andMe/ttSelector');
+const ttPreviewSelector = require('./Functions/PreviewBrigthMaps/23andMe/ttPreviewSelector');
 const toArray = require('lodash.toarray');
 const cors = require('cors');
 
@@ -14,7 +15,13 @@ app.get('/previews', jsonParser, function (req, res) {
 });
 
 app.post('/test', jsonParser, function (req, res) {
-    console.log("data", req.body);
+    console.log("Revived a preview");
+    const id = 123;
+    const regionNumber = req.body.regions.length;
+    if (!regionNumber) {
+    } else {
+        ttPreviewSelector(regionNumber, id, req.body);
+    }
 });
 
 app.post('/', jsonParser, function (req, res) {
