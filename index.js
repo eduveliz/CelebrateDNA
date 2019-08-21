@@ -5,6 +5,8 @@ const jsonParser = bodyParser.json();
 const path = require('path');
 const ttSelector = require('./Functions/BrigthMaps/23andMe/ttSelector');
 const ttPreviewSelector = require('./Functions/PreviewBrigthMaps/23andMe/ttPreviewSelector');
+const ancestryPreviewSelector = require('./Functions/PreviewBrigthMaps/Ancestry/AncestryPreviewSelector');
+const myHeritagePreviewSelector = require('./Functions/PreviewBrigthMaps/MyHeritage/MyHeritagePreviewSelector');
 const toArray = require('lodash.toarray');
 const cors = require('cors');
 
@@ -15,13 +17,21 @@ app.get('/previews', jsonParser, function (req, res) {
 });
 
 app.post('/test', jsonParser, function (req, res) {
-    console.log("Revived a preview");
     const id = 123;
     const regionNumber = req.body.regions.length;
-    if (!regionNumber) {
-    } else {
-        ttPreviewSelector(regionNumber, id, req.body);
+
+    if (req.company === "Ancestry") {
+        return ancestryPreviewSelector(regionNumber, id, req.body);
     }
+
+    if (req.company === "23andMe") {
+        return ttPreviewSelector(regionNumber, id, req.body);
+    }
+
+    if (req.company === "MyHeritageDNA") {
+        return myHeritagePreviewSelector(regionNumber, id, req.body);
+    }
+    console.log("Revived a preview");
 });
 
 app.post('/', jsonParser, function (req, res) {

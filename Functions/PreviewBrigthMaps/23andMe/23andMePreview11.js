@@ -50,13 +50,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const elevenRegionNameSelector = propiedades.regions[10].region;
     const elevenRegionNumber = propiedades.regions[10].region.porcentaje;
 
-    //Background Map
-    const backgroundColor = colorBackground(generalData[23]);
-
+    const backgroundColor = colorBackground(propiedades.color);
     //Headline
-    const headline = generalData[24] ? generalData[24] : generalData [25];
+    const headline = propiedades.headLine ? propiedades.headLine : propiedades.personalHeadline;
     //FontSize
-    const font = fontStyle(generalData[26]);
+    const font = fontStyle(propiedades.fontStyle);
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

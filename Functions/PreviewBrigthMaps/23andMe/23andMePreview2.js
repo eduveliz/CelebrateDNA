@@ -16,7 +16,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     //Background Map
     const backgroundColor = colorBackground(propiedades.color);
-
     //Headline
     const headline = propiedades.headLine ? propiedades.headLine : propiedades.personalHeadline;
     //FontSize

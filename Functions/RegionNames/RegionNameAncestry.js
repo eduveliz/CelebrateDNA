@@ -1,116 +1,122 @@
 module.exports = regionNameAncestry = (regionName) => {
     let regionNameId;
     switch (regionName) {
-        case "Indonesian":
-            return regionNameId = "#indonesian, #indonesian-2 ,#indonesian-3 , #indonesian-4";
+        case "S.East Asia":
+            return regionNameId = "#southEastAsia";
             break;
-        case "W. African":
-            return regionNameId = "#westAfrican";
+        case "Philippines":
+            return regionNameId = "#philippines , #philippines-2";
             break;
-        case "Hunter-Gatherer":
-            return regionNameId = "#hunterGatherer";
+        case "Turkey,Caucasus":
+            return regionNameId = "#turkeyCaucasus";
             break;
-        case "Senegambian":
-            return regionNameId = "#senegambian";
+        case "australia":
+            return regionNameId = "#Australia-2";
             break;
-        case "Nigerian":
-            return regionNameId = "#nigerian";
+        case "Korea, N.China":
+            return regionNameId = "#koreaNorthChina";
             break;
-        case "Sierra Leon":
-            return regionNameId = "#sierraLeon";
+        case "Middle East":
+            return regionNameId = "#middleEast";
             break;
-        case "Scandinavian":
-            return regionNameId = "#scandinavian";
+        case "China":
+            return regionNameId = "#china";
             break;
-        case "Finnish":
-            return regionNameId = "#finnish";
+        case "Iran , Persia":
+            return regionNameId = "#iranPersia";
             break;
-        case "E. European":
-            return regionNameId = "#eastEuropean";
+        case "S.East Asia":
+            return regionNameId = "#southEastAsia2";
+            break;
+        case "Polynesia":
+            return regionNameId = "#polynesia";
+            break;
+        case "Nigeria":
+            return regionNameId = "#nigeria";
+            break;
+        case "East Africa":
+            return regionNameId = "#eastAfrica";
+            break;
+        case "Cameroon, Congo":
+            return regionNameId = "#cameroonCongo";
+            break;
+        case "Benin, Togo":
+            return regionNameId = "#beninTogo";
+            break;
+        case "Africa Central":
+            return regionNameId = "#africaCentral";
+            break;
+        case "North Africa":
+            return regionNameId = "#northAfrica";
+            break;
+        case "Mali":
+            return regionNameId = "#mali";
+            break;
+        case "Ivory C., Ghana":
+            return regionNameId = "#ivoryCGhana";
+            break;
+        case "Senegal":
+            return regionNameId = "#senegal";
+            break;
+        case "Burusho":
+            return regionNameId = "#burusho";
+            break;
+        case "South Asia":
+            return regionNameId = "#southAsia";
+            break;
+        case "Baluchistan":
+            return regionNameId = "#baluchistan";
             break;
         case "Japan":
-            return regionNameId = "#japan , #japan2 ";
+            return regionNameId = "#japan";
             break;
-        case "Greek, Balkan":
-            return regionNameId = "#greekBalkan";
-            break;
-        case "Iberian":
-            return regionNameId = "#iberian";
-            break;
-        case "South Asian":
-            return regionNameId = "#southAsian";
-            break;
-        case "Chinese":
-            return regionNameId = "#chinese";
-            break;
-        case "British, Irish":
-            return regionNameId = "#britishIrish";
-            break;
-        case "Sudanese":
-            return regionNameId = "#sudanese";
-            break;
-        case "ethiopian":
-            return regionNameId = "#ethiopian";
-            break;
-        case "Somali":
-            return regionNameId = "#somali";
-            break;
-        case "Ashkenazi":
-            return regionNameId = "#ashkenazi";
-            break;
-        case "N. Africa-Arabian":
-            return regionNameId = "#northAfricaArabia";
-            break;
-        case "Western Asian":
-            return regionNameId = "#westernAsian , #westernAsian2";
-            break;
-        case "Italian":
-            return regionNameId = "#italian";
-            break;
-        case "Sardinian":
-            return regionNameId = "#sardinian";
-            break;
-        case "Filipino":
-            return regionNameId = "#filipinoAustronesian";
-            break;
-        case "French, German":
-            return regionNameId = "#frenchGerman";
+        case "Philippines":
+            return regionNameId = "#philippines-3";
             break;
         case "Native American":
             return regionNameId = "#nativeAmerican";
             break;
-        case "Mongolian":
-            return regionNameId = "#mongolianManchurian";
+        case "Sardinia":
+            return regionNameId = "#sardinia";
             break;
-        case "Siberian":
-            return regionNameId = "#siberian";
+        case "Irish, Scottish":
+            return regionNameId = "#irishScottish";
             break;
-        case "korean":
-            return regionNameId = "#korean";
+        case "Germanic Europe":
+            return regionNameId = "#germanicEurope";
             break;
-        case "Vietnamese":
-            return regionNameId = "#vietnamese";
+        case "Spain":
+            return regionNameId = "#spain";
             break;
-        case "Sub-Saharan":
-            return regionNameId = "#subSaharan";
+        case "Findland":
+            return regionNameId = "#findland";
             break;
-        case "N. E. African":
-            return regionNameId = "#northEastAfrican";
+        case "Norway":
+            return regionNameId = "#norway";
             break;
-        case "N.European":
-            return regionNameId = "#northEuropean";
+        case "Sweden":
+            return regionNameId = "#sweden";
             break;
-        case "European":
-            return regionNameId = "#european";
+        case "Italia":
+            return regionNameId = "#italia";
             break;
-        case "S. European":
-            return regionNameId = "#southEuropean";
+        case "Portugal":
+            return regionNameId = "#portugal";
             break;
-        case "S.E. African":
-            return regionNameId = "#southEastAfrican";
+        case "Baltic States":
+            return regionNameId = "#balticStates";
             break;
-        case "Congolese":
-            return regionNameId = "#congolese";
+        case "France":
+            return regionNameId = "#france";
+            break;
+        case "England ,Wales":
+            return regionNameId = "#englandWales";
+            break;
+        case "Greece, Balkan":
+            return regionNameId = "#greeceBalkan";
+            break;
+        case "Andean":
+            return regionNameId = "#andean";
             break;
     }
 };
