@@ -5,68 +5,59 @@ const regionNames = require('../../RegionNames/RegionNameAncestry');
 const fontStyle = require('../../FontStyle/FontStyle');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
-    const properties = propiedades[0].properties;
-    const generalData = toArray(properties);
+    const firstRegionName = propiedades.regions[0].region;
+    const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
+    const firstRegionNumber = propiedades.regions[0].porcentaje;
 
-    //Map Design
-    const company = generalData[0];
+    const secondRegionName = propiedades.regions[1].region;
+    const secondRegionNameSelector = regionNames(propiedades.regions[1].region);
+    const secondRegionNumber = propiedades.regions[1].porcentaje;
 
-    //Regions  */ RegionsNamesSelectors is for Jquery/*
-    const firstRegionName = generalData[1];
-    const firstRegionNameSelector = regionNames(generalData[1]);
-    const firstRegionNumber = generalData[2];
+    const threeRegionName = propiedades.regions[2].region;
+    const threeRegionNameSelector = propiedades.regions[2].region;
+    const threeRegionNumber = propiedades.regions[2].region.porcentaje;
 
-    const secondRegionName = generalData[3];
-    const secondRegionNameSelector = regionNames(generalData[3]);
-    const secondRegionNumber = generalData[4];
+    const fourRegionName = propiedades.regions[3].region;
+    const fourRegionNameSelector = propiedades.regions[3].region;
+    const fourRegionNumber = propiedades.regions[3].region.porcentaje;
 
-    const threeRegionName = generalData[5];
-    const threeRegionNameSelector = regionNames(generalData[5]);
-    const threeRegionNumber = generalData[6];
+    const fiveRegionName = propiedades.regions[4].region;
+    const fiveRegionNameSelector = propiedades.regions[4].region;
+    const fiveRegionNumber = propiedades.regions[4].region.porcentaje;
 
-    const fourRegionName = generalData[7];
-    const fourRegionNameSelector = regionNames(generalData[7]);
-    const fourRegionNumber = generalData[8];
+    const sixRegionName = propiedades.regions[5].region;
+    const sixRegionNameSelector = propiedades.regions[5].region;
+    const sixRegionNumber = propiedades.regions[5].region.porcentaje;
 
-    const fiveRegionName = generalData[9];
-    const fiveRegionNameSelector = regionNames(generalData[9]);
-    const fiveRegionNumber = generalData[10];
+    const sevenRegionName = propiedades.regions[6].region;
+    const sevenRegionNameSelector = propiedades.regions[6].region;
+    const sevenRegionNumber = propiedades.regions[6].region.porcentaje;
 
-    const sixRegionName = generalData[11];
-    const sixRegionNameSelector = regionNames(generalData[11]);
-    const sixRegionNumber = generalData[12];
+    const eightRegionName = propiedades.regions[7].region;
+    const eightRegionNameSelector = propiedades.regions[7].region;
+    const eightRegionNumber = propiedades.regions[7].region.porcentaje;
 
-    const sevenRegionName = generalData[13];
-    const sevenRegionNameSelector = regionNames(generalData[13]);
-    const sevenRegionNumber = generalData[14];
+    const nineRegionName = propiedades.regions[8].region;
+    const nineRegionNameSelector = propiedades.regions[8].region;
+    const nineRegionNumber = propiedades.regions[8].region.porcentaje;
 
-    const eightRegionName = generalData[15];
-    const eightRegionNameSelector = regionNames(generalData[15]);
-    const eightRegionNumber = generalData[16];
+    const tenRegionName = propiedades.regions[9].region;
+    const tenRegionNameSelector = propiedades.regions[9].region;
+    const tenRegionNumber = propiedades.regions[9].region.porcentaje;
 
-    const nineRegionName = generalData[17];
-    const nineRegionNameSelector = regionNames(generalData[17]);
-    const nineRegionNumber = generalData[18];
+    const elevenRegionName = propiedades.regions[10].region;
+    const elevenRegionNameSelector = propiedades.regions[10].region;
+    const elevenRegionNumber = propiedades.regions[10].region.porcentaje;
 
-    const tenRegionName = generalData[19];
-    const tenRegionNameSelector = regionNames(generalData[19]);
-    const tenRegionNumber = generalData[20];
+    const twelveRegionName = propiedades.regions[11].region;
+    const twelveRegionNameSelector = propiedades.regions[11].region;
+    const twelveRegionNumber = propiedades.regions[11].region.porcentaje;
 
-    const elevenRegionName = generalData[21];
-    const elevenRegionNameSelector = regionNames(generalData[21]);
-    const elevenRegionNumber = generalData[22];
-
-    const twelveRegionName = generalData[23];
-    const twelveRegionNameSelector = regionNames(generalData[23]);
-    const twelveRegionNumber = generalData[24];
-
-    //Background Map
-    const backgroundColor = colorBackground(generalData[25]);
-
+    const backgroundColor = colorBackground(propiedades.color);
     //Headline
-    const headline = generalData[27] ? generalData[27] : generalData [26];
+    const headline = propiedades.headLine ? propiedades.headLine : propiedades.personalHeadline;
     //FontSize
-    const font = fontStyle(generalData[28]);
+    const font = fontStyle(propiedades.fontStyle);
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

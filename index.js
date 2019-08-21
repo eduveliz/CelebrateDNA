@@ -20,15 +20,15 @@ app.post('/test', jsonParser, function (req, res) {
     const id = 123;
     const regionNumber = req.body.regions.length;
 
-    if (req.company === "Ancestry") {
+    if (req.body.company === "Ancestry") {
         return ancestryPreviewSelector(regionNumber, id, req.body);
     }
 
-    if (req.company === "23andMe") {
+    if (req.body.company === "23andMe") {
         return ttPreviewSelector(regionNumber, id, req.body);
     }
 
-    if (req.company === "MyHeritageDNA") {
+    if (req.body.company === "MyHeritageDNA") {
         return myHeritagePreviewSelector(regionNumber, id, req.body);
     }
     console.log("Revived a preview");

@@ -5,14 +5,13 @@ const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
-
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
     const firstRegionNumber = propiedades.regions[0].porcentaje;
     //Background Map
     const backgroundColor = colorBackground(propiedades.color);
     //Headline
-    const headline = propiedades.headLine ? propiedades.headLine : propiedades.personalHeadline;
+    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
 

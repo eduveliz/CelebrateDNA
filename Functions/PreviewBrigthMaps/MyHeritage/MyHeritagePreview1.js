@@ -5,24 +5,15 @@ const regionNames = require('../../RegionNames/RegionNameAncestry');
 const fontStyle = require('../../FontStyle/FontStyle');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
-    const properties = propiedades[0].properties;
-    const generalData = toArray(properties);
-
-    //Map Design
-    const company = generalData[0];
-
-    //Regions  */ RegionsNamesSelectors is for Jquery/*
-    const firstRegionName = generalData[1];
-    const firstRegionNameSelector = regionNames(generalData[1]);
-    const firstRegionNumber = generalData[2];
-
+    const firstRegionName = propiedades.regions[0].region;
+    const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
+    const firstRegionNumber = propiedades.regions[0].porcentaje;
     //Background Map
-    const backgroundColor = colorBackground(generalData[3]);
-
+    const backgroundColor = colorBackground(propiedades.color);
     //Headline
-    const headline = generalData[4] ? generalData[5] : generalData [4];
+    const headline = propiedades.headLine ? propiedades.headLine : propiedades.personalHeadline;
     //FontSize
-    const font = fontStyle(generalData[6]);
+    const font = fontStyle(propiedades.fontStyle);
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

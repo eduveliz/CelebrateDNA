@@ -5,7 +5,6 @@ const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
-
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
     const firstRegionNumber = propiedades.regions[0].porcentaje;
