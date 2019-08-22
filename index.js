@@ -23,12 +23,10 @@ app.post('/test', jsonParser, function (req, res) {
     const regionNumber = req.body.regions.length;
 
     if (req.body.company === "Ancestry") {
-        ancestryPreviewSelector(regionNumber, id, req.body).then(() => {
+        return ancestryPreviewSelector(regionNumber, id, req.body).then(() => {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
-
         });
     }
-
     if (req.body.company === "23andMe") {
         return ttPreviewSelector(regionNumber, id, req.body).then(() => {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
