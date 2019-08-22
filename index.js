@@ -30,8 +30,7 @@ app.post('/test', jsonParser, function (req, res) {
     }
 
     if (req.body.company === "23andMe") {
-        ttPreviewSelector(regionNumber, id, req.body).then(() => {
-            res.send(200);
+        return ttPreviewSelector(regionNumber, id, req.body).then(() => {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         });
     }
