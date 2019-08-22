@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../../../ColorsBackground/BrightMap');
-const regionNames = require('../../../../RegionNames/RegionNameAncestry');
+const regionNames = require('../../../../RegionNames/RegionNameMyHeritage');
 const fontStyle = require('../../../../FontStyle/FontStyle');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
@@ -15,8 +15,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const secondRegionNumber = propiedades.regions[1].porcentaje;
 
     const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNameSelector = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].region;
+    const threeRegionNameSelector = regionNames(propiedades.regions[2].region);
+    const threeRegionNumber = propiedades.regions[2].region.porcentaje;
 
     const backgroundColor = colorBackground(propiedades.color);
     //Headline

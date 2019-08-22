@@ -14,39 +14,39 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const secondRegionNumber = propiedades.regions[1].porcentaje;
 
     const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNameSelector = propiedades.regions[2].region;
+    const threeRegionNameSelector = regionNames(propiedades.regions[2].region);
     const threeRegionNumber = propiedades.regions[2].region.porcentaje;
 
     const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNameSelector = propiedades.regions[3].region;
+    const fourRegionNameSelector = regionNames(propiedades.regions[3].region);
     const fourRegionNumber = propiedades.regions[3].region.porcentaje;
 
     const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNameSelector = propiedades.regions[4].region;
+    const fiveRegionNameSelector = regionNames(propiedades.regions[4].region);
     const fiveRegionNumber = propiedades.regions[4].region.porcentaje;
 
     const sixRegionName = propiedades.regions[5].region;
-    const sixRegionNameSelector = propiedades.regions[5].region;
+    const sixRegionNameSelector = regionNames(propiedades.regions[5].region);
     const sixRegionNumber = propiedades.regions[5].region.porcentaje;
 
     const sevenRegionName = propiedades.regions[6].region;
-    const sevenRegionNameSelector = propiedades.regions[6].region;
+    const sevenRegionNameSelector = regionNames(propiedades.regions[6].region);
     const sevenRegionNumber = propiedades.regions[6].region.porcentaje;
 
     const eightRegionName = propiedades.regions[7].region;
-    const eightRegionNameSelector = propiedades.regions[7].region;
+    const eightRegionNameSelector = regionNames(propiedades.regions[7].region);
     const eightRegionNumber = propiedades.regions[7].region.porcentaje;
 
     const nineRegionName = propiedades.regions[8].region;
-    const nineRegionNameSelector = propiedades.regions[8].region;
+    const nineRegionNameSelector = regionNames(propiedades.regions[8].region);
     const nineRegionNumber = propiedades.regions[8].region.porcentaje;
 
     const tenRegionName = propiedades.regions[9].region;
-    const tenRegionNameSelector = propiedades.regions[9].region;
+    const tenRegionNameSelector = regionNames(propiedades.regions[9].region);
     const tenRegionNumber = propiedades.regions[9].region.porcentaje;
 
     const elevenRegionName = propiedades.regions[10].region;
-    const elevenRegionNameSelector = propiedades.regions[10].region;
+    const elevenRegionNameSelector = regionNames(propiedades.regions[10].region);
     const elevenRegionNumber = propiedades.regions[10].region.porcentaje;
 
     const backgroundColor = colorBackground(propiedades.color);

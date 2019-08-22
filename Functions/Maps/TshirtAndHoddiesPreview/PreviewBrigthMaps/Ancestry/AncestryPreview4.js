@@ -15,12 +15,12 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const secondRegionNumber = propiedades.regions[1].porcentaje;
 
     const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNameSelector = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].region;
+    const threeRegionNameSelector = regionNames(propiedades.regions[2].region);
+    const threeRegionNumber = propiedades.regions[2].region.porcentaje;
 
     const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNameSelector = propiedades.regions[3].region;
-    const fourRegionNumber = propiedades.regions[3].region;
+    const fourRegionNameSelector = regionNames(propiedades.regions[3].region);
+    const fourRegionNumber = propiedades.regions[3].region.porcentaje;
 
     //Background Map
     const backgroundColor = colorBackground(propiedades.color);

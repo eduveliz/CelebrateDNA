@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../../../ColorsBackground/BrightMap');
-const regionNames = require('../../../../RegionNames/RegionNameAncestry');
+const regionNames = require('../../../../RegionNames/RegionNameMyHeritage');
 const fontStyle = require('../../../../FontStyle/FontStyle');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
