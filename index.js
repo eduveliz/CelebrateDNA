@@ -11,6 +11,7 @@ const toArray = require('lodash.toarray');
 const cors = require('cors');
 
 app.use(cors());
+app.use(express.static('public'));
 
 app.get('/previews', jsonParser, function (req, res) {
     res.sendFile(path.join(__dirname + '/previews/123.png'));
