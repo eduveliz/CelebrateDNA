@@ -3,15 +3,16 @@ const bodyParser = require('body-parser');
 const app = express();
 const jsonParser = bodyParser.json();
 const path = require('path');
-const ttSelector = require('./Functions/BrigthMaps/23andMe/ttSelector');
-const ttPreviewSelector = require('./Functions/PreviewBrigthMaps/23andMe/ttPreviewSelector');
-const ancestryPreviewSelector = require('./Functions/PreviewBrigthMaps/Ancestry/AncestryPreviewSelector');
-const myHeritagePreviewSelector = require('./Functions/PreviewBrigthMaps/MyHeritage/MyHeritagePreviewSelector');
+const ttSelector = require('./Functions/TshirtAndHoddies/BrigthMaps/23andMe/ttSelector');
+const ttPreviewSelector = require('./Functions/TshirtAndHoddiesPreview/PreviewBrigthMaps/23andMe/ttPreviewSelector');
+const ancestryPreviewSelector = require('./Functions/TshirtAndHoddiesPreview/PreviewBrigthMaps/Ancestry/AncestryPreviewSelector');
+const myHeritagePreviewSelector = require('./Functions/TshirtAndHoddiesPreview/PreviewBrigthMaps/MyHeritage/MyHeritagePreviewSelector');
 const toArray = require('lodash.toarray');
 const cors = require('cors');
 
 app.use(cors());
 app.use(express.static('public'));
+
 
 app.get('/previews', jsonParser, function (req, res) {
     res.sendFile(path.join(__dirname + '/previews/123.png'));
