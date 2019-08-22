@@ -5,20 +5,26 @@ const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
+    //Regions  */ RegionsNamesSelectors is for Jquery/*
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
     const firstRegionNumber = propiedades.regions[0].porcentaje;
+
+    const secondRegionName = propiedades.regions[1].region;
+    const secondRegionNameSelector = regionNames(propiedades.regions[1].region);
+    const secondRegionNumber = propiedades.regions[1].porcentaje;
+
     //Background Map
     const backgroundColor = colorBackground(propiedades.color);
     //Headline
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
+    const headline = propiedades.headLine ? propiedades.headLine : propiedades.personalHeadline;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
-    <!DOCTYPE html> 
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -86,7 +92,7 @@ font-family: Embossing;
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:1152px;height:1536px;">
-<h1 class='Funnier' style="text-align: center; color:#6D6E70; font-size:89px ">${headline} </h1>
+<h1 class='Funnier' style="text-align: center;color:  #6D6E70; font-size:89px ">${headline} </h1>
 
 <div>
     <svg xmlns="http://www.w3.org   /2000/svg" width="11.8in" height="6.7in" viewBox="0 0 847.1 479.8">
@@ -671,14 +677,20 @@ font-family: Embossing;
     </svg>
 </div>
 <div style="margin-top: 50px">
-    <div style="display: flex; justify-content: space-around;margin-right: 20px">
+    <div style="display: flex; justify-content: space-around;">
         <div style="height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
-            ${firstRegionNumber} %
+            ${firstRegionNumber}%
+        </div>
+        <div style="height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+            ${secondRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-right: 20px">
+    <div style="display: flex; justify-content: space-around;">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div style="font-size: 35px;">${firstRegionName}</div>
+            <div style="font-size: 33px;">${firstRegionName}</div>
+        </div>
+        <div style="width:100%;height:60px; display: flex; justify-content: center">
+            <div style="font-size: 33px">${secondRegionName}</div>
         </div>
     </div>
 </div>
@@ -689,7 +701,8 @@ font-family: Embossing;
             $("#regions").attr("fill", "transparent");
             //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
-          });
+            $("${secondRegionNameSelector}").attr("fill", "#6C61AA");          
+        });
     });
 </script>
 </body>
