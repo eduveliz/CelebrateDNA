@@ -3,10 +3,10 @@ const bodyParser = require('body-parser');
 const app = express();
 const jsonParser = bodyParser.json();
 const path = require('path');
-const ttSelector = require('./Functions/TshirtAndHoddies/BrigthMaps/23andMe/ttSelector');
-const ttPreviewSelector = require('./Functions/TshirtAndHoddiesPreview/PreviewBrigthMaps/23andMe/ttPreviewSelector');
-const ancestryPreviewSelector = require('./Functions/TshirtAndHoddiesPreview/PreviewBrigthMaps/Ancestry/AncestryPreviewSelector');
-const myHeritagePreviewSelector = require('./Functions/TshirtAndHoddiesPreview/PreviewBrigthMaps/MyHeritage/MyHeritagePreviewSelector');
+const ttSelector = require('./Functions/Maps/TshirtAndHoddies/BrigthMaps/23andMe/ttSelector');
+const ttPreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/PreviewBrigthMaps/23andMe/ttPreviewSelector');
+const ancestryPreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/PreviewBrigthMaps/Ancestry/AncestryPreviewSelector');
+const myHeritagePreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/PreviewBrigthMaps/MyHeritage/MyHeritagePreviewSelector');
 const toArray = require('lodash.toarray');
 const cors = require('cors');
 
@@ -25,12 +25,16 @@ app.post('/test', jsonParser, function (req, res) {
     if (req.body.company === "Ancestry") {
         ancestryPreviewSelector(regionNumber, id, req.body).then(() => {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
+
         });
     }
 
     if (req.body.company === "23andMe") {
         ttPreviewSelector(regionNumber, id, req.body).then(() => {
+            req.header('User-Agent');
+            res.set('Content-Type', 'text/html');
             res.end('{"success" : "Updated Successfully", "status" : 200}');
+            res.send(200);
         });
     }
 
