@@ -31,10 +31,8 @@ app.post('/test', jsonParser, function (req, res) {
 
     if (req.body.company === "23andMe") {
         ttPreviewSelector(regionNumber, id, req.body).then(() => {
-            req.header('User-Agent');
-            res.set('Content-Type', 'text/html');
-            res.end('{"success" : "Updated Successfully", "status" : 200}');
             res.send(200);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
         });
     }
 

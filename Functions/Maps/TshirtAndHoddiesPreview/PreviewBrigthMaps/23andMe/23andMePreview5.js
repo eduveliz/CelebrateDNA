@@ -32,6 +32,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
 
+    console.log("porcentaje", propiedades.regions[4].porcentaje);
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
