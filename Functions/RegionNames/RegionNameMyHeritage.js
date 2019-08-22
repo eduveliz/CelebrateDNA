@@ -4,8 +4,8 @@ module.exports = regionNameMyHeritage = (regionName) => {
         case "Central Asia":
             return regionNameId = "#centralAsia";
             break;
-        case "centralAfrican":
-            return regionNameId = "#Central African";
+        case "Central African":
+            return regionNameId = "#centralAfrican";
             break;
         case "Sierra Leonean":
             return regionNameId = "#sierraLeonean";
@@ -19,7 +19,7 @@ module.exports = regionNameMyHeritage = (regionName) => {
         case "Finnish":
             return regionNameId = "#finnish";
             break;
-        case "East Europe":
+        case "E. Europe":
             return regionNameId = "#eastEurope";
             break;
         case "Balkan":
@@ -58,7 +58,7 @@ module.exports = regionNameMyHeritage = (regionName) => {
         case "Sardinian":
             return regionNameId = "#sardinian";
             break;
-        case "Filipino, Indo":
+        case "Filipino, Indo.":
             return regionNameId = "#filipinoIndo";
             break;
         case "N.W. Europe":
@@ -67,7 +67,7 @@ module.exports = regionNameMyHeritage = (regionName) => {
         case "Native American":
             return regionNameId = "#nativeAmerican";
             break;
-        case "Central America":
+        case "Central American":
             return regionNameId = "#centralAmerica";
             break;
         case "Mongolian":
@@ -94,7 +94,7 @@ module.exports = regionNameMyHeritage = (regionName) => {
         case "Irish, Scottish":
             return regionNameId = "#irishScottish";
             break;
-        case "Ethiopia Jewish":
+        case "Ethiopian Jewish":
             return regionNameId = "#ethiopiaJewish";
             break;
         case "W. African":

@@ -1,13 +1,19 @@
 module.exports = regionNameAncestry = (regionName) => {
     let regionNameId;
     switch (regionName) {
-        case "S.East Asia":
+        case "S.E Asia":
             return regionNameId = "#southEastAsia";
+            break;
+        case "Southeast Asia-Vietnam":
+            return regionNameId = "#southEastAsia";
+            break;
+        case "Melanesia":
+            return regionNameId = "#Melanesia";
             break;
         case "Philippines":
             return regionNameId = "#philippines , #philippines-2";
             break;
-        case "Turkey,Caucasus":
+        case "Turkey, Caucasus":
             return regionNameId = "#turkeyCaucasus";
             break;
         case "australia":
@@ -22,7 +28,7 @@ module.exports = regionNameAncestry = (regionName) => {
         case "China":
             return regionNameId = "#china";
             break;
-        case "Iran , Persia":
+        case "Iran, Persia":
             return regionNameId = "#iranPersia";
             break;
         case "S.East Asia":
@@ -64,7 +70,7 @@ module.exports = regionNameAncestry = (regionName) => {
         case "South Asia":
             return regionNameId = "#southAsia";
             break;
-        case "Baluchistan":
+        case "Balochistan":
             return regionNameId = "#baluchistan";
             break;
         case "Japan":
@@ -85,6 +91,9 @@ module.exports = regionNameAncestry = (regionName) => {
         case "Germanic Europe":
             return regionNameId = "#germanicEurope";
             break;
+        case "Basque":
+            return regionNameId = "#spain";
+            break;
         case "Spain":
             return regionNameId = "#spain";
             break;
@@ -97,7 +106,7 @@ module.exports = regionNameAncestry = (regionName) => {
         case "Sweden":
             return regionNameId = "#sweden";
             break;
-        case "Italia":
+        case "Italy":
             return regionNameId = "#italia";
             break;
         case "Portugal":
@@ -109,7 +118,7 @@ module.exports = regionNameAncestry = (regionName) => {
         case "France":
             return regionNameId = "#france";
             break;
-        case "England ,Wales":
+        case "England, Wales":
             return regionNameId = "#englandWales";
             break;
         case "Greece, Balkan":
