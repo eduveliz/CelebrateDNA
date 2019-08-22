@@ -13,7 +13,7 @@ const cors = require('cors');
 app.use(cors());
 
 app.get('/previews', jsonParser, function (req, res) {
-    res.sendFile(path.join(__dirname + '/previews/29640056471649.png'));
+    res.sendFile(path.join(__dirname + '/previews/123.png'));
 });
 
 app.post('/test', jsonParser, function (req, res) {
@@ -21,17 +21,24 @@ app.post('/test', jsonParser, function (req, res) {
     const regionNumber = req.body.regions.length;
 
     if (req.body.company === "Ancestry") {
-        return ancestryPreviewSelector(regionNumber, id, req.body);
+        ancestryPreviewSelector(regionNumber, id, req.body).then(() => {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
     }
 
     if (req.body.company === "23andMe") {
-        return ttPreviewSelector(regionNumber, id, req.body);
+        ttPreviewSelector(regionNumber, id, req.body).then(() => {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
     }
 
     if (req.body.company === "MyHeritageDNA") {
-        return myHeritagePreviewSelector(regionNumber, id, req.body);
+        return myHeritagePreviewSelector(regionNumber, id, req.body).then(() => {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
     }
     console.log("Revived a preview");
+
 });
 
 app.post('/', jsonParser, function (req, res) {
