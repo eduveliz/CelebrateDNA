@@ -27,6 +27,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <meta charset="UTF-8">
     <title>23andMe</title>
     <style>
+    .fontColor {
+    color:${fontColor(colorProduct)};
+    }
+    
         @font-face {
     font-family: 'Futura';
     src: url('/Assets/Futura-Bold.woff2') format('woff2'),
@@ -88,7 +92,7 @@ font-family: Embossing;
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)}">
-<h1 class='Funnier' style="text-align: center;color:${fontColor(colorProduct)}; font-size:89px ">${headline} </h1>
+<h1 class="fontColor" style="text-align: center;font-size:89px ">${headline}</h1>
 
 <div>
     <svg xmlns="http://www.w3.org/2000/svg" width="11.8in" height="6.7in" viewBox="0 0 847.1 479.8">
@@ -674,13 +678,24 @@ font-family: Embossing;
 </div>
 <div style="margin-top: 50px">
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
-        <div style="height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color:${fontColor(colorProduct)};">
+        <div 
+        class="fontColor"
+        style="height:60px; 
+                    width:100%;
+                    border-radius: 20px;
+                    background-color: #27A9E1;
+                    align-items: center;
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    font-size: 30px;
+                    color:${fontColor(colorProduct)};">
             ${firstRegionNumber} %
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div style="font-size: 35px;color:${fontColor(colorProduct)};">${firstRegionName}</div>
+            <div class="fontColor" style="font-size: 35px;">${firstRegionName}</div>
         </div>
     </div>
 </div>

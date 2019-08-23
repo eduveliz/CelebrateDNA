@@ -86,6 +86,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <title>23andMe</title>
     <style>
     
+    .fontColor {
+    color:${fontColor(colorProduct)};
+    }
+    
         @font-face {
     font-family: 'Futura';
     src: url('/Assets/Futura-Bold.woff2') format('woff2'),
@@ -147,7 +151,7 @@ font-family: Embossing;
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)}">
-<h1 class='Funnier' style="text-align: center;color:${fontColor(colorProduct)} ; font-size:89px ">${headline}</h1>
+<h1 class='fontColor' style="text-align: center;font-size:89px ">${headline}</h1>
 <div>
 <svg xmlns="http://www.w3.org/2000/svg" width="11.8in" height="6.7in" viewBox="0 0 847.1 479.8">
         <title>23andMe</title>
