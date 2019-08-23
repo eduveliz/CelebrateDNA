@@ -99,7 +99,7 @@ font-family: Embossing;
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:1152px;height:1536px;">
-<h1 class='fontColor' style="text-align: center;font-size:89px ">${headline} </h1>
+<h1 class='fontColor' style="text-align: center;font-size:89px;background-color: ${colorProductSelect(colorProduct)} ">${headline} </h1>
 
 <div>
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 847.6 481.4">

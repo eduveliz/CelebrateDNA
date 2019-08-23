@@ -148,7 +148,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:1152px;height:1536px;">
+<body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)}">
 <h1 class='fontColor' style="text-align: center; font-size:89px ">${headline} </h1>
 
 <div>
