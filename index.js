@@ -21,7 +21,7 @@ app.get('/previews', jsonParser, function (req, res) {
 app.post('/test', jsonParser, function (req, res) {
     const id = 123;
     const regionNumber = req.body.regions.length;
-
+    console.log(req.body);
     if (req.body.company === "Ancestry") {
         return ancestryPreviewSelector(regionNumber, id, req.body).then(() => {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
@@ -38,7 +38,6 @@ app.post('/test', jsonParser, function (req, res) {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         });
     }
-    console.log("Revived a preview");
 
 });
 

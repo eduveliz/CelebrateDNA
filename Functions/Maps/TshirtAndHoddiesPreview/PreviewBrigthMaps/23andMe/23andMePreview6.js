@@ -3,6 +3,7 @@ const toArray = require('lodash.toarray');
 const colorBackground = require('../../../../ColorsBackground/BrightMap');
 const regionNames = require('../../../../RegionNames/RegionNames');
 const fontStyle = require('../../../../FontStyle/FontStyle');
+const colorProductSelect = require('../../../../Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
@@ -16,21 +17,22 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     const threeRegionName = propiedades.regions[2].region;
     const threeRegionNameSelector = regionNames(propiedades.regions[2].region);
-    const threeRegionNumber = propiedades.regions[2].region.porcentaje;
+    const threeRegionNumber = propiedades.regions[2].porcentaje;
 
     const fourRegionName = propiedades.regions[3].region;
     const fourRegionNameSelector = regionNames(propiedades.regions[3].region);
-    const fourRegionNumber = propiedades.regions[3].region.porcentaje;
+    const fourRegionNumber = propiedades.regions[3].porcentaje;
 
     const fiveRegionName = propiedades.regions[4].region;
     const fiveRegionNameSelector = regionNames(propiedades.regions[4].region);
-    const fiveRegionNumber = propiedades.regions[4].region.porcentaje;
+    const fiveRegionNumber = propiedades.regions[4].porcentaje;
 
     const sixRegionName = propiedades.regions[5].region;
     const sixRegionNameSelector = regionNames(propiedades.regions[5].region);
-    const sixRegionNumber = propiedades.regions[5].region.porcentaje;
+    const sixRegionNumber = propiedades.regions[5].porcentaje;
 
     const backgroundColor = colorBackground(propiedades.color);
+    const colorProduct = propiedades.colorProduct;
     //Headline
     const headline = propiedades.headLine ? propiedades.headLine : propiedades.personalHeadline;
     //FontSize
@@ -112,11 +114,11 @@ font-family: Embossing;
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:1152px;height:1536px;">
-<h1 class='Funnier' style="text-align: center;color:  #6D6E70; font-size:89px ">${headline} </h1>
+<body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)}">
+<h1 class='Funnier' style="text-align: center;color:${fontColor(colorProduct)}; font-size:89px ">${headline} </h1>
 
 <div>
-    <svg xmlns="http://www.w3.org   /2000/svg" width="11.8in" height="6.7in" viewBox="0 0 847.1 479.8">
+    <svg xmlns="http://www.w3.org /2000/svg" width="11.8in" height="6.7in" viewBox="0 0 847.1 479.8">
         <title>23andMe</title>
         <g id="worldMap">
             <g>
@@ -700,43 +702,43 @@ font-family: Embossing;
 
 <div style="margin-top: 50px">
     <div style="display: flex; justify-content: space-around;">
-        <div style="height:38px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+        <div style="height:38px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color:${fontColor(colorProduct)};">
            ${firstRegionNumber}
         </div>
-        <div style="height:38px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+        <div style="height:38px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color:${fontColor(colorProduct)};">
             ${secondRegionNumber}
         </div>
-        <div style="height:38px; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+        <div style="height:38px; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color:${fontColor(colorProduct)};">
             ${threeRegionNumber}
         </div>
-        <div style="height:38px; width:100%;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+        <div style="height:38px; width:100%;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color:${fontColor(colorProduct)};">
             ${fourRegionNumber}
         </div>
-        <div style="height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+        <div style="height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color:${fontColor(colorProduct)};">
             ${fiveRegionNumber}
         </div>
-        <div style="height:38px; width:100%; border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+        <div style="height:38px; width:100%; border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color:${fontColor(colorProduct)};">
             ${sixRegionNumber}
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div style="font-size: 25px;">${firstRegionName}</div>
+            <div style="font-size: 25px;color:${fontColor(colorProduct)};">${firstRegionName}</div>
         </div>
         <div style="width:100%;height:60px; display: flex; justify-content: center">
-            <div style="font-size: 25px">${secondRegionName}</div>
+            <div style="font-size: 25px;color:${fontColor(colorProduct)};">${secondRegionName}</div>
         </div>
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div style="font-size: 25px">${threeRegionName}</div>
+            <div style="font-size: 25px;color:${fontColor(colorProduct)};">${threeRegionName}</div>
         </div>
         <div style=" width:100%;height:60px;display: flex; justify-content: center">
-            <div style="font-size: 25px">${fourRegionName}</div>
+            <div style="font-size: 25px;color:${fontColor(colorProduct)};">${fourRegionName}</div>
         </div>
         <div style=" width:100%;height:60px;display: flex; justify-content: center">
-            <div style="font-size: 25px">${fiveRegionName}</div>
+            <div style="font-size: 25px;color:${fontColor(colorProduct)};">${fiveRegionName}</div>
         </div>
         <div style="width:100%; height:60px;display: flex; justify-content: center">
-            <div style="font-size: 25px">${sixRegionName}</div>
+            <div style="font-size: 25px;color:${fontColor(colorProduct)};">${sixRegionName}</div>
         </div>
     </div>
 </div>
