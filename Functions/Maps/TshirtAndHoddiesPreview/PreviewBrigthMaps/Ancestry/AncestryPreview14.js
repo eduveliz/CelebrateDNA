@@ -4,6 +4,7 @@ const colorBackground = require('../../../../ColorsBackground/BrightMap');
 const regionNames = require('../../../../RegionNames/RegionNameAncestry');
 const fontStyle = require('../../../../FontStyle/FontStyle');
 const fontColor = require('../../../../FontColor/FontColor');
+const colorProductSelect = require('../../../../Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const firstRegionName = propiedades.regions[0].region;
@@ -649,10 +650,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     <div id="theeGroup" style="width: 100%;">
         <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div style="font-size: 23px; class='fontColor' ">${fiveRegionName}</div>
+            <div class='fontColor' style="font-size: 23px; class='fontColor' ">${fiveRegionName}</div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div  class='fontColor' style="height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;">
+            <div class='fontColor' style="height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;">
                 ${fiveRegionNumber} %
             </div>
             <div class='fontColor' style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;">

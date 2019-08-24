@@ -4,6 +4,7 @@ const colorBackground = require('../../../../ColorsBackground/BrightMap');
 const regionNames = require('../../../../RegionNames/RegionNameAncestry');
 const fontStyle = require('../../../../FontStyle/FontStyle');
 const fontColor = require('../../../../FontColor/FontColor');
+const colorProductSelect = require('../../../../Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
@@ -133,8 +134,8 @@ font-family: Embossing;
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:1152px;height:1536px;">
-<h1 class='fontColor' style="text-align: center;font-size:89px;background-color: ${colorProductSelect(colorProduct)} ">${headline} </h1>
+<body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)} ">
+<h1 class='fontColor' style="text-align: center;font-size:89px;">${headline} </h1>
 
 <div>
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 847.6 481.4">
@@ -609,7 +610,7 @@ font-family: Embossing;
             </div>
         </div>
         <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div style="font-size: 25px;margin-bottom: 20px;">${secondRegionName}</div>
+            <div class="fontColor" style="font-size: 25px;margin-bottom: 20px;">${secondRegionName}</div>
         </div>
     </div>
     <div id="secondGroup" style="width: 100%; ">

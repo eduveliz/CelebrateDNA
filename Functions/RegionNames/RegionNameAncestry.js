@@ -92,7 +92,7 @@ module.exports = regionNameAncestry = (regionName) => {
             return regionNameId = "#germanicEurope";
             break;
         case "Basque":
-            return regionNameId = "#spain";
+            return regionNameId = "#spain";//BASQUE NO DEBE SER SELECIONADA
             break;
         case "Spain":
             return regionNameId = "#spain";

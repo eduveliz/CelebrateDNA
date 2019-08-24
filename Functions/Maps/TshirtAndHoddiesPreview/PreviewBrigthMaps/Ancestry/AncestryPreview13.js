@@ -4,6 +4,7 @@ const colorBackground = require('../../../../ColorsBackground/BrightMap');
 const regionNames = require('../../../../RegionNames/RegionNameAncestry');
 const fontStyle = require('../../../../FontStyle/FontStyle');
 const fontColor = require('../../../../FontColor/FontColor');
+const colorProductSelect = require('../../../../Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const firstRegionName = propiedades.regions[0].region;
@@ -148,8 +149,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)}">
-<h1 class='fontColor' style="text-align: center; font-size:89px ">${headline} </h1>
+<body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)} ">
+<h1 class='fontColor' style="text-align: center;font-size:89px;">${headline} </h1>
 
 <div>
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 847.6 481.4">
@@ -670,7 +671,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             <div class='fontColor' style="height:38px; width:100%; border-radius: 20px;background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;">
                 ${sevenRegionNumber} %
             </div>
-            <div class='fontColor' style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;">
+            <div class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;">
                 ${eightRegionNumber} %
             </div>
         </div>
@@ -684,10 +685,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             <div class='fontColor' style="font-size: 23px; ">${nineRegionName}</div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div style="height:38px; width:100%; border-radius: 20px;background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;">
+            <div class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;">
                 ${nineRegionNumber} %
             </div>
-            <div style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #58A7B1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;>
+            <div class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #58A7B1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 24px;">
                 ${tenRegionNumber} %
             </div>
         </div>
@@ -723,6 +724,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             </div> 
         </div>
     </div>
+    
+    
 </div>
 <script>    
 
