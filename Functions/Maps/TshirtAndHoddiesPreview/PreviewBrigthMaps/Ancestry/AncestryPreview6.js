@@ -35,7 +35,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const backgroundColor = colorBackground(propiedades.color);
     const colorProduct = propiedades.colorProduct;
     //Headline
-    const headline = propiedades.headLine ? propiedades.headLine : propiedades.personalHeadline;
+    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
 
@@ -54,68 +54,58 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <meta charset="UTF-8">
     <title>23andMe</title>
     <style>
-    
      .fontColor {
-    color: ${fontColor(colorProduct)};
+        color:${fontColor(colorProduct)};
+        font-family:${font};
     }
     
-        @font-face {
+     @font-face {
     font-family: 'Futura';
-    src: url('/Assets/Futura-Bold.woff2') format('woff2'),
-        url('/Assets/Futura-Bold.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/Futura-Bold.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/Futura-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
-}
-
-@font-face {
-    font-family: 'Embossing';
-    src: url('/Assets/EmbossingTape3BRK.woff2') format('woff2'),
-        url('/Assets/EmbossingTape3BRK.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Noteworthy';
-    src: url('/Assets/Noteworthy-Bold.woff2') format('woff2'),
-        url('/Assets/Noteworthy-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Funnier';
-    src: url('/Assets/Funnier.woff2') format('woff2'),
-        url('/Assets/Funnier.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Cooper Std';
-    src: url('/Assets/CooperBlackStd.woff2') format('woff2'),
-        url('/Assets/CooperBlackStd.woff') format('woff');
-    font-weight: 900;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Baskerville';
-    src: url('/Assets/BaskervilleBT-Bold.woff2') format('woff2'),
-        url('/Assets/BaskervilleBT-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-
-.Noteworthy{
-font-family: Noteworthy;
-}
-.Baskerville{
-font-family: "Baskerville Old Face";
-}
-.Embossing{
-font-family: Embossing;
-}
+    }
+    
+    @font-face {
+        font-family: 'Embossing';
+        src: url('/Assets/EmbossingTape3BRK.woff2') format('woff2'),
+            url('/Assets/EmbossingTape3BRK.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'Noteworthy';
+        src: url('http://bdbf41ac.ngrok.io/Fonts/Noteworthy-Bold.woff2') format('woff2'),
+            url('http://bdbf41ac.ngrok.io/Fonts/Noteworthy-Bold.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'Funnier';
+        src: url('http://bdbf41ac.ngrok.io/Fonts/Funnier.woff2') format('woff2'),
+            url('http://bdbf41ac.ngrok.io/Fonts/Funnier.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'Cooper Std';
+        src: url('http://bdbf41ac.ngrok.io/Fonts/CooperBlackStd.woff2') format('woff2'),
+            url('http://bdbf41ac.ngrok.io/Fonts/CooperBlackStd.woff') format('woff');
+        font-weight: 900;
+        font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'Baskerville';
+        src: url('http://bdbf41ac.ngrok.io/Fonts/BaskervilleBT-Bold.woff2') format('woff2'),
+            url('http://bdbf41ac.ngrok.io/Fonts/BaskervilleBT-Bold.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+    }
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
@@ -603,22 +593,22 @@ font-family: Embossing;
     </div>
     <div style="display: flex; justify-content: space-around;">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class='fontColor' style="font-size: 25px;">${firstRegionName}</div>
+            <div class='fontColor' style="font-size: 25px;display: flex;text-align: center;justify-content: center">${firstRegionName}</div>
         </div>
         <div style="width:100%;height:60px; display: flex; justify-content: center">
-            <div class='fontColor' style="font-size: 25px">${secondRegionName}</div>
+            <div class='fontColor' style="font-size: 25px;display: flex;text-align: center;justify-content: center">${secondRegionName}</div>
         </div>
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class='fontColor' style="font-size: 25px">${threeRegionName}</div>
+            <div class='fontColor' style="font-size: 25px;display: flex;text-align: center;justify-content: center">${threeRegionName}</div>
         </div>
         <div style=" width:100%;height:60px;display: flex; justify-content: center">
-            <div class='fontColor' style="font-size: 25px">${fourRegionName}</div>
+            <div class='fontColor'style="font-size: 25px;display: flex;text-align: center;justify-content: center">${fourRegionName}</div>
         </div>
         <div style=" width:100%;height:60px;display: flex; justify-content: center">
-            <div class='fontColor' style="font-size: 25px">${fiveRegionName}</div>
+            <div class='fontColor' style="font-size: 25px;display: flex;text-align: center;justify-content: center">${fiveRegionName}</div>
         </div>
         <div style="width:100%; height:60px;display: flex; justify-content: center">
-            <div class='fontColor' style="font-size: 25px">${sixRegionName}</div>
+            <div class='fontColor' style="font-size: 25px;display: flex;text-align: center;justify-content: center">${sixRegionName}</div>
         </div>
     </div>
 </div>

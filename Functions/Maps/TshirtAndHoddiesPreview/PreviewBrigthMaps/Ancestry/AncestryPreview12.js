@@ -58,7 +58,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const backgroundColor = colorBackground(propiedades.color);
     const colorProduct = propiedades.colorProduct;
     //Headline
-    const headline = propiedades.headLine ? propiedades.headLine : propiedades.personalHeadline;
+    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
 
@@ -78,16 +78,16 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <title>23andMe</title>
     <style>
     .fontColor {
-    color: ${fontColor(colorProduct)};
+        color:${fontColor(colorProduct)};
+        font-family:${font};
     }
-    
     @font-face {
     font-family: 'Futura';
-    src: url('/Assets/Futura-Bold.woff2') format('woff2'),
-        url('/Assets/Futura-Bold.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/Futura-Bold.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/Futura-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
-    }
+}
 
 @font-face {
     font-family: 'Embossing';
@@ -99,44 +99,34 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
 @font-face {
     font-family: 'Noteworthy';
-    src: url('/Assets/Noteworthy-Bold.woff2') format('woff2'),
-        url('/Assets/Noteworthy-Bold.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/Noteworthy-Bold.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/Noteworthy-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Funnier';
-    src: url('/Assets/Funnier.woff2') format('woff2'),
-        url('/Assets/Funnier.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/Funnier.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/Funnier.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Cooper Std';
-    src: url('/Assets/CooperBlackStd.woff2') format('woff2'),
-        url('/Assets/CooperBlackStd.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/CooperBlackStd.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/CooperBlackStd.woff') format('woff');
     font-weight: 900;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Baskerville';
-    src: url('/Assets/BaskervilleBT-Bold.woff2') format('woff2'),
-        url('/Assets/BaskervilleBT-Bold.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/BaskervilleBT-Bold.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/BaskervilleBT-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
-}
-
-.Noteworthy{
-font-family: Noteworthy;
-}
-.Baskerville{
-font-family: "Baskerville Old Face";
-}
-.Embossing{
-font-family: Embossing;
 }
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -603,106 +593,118 @@ font-family: Embossing;
     </svg>
 </div>
 
-<div style="display: flex; width: 11.8in;margin-top: 50px">
-    <div id="firstGroup" style="width: 100% ; ">
-            <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div class='fontColor' style="font-size: 25px; ">${firstRegionName}</div>
+<div style="display: flex; justify-content:space-around;width:94%;margin-top: 50px;margin-left: 35px;">
+    <div id="firstGroup" style="width: 100%;">
+        <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
+            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${firstRegionName}</div>
+            <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
-            <div class='fontColor' style="height:38px; width:100%; border-radius: 20px;background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+            <div class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
                 ${firstRegionNumber}
             </div>
-            <div class='fontColor' style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+            <div class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
                 ${secondRegionNumber}
             </div>
         </div>
-        <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div class='fontColor' style="font-size: 25px;margin-bottom: 20px;">${secondRegionName}</div>
+        <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
+            <div style="width: 50%"></div>
+            <div class="fontColor" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${secondRegionName}</div>
         </div>
     </div>
 
-    <div id="secondGroup" style="width: 100%; ">
-        <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div class='fontColor' style="font-size: 25px; ">${threeRegionName}</div>
+       <div id="secondGroup" style="width: 100%;">
+        <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
+            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${secondRegionName}</div>
+            <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
-            <div class='fontColor' style="height:38px; width:100%; border-radius: 20px;background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-               ${threeRegionNumber}
+            <div class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                ${threeRegionNumber}
             </div>
-            <div class='fontColor' style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${fourRegionNumber}
+            <div class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                 ${fourRegionNumber}
             </div>
         </div>
-        <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div class='fontColor' style="font-size: 25px">${fourRegionName}</div>
+        <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
+            <div style="width: 50%"></div>
+            <div class="fontColor" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${threeRegionName}</div>
         </div>
     </div>
-
-    <div id="theeGroup" style="width: 100%;">
-        <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div class='fontColor' style="font-size: 25px; ">${fiveRegionName}</div>
+     
+   <div id="secondGroup" style="width: 100%;">
+        <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
+            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${fiveRegionName}</div>
+            <div style="width: 50%"></div>
         </div>
-        <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div class='fontColor' style="height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${fiveRegionNumber}
+        <div style="display: flex; justify-content: space-around;height: 80px;">
+            <div class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                 ${fiveRegionNumber}
             </div>
-            <div class='fontColor' style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${sixRegionNumber}
+            <div class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                  ${sixRegionNumber}
             </div>
         </div>
-        <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div class='fontColor'style="font-size: 25px">${sixRegionName}</div>
+        <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
+            <div style="width: 50%"></div>
+            <div class="fontColor" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${sixRegionName}</div>
         </div>
     </div>
 
     <div id="fourGroup" style="width: 100% ; ">
-        <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div class='fontColor' style="font-size: 25px; ">${sevenRegionName}</div>
+        <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
+            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${sevenRegionName}</div>
+            <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div class='fontColor' style="height:38px; width:100%; border-radius: 20px;background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+            <div  class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
                 ${sevenRegionNumber}
             </div>
-            <div class='fontColor' style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+            <div  class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
                 ${eightRegionNumber}
             </div>
         </div>
-        <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div class='fontColor' style="font-size: 25px">${eightRegionName}</div>
+        <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
+            <div style="width: 50%"></div>
+            <div class="fontColor" style="font-size: 25px; width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${eightRegionName}</div>
         </div>
     </div>
 
     <div id="fiveGroup" style="width: 100%; ">
-        <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div class='fontColor' style="font-size: 25px; ">${nineRegionName}</div>
+        <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
+            <div class="fontColor" style="font-size: 25px;text-align: center;width: 50%;display: flex;justify-content: center;align-items: center ">${nineRegionName}</div>
+            <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div class='fontColor' style="height:38px; width:100%; border-radius: 20px;background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+            <div class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
                 ${nineRegionNumber}
             </div>
-            <div class='fontColor' style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #58A7B1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+            <div  class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #58A7B1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
                 ${tenRegionNumber}
             </div>
         </div>
-        <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div class='fontColor' style="font-size: 25px">${tenRegionName}</div>
+        <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
+            <div style="width: 50%"></div>
+            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${tenRegionName}</div>
         </div>
     </div>
 
-    <div id="sixGroup" style="width: 100% ; ">
-        <div style="height:38px; width:100%;display: flex; justify-content: initial; ">
-            <div class='fontColor' style="font-size: 25px; ">${elevenRegionName}</div>
+    <div id="sixGroup" style="width: 100%; ">
+        <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
+            <div class="fontColor" style="font-size: 25px;text-align: center;width: 50%;display: flex;justify-content: center;align-items: center ">${nineRegionName}</div>
+            <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div class='fontColor' style="height:38px; width:100%; border-radius: 20px;background-color: #98985F;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+            <div class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #98985F;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
                 ${elevenRegionNumber}
             </div>
-            <div class='fontColor' style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #EC008B;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+            <div  class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #EC008B;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
                 ${twelveRegionNumber}
             </div>
         </div>
-        <div style="height:38px; width:100%;display: flex; justify-content: flex-end;">
-            <div class='fontColor' style="font-size: 25px">${twelveRegionName}</div>
+        <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
+            <div style="width: 50%"></div>
+            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${twelveRegionName}</div>
         </div>
     </div>
 </div>

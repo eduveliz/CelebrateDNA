@@ -19,6 +19,7 @@ app.get('/previews', jsonParser, function (req, res) {
 });
 
 app.post('/test', jsonParser, function (req, res) {
+    console.log("create preview");
     const id = 123;
     const regionNumber = req.body.regions.length;
     console.log(req.body);
@@ -41,7 +42,12 @@ app.post('/test', jsonParser, function (req, res) {
 
 });
 
-app.post('/', jsonParser, function (req, res) {
+app.get("/", jsonParser, function (req, res) {
+    res.send("hola soy el servidor");
+});
+
+
+app.post('/printfull', jsonParser, function (req, res) {
     const regionNumber = toArray(req.body.line_items[0].properties).length;
     if (!regionNumber) {
     } else {

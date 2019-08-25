@@ -47,7 +47,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const backgroundColor = colorBackground(propiedades.color);
     const colorProduct = propiedades.colorProduct;
     //Headline
-    const headline = propiedades.headLine ? propiedades.headLine : propiedades.personalHeadline;
+    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
 
@@ -66,20 +66,21 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <meta charset="UTF-8">
     <title>23andMe</title>
     <style>
-    
     .RegionName {
-    font-size: 25px;
+    font-size: 22px;
     text-align: center;
-    color: ${fontColor(colorProduct)};       
+    color: ${fontColor(colorProduct)};    
+    font-family:${font};   
     }  
    .fontColor {
     color: ${fontColor(colorProduct)};
+    font-family:${font};
     }
     
-        @font-face {
+   @font-face {
     font-family: 'Futura';
-    src: url('/Assets/Futura-Bold.woff2') format('woff2'),
-        url('/Assets/Futura-Bold.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/Futura-Bold.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/Futura-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 }
@@ -94,44 +95,34 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
 @font-face {
     font-family: 'Noteworthy';
-    src: url('/Assets/Noteworthy-Bold.woff2') format('woff2'),
-        url('/Assets/Noteworthy-Bold.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/Noteworthy-Bold.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/Noteworthy-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Funnier';
-    src: url('/Assets/Funnier.woff2') format('woff2'),
-        url('/Assets/Funnier.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/Funnier.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/Funnier.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Cooper Std';
-    src: url('/Assets/CooperBlackStd.woff2') format('woff2'),
-        url('/Assets/CooperBlackStd.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/CooperBlackStd.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/CooperBlackStd.woff') format('woff');
     font-weight: 900;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Baskerville';
-    src: url('/Assets/BaskervilleBT-Bold.woff2') format('woff2'),
-        url('/Assets/BaskervilleBT-Bold.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/BaskervilleBT-Bold.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/BaskervilleBT-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
-}
-
-.Noteworthy{
-font-family: Noteworthy;
-}
-.Baskerville{
-font-family: "Baskerville Old Face";
-}
-.Embossing{
-font-family: Embossing;
 }
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -600,31 +591,31 @@ font-family: Embossing;
 
 <div style="margin-top: 50px;margin-right: 20px">
     <div style="display: flex; justify-content: space-around;">
-        <div style="height:38px; width:100%; border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
+        <div class="fontColor" style="height:38px; width:100%; border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
             ${firstRegionNumber} %
         </div>
-        <div style="height:38px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
+        <div class="fontColor"  style="height:38px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
             ${secondRegionNumber} %
         </div>
-        <div style="height:38px; width:100%; border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
+        <div class="fontColor" style="height:38px; width:100%; border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
             ${threeRegionNumber} %
         </div>
-        <div style="height:38px; width:100%; border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
+        <div class="fontColor" style="height:38px; width:100%; border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
              ${fourRegionNumber} %
         </div>
-        <div style="height:38px; width:100%; border-radius: 20px; background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
+        <div class="fontColor" style="height:38px; width:100%; border-radius: 20px; background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
             ${fiveRegionNumber} %
         </div>
-        <div style="height:38px; width:100%; border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
+        <div class="fontColor" style="height:38px; width:100%; border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
             ${sixRegionNumber} %
         </div>
-        <div style="height:38px; width:100%; border-radius: 20px; background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
+        <div class="fontColor" style="height:38px; width:100%; border-radius: 20px; background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
              ${sevenRegionNumber} %
         </div>
-        <div style="height:38px; width:100%; border-radius: 20px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
+        <div class="fontColor" style="height:38px; width:100%; border-radius: 20px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
              ${eightRegionNumber} %
         </div>
-        <div style="height:38px; width:100%; border-radius: 20px; background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 33px;color: white;">
+        <div class="fontColor" style="height:38px; width:100%; border-radius: 20px; background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
             ${nineRegionNumber} %
         </div>
     </div>

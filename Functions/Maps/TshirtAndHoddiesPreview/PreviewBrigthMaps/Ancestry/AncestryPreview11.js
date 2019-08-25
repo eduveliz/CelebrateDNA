@@ -54,7 +54,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const backgroundColor = colorBackground(propiedades.color);
     const colorProduct = propiedades.colorProduct;
     //Headline
-    const headline = propiedades.headLine ? propiedades.headLine : propiedades.personalHeadline;
+    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
 
@@ -74,16 +74,17 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <title>23andMe</title>
     <style>
     .fontColor {
-    color: ${fontColor(colorProduct)};
+        color:${fontColor(colorProduct)};
+        font-family:${font};
     }
     
-        @font-face {
+    @font-face {
     font-family: 'Futura';
-    src: url('/Assets/Futura-Bold.woff2') format('woff2'),
-        url('/Assets/Futura-Bold.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/Futura-Bold.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/Futura-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
-    }
+}
 
 @font-face {
     font-family: 'Embossing';
@@ -95,44 +96,34 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
 @font-face {
     font-family: 'Noteworthy';
-    src: url('/Assets/Noteworthy-Bold.woff2') format('woff2'),
-        url('/Assets/Noteworthy-Bold.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/Noteworthy-Bold.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/Noteworthy-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Funnier';
-    src: url('/Assets/Funnier.woff2') format('woff2'),
-        url('/Assets/Funnier.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/Funnier.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/Funnier.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Cooper Std';
-    src: url('/Assets/CooperBlackStd.woff2') format('woff2'),
-        url('/Assets/CooperBlackStd.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/CooperBlackStd.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/CooperBlackStd.woff') format('woff');
     font-weight: 900;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Baskerville';
-    src: url('/Assets/BaskervilleBT-Bold.woff2') format('woff2'),
-        url('/Assets/BaskervilleBT-Bold.woff') format('woff');
+    src: url('http://bdbf41ac.ngrok.io/Fonts/BaskervilleBT-Bold.woff2') format('woff2'),
+        url('http://bdbf41ac.ngrok.io/Fonts/BaskervilleBT-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
-}
-
-.Noteworthy{
-font-family: Noteworthy;
-}
-.Baskerville{
-font-family: "Baskerville Old Face";
-}
-.Embossing{
-font-family: Embossing;
 }
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -599,7 +590,6 @@ font-family: Embossing;
 </div>
 
 <div style="display: flex; justify-content:space-around;width:100%;margin-top: 50px;margin-left: 35px;">
-   
     <div id="firstGroup" style="width: 100%;">
         <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
             <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${firstRegionName}</div>
@@ -706,7 +696,6 @@ font-family: Embossing;
             </div>
         </div>
     </div>
-
 </div>
 
 <script>    

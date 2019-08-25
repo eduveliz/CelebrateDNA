@@ -2,22 +2,22 @@ module.exports = fontStyle = (fontSelected) => {
     let fontStyle;
     switch (fontSelected) {
         case "Noteworthy":
-            return fontStyle = "noteworthybold";
+            return fontStyle = "Noteworthy";
             break;
         case "Baskerville":
-            return fontStyle = "baskervillebold";
+            return fontStyle = "Baskerville";
             break;
         case "Funnier":
-            return fontStyle = 'funnier';
+            return fontStyle = 'Funnier';
             break;
         case "Futura Bold":
-            return fontStyle = "futura";
+            return fontStyle = "Futura";
             break;
         case "Myriad Pro Bold":
             return fontStyle = "#D87F47";
             break;
         case "EmbossedTapeThree":
-            return fontStyle = "embossing_tape_3_brkregular";
+            return fontStyle = "Embossing";
             break;
     }
 };
