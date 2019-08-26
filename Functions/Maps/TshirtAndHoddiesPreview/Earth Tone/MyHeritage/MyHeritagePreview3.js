@@ -94,9 +94,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </head>
 <body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)} ">
 <h1 class='fontColor' style="text-align: center;font-size:89px;">${headline} </h1>
-
 <div>
-    
 <svg xmlns="http://www.w3.org/2000/svg" width="11.8in" height="6.7in" viewBox="0 0 850.5 479.8">
     <title>map</title>
     <g id="worldMap">
@@ -696,6 +694,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         height: 1536,
         deviceScaleFactor: 1,
     });
-    await page.screenshot({path: `previews/${nameFile}.png`});
+    await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };

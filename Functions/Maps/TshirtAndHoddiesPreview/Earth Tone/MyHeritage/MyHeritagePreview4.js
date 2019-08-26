@@ -707,6 +707,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         height: 1536,
         deviceScaleFactor: 1,
     });
-    await page.screenshot({path: `previews/${nameFile}.png`});
+    await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };

@@ -69,12 +69,9 @@ app.post('/earth', jsonParser, function (req, res) {
     }
 });
 
-
-
 app.get("/", jsonParser, function (req, res) {
     res.send("Server on");
 });
-
 
 app.post('/printfull', jsonParser, function (req, res) {
     const regionNumber = toArray(req.body.line_items[0].properties).length;

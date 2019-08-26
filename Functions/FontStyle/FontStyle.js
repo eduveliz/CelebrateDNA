@@ -19,5 +19,8 @@ module.exports = fontStyle = (fontSelected) => {
         case "EmbossedTapeThree":
             return fontStyle = "Embossing";
             break;
+        case "Noteworhty Bold":
+            return fontStyle = "Noteworthy";
+            break;
     }
 };

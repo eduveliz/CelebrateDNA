@@ -757,6 +757,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </body>
 </html>
 `);
-    await page.screenshot({path: `previews/${nameFile}.png`});
+    await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };
