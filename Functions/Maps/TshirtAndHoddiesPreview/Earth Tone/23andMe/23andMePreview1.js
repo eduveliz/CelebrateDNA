@@ -80,6 +80,14 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         font-weight: bold;
         font-style: normal;
     }
+    
+    @font-face {
+    font-family: 'MyriadPro-Bold';
+    src: url('https://8d4b5716.ngrok.io/Fonts/MyriadPro-Bold.eot') format('embedded-opentype'),  url('https://8d4b5716.ngrok.io/Fonts/MyriadPro-Bold.otf')  format('opentype'),
+           url('https://8d4b5716.ngrok.io/Fonts/MyriadPro-Bold.woff') format('woff'), url('https://8d4b5716.ngrok.io/Fonts/MyriadPro-Bold.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>

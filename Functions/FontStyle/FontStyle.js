@@ -14,7 +14,7 @@ module.exports = fontStyle = (fontSelected) => {
             return fontStyle = "Futura";
             break;
         case "Myriad Pro Bold":
-            return fontStyle = "#D87F47";
+            return fontStyle = "MyriadPro-Bold";
             break;
         case "EmbossedTapeThree":
             return fontStyle = "Embossing";
