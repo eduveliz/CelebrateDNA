@@ -83,8 +83,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     
     @font-face {
     font-family: 'MyriadPro-Bold';
-    src: url('https://8d4b5716.ngrok.io/Fonts/MyriadPro-Bold.eot') format('embedded-opentype'),  url('https://8d4b5716.ngrok.io/Fonts/MyriadPro-Bold.otf')  format('opentype'),
-           url('https://8d4b5716.ngrok.io/Fonts/MyriadPro-Bold.woff') format('woff'), url('https://8d4b5716.ngrok.io/Fonts/MyriadPro-Bold.ttf')  format('truetype');
+    src: url('https://moolab.ml/Fonts/MyriadPro-Bold.eot') format('embedded-opentype'),  url('https://moolab.ml/Fonts/MyriadPro-Bold.otf')  format('opentype'),
+         url('https://moolab.ml/Fonts/MyriadPro-Bold.woff') format('woff'), url('https://moolab.ml/Fonts/MyriadPro-Bold.ttf')  format('truetype');
     font-weight: normal;
     font-style: normal;
   }

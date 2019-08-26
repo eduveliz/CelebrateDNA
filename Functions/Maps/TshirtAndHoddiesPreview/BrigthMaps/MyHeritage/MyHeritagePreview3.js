@@ -88,7 +88,14 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             url('https://moolab.ml/Fonts/BaskervilleBT-Bold.woff') format('woff');
         font-weight: bold;
         font-style: normal;
-    }
+    }    
+    @font-face {
+    font-family: 'MyriadPro-Bold';
+    src: url('https://moolab.ml/Fonts/MyriadPro-Bold.eot') format('embedded-opentype'),  url('https://moolab.ml/Fonts/MyriadPro-Bold.otf')  format('opentype'),
+         url('https://moolab.ml/Fonts/MyriadPro-Bold.woff') format('woff'), url('https://moolab.ml/Fonts/MyriadPro-Bold.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
    </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
