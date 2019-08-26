@@ -4,9 +4,14 @@ const app = express();
 const jsonParser = bodyParser.json();
 const path = require('path');
 const ttSelector = require('./Functions/Maps/TshirtAndHoddies/BrigthMaps/23andMe/ttSelector');
+//brigth
 const ttPreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/BrigthMaps/23andMe/ttPreviewSelector');
 const ancestryPreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/BrigthMaps/Ancestry/AncestryPreviewSelector');
 const myHeritagePreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/BrigthMaps/MyHeritage/MyHeritagePreviewSelector');
+//earth
+const ancestryPreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/Ancestry/AncestryPreviewSelector');
+const ttPreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/23andMe/ttPreviewSelector');
+const myHeritagePreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/MyHeritage/MyHeritagePreviewSelector');
 const toArray = require('lodash.toarray');
 const cors = require('cors');
 
@@ -20,7 +25,7 @@ app.get('/previews/:id', jsonParser, function (req, res) {
     res.sendFile(path.join(__dirname + '/previews/' + id + '.png'));
 });
 
-app.post('/test', jsonParser, function (req, res) {
+app.post('/brigth', jsonParser, function (req, res) {
     console.log("creating...");
     const id = 123;
     const regionNumber = req.body.regions.length;
@@ -42,8 +47,31 @@ app.post('/test', jsonParser, function (req, res) {
     }
 });
 
+app.post('/earth', jsonParser, function (req, res) {
+    console.log("earth");
+    const id = 123;
+    const regionNumber = req.body.regions.length;
+    if (req.body.company === "Ancestry") {
+        return ancestryPreviewSelectorEarth(regionNumber, id, req.body).then(() => {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
+    }
+    if (req.body.company === "23andMe") {
+        return ttPreviewSelectorEarth(regionNumber, id, req.body).then(() => {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
+    }
+    if (req.body.company === "MyHeritageDNA") {
+        return myHeritagePreviewSelectorEarth(regionNumber, id, req.body).then(() => {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
+    }
+});
+
+
+
 app.get("/", jsonParser, function (req, res) {
-    res.send("hola soy el servidor");
+    res.send("Server on");
 });
 
 

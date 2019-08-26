@@ -550,10 +550,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </div>
 <div style="margin-top: 50px;margin-right: 17px">
     <div style="display: flex; justify-content: space-around;">
-        <div class="fontColor" style="height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+        <div class="fontColor" style="height:60px; width:100%;border-radius: 20px; background-color: #616C44;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
             ${firstRegionNumber}%
         </div>
-        <div class="fontColor" style="height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+        <div class="fontColor" style="height:60px; width:100%; border-radius: 20px; background-color: #6D0008;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
             ${secondRegionNumber}%
         </div>
     </div>
