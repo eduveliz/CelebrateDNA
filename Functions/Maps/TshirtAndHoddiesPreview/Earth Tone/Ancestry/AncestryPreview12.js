@@ -639,7 +639,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
-            <div class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #B19E3Fv;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+            <div class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #B19E3F;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
                  ${fiveRegionNumber}
             </div>
             <div class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #603813;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">

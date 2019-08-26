@@ -647,21 +647,21 @@ font-family: Embossing;
         </g>
     </svg>
 </div>
-<div style="margin-top: 50px">
+<div style="margin-top: 50px;margin-right: 17px">
     <div style="display: flex; justify-content: space-around;">
-        <div style="height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+        <div class="fontColor" style="height:60px; width:100%;border-radius: 20px; background-color: #616C44;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
             ${firstRegionNumber}%
         </div>
-        <div style="height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;color: white;">
+        <div class="fontColor" style="height:60px; width:100%; border-radius: 20px; background-color: #6D0008;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
             ${secondRegionNumber}%
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div style="font-size: 33px;">${firstRegionName}</div>
+            <div class="fontColor" style="font-size: 33px;">${firstRegionName}</div>
         </div>
         <div style="width:100%;height:60px; display: flex; justify-content: center">
-            <div style="font-size: 33px">${secondRegionName}</div>
+            <div class="fontColor" style="font-size: 33px">${secondRegionName}</div>
         </div>
     </div>
 </div>
