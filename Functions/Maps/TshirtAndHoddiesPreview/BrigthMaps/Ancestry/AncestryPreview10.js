@@ -8,6 +8,7 @@ const colorProductSelect = require('../../../../Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
+    const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
     const firstRegionNumber = propiedades.regions[0].porcentaje;
@@ -712,6 +713,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </body>
 </html>
 `);
-    await page.screenshot({path: `previews//${nameFile}.png`});
+    await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };

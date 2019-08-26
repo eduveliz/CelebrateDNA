@@ -7,6 +7,7 @@ const fontColor = require('../../../../FontColor/FontColor');
 const colorProductSelect = require('../../../../Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
+    const name = propiedades.nameFile;
     //Regions  */ RegionsNamesSelectors is for Jquery/*
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
@@ -749,6 +750,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </body>
 </html>
 `);
-    await page.screenshot({path: `previews//${nameFile}.png`});
+    await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };
