@@ -3,6 +3,8 @@ const toArray = require('lodash.toarray');
 const colorBackground = require('../../../../ColorsBackground/BrightMap');
 const regionNames = require('../../../../RegionNames/RegionNameMyHeritage');
 const fontStyle = require('../../../../FontStyle/FontStyle');
+const fontColor = require('../../../../FontColor/FontColor');
+const colorProductSelect = require('../../../../Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
