@@ -4,9 +4,9 @@ const app = express();
 const jsonParser = bodyParser.json();
 const path = require('path');
 const ttSelector = require('./Functions/Maps/TshirtAndHoddies/BrigthMaps/23andMe/ttSelector');
-const ttPreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/PreviewBrigthMaps/23andMe/ttPreviewSelector');
-const ancestryPreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/PreviewBrigthMaps/Ancestry/AncestryPreviewSelector');
-const myHeritagePreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/PreviewBrigthMaps/MyHeritage/MyHeritagePreviewSelector');
+const ttPreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/BrigthMaps/23andMe/ttPreviewSelector');
+const ancestryPreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/BrigthMaps/Ancestry/AncestryPreviewSelector');
+const myHeritagePreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/BrigthMaps/MyHeritage/MyHeritagePreviewSelector');
 const toArray = require('lodash.toarray');
 const cors = require('cors');
 

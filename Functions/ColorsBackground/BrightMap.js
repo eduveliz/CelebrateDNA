@@ -2,7 +2,7 @@ module.exports = colorBackground = (color) => {
     let hexValueColor;
     switch (color) {
         case "Transparent":
-            return hexValueColor = "red";
+            return hexValueColor = "transparent";
             break;
         case "Sand":
             return hexValueColor = "#C2B49A";
