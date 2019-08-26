@@ -7,7 +7,6 @@ const fontColor = require('../../../../FontColor/FontColor');
 const colorProductSelect = require('../../../../Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
-    const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
     const firstRegionNumber = propiedades.regions[0].porcentaje;
@@ -563,7 +562,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
             $("#regions").attr("fill", "transparent");
             //Primary color
-            $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
+            $("${firstRegionNameSelector}").attr("fill", "#616C44");
           });
     });
 </script>
@@ -576,6 +575,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         height: 1536,
         deviceScaleFactor: 1,
     });
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.screenshot({path: `previews//${nameFile}.png`});
     await browser.close();
 };

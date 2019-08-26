@@ -14,15 +14,16 @@ app.use(cors());
 app.use(express.static('public'));
 
 
-app.get('/previews', jsonParser, function (req, res) {
-    res.sendFile(path.join(__dirname + '/previews/123.png'));
+app.get('/previews/:id', jsonParser, function (req, res) {
+    const id = req.params.id;
+    console.log("created " + id);
+    res.sendFile(path.join(__dirname + '/previews/' + id + '.png'));
 });
 
 app.post('/test', jsonParser, function (req, res) {
-    console.log("create preview");
+    console.log("creating...");
     const id = 123;
     const regionNumber = req.body.regions.length;
-    console.log(req.body);
     if (req.body.company === "Ancestry") {
         return ancestryPreviewSelector(regionNumber, id, req.body).then(() => {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
@@ -39,7 +40,6 @@ app.post('/test', jsonParser, function (req, res) {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         });
     }
-
 });
 
 app.get("/", jsonParser, function (req, res) {
