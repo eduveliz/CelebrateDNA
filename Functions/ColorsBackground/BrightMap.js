@@ -19,16 +19,16 @@ module.exports = colorBackground = (color) => {
         case "Raspberry":
             return hexValueColor = "#A97B80";
             break;
-        case "Sand Dune":
+        case "SandDune":
             return hexValueColor = "#7B7067";
             break;
-        case "Dusty Blue":
+        case "DustyBlue":
             return hexValueColor = "#8C9DA6";
             break;
-        case "Autumn Mango":
+        case "AutumnMango":
             return hexValueColor = "#AB7F31";
             break;
-        case "Sage Bark":
+        case "SageBark":
             return hexValueColor = "#757668";
             break;
         case "Sand Dune":

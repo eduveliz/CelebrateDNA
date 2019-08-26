@@ -8,6 +8,7 @@ const colorProductSelect = require('../../../../Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
+    const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
     const firstRegionNumber = propiedades.regions[0].porcentaje;
@@ -34,63 +35,58 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <title>23andMe</title>
     <style>
     
-        @font-face {
+    .fontColor {
+    color:${fontColor(colorProduct)};
+    font-family:${font};
+    }
+    
+    @font-face {
     font-family: 'Futura';
-    src: url('/Assets/Futura-Bold.woff2') format('woff2'),
-        url('/Assets/Futura-Bold.woff') format('woff');
+    src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
+        url('https://moolab.ml/Fonts/Futura-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
-}
-
-@font-face {
-    font-family: 'Embossing';
-    src: url('/Assets/EmbossingTape3BRK.woff2') format('woff2'),
-        url('/Assets/EmbossingTape3BRK.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Noteworthy';
-    src: url('/Assets/Noteworthy-Bold.woff2') format('woff2'),
-        url('/Assets/Noteworthy-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Funnier';
-    src: url('/Assets/Funnier.woff2') format('woff2'),
-        url('/Assets/Funnier.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Cooper Std';
-    src: url('/Assets/CooperBlackStd.woff2') format('woff2'),
-        url('/Assets/CooperBlackStd.woff') format('woff');
-    font-weight: 900;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Baskerville';
-    src: url('/Assets/BaskervilleBT-Bold.woff2') format('woff2'),
-        url('/Assets/BaskervilleBT-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-
-.Noteworthy{
-font-family: Noteworthy;
-}
-.Baskerville{
-font-family: "Baskerville Old Face";
-}
-.Embossing{
-font-family: Embossing;
-}
+    }
+    
+    @font-face {
+        font-family: 'Embossing';
+        src: url('https://moolab.ml/Fonts/EmbossingTape3BRK.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/EmbossingTape3BRK.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'Noteworthy';
+        src: url('https://moolab.ml/Fonts/Noteworthy-Bold.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/Noteworthy-Bold.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'Funnier';
+        src: url('https://moolab.ml/Fonts/Funnier.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/Funnier.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'Cooper Std';
+        src: url('https://moolab.ml/Fonts/CooperBlackStd.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/CooperBlackStd.woff') format('woff');
+        font-weight: 900;
+        font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'Baskerville';
+        src: url('https://moolab.ml/Fonts/BaskervilleBT-Bold.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/BaskervilleBT-Bold.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+    }
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
@@ -679,12 +675,11 @@ font-family: Embossing;
 </body>
 </html>
 `);
-
     await page.setViewport({
         width: 1152,
         height: 1536,
         deviceScaleFactor: 1,
     });
-    await page.screenshot({path: `previews//${nameFile}.png`});
+    await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };

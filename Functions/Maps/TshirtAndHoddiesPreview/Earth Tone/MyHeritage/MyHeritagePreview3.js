@@ -7,6 +7,7 @@ const fontColor = require('../../../../FontColor/FontColor');
 const colorProductSelect = require('../../../../Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
+    const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
     const firstRegionNumber = propiedades.regions[0].porcentaje;
@@ -43,48 +44,48 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     
     @font-face {
     font-family: 'Futura';
-    src: url('http://bdbf41ac.ngrok.io/Fonts/Futura-Bold.woff2') format('woff2'),
-        url('http://bdbf41ac.ngrok.io/Fonts/Futura-Bold.woff') format('woff');
+    src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
+        url('https://moolab.ml/Fonts/Futura-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     }
     
     @font-face {
         font-family: 'Embossing';
-        src: url('/Assets/EmbossingTape3BRK.woff2') format('woff2'),
-            url('/Assets/EmbossingTape3BRK.woff') format('woff');
+        src: url('https://moolab.ml/Fonts/EmbossingTape3BRK.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/EmbossingTape3BRK.woff') format('woff');
         font-weight: normal;
         font-style: normal;
     }
     
     @font-face {
         font-family: 'Noteworthy';
-        src: url('http://bdbf41ac.ngrok.io/Fonts/Noteworthy-Bold.woff2') format('woff2'),
-            url('http://bdbf41ac.ngrok.io/Fonts/Noteworthy-Bold.woff') format('woff');
+        src: url('https://moolab.ml/Fonts/Noteworthy-Bold.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/Noteworthy-Bold.woff') format('woff');
         font-weight: bold;
         font-style: normal;
     }
     
     @font-face {
         font-family: 'Funnier';
-        src: url('http://bdbf41ac.ngrok.io/Fonts/Funnier.woff2') format('woff2'),
-            url('http://bdbf41ac.ngrok.io/Fonts/Funnier.woff') format('woff');
+        src: url('https://moolab.ml/Fonts/Funnier.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/Funnier.woff') format('woff');
         font-weight: normal;
         font-style: normal;
     }
     
     @font-face {
         font-family: 'Cooper Std';
-        src: url('http://bdbf41ac.ngrok.io/Fonts/CooperBlackStd.woff2') format('woff2'),
-            url('http://bdbf41ac.ngrok.io/Fonts/CooperBlackStd.woff') format('woff');
+        src: url('https://moolab.ml/Fonts/CooperBlackStd.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/CooperBlackStd.woff') format('woff');
         font-weight: 900;
         font-style: normal;
     }
     
     @font-face {
         font-family: 'Baskerville';
-        src: url('http://bdbf41ac.ngrok.io/Fonts/BaskervilleBT-Bold.woff2') format('woff2'),
-            url('http://bdbf41ac.ngrok.io/Fonts/BaskervilleBT-Bold.woff') format('woff');
+        src: url('https://moolab.ml/Fonts/BaskervilleBT-Bold.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/BaskervilleBT-Bold.woff') format('woff');
         font-weight: bold;
         font-style: normal;
     }
@@ -695,6 +696,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         height: 1536,
         deviceScaleFactor: 1,
     });
-    await page.screenshot({path: `previews//${nameFile}.png`});
+    await page.screenshot({path: `previews/${nameFile}.png`});
     await browser.close();
 };

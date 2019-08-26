@@ -7,6 +7,7 @@ const fontColor = require('../../../../FontColor/FontColor');
 const colorProductSelect = require('../../../../Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
+    const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
     const firstRegionNumber = propiedades.regions[0].porcentaje;
@@ -37,50 +38,50 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         color:${fontColor(colorProduct)};
         font-family:${font};
     }
-   @font-face {
+          @font-face {
     font-family: 'Futura';
-    src: url('http://bdbf41ac.ngrok.io/Fonts/Futura-Bold.woff2') format('woff2'),
-        url('http://bdbf41ac.ngrok.io/Fonts/Futura-Bold.woff') format('woff');
+    src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
+        url('https://moolab.ml/Fonts/Futura-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     }
     
     @font-face {
         font-family: 'Embossing';
-        src: url('/Assets/EmbossingTape3BRK.woff2') format('woff2'),
-            url('/Assets/EmbossingTape3BRK.woff') format('woff');
+        src: url('https://moolab.ml/Fonts/EmbossingTape3BRK.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/EmbossingTape3BRK.woff') format('woff');
         font-weight: normal;
         font-style: normal;
     }
     
     @font-face {
         font-family: 'Noteworthy';
-        src: url('http://bdbf41ac.ngrok.io/Fonts/Noteworthy-Bold.woff2') format('woff2'),
-            url('http://bdbf41ac.ngrok.io/Fonts/Noteworthy-Bold.woff') format('woff');
+        src: url('https://moolab.ml/Fonts/Noteworthy-Bold.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/Noteworthy-Bold.woff') format('woff');
         font-weight: bold;
         font-style: normal;
     }
     
     @font-face {
         font-family: 'Funnier';
-        src: url('http://bdbf41ac.ngrok.io/Fonts/Funnier.woff2') format('woff2'),
-            url('http://bdbf41ac.ngrok.io/Fonts/Funnier.woff') format('woff');
+        src: url('https://moolab.ml/Fonts/Funnier.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/Funnier.woff') format('woff');
         font-weight: normal;
         font-style: normal;
     }
     
     @font-face {
         font-family: 'Cooper Std';
-        src: url('http://bdbf41ac.ngrok.io/Fonts/CooperBlackStd.woff2') format('woff2'),
-            url('http://bdbf41ac.ngrok.io/Fonts/CooperBlackStd.woff') format('woff');
+        src: url('https://moolab.ml/Fonts/CooperBlackStd.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/CooperBlackStd.woff') format('woff');
         font-weight: 900;
         font-style: normal;
     }
     
     @font-face {
         font-family: 'Baskerville';
-        src: url('http://bdbf41ac.ngrok.io/Fonts/BaskervilleBT-Bold.woff2') format('woff2'),
-            url('http://bdbf41ac.ngrok.io/Fonts/BaskervilleBT-Bold.woff') format('woff');
+        src: url('https://moolab.ml/Fonts/BaskervilleBT-Bold.woff2') format('woff2'),
+            url('https://moolab.ml/Fonts/BaskervilleBT-Bold.woff') format('woff');
         font-weight: bold;
         font-style: normal;
     }
@@ -395,7 +396,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
                       transform="translate(-7.7 -271.2)"></path>
                 <path class="cls-1"
                       d="M493.8,608.1c2.1-.1,2.3-5.1,2.2-6.6s-.6-5.9-2.7-6.9c-.1-.6-1.3-1.5-1.8-1.8a3.3,3.3,0,0,0-2.6-.8c-2.3.1-3,1-3.4,3.3a31,31,0,0,0-.7,6.2c0,2.5,1.3,2.8,2.8,4.3s1.5,2.8,3.8,2.9,3.1-.3,4-2.4"
-                      transform="translate(-7.7 -271.2)"></path>
+                        transform="translate(-7.7 -271.2)"></path>
             </g>
 
             <path id="northAfrica" data-name="North Africa" class="cls-3"
@@ -585,6 +586,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         height: 1536,
         deviceScaleFactor: 1,
     });
-    await page.screenshot({path: `previews//${nameFile}.png`});
+    await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };

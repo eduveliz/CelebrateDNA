@@ -48,7 +48,8 @@ app.post('/brigth', jsonParser, function (req, res) {
 });
 
 app.post('/earth', jsonParser, function (req, res) {
-    console.log("earth");
+    console.log("creating Earth...");
+    console.log(req.body);
     const id = 123;
     const regionNumber = req.body.regions.length;
     if (req.body.company === "Ancestry") {

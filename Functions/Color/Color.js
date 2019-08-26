@@ -22,5 +22,17 @@ module.exports = colorProduct = (colorSelected) => {
         case "Navy":
             return color = "#2A2738";
             break;
+        case "Asphalt":
+            return color = "#595957";
+            break;
+        case "Forest":
+            return color = "#36503A";
+            break;
+        case "Army":
+            return color = "#5C5047";
+            break;
+        case "Silver":
+            return color = "#C2C4C8";
+            break;
     }
 };
