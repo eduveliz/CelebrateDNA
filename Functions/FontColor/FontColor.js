@@ -34,6 +34,9 @@ module.exports = fontColor = (colorSelected) => {
         case "Army":
             return fontColor = "#FFFFFF";
             break;
+        case "Indigo Blue":
+            return fontColor = "#FFFFFF";
+            break;
     }
 };
 

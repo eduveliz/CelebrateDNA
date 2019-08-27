@@ -27,6 +27,7 @@ app.get('/previews/:id', jsonParser, function (req, res) {
 
 app.post('/brigth', jsonParser, function (req, res) {
     console.log("creating...");
+    console.log(req.body);
     const id = 123;
     const regionNumber = req.body.regions.length;
     if (req.body.company === "Ancestry") {
@@ -67,6 +68,10 @@ app.post('/earth', jsonParser, function (req, res) {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         });
     }
+});
+
+app.post('/helixHorizontal', jsonParser, function (req, res) {
+    res.send("helix");
 });
 
 app.get("/", jsonParser, function (req, res) {

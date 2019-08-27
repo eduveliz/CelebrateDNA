@@ -577,7 +577,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </div>
 
 <div style="margin-top: 50px">
-    <div style="display: flex; justify-content: space-around;padding-right: 20px;">
+    <div style="display: flex; justify-content: space-around;">
         <div class='fontColor' style="height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
             ${firstRegionNumber} %
         </div>
@@ -595,19 +595,19 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;">
-        <div style="width:100%;height:60px;display: flex; justify-content: center">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;text-align: center;">
             <div class='fontColor' style="font-size: 25px;">${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center">
-            <div class='fontColor' style="font-size: 25px">${secondRegionName}</div>
+        <div style="width:100%;height:60px; display: flex; justify-content: center;text-align: center;">
+            <div class='fontColor' style="font-size: 25px;">${secondRegionName}</div>
         </div>
-        <div style="width:100%;height:60px;display: flex; justify-content: center">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;text-align:center;">
             <div class='fontColor' style="font-size: 25px">${threeRegionName}</div>
         </div>
-        <div style=" width:100%;height:60px;display: flex; justify-content: center">
+        <div style=" width:100%;height:60px;display: flex; justify-content: center;text-align: center;">
             <div class='fontColor' style="font-size: 25px">${fourRegionName}</div>
         </div>
-        <div style=" width:100%;height:60px;display: flex; justify-content: center">
+        <div style=" width:100%;height:60px;display: flex; justify-content: center;text-align: center;">
             <div class='fontColor' style="font-size: 25px">${fiveRegionName}</div>
         </div>
     </div>
