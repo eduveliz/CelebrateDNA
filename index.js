@@ -12,6 +12,9 @@ const myHeritagePreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPrev
 const ancestryPreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/Ancestry/AncestryPreviewSelector');
 const ttPreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/23andMe/ttPreviewSelector');
 const myHeritagePreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/MyHeritage/MyHeritagePreviewSelector');
+//Helix
+const helix = require('./Functions/Helix/Helix10');
+
 const toArray = require('lodash.toarray');
 const cors = require('cors');
 
@@ -71,7 +74,10 @@ app.post('/earth', jsonParser, function (req, res) {
 });
 
 app.post('/helixHorizontal', jsonParser, function (req, res) {
-    res.send("helix");
+    console.log(req.body);
+    const id = 123;
+    helix(id, req.body);
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
 app.get("/", jsonParser, function (req, res) {
