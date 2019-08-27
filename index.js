@@ -14,6 +14,7 @@ const ttPreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview
 const myHeritagePreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/MyHeritage/MyHeritagePreviewSelector');
 //Helix
 const helixSelector = require('./Functions/Helix/HelixSelector');
+const helixVerticalSelector = require('./Functions/HelixVertical/HelixVerticalSelector');
 
 const toArray = require('lodash.toarray');
 const cors = require('cors');
@@ -21,6 +22,9 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.static('public'));
 
+app.get("/", jsonParser, function (req, res) {
+    res.send("Server on");
+});
 
 app.get('/previews/:id', jsonParser, function (req, res) {
     const id = req.params.id;
@@ -81,9 +85,15 @@ app.post('/helixHorizontal', jsonParser, function (req, res) {
     });
 });
 
-app.get("/", jsonParser, function (req, res) {
-    res.send("Server on");
+app.post('/helixVertical', jsonParser, function (req, res) {
+    console.log("creating Helix Vertical... " + req.body.nameFile);
+    console.log(req.body);
+    const regionNumber = req.body.regions.length;
+    return helixVerticalSelector(regionNumber, req.body).then(() => {
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    });
 });
+
 
 app.post('/printfull', jsonParser, function (req, res) {
     const regionNumber = toArray(req.body.line_items[0].properties).length;
