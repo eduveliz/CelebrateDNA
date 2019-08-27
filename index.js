@@ -13,7 +13,7 @@ const ancestryPreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesP
 const ttPreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/23andMe/ttPreviewSelector');
 const myHeritagePreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/MyHeritage/MyHeritagePreviewSelector');
 //Helix
-const helix = require('./Functions/Helix/Helix10');
+const helixSelector = require('./Functions/Helix/HelixSelector');
 
 const toArray = require('lodash.toarray');
 const cors = require('cors');
@@ -53,7 +53,6 @@ app.post('/brigth', jsonParser, function (req, res) {
 
 app.post('/earth', jsonParser, function (req, res) {
     console.log("creating Earth...");
-    console.log(req.body);
     const id = 123;
     const regionNumber = req.body.regions.length;
     if (req.body.company === "Ancestry") {
@@ -74,10 +73,12 @@ app.post('/earth', jsonParser, function (req, res) {
 });
 
 app.post('/helixHorizontal', jsonParser, function (req, res) {
+    console.log("creating Helix... " + req.body.nameFile);
     console.log(req.body);
-    const id = 123;
-    helix(id, req.body);
-    res.end('{"success" : "Updated Successfully", "status" : 200}');
+    const regionNumber = req.body.regions.length;
+    return helixSelector(regionNumber, req.body).then(() => {
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    });
 });
 
 app.get("/", jsonParser, function (req, res) {

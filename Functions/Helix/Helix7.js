@@ -30,15 +30,6 @@ module.exports = createPreview = async (propiedades) => {
     const sevenRegionName = propiedades.regions[6].region;
     const sevenRegionNumber = propiedades.regions[6].porcentaje;
 
-    const eightRegionName = propiedades.regions[7].region;
-    const eightRegionNumber = propiedades.regions[7].porcentaje;
-
-    const nineRegionName = propiedades.regions[8].region;
-    const nineRegionNumber = propiedades.regions[8].porcentaje;
-
-    const tenRegionName = propiedades.regions[9].region;
-    const tenRegionNumber = propiedades.regions[9].porcentaje;
-
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
     const colorProduct = propiedades.colorProduct;
@@ -56,12 +47,10 @@ module.exports = createPreview = async (propiedades) => {
         deviceScaleFactor: 1,
     });
 
-    await page.setContent(`
-    <!DOCTYPE html>
+    await page.setContent(`<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8">    <title>Title</title>
 </head>
 <style>
     .textDNA {
@@ -77,24 +66,29 @@ module.exports = createPreview = async (propiedades) => {
         text-align: center;
         height: 300px;
     }
+
     .dna {
         color: red;
     }
+
     .name {
         color: blue;
     }
+
     .region {
         color: white;
-        font-size: 26pt;
+        font-size: 42pt;
         font-family:${font};
         text-align: center;
     }
+
     .firstLevel {
         display: flex;
         justify-content: space-between;
         width: 100%;
         margin-top: 30%;
     }
+
     .secondLevel {
         display: flex;
         justify-content: space-between;
@@ -157,12 +151,10 @@ module.exports = createPreview = async (propiedades) => {
 </style>
 
 <body style="width: 12in;height:16.04in;background-color: #231F20">
-
-
 <div class="firstLevel">
     <div style="width: 100%">
         <div class="region">${firstRegionName}</div>
-        <div class="region">${firstRegionNumber}%</div>
+        <div class="region">${firstRegionNumber} %</div>
     </div>
     <div style="width: 100%">
         <div class="region">${secondRegionName}</div>
@@ -170,15 +162,7 @@ module.exports = createPreview = async (propiedades) => {
     </div>
     <div style="width: 100%">
         <div class="region">${threeRegionName}</div>
-        <div class="region">${threeRegionNumber}%</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${fourRegionName}</div>
-        <div class="region">${fourRegionNumber} %</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${fiveRegionName}</div>
-        <div class="region">${fiveRegionNumber} %</div>
+        <div class="region">${threeRegionNumber} %</div>
     </div>
 </div>
 
@@ -195,24 +179,20 @@ module.exports = createPreview = async (propiedades) => {
 
 <div class="secondLevel">
     <div style="width: 100%">
+        <div class="region">${fourRegionNumber} %</div>
+        <div class="region">${fourRegionName}</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${fiveRegionNumber} %</div>
+        <div class="region">${fiveRegionName}</div>
+    </div>
+    <div style="width: 100%">
         <div class="region">${sixRegionNumber} %</div>
         <div class="region">${sixRegionName}</div>
     </div>
     <div style="width: 100%">
         <div class="region">${sevenRegionNumber} %</div>
         <div class="region">${sevenRegionName}</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${eightRegionNumber} %</div>
-        <div class="region">${eightRegionName}</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${nineRegionNumber} %</div>
-        <div class="region">${nineRegionName}</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${tenRegionNumber} %</div>
-        <div class="region">${tenRegionName}</d
     </div>
 </div>
 <script>    
@@ -235,8 +215,7 @@ module.exports = createPreview = async (propiedades) => {
 </script>
 </body>
 </html>
-
-    `);
+`);
     await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };

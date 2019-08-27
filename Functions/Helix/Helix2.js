@@ -15,30 +15,6 @@ module.exports = createPreview = async (propiedades) => {
     const secondRegionName = propiedades.regions[1].region;
     const secondRegionNumber = propiedades.regions[1].porcentaje;
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
-
-    const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNumber = propiedades.regions[3].porcentaje;
-
-    const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNumber = propiedades.regions[4].porcentaje;
-
-    const sixRegionName = propiedades.regions[5].region;
-    const sixRegionNumber = propiedades.regions[5].porcentaje;
-
-    const sevenRegionName = propiedades.regions[6].region;
-    const sevenRegionNumber = propiedades.regions[6].porcentaje;
-
-    const eightRegionName = propiedades.regions[7].region;
-    const eightRegionNumber = propiedades.regions[7].porcentaje;
-
-    const nineRegionName = propiedades.regions[8].region;
-    const nineRegionNumber = propiedades.regions[8].porcentaje;
-
-    const tenRegionName = propiedades.regions[9].region;
-    const tenRegionNumber = propiedades.regions[9].porcentaje;
-
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
     const colorProduct = propiedades.colorProduct;
@@ -56,9 +32,7 @@ module.exports = createPreview = async (propiedades) => {
         deviceScaleFactor: 1,
     });
 
-    await page.setContent(`
-    <!DOCTYPE html>
-<html lang="en">
+    await page.setContent(`<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -77,24 +51,29 @@ module.exports = createPreview = async (propiedades) => {
         text-align: center;
         height: 300px;
     }
+
     .dna {
         color: red;
     }
+
     .name {
         color: blue;
     }
+
     .region {
         color: white;
-        font-size: 26pt;
         font-family:${font};
+        font-size: 42pt;
         text-align: center;
     }
+
     .firstLevel {
         display: flex;
         justify-content: space-between;
         width: 100%;
         margin-top: 30%;
     }
+
     .secondLevel {
         display: flex;
         justify-content: space-between;
@@ -157,28 +136,10 @@ module.exports = createPreview = async (propiedades) => {
 </style>
 
 <body style="width: 12in;height:16.04in;background-color: #231F20">
-
-
 <div class="firstLevel">
     <div style="width: 100%">
         <div class="region">${firstRegionName}</div>
-        <div class="region">${firstRegionNumber}%</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${secondRegionName}</div>
-        <div class="region">${secondRegionNumber} %</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${threeRegionName}</div>
-        <div class="region">${threeRegionNumber}%</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${fourRegionName}</div>
-        <div class="region">${fourRegionNumber} %</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${fiveRegionName}</div>
-        <div class="region">${fiveRegionNumber} %</div>
+        <div class="region">${firstRegionNumber} %</div>
     </div>
 </div>
 
@@ -188,31 +149,15 @@ module.exports = createPreview = async (propiedades) => {
         <div><label class="name">Eduardo </label><label class="dna">DNA</label></div>
     </div>
     <div style="width: 12in">
-        <img style="width: 12in" src="https://moolab.ml/Helix.png">
+        <img src="https://moolab.ml/Helix.png" style="width: 12in">
     </div>
 </div>
 
 
 <div class="secondLevel">
     <div style="width: 100%">
-        <div class="region">${sixRegionNumber} %</div>
-        <div class="region">${sixRegionName}</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${sevenRegionNumber} %</div>
-        <div class="region">${sevenRegionName}</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${eightRegionNumber} %</div>
-        <div class="region">${eightRegionName}</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${nineRegionNumber} %</div>
-        <div class="region">${nineRegionName}</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${tenRegionNumber} %</div>
-        <div class="region">${tenRegionName}</d
+        <div class="region">${secondRegionNumber} %</div>
+        <div class="region">${secondRegionName}</div>
     </div>
 </div>
 <script>    
@@ -234,9 +179,7 @@ module.exports = createPreview = async (propiedades) => {
     }); 
 </script>
 </body>
-</html>
-
-    `);
+</html>`);
     await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };
