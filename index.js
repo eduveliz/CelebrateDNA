@@ -16,6 +16,9 @@ const myHeritagePreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddie
 const helixSelector = require('./Functions/Helix/HelixSelector');
 const helixVerticalSelector = require('./Functions/HelixVertical/HelixVerticalSelector');
 
+//Donut
+const donut = require('./Functions/Donut/DonutSelector');
+
 const toArray = require('lodash.toarray');
 const cors = require('cors');
 
@@ -90,6 +93,15 @@ app.post('/helixVertical', jsonParser, function (req, res) {
     console.log(req.body);
     const regionNumber = req.body.regions.length;
     return helixVerticalSelector(regionNumber, req.body).then(() => {
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    });
+});
+
+app.post('/donut', jsonParser, function (req, res) {
+    console.log("creating Helix Vertical... " + req.body.nameFile);
+    console.log(req.body);
+    const regionNumber = req.body.regions.length;
+    return donut(regionNumber, req.body).then(() => {
         res.end('{"success" : "Updated Successfully", "status" : 200}');
     });
 });
