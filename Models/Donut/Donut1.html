@@ -26,7 +26,7 @@
 
     .donut {
         background-color: transparent;
-        font-size: 30pt;
+        font-size: 20pt;
     }
 
     .headline {
@@ -38,7 +38,7 @@
         position: relative;
         align-items: center;
         text-align: center;
-        top: 561px;
+        top: 538px;
     }
 
 </style>
@@ -65,11 +65,23 @@
             {"Region": "Region", "Porcentaje": 20},
             {"Region": "Region", "Porcentaje": 20},
         ];
-        var chartColours = ["#58585A", "#818285", "#BDBEC0", "#939598", "#3A3A3B", "#616265", "#898A8D", "#E7E8E9", "#BDBEC0", "#818285"];
+
+        let chartColours = [
+            "#58585A",
+            "#818285",
+            "#BDBEC0",
+            "#939598",
+            "#3A3A3B",
+            "#616265",
+            "#898A8D",
+            "#D3D3D3",
+            "#BDBEC0",
+            "#818285"];
+
 
         $("#chart").igDoughnutChart({
-            width: "11in",
-            height: "11in",
+            width: "10.5in",
+            height: "10.5in",
             series:
                 [{
                     name: "Donut",

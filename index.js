@@ -20,6 +20,7 @@ const helixVerticalSelector = require('./Functions/HelixVertical/HelixVerticalSe
 const donut = require('./Functions/Donut/DonutSelector');
 
 const toArray = require('lodash.toarray');
+const colors = require('colors');
 const cors = require('cors');
 
 app.use(cors());
@@ -31,7 +32,7 @@ app.get("/", jsonParser, function (req, res) {
 
 app.get('/previews/:id', jsonParser, function (req, res) {
     const id = req.params.id;
-    console.log("created " + id);
+    console.log("created ".yellow + id.blue);
     res.sendFile(path.join(__dirname + '/previews/' + id + '.png'));
 });
 
@@ -99,13 +100,11 @@ app.post('/helixVertical', jsonParser, function (req, res) {
 
 app.post('/donut', jsonParser, function (req, res) {
     console.log("creating Helix Vertical... " + req.body.nameFile);
-    console.log(req.body);
     const regionNumber = req.body.regions.length;
     return donut(regionNumber, req.body).then(() => {
         res.end('{"success" : "Updated Successfully", "status" : 200}');
     });
 });
-
 
 app.post('/printfull', jsonParser, function (req, res) {
     const regionNumber = toArray(req.body.line_items[0].properties).length;

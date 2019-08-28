@@ -41,7 +41,7 @@ module.exports = createPreview = async (propiedades) => {
     const colorProduct = propiedades.colorProduct;
     //Headline
 
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
+    const headline = propiedades.personalHeadline;
 
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
@@ -74,7 +74,9 @@ module.exports = createPreview = async (propiedades) => {
     }
     .donut {
         background-color: transparent;
-        font-size: 30pt;
+        font-size: 20pt;
+        color: white;
+        font-family: "Bangla MN";
     }
 
     .headline {
@@ -86,13 +88,13 @@ module.exports = createPreview = async (propiedades) => {
         position: relative;
         align-items: center;
         text-align: center;
-        top: 561px;
+        top: 538px;
     }
 
 </style>
 
 <body style="width: 12in;height:16in;background-color: black;border: solid 1px white">
-<div class="headline">${headline}</div>
+<div class="headline"></div>
 
 <div class="donutContainer">
     <div class="donut" id="chart"></div>
@@ -103,7 +105,7 @@ module.exports = createPreview = async (propiedades) => {
     $(function () {
        let data = [
             {"Region": "${firstRegionName}", "Porcentaje": ${firstRegionNumber}},
-            {"Region": "${sevenRegionName}", "Porcentaje": ${secondRegionNumber}},
+            {"Region": "${secondRegionName}", "Porcentaje": ${secondRegionNumber}},
             {"Region": "${threeRegionName}", "Porcentaje": ${threeRegionNumber}},
             {"Region": "${fourRegionName}", "Porcentaje": ${fourRegionNumber}},
             {"Region": "${fiveRegionName}", "Porcentaje": ${fiveRegionNumber}},
@@ -113,10 +115,20 @@ module.exports = createPreview = async (propiedades) => {
             {"Region": "${nineRegionName}", "Porcentaje": ${nineRegionNumber}},
             {"Region": "${tenRegionName}", "Porcentaje": ${tenRegionNumber}},
         ];
-        let chartColours = ["#58585A", "#818285", "#BDBEC0", "#939598", "#3A3A3B", "#616265", "#898A8D", "#E7E8E9", "#BDBEC0", "#818285"];
+        let chartColours = [
+             "#58585A",
+             "#818285", 
+             "#BDBEC0", 
+             "#939598",
+             "#3A3A3B",
+             "#616265",
+             "#898A8D",
+             "#D3D3D3",
+             "#BDBEC0",
+             "#818285"];
 
         $("#chart").igDoughnutChart({
-            width: "11in",
+            width: "100%",
             height: "11in",
             series:
                 [{
@@ -124,6 +136,7 @@ module.exports = createPreview = async (propiedades) => {
                     labelMemberPath: "Region",
                     valueMemberPath: "Porcentaje",
                     dataSource: data,
+                    othersCategoryThreshold: 0,
                     brushes: chartColours,
                     labelsPosition: "bestFit",
                     formatLabel: function (context) {
