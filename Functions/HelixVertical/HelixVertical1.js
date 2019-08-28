@@ -112,7 +112,7 @@ module.exports = createPreview = async (propiedades) => {
         <img style="width: 7.14in;height: 12.92in" src="https://moolab.ml/Twister.png">
     </div>
     <div class="regions">
-        <div style="margin-left: 10%;color: white; display: flex; flex: 1; width: 600px;height: 40px">
+        <div style="margin-left: 10%;color: white; display: flex; flex: 1; width: 700px;height: 40px">
             <div style="display: flex;justify-content: center;align-content: center;flex-direction: column">${firstRegionName} ${firstRegionNumber} %</div>
         </div>
     </div>

@@ -64,7 +64,7 @@ module.exports = createPreview = async (propiedades) => {
         width: 735px;
         display: flex;
         flex-direction: column;
-        font-size: 32pt;
+        font-size: 42pt;
         font-family: ${font};
     }
     
@@ -136,31 +136,31 @@ module.exports = createPreview = async (propiedades) => {
         <img style="width: 7.14in;height: 12.92in" src="https://moolab.ml/Twister.png">
     </div>
     <div class="regions">
-        <div style="margin-left: 10%;color: white; flex: 1; width: 600px;height: 40px">
+        <div style="margin-left: 10%;color: white; flex: 1; width: 700px;height: 40px">
             ${firstRegionName} ${firstRegionNumber} %
         </div>
-        <div style="margin-left:-4%; color: white;flex: 1;width: 600px;height: 40px">
+        <div style="margin-left:-4%; color: white;flex: 1;width: 700px;height: 40px">
              ${secondRegionName} ${secondRegionNumber} %
         </div>
-        <div style="margin-left: -15%;color: white;flex: 1;width: 600px;height: 40px">
+        <div style="margin-left: -15%;color: white;flex: 1;width: 700px;height: 40px">
             ${threeRegionName} ${threeRegionNumber} %
         </div>
-        <div style="margin-left: -25%;color: white;flex: 1;width: 600px;height: 40px">
+        <div style="margin-left: -25%;color: white;flex: 1;width: 700px;height: 40px">
             ${fourRegionName} ${fourRegionNumber} %
         </div>
-        <div style="margin-left: -20%;color: white;flex: 1;width: 600px;height: 40px">
+        <div style="margin-left: -20%;color: white;flex: 1;width: 700px;height: 40px">
             ${fiveRegionName} ${fiveRegionNumber} %
         </div>
-        <div style="margin-left: -15%; color: white;flex: 1;width: 600px;height: 40px">
+        <div style="margin-left: -15%; color: white;flex: 1;width: 700px;height: 40px">
             ${sixRegionName} ${sixRegionNumber} %
         </div>
-        <div style="margin-left: -10%;color: white;flex: 1;width: 600px;height: 40px">
+        <div style="margin-left: -10%;color: white;flex: 1;width: 700px;height: 40px">
             ${sevenRegionName} ${sevenRegionNumber} %
         </div>
-        <div style="margin-left: -5%;color: white;flex: 1;width: 600px;height: 40px">
+        <div style="margin-left: -5%;color: white;flex: 1;width: 700px;height: 40px">
             ${eightRegionName} ${eightRegionNumber} %
         </div>
-        <div style="margin-left: 5%;color: white;flex: 1;width: 600px;height: 40px"> 
+        <div style="margin-left: 5%;color: white;flex: 1;width: 700px;height: 40px"> 
             ${nineRegionName} ${nineRegionNumber} %
         </div>
     </div>
