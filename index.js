@@ -22,6 +22,10 @@ const helixVerticalSelector = require('./Functions/HelixVertical/HelixVerticalSe
 //Donut
 const donut = require('./Functions/Donut/DonutSelector');
 
+//IlovemyDna
+
+const love = require('./Functions/ILoveMyDNA/LoveSelector');
+
 const toArray = require('lodash.toarray');
 const colors = require('colors');
 const cors = require('cors');
@@ -111,7 +115,12 @@ app.post('/donut', jsonParser, function (req, res) {
 });
 
 app.post('/loveDNA', jsonParser, function (req, res) {
-    res.send("I love my Dna");
+    console.log(req.body);
+    const regionNumber = req.body.regions.length;
+    return love(regionNumber, req.body).then(() => {
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    });
+
 });
 
 
@@ -139,7 +148,7 @@ app.post('/printfull', jsonParser, function (req, res) {
                 "zip": zip
             },
             "items": [{
-                "variant_id": 4021,
+                "variant_id": 1320,
                 "quantity": producto.quantity,
                 "files": [{
                     "url": "https://b52b2a64.ngrok.io/DNA/amarillo.png"

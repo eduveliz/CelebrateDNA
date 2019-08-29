@@ -7,9 +7,9 @@
 // const helix7 = require('./Helix7');
 // const helix8 = require('./Helix8');
 // const helix9 = require('./Helix9');
-const love10 = require('./Love1010');
+const love10 = require('./Love10');
 
-module.exports = helixSelector = async (regionNumber, properties) => {
+module.exports = loveMyDNA = async (regionNumber, properties) => {
     // if (regionNumber === 1) {
     //     return helix1(properties)
     // }

@@ -8,7 +8,6 @@ const colorProductSelect = require('../../Functions/Color/Color');
 
 
 module.exports = createPreview = async (propiedades) => {
-    //Regions  */ RegionsNamesSelectors is for Jquery/*
     const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNumber = propiedades.regions[0].porcentaje;
@@ -40,14 +39,12 @@ module.exports = createPreview = async (propiedades) => {
     const tenRegionName = propiedades.regions[9].region;
     const tenRegionNumber = propiedades.regions[9].porcentaje;
 
-    const backgroundColor = colorBackground(propiedades.color);
-    const colorProduct = propiedades.colorProduct;
     //Headline
-    const headline = propiedades.headLine;
-    const firstName = propiedades.personalHeadline;
+    // const headline = propiedades.headLine;
+    //const firstName = propiedades.personalHeadline;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
-    const fontSize = fontSize(propiedades.fontStyle);
+    // const fontSize = fontSize(propiedades.fontStyle);
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -56,8 +53,7 @@ module.exports = createPreview = async (propiedades) => {
         height: 1536,
         deviceScaleFactor: 1,
     });
-
-    await page.setContent(`<!DOCTYPE html>
+    await page.setContent(`
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -72,7 +68,7 @@ module.exports = createPreview = async (propiedades) => {
         height: 528px;
         left: 400px;
         bottom: 63px;
-        font-family: Funnier;
+        font-family: ${font};
         font-size: 42pt;
     }
 
@@ -134,19 +130,18 @@ module.exports = createPreview = async (propiedades) => {
 </style>
 <body style="width: 12in;height:16in;border: 1px solid black">
 <div style="display: flex">
-    <img style="width: 7.14in;height: 12.92in" src="https://f3532108.ngrok.io/DNA/amarillo.png">
+    <img style="width: 7.14in;height: 12.92in" src="https://f6344f08.ngrok.io/DNA/amarillo.png">
     <div class="region">
-        <div>Regiones 34%</div>
-        <div>Regiones 34%</div>
-        <div>Regiones 34%</div>
-        <div>Regiones 34%</div>
-        <div>Regiones 34%</div>
-        <div>Regiones 34%</div>
-        <div>Regiones 34%</div>
-        <div>Regiones 34%</div>
-        <div>Regiones 34%</div>
-        <div>Regiones 34%</div>
-        <div>Regiones 34%</div>
+        <div>${firstRegionName} ${firstRegionNumber} %</div>
+        <div>${secondRegionName} ${secondRegionNumber} %</div>
+        <div>${threeRegionName} ${threeRegionNumber} %</div>
+        <div>${fourRegionName} ${fourRegionNumber} %</div>
+        <div>>${fiveRegionName} ${fiveRegionNumber} %</div>
+        <div>${sixRegionName} ${sixRegionNumber} %</div>
+        <div>${sevenRegionName} ${sevenRegionNumber}%</div>
+        <div>${eightRegionName} ${eightRegionNumber}%</div>
+        <div>${nineRegionName} ${nineRegionNumber}%</div>
+        <div>${tenRegionName} ${tenRegionNumber}%</div>
     </div>
 </div>
 

@@ -33,64 +33,64 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <meta charset="UTF-8">
     <title>23andMe</title>
     <style>
+        
+    @font-face {
+        font-family: 'Futura';
+        src: url('/Assets/Futura-Bold.woff2') format('woff2'),
+            url('/Assets/Futura-Bold.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+    }
     
-        @font-face {
-    font-family: 'Futura';
-    src: url('/Assets/Futura-Bold.woff2') format('woff2'),
-        url('/Assets/Futura-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Embossing';
-    src: url('/Assets/EmbossingTape3BRK.woff2') format('woff2'),
-        url('/Assets/EmbossingTape3BRK.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Noteworthy';
-    src: url('/Assets/Noteworthy-Bold.woff2') format('woff2'),
-        url('/Assets/Noteworthy-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Funnier';
-    src: url('/Assets/Funnier.woff2') format('woff2'),
-        url('/Assets/Funnier.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Cooper Std';
-    src: url('/Assets/CooperBlackStd.woff2') format('woff2'),
-        url('/Assets/CooperBlackStd.woff') format('woff');
-    font-weight: 900;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Baskerville';
-    src: url('/Assets/BaskervilleBT-Bold.woff2') format('woff2'),
-        url('/Assets/BaskervilleBT-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-
-.Noteworthy{
-font-family: Noteworthy;
-}
-.Baskerville{
-font-family: "Baskerville Old Face";
-}
-.Embossing{
-font-family: Embossing;
-}
+    @font-face {
+        font-family: 'Embossing';
+        src: url('/Assets/EmbossingTape3BRK.woff2') format('woff2'),
+            url('/Assets/EmbossingTape3BRK.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'Noteworthy';
+        src: url('/Assets/Noteworthy-Bold.woff2') format('woff2'),
+            url('/Assets/Noteworthy-Bold.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'Funnier';
+        src: url('/Assets/Funnier.woff2') format('woff2'),
+            url('/Assets/Funnier.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'Cooper Std';
+        src: url('/Assets/CooperBlackStd.woff2') format('woff2'),
+            url('/Assets/CooperBlackStd.woff') format('woff');
+        font-weight: 900;
+        font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'Baskerville';
+        src: url('/Assets/BaskervilleBT-Bold.woff2') format('woff2'),
+            url('/Assets/BaskervilleBT-Bold.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+    }
+    
+    .Noteworthy{
+    font-family: Noteworthy;
+    }
+    .Baskerville{
+    font-family: "Baskerville Old Face";
+    }
+    .Embossing{
+    font-family: Embossing;
+    }
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
