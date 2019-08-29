@@ -25,21 +25,10 @@ module.exports = createPreview = async (propiedades) => {
     const sixRegionName = propiedades.regions[5].region;
     const sixRegionNumber = propiedades.regions[5].porcentaje;
 
-    const sevenRegionName = propiedades.regions[6].region;
-    const sevenRegionNumber = propiedades.regions[6].porcentaje;
-
-    const eightRegionName = propiedades.regions[7].region;
-    const eightRegionNumber = propiedades.regions[7].porcentaje;
-
-    const nineRegionName = propiedades.regions[8].region;
-    const nineRegionNumber = propiedades.regions[8].porcentaje;
-
-    const tenRegionName = propiedades.regions[9].region;
-    const tenRegionNumber = propiedades.regions[9].porcentaje;
-
     //Background Map
     const colorProduct = propiedades.colorProduct;
     //Headline
+
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
 
     //FontSize
@@ -112,6 +101,7 @@ function reorderData(data){
         for(var i= 0; i < data.length; i++){
             data[i].RelativeP = data[i].Porcentaje / total;
         }
+        
         for(var i= 0; i < data.length; i++){
             if(data[i].RelativeP < 0.25){
                 if(greaterMin25 !== undefined){
@@ -132,7 +122,6 @@ function reorderData(data){
         return orderedNumbers;
     }
 
-
     $(function () {
        let data = [
             {"Region": "${firstRegionName}", "Porcentaje": ${firstRegionNumber}},
@@ -141,11 +130,8 @@ function reorderData(data){
             {"Region": "${fourRegionName}", "Porcentaje": ${fourRegionNumber}},
             {"Region": "${fiveRegionName}", "Porcentaje": ${fiveRegionNumber}},
             {"Region": "${sixRegionName}", "Porcentaje": ${sixRegionNumber}},
-            {"Region": "${sevenRegionName}", "Porcentaje": ${sevenRegionNumber}},
-            {"Region": "${eightRegionName}", "Porcentaje": ${eightRegionNumber}},
-            {"Region": "${nineRegionName}", "Porcentaje": ${nineRegionNumber}},
-            {"Region": "${tenRegionName}", "Porcentaje": ${tenRegionNumber}},
         ];
+       
        data  = reorderData(data);
         let chartColours = [
              "#58585A",
@@ -160,7 +146,7 @@ function reorderData(data){
              "#818285"];
 
         $("#chart").igDoughnutChart({
-            width: "100%",
+             width: "100%",
             height: "11in",
             series:
                 [{

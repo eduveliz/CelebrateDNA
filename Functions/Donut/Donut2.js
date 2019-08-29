@@ -13,33 +13,10 @@ module.exports = createPreview = async (propiedades) => {
     const secondRegionName = propiedades.regions[1].region;
     const secondRegionNumber = propiedades.regions[1].porcentaje;
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
-
-    const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNumber = propiedades.regions[3].porcentaje;
-
-    const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNumber = propiedades.regions[4].porcentaje;
-
-    const sixRegionName = propiedades.regions[5].region;
-    const sixRegionNumber = propiedades.regions[5].porcentaje;
-
-    const sevenRegionName = propiedades.regions[6].region;
-    const sevenRegionNumber = propiedades.regions[6].porcentaje;
-
-    const eightRegionName = propiedades.regions[7].region;
-    const eightRegionNumber = propiedades.regions[7].porcentaje;
-
-    const nineRegionName = propiedades.regions[8].region;
-    const nineRegionNumber = propiedades.regions[8].porcentaje;
-
-    const tenRegionName = propiedades.regions[9].region;
-    const tenRegionNumber = propiedades.regions[9].porcentaje;
-
     //Background Map
     const colorProduct = propiedades.colorProduct;
     //Headline
+
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
 
     //FontSize
@@ -92,7 +69,7 @@ module.exports = createPreview = async (propiedades) => {
 
 </style>
 
-<body style="width: 12in;height:16in;background-color: black;border: solid 1px white">
+<body style="width: 12in;height:16in;background-color: black;">
 <div class="headline">${headline}</div>
 
 <div class="donutContainer">
@@ -101,52 +78,11 @@ module.exports = createPreview = async (propiedades) => {
 
 
 <script>
-function reorderData(data){
-        var total = 0.0;
-        var orderedNumbers = [];
-        var greaterMin25;
-
-        for(var i= 0; i < data.length; i++){
-            total += data[i].Porcentaje;
-        }
-        for(var i= 0; i < data.length; i++){
-            data[i].RelativeP = data[i].Porcentaje / total;
-        }
-        for(var i= 0; i < data.length; i++){
-            if(data[i].RelativeP < 0.25){
-                if(greaterMin25 !== undefined){
-                    if(data[i].RelativeP > greaterMin25.RelativeP){
-                        greaterMin25 = data[i];
-                    }
-                }else{
-                    greaterMin25 = data[i];
-                }
-            }
-        }
-        orderedNumbers = data.sort((a, b) => a.Porcentaje - b.Porcentaje);
-
-        const rIndex = orderedNumbers.findIndex(x => (x.Region === greaterMin25.Region && x.Porcentaje === greaterMin25.Porcentaje));
-        if (rIndex !== undefined) orderedNumbers.splice(rIndex, 1);
-        orderedNumbers.unshift(greaterMin25);
-
-        return orderedNumbers;
-    }
-
-
     $(function () {
        let data = [
             {"Region": "${firstRegionName}", "Porcentaje": ${firstRegionNumber}},
             {"Region": "${secondRegionName}", "Porcentaje": ${secondRegionNumber}},
-            {"Region": "${threeRegionName}", "Porcentaje": ${threeRegionNumber}},
-            {"Region": "${fourRegionName}", "Porcentaje": ${fourRegionNumber}},
-            {"Region": "${fiveRegionName}", "Porcentaje": ${fiveRegionNumber}},
-            {"Region": "${sixRegionName}", "Porcentaje": ${sixRegionNumber}},
-            {"Region": "${sevenRegionName}", "Porcentaje": ${sevenRegionNumber}},
-            {"Region": "${eightRegionName}", "Porcentaje": ${eightRegionNumber}},
-            {"Region": "${nineRegionName}", "Porcentaje": ${nineRegionNumber}},
-            {"Region": "${tenRegionName}", "Porcentaje": ${tenRegionNumber}},
         ];
-       data  = reorderData(data);
         let chartColours = [
              "#58585A",
              "#818285", 

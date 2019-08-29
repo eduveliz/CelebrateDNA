@@ -34,12 +34,10 @@ module.exports = createPreview = async (propiedades) => {
     const nineRegionName = propiedades.regions[8].region;
     const nineRegionNumber = propiedades.regions[8].porcentaje;
 
-    const tenRegionName = propiedades.regions[9].region;
-    const tenRegionNumber = propiedades.regions[9].porcentaje;
-
     //Background Map
     const colorProduct = propiedades.colorProduct;
     //Headline
+
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
 
     //FontSize
@@ -143,8 +141,7 @@ function reorderData(data){
             {"Region": "${sixRegionName}", "Porcentaje": ${sixRegionNumber}},
             {"Region": "${sevenRegionName}", "Porcentaje": ${sevenRegionNumber}},
             {"Region": "${eightRegionName}", "Porcentaje": ${eightRegionNumber}},
-            {"Region": "${nineRegionName}", "Porcentaje": ${nineRegionNumber}},
-            {"Region": "${tenRegionName}", "Porcentaje": ${tenRegionNumber}},
+            {"Region": "${nineRegionName}", "Porcentaje": ${nineRegionNumber}}
         ];
        data  = reorderData(data);
         let chartColours = [

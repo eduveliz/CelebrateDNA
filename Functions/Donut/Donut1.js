@@ -1,8 +1,30 @@
-<!DOCTYPE html>
-<html lang="es">
+const puppeteer = require('puppeteer');
+const toArray = require('lodash.toarray');
+const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
+const fontStyle = require('../../Functions/FontStyle/FontStyle');
+const fontColor = require('../../Functions/FontStyle/FontStyle');
+const colorProductSelect = require('../../Functions/Color/Color');
+
+module.exports = createPreview = async (propiedades) => {
+    const name = propiedades.nameFile;
+    const firstRegionName = propiedades.regions[0].region;
+    const firstRegionNumber = propiedades.regions[0].porcentaje;
+
+    //Background Map
+    const colorProduct = propiedades.colorProduct;
+    //Headline
+
+    const headline = propiedades.headLine;
+
+    //FontSize
+    const font = fontStyle(propiedades.fontStyle);
+
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.setContent(`<!DOCTYPE html>
+<html>
 <head>
     <title></title>
-
     <!-- Ignite UI Required Combined CSS Files -->
     <link href="http://cdn-na.infragistics.com/igniteui/2019.1/latest/css/themes/infragistics/infragistics.theme.css"
           rel="stylesheet"/>
@@ -23,16 +45,16 @@
         display: flex;
         justify-content: center;
     }
-
     .donut {
         background-color: transparent;
         font-size: 20pt;
-        width: 100%;
+        color: white;
+        font-family: "Bangla MN";
     }
 
     .headline {
         color: white;
-        font-size: 50pt;
+        font-size: 32pt;
         display: flex;
         justify-content: center;
         z-index: 1;
@@ -44,9 +66,9 @@
 
 </style>
 
-<body style="width: 12in;height:16in;background-color: black;border: solid 1px white">
-<!-- Target element for the igDoughnutChart -->
-<div class="headline">HeadLine</div>
+<body style="width: 12in;height:16in;background-color: black;">
+<div class="headline">${headline}</div>
+
 <div class="donutContainer">
     <div class="donut" id="chart"></div>
 </div>
@@ -54,41 +76,31 @@
 
 <script>
     $(function () {
-        var data = [
-            {"Region": "Region", "Porcentaje": 20},
-            {"Region": "Region", "Porcentaje": 20},
-            {"Region": "Region", "Porcentaje": 20},
-            {"Region": "Region", "Porcentaje": 20},
-            {"Region": "Region", "Porcentaje": 20},
-            {"Region": "Region", "Porcentaje": 20},
-            {"Region": "Region", "Porcentaje": 20},
-            {"Region": "Region", "Porcentaje": 20},
-            {"Region": "Region", "Porcentaje": 20},
-            {"Region": "Region", "Porcentaje": 20},
+       let data = [
+            {"Region": "${firstRegionName}", "Porcentaje": ${firstRegionNumber}}
         ];
-
         let chartColours = [
-            "#58585A",
-            "#818285",
-            "#BDBEC0",
-            "#939598",
-            "#3A3A3B",
-            "#616265",
-            "#898A8D",
-            "#D3D3D3",
-            "#BDBEC0",
-            "#818285"];
-
+             "#58585A",
+             "#818285", 
+             "#BDBEC0", 
+             "#939598",
+             "#3A3A3B",
+             "#616265",
+             "#898A8D",
+             "#D3D3D3",
+             "#BDBEC0",
+             "#818285"];
 
         $("#chart").igDoughnutChart({
-            width: "10.5in",
-            height: "10.5in",
+            width: "100%",
+            height: "11in",
             series:
                 [{
                     name: "Donut",
                     labelMemberPath: "Region",
                     valueMemberPath: "Porcentaje",
                     dataSource: data,
+                    othersCategoryThreshold: 0,
                     brushes: chartColours,
                     labelsPosition: "bestFit",
                     formatLabel: function (context) {
@@ -100,4 +112,13 @@
 </script>
 
 </body>
-</html>
+</html>`);
+
+    await page.setViewport({
+        width: 1152,
+        height: 1536,
+        deviceScaleFactor: 1,
+    });
+    await page.screenshot({path: `previews/${name}.png`});
+    await browser.close();
+};

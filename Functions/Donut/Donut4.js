@@ -19,27 +19,10 @@ module.exports = createPreview = async (propiedades) => {
     const fourRegionName = propiedades.regions[3].region;
     const fourRegionNumber = propiedades.regions[3].porcentaje;
 
-    const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNumber = propiedades.regions[4].porcentaje;
-
-    const sixRegionName = propiedades.regions[5].region;
-    const sixRegionNumber = propiedades.regions[5].porcentaje;
-
-    const sevenRegionName = propiedades.regions[6].region;
-    const sevenRegionNumber = propiedades.regions[6].porcentaje;
-
-    const eightRegionName = propiedades.regions[7].region;
-    const eightRegionNumber = propiedades.regions[7].porcentaje;
-
-    const nineRegionName = propiedades.regions[8].region;
-    const nineRegionNumber = propiedades.regions[8].porcentaje;
-
-    const tenRegionName = propiedades.regions[9].region;
-    const tenRegionNumber = propiedades.regions[9].porcentaje;
-
     //Background Map
     const colorProduct = propiedades.colorProduct;
     //Headline
+
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
 
     //FontSize
@@ -75,6 +58,7 @@ module.exports = createPreview = async (propiedades) => {
         background-color: transparent;
         font-size: 20pt;
         color: white;
+        width: 100%;
         font-family: "Bangla MN";
     }
 
@@ -92,7 +76,7 @@ module.exports = createPreview = async (propiedades) => {
 
 </style>
 
-<body style="width: 12in;height:16in;background-color: black;border: solid 1px white">
+<body style="width: 12in;height:16in;background-color: black;">
 <div class="headline">${headline}</div>
 
 <div class="donutContainer">
@@ -132,20 +116,14 @@ function reorderData(data){
         return orderedNumbers;
     }
 
-
     $(function () {
        let data = [
             {"Region": "${firstRegionName}", "Porcentaje": ${firstRegionNumber}},
             {"Region": "${secondRegionName}", "Porcentaje": ${secondRegionNumber}},
             {"Region": "${threeRegionName}", "Porcentaje": ${threeRegionNumber}},
             {"Region": "${fourRegionName}", "Porcentaje": ${fourRegionNumber}},
-            {"Region": "${fiveRegionName}", "Porcentaje": ${fiveRegionNumber}},
-            {"Region": "${sixRegionName}", "Porcentaje": ${sixRegionNumber}},
-            {"Region": "${sevenRegionName}", "Porcentaje": ${sevenRegionNumber}},
-            {"Region": "${eightRegionName}", "Porcentaje": ${eightRegionNumber}},
-            {"Region": "${nineRegionName}", "Porcentaje": ${nineRegionNumber}},
-            {"Region": "${tenRegionName}", "Porcentaje": ${tenRegionNumber}},
         ];
+       
        data  = reorderData(data);
         let chartColours = [
              "#58585A",
