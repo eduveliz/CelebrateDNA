@@ -107,6 +107,11 @@ app.post('/donut', jsonParser, function (req, res) {
     });
 });
 
+app.post('/loveDNA', jsonParser, function (req, res) {
+    res.send("I love my Dna");
+});
+
+
 app.post('/printfull', jsonParser, function (req, res) {
     const regionNumber = toArray(req.body.line_items[0].properties).length;
     if (!regionNumber) {
