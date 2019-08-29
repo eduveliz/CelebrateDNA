@@ -1,8 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const http = require('http');
 const jsonParser = bodyParser.json();
 const path = require('path');
+const axios = require('axios');
+
 const ttSelector = require('./Functions/Maps/TshirtAndHoddies/BrigthMaps/23andMe/ttSelector');
 //brigth
 const ttPreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/BrigthMaps/23andMe/ttPreviewSelector');
@@ -113,12 +116,50 @@ app.post('/loveDNA', jsonParser, function (req, res) {
 
 
 app.post('/printfull', jsonParser, function (req, res) {
-    const regionNumber = toArray(req.body.line_items[0].properties).length;
-    if (!regionNumber) {
-    } else {
-        ttSelector(regionNumber, req.body.line_items[0].id, req.body.line_items);
-    }
-    console.log(Date.now());
+
+    //const regionNumber = toArray(req.body.line_items[0].properties).length;
+    const {line_items, shipping_address} = req.body;
+    const productos = line_items;
+
+    const name = shipping_address.first_name;
+    const address1 = shipping_address.address1;
+    const city = shipping_address.city;
+    const stateCode = shipping_address.province_code;
+    const countryCode = shipping_address.country_code;
+    const zip = shipping_address.zip;
+
+    productos.map((producto) => {
+        axios.post(' https://api.printful.com/orders', {
+            "recipient": {
+                "name": name,
+                "address1": address1,
+                "city": city,
+                "state_code": stateCode,
+                "country_code": countryCode,
+                "zip": zip
+            },
+            "items": [{
+                "variant_id": 4021,
+                "quantity": producto.quantity,
+                "files": [{
+                    "url": "https://b52b2a64.ngrok.io/DNA/amarillo.png"
+                }]
+            }]
+        }, {headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}});
+        //  console.log(producto)
+    });
+    //console.log(req.body.line_items.length);
+    //console.log(toArray(req.body.line_items[0].properties));
+
+    // const name = "eduardo";
+    // const address1 = "Guatemala 355";
+    // const city = "Lima";
+    // const stateCode = "Li";
+    // const countryCode = "PE";
+    // const zip = "1253";
+
+    console.log(colors.yellow(Date.now()));
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
 const PORT = process.env.PORT || 3000;

@@ -8,7 +8,6 @@ const colorProductSelect = require('../../Functions/Color/Color');
 module.exports = createPreview = async (propiedades) => {
     const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
-    // const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
     const firstRegionNumber = propiedades.regions[0].porcentaje;
     //Background Map
     const colorProduct = propiedades.colorProduct;
