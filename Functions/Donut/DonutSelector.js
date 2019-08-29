@@ -1,13 +1,13 @@
 const donut1 = require('./Donut1');
-const donut2 = require('./donut2');
-const donut3 = require('./donut3');
-const donut4 = require('./donut4');
-const donut5 = require('./donut5');
-const donut6 = require('./donut6');
-const donut7 = require('./donut7');
-const donut8 = require('./donut8');
-const donut9 = require('./donut9');
-const donut10 = require('./donut10');
+const donut2 = require('./Donut2');
+const donut3 = require('./Donut3');
+const donut4 = require('./Donut4');
+const donut5 = require('./Donut5');
+const donut6 = require('./Donut6');
+const donut7 = require('./Donut7');
+const donut8 = require('./Donut8');
+const donut9 = require('./Donut9');
+const donut10 = require('./Donut10');
 
 module.exports = donutSelector = async (regionNumber, properties) => {
     if (regionNumber === 1) {
