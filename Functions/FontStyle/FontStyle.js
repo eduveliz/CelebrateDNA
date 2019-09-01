@@ -16,10 +16,16 @@ module.exports = fontStyle = (fontSelected) => {
         case "Myriad Pro Bold":
             return fontStyle = "MyriadPro-Bold";
             break;
+        case "MyriadProBold":
+            return fontStyle = "MyriadPro-Bold";
+            break;
         case "EmbossedTapeThree":
             return fontStyle = "Embossing";
             break;
-        case "Noteworhty Bold":
+        case "Noteworthy Bold":
+            return fontStyle = "Noteworthy";
+            break;
+        case "NoteworthyBold":
             return fontStyle = "Noteworthy";
             break;
     }

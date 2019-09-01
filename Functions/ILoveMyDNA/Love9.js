@@ -35,9 +35,6 @@ module.exports = createPreview = async (propiedades) => {
     const nineRegionName = propiedades.regions[8].region;
     const nineRegionNumber = propiedades.regions[8].porcentaje;
 
-    const tenRegionName = propiedades.regions[9].region;
-    const tenRegionNumber = propiedades.regions[9].porcentaje;
-
     const font = fontStyle(propiedades.fontStyle);
 
     console.log("font", font);
@@ -137,7 +134,6 @@ module.exports = createPreview = async (propiedades) => {
         <div>${sevenRegionName} ${sevenRegionNumber}%</div>
         <div>${eightRegionName} ${eightRegionNumber}%</div>
         <div>${nineRegionName} ${nineRegionNumber}%</div>
-        <div>${tenRegionName} ${tenRegionNumber}%</div>
     </div>
 </div>
 </body>

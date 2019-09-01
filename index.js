@@ -117,6 +117,7 @@ app.post('/donut', jsonParser, function (req, res) {
 app.post('/loveDNA', jsonParser, function (req, res) {
     console.log(req.body);
     const regionNumber = req.body.regions.length;
+    console.log(regionNumber);
     return love(regionNumber, req.body).then(() => {
         res.end('{"success" : "Updated Successfully", "status" : 200}');
     });

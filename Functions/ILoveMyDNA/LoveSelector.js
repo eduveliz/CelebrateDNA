@@ -6,7 +6,7 @@
 // const helix6 = require('./Helix6');
 // const helix7 = require('./Helix7');
 // const helix8 = require('./Helix8');
-// const helix9 = require('./Helix9');
+const love9 = require('./Love9');
 const love10 = require('./Love10');
 
 module.exports = loveMyDNA = async (regionNumber, properties) => {
@@ -34,9 +34,9 @@ module.exports = loveMyDNA = async (regionNumber, properties) => {
     // if (regionNumber === 8) {
     //     return helix8(properties)
     // }
-    // if (regionNumber === 9) {
-    //     return helix9(properties)
-    // }
+    if (regionNumber === 9) {
+        return love9(properties)
+    }
     if (regionNumber === 10) {
         return love10(properties)
     }
