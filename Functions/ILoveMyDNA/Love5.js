@@ -3,7 +3,6 @@ const toArray = require('lodash.toarray');
 const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
 const fontSize = require('../FontSize/ILoveMyDNA/FontSizeLove5');
-const fontColor = require('../../Functions/FontStyle/FontStyle');
 const colorProductSelect = require('../../Functions/Color/Color');
 
 module.exports = createPreview = async (propiedades) => {
@@ -23,6 +22,32 @@ module.exports = createPreview = async (propiedades) => {
     const fiveRegionName = propiedades.regions[4].region;
     const fiveRegionNumber = propiedades.regions[4].porcentaje;
 
+    const colorProduct = colorProductSelect(propiedades.colorProduct);
+
+    imageColor = (color) => {
+        if (color === "Navy") {
+            return 'https://moolab.ml/DNA/white.png';
+        }
+        if (color === "White") {
+            return "https://moolab.ml/DNA/verde.png"
+        }
+        if (color === "Black") {
+            return "https://moolab.ml/DNA/amarillo.png"
+        }
+    };
+    fontColor = (color) => {
+        if (color === "Navy") {
+            return "#31365B";
+        }
+        if (color === "White") {
+            return "#106242"
+        }
+        if (color === "Black") {
+            return "White"
+        }
+    };
+
+    const fontColors = fontColor(propiedades.colorProduct);
     const font = fontStyle(propiedades.fontStyle);
     const top = font === "Embossing" || font === "Funnier" ? "280px" : "180px";
 
@@ -48,6 +73,7 @@ module.exports = createPreview = async (propiedades) => {
         position: absolute;
         width: 755px;
         height: 528px;
+        color: ${fontColors};
         left: 450px;
         top: ${top};
         font-family: ${font};
@@ -110,9 +136,9 @@ module.exports = createPreview = async (propiedades) => {
         font-style: normal;
     }
 </style>
-<body style="width: 12in;height:16in;">
+<body style="width: 12in;height:16in;background-color:${colorProduct}">v
 <div style="display: flex;margin-left: 70px">
-    <img style="width: 7.14in;height: 12.92in" src="https://fbf33a60.ngrok.io/DNA/white.png">
+    <img style="width: 7.14in;height: 12.92in" src="${imageColor(propiedades.colorProduct)}">
     <div class="region">
         <div style="margin-top: 50px">${firstRegionName} ${firstRegionNumber}%</div>
         <div style="margin-top: 50px">${secondRegionName} ${secondRegionNumber}%</div>
