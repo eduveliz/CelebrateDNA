@@ -43,5 +43,17 @@ module.exports = colorBackground = (color) => {
         case "Corn Yellow":
             return hexValueColor = "#F1BC1D";
             break;
+        case "Storm Grey":
+            return hexValueColor = "#747880";
+            break;
+        case "DarkGrey":
+            return hexValueColor = "#3D4849";
+            break;
+        case "Red Clay":
+            return hexValueColor = "#BD4537";
+            break;
+        case "Watermelon heart":
+            return hexValueColor = "#DB6679";
+            break;
     }
 };

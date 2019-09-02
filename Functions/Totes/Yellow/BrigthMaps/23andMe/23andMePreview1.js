@@ -13,6 +13,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const firstRegionNumber = propiedades.regions[0].porcentaje;
     //Background Map
     const backgroundColor = colorBackground(propiedades.color);
+    console.log(backgroundColor);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
     const colorProduct = propiedades.fontColor;
     //Headline
@@ -97,7 +98,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </head>
 <body style="width:13in;height:11in;background-color: ${colorProductSelect(colorProduct)}">
 <h1 class='fontColor' style="text-align: center; font-size:89px ">${headline} </h1>
-<div>
+<div style="width: 100%;text-align: center;">
     <svg xmlns="http://www.w3.org/2000/svg" width="11.8in" height="6.7in" viewBox="0 0 847.1 479.8">
     <title>23andMe</title>
     <g id="worldMap">
