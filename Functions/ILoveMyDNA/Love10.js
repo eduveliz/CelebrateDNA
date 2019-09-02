@@ -39,6 +39,7 @@ module.exports = createPreview = async (propiedades) => {
     const tenRegionNumber = propiedades.regions[9].porcentaje;
 
     const font = fontStyle(propiedades.fontStyle);
+    const top = font === "Embossing" || font === "Funnier" ? "210px" : "210px";
 
     console.log("font", font);
     console.log("fontSize", fontSize(font));
@@ -60,10 +61,10 @@ module.exports = createPreview = async (propiedades) => {
     .region {
         z-index: 1;
         position: absolute;
-        width: 755px;
+        width: 60%;
         height: 528px;
-        left: 500px;
-        top: 190px;
+        left: 450px;     
+        top: ${top};
         font-family: ${font};
         font-size: ${fontSize(font)};
     }
@@ -126,7 +127,7 @@ module.exports = createPreview = async (propiedades) => {
 </style>
 <body style="width: 12in;height:16in;">
 <div style="display: flex;margin-left: 70px">
-    <img style="width: 7.14in;height: 12.92in" src="https://a20942e0.ngrok.io/DNA/white.png">
+    <img style="width: 7.14in;height: 12.92in" src="https://fbf33a60.ngrok.io/DNA/white.png">
     <div class="region">
         <div>${firstRegionName} ${firstRegionNumber}%</div>
         <div>${secondRegionName} ${secondRegionNumber}%</div>

@@ -10,11 +10,20 @@ module.exports = createPreview = async (propiedades) => {
     const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNumber = propiedades.regions[0].porcentaje;
-
     const font = fontStyle(propiedades.fontStyle);
+    const colorProduct = colorProductSelect(propiedades.colorProduct);
 
-    console.log("font", font);
-    console.log("fontSize", fontSize(font));
+    imageColor = (color) => {
+        if (color === "Navy") {
+            return 'https://fbf33a60.ngrok.io/DNA/white.png';
+        }
+        if (color === "White") {
+            return "https://fbf33a60.ngrok.io/DNA/verde.png"
+        }
+        if (color === "Black") {
+            return "https://fbf33a60.ngrok.io/DNA/amarillo.png"
+        }
+    };
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -23,8 +32,7 @@ module.exports = createPreview = async (propiedades) => {
         height: 1536,
         deviceScaleFactor: 1,
     });
-    await page.setContent(`<!DOCTYPE html>
-<html lang="en">
+    await page.setContent(`<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -35,7 +43,7 @@ module.exports = createPreview = async (propiedades) => {
         position: absolute;
         width: 755px;
         height: 528px;
-        left: 500px;
+        left: 430px; 
         top: 650px;
         font-family: ${font};
         font-size: ${fontSize(font)};
@@ -97,16 +105,15 @@ module.exports = createPreview = async (propiedades) => {
         font-style: normal;
     }
 </style>
-<body style="width: 12in;height:16in;">
+<body style="width: 12in;height:16in;background-color:${colorProduct}">
 <div style="display: flex;margin-left: 70px">
-    <img style="width: 7.14in;height: 12.92in" src="https://fbf33a60.ngrok.io/DNA/white.png">
-    <div class="region">
+    <img style="width: 7.14in;height: 12.92in" src="${imageColor(propiedades.colorProduct)}">
+    <div class="region">    
         <div>${firstRegionName} ${firstRegionNumber} % </div>
     </div>
 </div>
 </body>
-</html>
-`);
+</html>`);
     await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };

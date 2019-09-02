@@ -37,5 +37,8 @@ module.exports = colorProduct = (colorSelected) => {
         case "Indigo Blue":
             return color = "#3F6075";
             break;
+        case "Black":
+            return color = "Black";
+            break;
     }
 };

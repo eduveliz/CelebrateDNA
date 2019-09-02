@@ -33,7 +33,7 @@ module.exports = createPreview = async (propiedades) => {
     const eightRegionNumber = propiedades.regions[7].porcentaje;
 
     const font = fontStyle(propiedades.fontStyle);
-    const top = font === "Embossing" || font === "Funnier" ? "270px" : "190px";
+    const top = font === "Embossing" || font === "Funnier" ? "270px" : "220px";
 
     console.log("font", font);
     console.log("fontSize", fontSize(font));
