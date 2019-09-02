@@ -6,6 +6,7 @@ const fontStyle = require('../../../../FontStyle/FontStyle');
 const fontColor = require('../../../../FontColor/FontColor');
 const colorProductSelect = require('../../../../Color/Color');
 
+
 module.exports = createPreview = async (nameFile, propiedades) => {
     const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
@@ -48,25 +49,9 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const tenRegionNameSelector = regionNames(propiedades.regions[9].region);
     const tenRegionNumber = propiedades.regions[9].porcentaje;
 
-    const elevenRegionName = propiedades.regions[10].region;
-    const elevenRegionNameSelector = regionNames(propiedades.regions[10].region);
-    const elevenRegionNumber = propiedades.regions[10].porcentaje;
-
-    const twelveRegionName = propiedades.regions[11].region;
-    const twelveRegionNameSelector = regionNames(propiedades.regions[11].region);
-    const twelveRegionNumber = propiedades.regions[11].porcentaje;
-
-    const thirteenRegionName = propiedades.regions[12].region;
-    const thirteenRegionNameSelector = regionNames(propiedades.regions[12].region);
-    const thirteenRegionNumber = propiedades.regions[12].porcentaje;
-
-    const fourteenRegionName = propiedades.regions[13].region;
-    const fourteenRegionNameSelector = regionNames(propiedades.regions[13].region);
-    const fourteenRegionNumber = propiedades.regions[13].porcentaje;
-
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = propiedades.colorProduct;
+    const colorProduct = propiedades.fontColor;
     //Headline
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
     //FontSize
@@ -75,8 +60,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
-        width: 1152,
-        height: 1536,
+        width: 1270,
+        height: 1280,
         deviceScaleFactor: 1,
     });
 
@@ -91,6 +76,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         color:${fontColor(colorProduct)};
         font-family:${font};
     }
+        .fontColorRegion {
+        color:white;
+        font-family:${font};
+    }
+    
         @font-face {
     font-family: 'Futura';
     src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
@@ -139,18 +129,19 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         font-style: normal;
     }
     @font-face {
-    font-family: 'MyriadPro-Bold';
-    src: url('https://moolab.ml/Fonts/MyriadPro-Bold.eot') format('embedded-opentype'),  url('https://moolab.ml/Fonts/MyriadPro-Bold.otf')  format('opentype'),
-         url('https://moolab.ml/Fonts/MyriadPro-Bold.woff') format('woff'), url('https://moolab.ml/Fonts/MyriadPro-Bold.ttf')  format('truetype');
-    font-weight: normal;
-    font-style: normal;
+        font-family: 'MyriadPro-Bold';
+        src: url('https://moolab.ml/Fonts/MyriadPro-Bold.eot') format('embedded-opentype'),  url('https://moolab.ml/Fonts/MyriadPro-Bold.otf')  format('opentype'),
+             url('https://moolab.ml/Fonts/MyriadPro-Bold.woff') format('woff'), url('https://moolab.ml/Fonts/MyriadPro-Bold.ttf')  format('truetype');
+        font-weight: normal;
+        font-style: normal;
     }
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)}">
-<h1 class='fontColor' style="text-align: center;font-size:89px ">${headline} </h1>
-<div>
+<body style="width:13in;height:11in;background-color: ${colorProductSelect(colorProduct)}">
+<h1 class='fontColor' style="text-align: center;font-size:89px;">${headline} </h1>
+
+<div style="width: 100%;text-align: center;">
 <svg xmlns="http://www.w3.org/2000/svg" width="11.8in" height="6.7in" viewBox="0 0 847.1 479.8">
     <title>23andMe</title>
     <g id="worldMap">
@@ -732,18 +723,19 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </g>
 </svg>
 </div>
-<div style="display: flex; justify-content:space-around;width:94%;margin-top: 50px;margin-left: 35px;">
+
+<div style="display: flex; justify-content:space-between;width:98%;margin-top: 50px;padding: 10px">
     <div id="firstGroup" style="width: 100%;">
         <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
             <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${firstRegionName}</div>
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
-            <div class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${firstRegionNumber}
+            <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px;background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                ${firstRegionNumber} %
             </div>
-            <div class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${secondRegionNumber}
+            <div class="fontColorRegion" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                ${secondRegionNumber} %
             </div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
@@ -758,16 +750,16 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
-            <div class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${threeRegionNumber}
+            <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px;background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                ${threeRegionNumber} %
             </div>
-            <div class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                 ${fourRegionNumber}
+            <div class="fontColorRegion" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                 ${fourRegionNumber} %
             </div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
             <div style="width: 50%"></div>
-            <div class="fontColor" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${fourRegionName}</div>
+            <div class="fontColor" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${threeRegionName}</div>
         </div>
     </div>
      
@@ -777,11 +769,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
-            <div class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                 ${fiveRegionNumber}
+            <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                 ${fiveRegionNumber} %
             </div>
-            <div class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                  ${sixRegionNumber}
+            <div class="fontColorRegion" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                  ${sixRegionNumber} %
             </div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
@@ -796,11 +788,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div  class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${sevenRegionNumber}
+            <div  class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px;background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                ${sevenRegionNumber} %
             </div>
-            <div  class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${eightRegionNumber}
+            <div  class="fontColorRegion" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                ${eightRegionNumber} %
             </div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
@@ -815,11 +807,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${nineRegionNumber}
+            <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px;background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                ${nineRegionNumber} %
             </div>
-            <div  class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #58A7B1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${tenRegionNumber}
+            <div  class="fontColorRegion" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #58A7B1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                ${tenRegionNumber} %
             </div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
@@ -827,53 +819,16 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${tenRegionName}</div>
         </div>
     </div>
-
-    <div id="sixGroup" style="width: 100%; ">
-        <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
-            <div class="fontColor" style="font-size: 25px;text-align: center;width: 50%;display: flex;justify-content: center;align-items: center ">${nineRegionName}</div>
-            <div style="width: 50%"></div>
-        </div>
-        <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #98985F;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${elevenRegionNumber}
-            </div>
-            <div  class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #EC008B;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${twelveRegionNumber}
-            </div>
-        </div>
-        <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
-            <div style="width: 50%"></div>
-            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${twelveRegionName}</div>
-        </div>
-    </div>
-   <div id="sevenxGroup" style="width: 100%; ">
-        <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
-            <div class="fontColor" style="font-size: 25px;text-align: center;width: 50%;display: flex;justify-content: center;align-items: center ">${thirteenRegionName}</div>
-            <div style="width: 50%"></div>
-        </div>
-        <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div class="fontColor" style="height:38px; width:100%; border-radius: 20px;background-color: #52C4D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${thirteenRegionNumber}
-            </div>
-            <div  class="fontColor" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #EE66A2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${fourteenRegionNumber}
-            </div>
-        </div>
-        <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
-            <div style="width: 50%"></div>
-            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${fourteenRegionName}</div>
-        </div>
-    </div>
 </div>
-<script>    
 
+<script>    
     $(function () {
         $(document).ready(function () {
             $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
             $("#regions").attr("fill", "transparent");
             
             //Primary color
-            $("${firstRegionNameSelector}").attr("fill", "#27A9E1");27A9E1;
+            $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
             $("${secondRegionNameSelector}").attr("fill", "#6C61AA");
             //second color
             $("${threeRegionNameSelector}").attr("fill", "#BE1E2D");
@@ -887,12 +842,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             //five color
             $("${nineRegionNameSelector}").attr("fill", "#CB8DBE");
             $("${tenRegionNameSelector}").attr("fill", "#58A7B1");
-            //six color
-            $("${elevenRegionNameSelector}").attr("fill", "#98985F");
-            $("${twelveRegionNameSelector}").attr("fill", "#EC008B");
-            //seven color
-            $("${thirteenRegionNameSelector}").attr("fill", "#52C4D2").attr("stroke-width", "2");
-            $("${fourteenRegionNameSelector}").attr("fill", "#EE66A2");
         });
     });
 </script>

@@ -23,8 +23,17 @@ const helixVerticalSelector = require('./Functions/HelixVertical/HelixVerticalSe
 const donut = require('./Functions/Donut/DonutSelector');
 
 //IlovemyDna
-
 const love = require('./Functions/ILoveMyDNA/LoveSelector');
+
+//Yellow
+const ttPreviewSelectorTote = require('./Functions/Totes/Yellow/BrigthMaps/23andMe/ttPreviewSelector');
+const ancestryPreviewSelectorTote = require('./Functions/Totes/Yellow/BrigthMaps/Ancestry/AncestryPreviewSelector');
+const myHeritagePreviewSelectorTote = require('./Functions/Totes/Yellow/BrigthMaps/MyHeritage/MyHeritagePreviewSelector');
+
+
+//Red
+
+
 
 const toArray = require('lodash.toarray');
 const colors = require('colors');
@@ -122,6 +131,32 @@ app.post('/loveDNA', jsonParser, function (req, res) {
     });
 });
 
+app.post('/Yellow', jsonParser, function (req, res) {
+    console.log("creating...");
+    console.log(req.body);
+    const id = 123;
+    const regionNumber = req.body.regions.length;
+    if (req.body.company === "Ancestry") {
+        return ancestryPreviewSelectorTote(regionNumber, id, req.body).then(() => {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
+    }
+    if (req.body.company === "23andMe") {
+        return ttPreviewSelectorTote(regionNumber, id, req.body).then(() => {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
+    }
+
+    if (req.body.company === "MyHeritageDNA") {
+        return myHeritagePreviewSelectorTote(regionNumber, id, req.body).then(() => {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
+    }
+});
+
+
+
+
 
 app.post('/printfull', jsonParser, function (req, res) {
 
@@ -147,7 +182,7 @@ app.post('/printfull', jsonParser, function (req, res) {
                 "zip": zip
             },
             "items": [{
-                "variant_id": 1320,
+                "variant_id": 8905,
                 "quantity": producto.quantity,
                 "files": [{
                     "url": "https://b52b2a64.ngrok.io/DNA/amarillo.png"
@@ -156,15 +191,6 @@ app.post('/printfull', jsonParser, function (req, res) {
         }, {headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}});
         //  console.log(producto)
     });
-    //console.log(req.body.line_items.length);
-    //console.log(toArray(req.body.line_items[0].properties));
-
-    // const name = "eduardo";
-    // const address1 = "Guatemala 355";
-    // const city = "Lima";
-    // const stateCode = "Li";
-    // const countryCode = "PE";
-    // const zip = "1253";
 
     console.log(colors.yellow(Date.now()));
     res.end('{"success" : "Updated Successfully", "status" : 200}');

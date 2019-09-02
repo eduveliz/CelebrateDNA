@@ -37,6 +37,18 @@ module.exports = fontColor = (colorSelected) => {
         case "Indigo Blue":
             return fontColor = "#FFFFFF";
             break;
+        case "Orange":
+            return fontColor = "#FF811B";
+            break;
+        case "Squash":
+            return fontColor = "#F8D936";
+            break;
+        case "Dark Grey":
+            return fontColor = "#6B6C71";
+            break;
+        case "Curry":
+            return fontColor = "#915926";
+            break;
     }
 };
 

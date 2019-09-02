@@ -40,5 +40,8 @@ module.exports = colorBackground = (color) => {
         case "Sage Bark":
             return hexValueColor = "#757668";
             break;
+        case "Corn Yellow":
+            return hexValueColor = "#F1BC1D";
+            break;
     }
 };
