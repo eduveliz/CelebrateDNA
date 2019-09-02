@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
-const fontSize = require('../FontSize/ILoveMyDNA/FontSizeLove10');
+const fontSize = require('../FontSize/ILoveMyDNA/FontSizeLove2');
 const fontColor = require('../../Functions/FontStyle/FontStyle');
 const colorProductSelect = require('../../Functions/Color/Color');
 
@@ -13,27 +13,6 @@ module.exports = createPreview = async (propiedades) => {
 
     const secondRegionName = propiedades.regions[1].region;
     const secondRegionNumber = propiedades.regions[1].porcentaje;
-
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
-
-    const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNumber = propiedades.regions[3].porcentaje;
-
-    const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNumber = propiedades.regions[4].porcentaje;
-
-    const sixRegionName = propiedades.regions[5].region;
-    const sixRegionNumber = propiedades.regions[5].porcentaje;
-
-    const sevenRegionName = propiedades.regions[6].region;
-    const sevenRegionNumber = propiedades.regions[6].porcentaje;
-
-    const eightRegionName = propiedades.regions[7].region;
-    const eightRegionNumber = propiedades.regions[7].porcentaje;
-
-    const nineRegionName = propiedades.regions[8].region;
-    const nineRegionNumber = propiedades.regions[8].porcentaje;
 
     const font = fontStyle(propiedades.fontStyle);
 
@@ -59,8 +38,8 @@ module.exports = createPreview = async (propiedades) => {
         position: absolute;
         width: 755px;
         height: 528px;
-        left: 500px;
-        top: 190px;
+        left: 450px;
+        top: 550px;
         font-family: ${font};
         font-size: ${fontSize(font)};
     }
@@ -123,17 +102,10 @@ module.exports = createPreview = async (propiedades) => {
 </style>
 <body style="width: 12in;height:16in;">
 <div style="display: flex;margin-left: 70px">
-    <img style="width: 7.14in;height: 12.92in" src="https://a20942e0.ngrok.io/DNA/white.png">
+    <img style="width: 7.14in;height: 12.92in" src="https://fbf33a60.ngrok.io/DNA/white.png">
     <div class="region">
         <div>${firstRegionName} ${firstRegionNumber}%</div>
-        <div>${secondRegionName} ${secondRegionNumber}%</div>
-        <div>${threeRegionName} ${threeRegionNumber}%</div>
-        <div>${fourRegionName} ${fourRegionNumber}%</div>
-        <div>${fiveRegionName} ${fiveRegionNumber}%</div>
-        <div>${sixRegionName} ${sixRegionNumber}%</div>
-        <div>${sevenRegionName} ${sevenRegionNumber}%</div>
-        <div>${eightRegionName} ${eightRegionNumber}%</div>
-        <div>${nineRegionName} ${nineRegionNumber}%</div>
+        <div style="margin-top: 50px">${secondRegionName} ${secondRegionNumber}%</div>
     </div>
 </div>
 </body>

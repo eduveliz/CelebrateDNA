@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
-const fontSize = require('../../Functions/FontSize/FontSizeLove');
+const fontSize = require('../FontSize/ILoveMyDNA/FontSizeLove10');
 const fontColor = require('../../Functions/FontStyle/FontStyle');
 const colorProductSelect = require('../../Functions/Color/Color');
 
@@ -126,7 +126,7 @@ module.exports = createPreview = async (propiedades) => {
 </style>
 <body style="width: 12in;height:16in;">
 <div style="display: flex;margin-left: 70px">
-    <img style="width: 7.14in;height: 12.92in" src="https://ce6279b0.ngrok.io/DNA/white.png">
+    <img style="width: 7.14in;height: 12.92in" src="https://a20942e0.ngrok.io/DNA/white.png">
     <div class="region">
         <div>${firstRegionName} ${firstRegionNumber}%</div>
         <div>${secondRegionName} ${secondRegionNumber}%</div>

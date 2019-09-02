@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
-const fontSize = require('../FontSize/ILoveMyDNA/FontSizeLove10');
+const fontSize = require('../FontSize/ILoveMyDNA/FontSizeLove8');
 const fontColor = require('../../Functions/FontStyle/FontStyle');
 const colorProductSelect = require('../../Functions/Color/Color');
 
@@ -32,10 +32,8 @@ module.exports = createPreview = async (propiedades) => {
     const eightRegionName = propiedades.regions[7].region;
     const eightRegionNumber = propiedades.regions[7].porcentaje;
 
-    const nineRegionName = propiedades.regions[8].region;
-    const nineRegionNumber = propiedades.regions[8].porcentaje;
-
     const font = fontStyle(propiedades.fontStyle);
+    const top = font === "Embossing" || font === "Funnier" ? "270px" : "190px";
 
     console.log("font", font);
     console.log("fontSize", fontSize(font));
@@ -59,8 +57,8 @@ module.exports = createPreview = async (propiedades) => {
         position: absolute;
         width: 755px;
         height: 528px;
-        left: 500px;
-        top: 190px;
+        left: 450px;
+        top: ${top};
         font-family: ${font};
         font-size: ${fontSize(font)};
     }
@@ -123,18 +121,17 @@ module.exports = createPreview = async (propiedades) => {
 </style>
 <body style="width: 12in;height:16in;">
 <div style="display: flex;margin-left: 70px">
-    <img style="width: 7.14in;height: 12.92in" src="https://a20942e0.ngrok.io/DNA/white.png">
+    <img style="width: 7.14in;height: 12.92in" src="https://fbf33a60.ngrok.io/DNA/white.png">
     <div class="region">
-        <div>${firstRegionName} ${firstRegionNumber}%</div>
-        <div>${secondRegionName} ${secondRegionNumber}%</div>
-        <div>${threeRegionName} ${threeRegionNumber}%</div>
-        <div>${fourRegionName} ${fourRegionNumber}%</div>
-        <div>${fiveRegionName} ${fiveRegionNumber}%</div>
-        <div>${sixRegionName} ${sixRegionNumber}%</div>
-        <div>${sevenRegionName} ${sevenRegionNumber}%</div>
-        <div>${eightRegionName} ${eightRegionNumber}%</div>
-        <div>${nineRegionName} ${nineRegionNumber}%</div>
-    </div>
+        <div style="margin-top: 7px">${firstRegionName} ${firstRegionNumber}%</div>
+        <div style="margin-top: 7px">${secondRegionName} ${secondRegionNumber}%</div>
+        <div style="margin-top: 7px">${threeRegionName} ${threeRegionNumber}%</div>
+        <div style="margin-top: 7px">${fourRegionName} ${fourRegionNumber}%</div>
+        <div style="margin-top: 7px">${fiveRegionName} ${fiveRegionNumber}%</div>
+        <div style="margin-top: 7px">${sixRegionName} ${sixRegionNumber}%</div>
+        <div style="margin-top: 7px">${sevenRegionName} ${sevenRegionNumber}%</div>
+        <div style="margin-top: 7px">${eightRegionName} ${eightRegionNumber}%</div>
+    </div>                                             7
 </div>
 </body>
 </html>
