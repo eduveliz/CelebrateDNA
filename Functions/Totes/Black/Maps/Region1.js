@@ -1,12 +1,12 @@
 const puppeteer = require('puppeteer');
-const toArray = require('lodash.toarray');
-const colorBackground = require('../../../../ColorsBackground/BrightMap');
-const regionNames = require('../../../../RegionNames/RegionNameAncestry');
-const fontStyle = require('../../../../FontStyle/FontStyle');
-const fontColor = require('../../../../FontColor/FontColor');
-const colorProductSelect = require('../../../../Color/Color');
-const ancestryMap = require('../../../../AncestryMap');
-
+const colorBackground = require('../../../ColorsBackground/BrightMap');
+const regionNames = require('../../../RegionNames/RegionNameAncestry');
+const fontStyle = require('../../../FontStyle/FontStyle');
+const fontColor = require('../../../FontColor/FontColor');
+const colorProductSelect = require('../../../Color/Color');
+const ancestryMap = require('../../../AncestryMap');
+const ttMap = require('../../../TTMap');
+const MyHeritageMap = require('../../../MyHeritageMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const name = propiedades.nameFile;
@@ -18,10 +18,24 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
     const colorProduct = propiedades.fontColor;
     //Headline
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
+    const headline = propiedades.headLine === "Personal statement" ? propiedades.personalHeadline : propiedades.headLine;
+
+    console.log(propiedades.headLine);
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
 
+    companyMap = (company) => {
+        if (company === "Ancestry") {
+            return ancestryMap;
+        }
+        if (company === "23andMe") {
+            return ttMap;
+        }
+        if (company === "MyHeritageDNA") {
+            return MyHeritageMap;
+        }
+    };
+    const map = companyMap(propiedades.company);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -32,7 +46,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <title>23andMe</title>
     <style>
     .fontColor {
-        color:${fontColor(colorProduct)};
+        color:#9A9898;
         font-family:${font};
     }
     .fontColorRegion {
@@ -96,11 +110,9 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:13in;height:11in;background-color: ${colorProductSelect(colorProduct)}">
-<h1 class='fontColor' style="text-align: center; font-size:89px ">${headline} </h1>
-
+<body style="width:13in;height:11in;background-color: black">
 <div style="width: 100%;text-align: center;">
-${ancestryMap}
+    ${map}
 </div>
 
 <div style="margin-top: 50px;margin-right: 20px">
@@ -115,6 +127,7 @@ ${ancestryMap}
         </div>
     </div>
 </div>
+<h1 class='fontColorRegion' style="text-align: center; font-size:89px ">${headline} </h1>    
 <script>    
     $(function () {
         $(document).ready(function () {

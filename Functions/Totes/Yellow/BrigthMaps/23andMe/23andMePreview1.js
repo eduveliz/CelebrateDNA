@@ -13,7 +13,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const firstRegionNumber = propiedades.regions[0].porcentaje;
     //Background Map
     const backgroundColor = colorBackground(propiedades.color);
-    console.log(backgroundColor);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
     const colorProduct = propiedades.fontColor;
     //Headline

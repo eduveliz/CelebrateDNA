@@ -29,10 +29,8 @@ const love = require('./Functions/ILoveMyDNA/LoveSelector');
 const ttPreviewSelectorTote = require('./Functions/Totes/Yellow/BrigthMaps/23andMe/ttPreviewSelector');
 const ancestryPreviewSelectorTote = require('./Functions/Totes/Yellow/BrigthMaps/Ancestry/AncestryPreviewSelector');
 const myHeritagePreviewSelectorTote = require('./Functions/Totes/Yellow/BrigthMaps/MyHeritage/MyHeritagePreviewSelector');
-
-
-//Red
-
+//Black
+const RegionSelector = require('./Functions/Totes/Black/Maps/RegionSelector');
 
 
 const toArray = require('lodash.toarray');
@@ -57,7 +55,7 @@ app.post('/brigth', jsonParser, function (req, res) {
     console.log(req.body);
     const id = 123;
     const regionNumber = req.body.regions.length;
-    if (req.body.company === "Ancestry") {
+    if (req.body.company === "Maps") {
         return ancestryPreviewSelector(regionNumber, id, req.body).then(() => {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         });
@@ -79,7 +77,7 @@ app.post('/earth', jsonParser, function (req, res) {
     console.log("creating Earth...");
     const id = 123;
     const regionNumber = req.body.regions.length;
-    if (req.body.company === "Ancestry") {
+    if (req.body.company === "Maps") {
         return ancestryPreviewSelectorEarth(regionNumber, id, req.body).then(() => {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         });
@@ -136,7 +134,7 @@ app.post('/Yellow', jsonParser, function (req, res) {
     console.log(req.body);
     const id = 123;
     const regionNumber = req.body.regions.length;
-    if (req.body.company === "Ancestry") {
+    if (req.body.company === "Maps") {
         return ancestryPreviewSelectorTote(regionNumber, id, req.body).then(() => {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         });
@@ -154,8 +152,16 @@ app.post('/Yellow', jsonParser, function (req, res) {
     }
 });
 
+app.post('/black', jsonParser, function (req, res) {
+    console.log("creating...");
+    console.log(req.body);
+    const id = 123;
+    const regionNumber = req.body.regions.length;
 
-
+    RegionSelector(regionNumber, id, req.body).then(() => {
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    });
+});
 
 
 app.post('/printfull', jsonParser, function (req, res) {
