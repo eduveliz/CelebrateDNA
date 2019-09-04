@@ -77,7 +77,7 @@ module.exports = createPreview = async (propiedades) => {
     }
     .region {
         color: white;
-        font-size: 26pt;
+        font-size: 19pt;
         font-family:${font};
         text-align: center;
     }

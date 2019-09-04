@@ -52,7 +52,7 @@ module.exports = createPreview = async (propiedades) => {
 </head>
 <style>
     .textDNA {
-        font-size: 24pt;
+        font-size: 22pt;
         width: 260px;
         font-family: "Bangla MN", serif;
         margin-top: 289px;
@@ -75,7 +75,7 @@ module.exports = createPreview = async (propiedades) => {
 
     .region {
         color: white;
-        font-size: 42pt;
+        font-size: 30pt;
         font-family:${font};
         text-align: center;
     }

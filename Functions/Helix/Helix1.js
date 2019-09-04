@@ -1,9 +1,5 @@
 const puppeteer = require('puppeteer');
-const toArray = require('lodash.toarray');
-const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
-const fontColor = require('../../Functions/FontStyle/FontStyle');
-const colorProductSelect = require('../../Functions/Color/Color');
 const imageHelix = require('../Helix/ImageHelix');
 
 module.exports = createPreview = async (propiedades) => {
@@ -11,7 +7,6 @@ module.exports = createPreview = async (propiedades) => {
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNumber = propiedades.regions[0].porcentaje;
     //Background Map
-    const colorProduct = propiedades.colorProduct;
     //Headline
     const headline = propiedades.headLine;
     //FontSize
@@ -126,7 +121,6 @@ module.exports = createPreview = async (propiedades) => {
 </body>
 </html>
 `);
-
     await page.setViewport({
         width: 1152,
         height: 1536,
