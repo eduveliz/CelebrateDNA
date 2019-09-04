@@ -157,7 +157,6 @@ app.post('/black', jsonParser, function (req, res) {
     console.log(req.body);
     const id = 123;
     const regionNumber = req.body.regions.length;
-
     RegionSelector(regionNumber, id, req.body).then(() => {
         res.end('{"success" : "Updated Successfully", "status" : 200}');
     });

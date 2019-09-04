@@ -124,24 +124,6 @@ module.exports = createPreview = async (propiedades) => {
 <div style="width: 100%">
     <div class="region">${firstRegionName} ${firstRegionNumber}  %</div>
 </div>
-<script>    
-    $(function () {
-        $(document).ready(function () {
-        let headline = "${headline}";
-        let firstName = "${firstName}"
-        
-        if(headline === "First Name"){
-           $("#headline").append('<label class="name">'+firstName + '</label><label class="dna"> DNA</label>')    
-        }
-        if(headline === "Celebrating My DNA!"){
-           $("#headline").append('<label style="font-size: 20pt;" class="name">Celebrating </label><label style="font-size: 20pt;"  class="dna"> My DNA</label>')    
-        }
-        if(headline === "Dig Your Roots!"){
-           $("#headline").append('<label class="name">Dig Your </label><label class="dna">Roots!</label>')    
-        }
-           })
-    }); 
-</script>
 </body>
 </html>
 `);
