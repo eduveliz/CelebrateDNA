@@ -4,6 +4,7 @@ const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
 const fontColor = require('../../Functions/FontStyle/FontStyle');
 const colorProductSelect = require('../../Functions/Color/Color');
+const imageHelix = require('../Helix/ImageHelix');
 
 module.exports = createPreview = async (propiedades) => {
     const name = propiedades.nameFile;
@@ -13,10 +14,8 @@ module.exports = createPreview = async (propiedades) => {
     const colorProduct = propiedades.colorProduct;
     //Headline
     const headline = propiedades.headLine;
-    const firstName = propiedades.personalHeadline;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
-
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -118,7 +117,7 @@ module.exports = createPreview = async (propiedades) => {
         <div id="headline"></div>
     </div>
     <div style="width: 12in">
-        <img style="width: 12in" src="https://moolab.ml/Helix.png">
+        <img style="width: 12in" src="${imageHelix(headline)}">
     </div>
 </div>
 <div style="width: 100%">

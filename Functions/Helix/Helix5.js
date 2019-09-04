@@ -4,6 +4,7 @@ const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
 const fontColor = require('../../Functions/FontStyle/FontStyle');
 const colorProductSelect = require('../../Functions/Color/Color');
+const imageHelix = require('../Helix/ImageHelix');
 
 
 module.exports = createPreview = async (propiedades) => {
@@ -158,11 +159,8 @@ module.exports = createPreview = async (propiedades) => {
 
 
 <div style="display: flex">
-    <div class="textDNA">
-        <div><label class="name">Eduardo </label><label class="dna">DNA</label></div>
-    </div>
     <div style="width: 12in">
-        <img style="width: 12in" src="https://moolab.ml/Helix.png">
+        <img style="width: 12in" src="${imageHelix(headline)}">
     </div>
 </div>
 
@@ -181,24 +179,6 @@ module.exports = createPreview = async (propiedades) => {
         <div class="region">${fiveRegionName}</div>
     </div>
 </div>
-<script>    
-    $(function () {
-        $(document).ready(function () {
-        let headline = "${headline}";
-        let firstName = "${firstName}"
-        
-        if(headline === "First Name"){
-           $("#headline").append('<label class="name">'+firstName + '</label><label class="dna"> DNA</label>')    
-        }
-        if(headline === "Celebrating My DNA!"){
-           $("#headline").append('<label style="font-size: 20pt;" class="name">Celebrating </label><label style="font-size: 20pt;"  class="dna"> My DNA</label>')    
-        }
-        if(headline === "Dig Your Roots!"){
-           $("#headline").append('<label class="name">Dig Your </label><label class="dna">Roots!</label>')    
-        }
-           })
-    }); 
-</script>
 </body>
 </html>
 `);
