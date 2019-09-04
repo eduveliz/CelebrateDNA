@@ -1,11 +1,13 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
-const colorBackground = require('../../../../ColorsBackground/BrightMap');
-const regionNames = require('../../../../RegionNames/RegionNameAncestry');
-const fontStyle = require('../../../../FontStyle/FontStyle');
-const fontColor = require('../../../../FontColor/FontColor');
-const colorProductSelect = require('../../../../Color/Color');
-const ancestryMap = require('../../../../AncestryMap');
+const colorBackground = require('../../ColorsBackground/BrightMap');
+const regionNames = require('../../RegionNames/RegionNameAncestry');
+const fontStyle = require('../../FontStyle/FontStyle');
+const fontColor = require('../../FontColor/FontColor');
+const colorProductSelect = require('../../Color/Color');
+const ancestryMap = require('../../AncestryMap');
+const ttMap = require('../../TTMap');
+const MyHeritageMap = require('../../MyHeritageMap');
 
 
 module.exports = createPreview = async (nameFile, propiedades) => {
@@ -21,7 +23,18 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
-
+    companyMap = (company) => {
+        if (company === "Ancestry") {
+            return ancestryMap;
+        }
+        if (company === "23andMe") {
+            return ttMap;
+        }
+        if (company === "MyHeritageDNA") {
+            return MyHeritageMap;
+        }
+    };
+    const map = companyMap(propiedades.company);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -100,7 +113,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 <h1 class='fontColor' style="text-align: center; font-size:89px ">${headline} </h1>
 
 <div style="width: 100%;text-align: center;">
-${ancestryMap}
+    ${map}
 </div>
 
 <div style="margin-top: 50px;margin-right: 20px">

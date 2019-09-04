@@ -5,6 +5,9 @@ const regionNames = require('../../../RegionNames/RegionNameAncestry');
 const fontStyle = require('../../../FontStyle/FontStyle');
 const fontColor = require('../../../FontColor/FontColor');
 const colorProductSelect = require('../../../Color/Color');
+const ancestryMap = require('../../../AncestryMap');
+const ttMap = require('../../../TTMap');
+const MyHeritageMap = require('../../../MyHeritageMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const name = propiedades.nameFile;
@@ -24,6 +27,18 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
+    companyMap = (company) => {
+        if (company === "Ancestry") {
+            return ancestryMap;
+        }
+        if (company === "23andMe") {
+            return ttMap;
+        }
+        if (company === "MyHeritageDNA") {
+            return MyHeritageMap;
+        }
+    };
+    const map = companyMap(propiedades.company);
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

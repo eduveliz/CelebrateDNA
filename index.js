@@ -26,9 +26,9 @@ const donut = require('./Functions/Donut/DonutSelector');
 const love = require('./Functions/ILoveMyDNA/LoveSelector');
 
 //Yellow
-const ttPreviewSelectorTote = require('./Functions/Totes/Yellow/BrigthMaps/23andMe/ttPreviewSelector');
-const ancestryPreviewSelectorTote = require('./Functions/Totes/Yellow/BrigthMaps/Ancestry/AncestryPreviewSelector');
-const myHeritagePreviewSelectorTote = require('./Functions/Totes/Yellow/BrigthMaps/MyHeritage/MyHeritagePreviewSelector');
+const YelloeSelector = require('./Functions/Totes/Yellow/RegionYellowPreview');
+
+
 //Black
 const RegionSelector = require('./Functions/Totes/Black/Maps/RegionSelector');
 
@@ -134,22 +134,9 @@ app.post('/Yellow', jsonParser, function (req, res) {
     console.log(req.body);
     const id = 123;
     const regionNumber = req.body.regions.length;
-    if (req.body.company === "Maps") {
-        return ancestryPreviewSelectorTote(regionNumber, id, req.body).then(() => {
-            res.end('{"success" : "Updated Successfully", "status" : 200}');
-        });
-    }
-    if (req.body.company === "23andMe") {
-        return ttPreviewSelectorTote(regionNumber, id, req.body).then(() => {
-            res.end('{"success" : "Updated Successfully", "status" : 200}');
-        });
-    }
-
-    if (req.body.company === "MyHeritageDNA") {
-        return myHeritagePreviewSelectorTote(regionNumber, id, req.body).then(() => {
-            res.end('{"success" : "Updated Successfully", "status" : 200}');
-        });
-    }
+    return YelloeSelector(regionNumber, id, req.body).then(() => {
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    });
 });
 
 app.post('/black', jsonParser, function (req, res) {

@@ -71,6 +71,18 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
+    companyMap = (company) => {
+        if (company === "Ancestry") {
+            return ancestryMap;
+        }
+        if (company === "23andMe") {
+            return ttMap;
+        }
+        if (company === "MyHeritageDNA") {
+            return MyHeritageMap;
+        }
+    };
+    const map = companyMap(propiedades.company);
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

@@ -1,17 +1,17 @@
-const ancestry14 = require('./AncestryPreview14');
-const ancestry13 = require('./AncestryPreview13');
-const ancestry12 = require('./AncestryPreview12');
-const ancestry11 = require('./AncestryPreview11');
-const ancestry10 = require('./AncestryPreview10');
-const ancestry9 = require('./AncestryPreview9');
-const ancestry8 = require('./AncestryPreview8');
-const ancestry7 = require('./AncestryPreview7');
-const ancestry6 = require('./AncestryPreview6');
-const ancestry5 = require('./AncestryPreview5');
-const ancestry4 = require('./AncestryPreview4');
-const ancestry3 = require('./AncestryPreview3');
-const ancestry2 = require('./AncestryPreview2');
-const ancestry1 = require('./AncestryPreview1');
+const ancestry14 = require('./RegionYelow14');
+const ancestry13 = require('./RegionYelow13');
+const ancestry12 = require('./RegionYelow12');
+const ancestry11 = require('./RegionYelow11');
+const ancestry10 = require('./RegionYelow10');
+const ancestry9 = require('./RegionYelow9');
+const ancestry8 = require('./RegionYelow8');
+const ancestry7 = require('./RegionYelow7');
+const ancestry6 = require('./RegionYelow6');
+const ancestry5 = require('./RegionYelow5');
+const ancestry4 = require('./RegionYelow4');
+const ancestry3 = require('./RegionYelow3');
+const ancestry2 = require('./RegionYelow2.');
+const ancestry1 = require('./RegionYelow1');
 
 
 module.exports = ttSelector = async (regionNumber, id, properties) => {
