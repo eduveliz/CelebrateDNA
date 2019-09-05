@@ -115,7 +115,7 @@ module.exports = createPreview = async (propiedades) => {
         <img style="width: 12in" src="${imageHelix(headline)}">
     </div>
 </div>
-<div style="width: 100%">
+<div style="width: 100%; margin-top: 20px">
     <div class="region">${firstRegionName} ${firstRegionNumber}  %</div>
 </div>
 </body>

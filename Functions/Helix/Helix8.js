@@ -95,6 +95,7 @@ module.exports = createPreview = async (propiedades) => {
     }
 
     .secondLevel {
+        margin-top: 20px;       
         display: flex;
         justify-content: space-between;
         width: 100%;

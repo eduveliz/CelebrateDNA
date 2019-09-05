@@ -78,6 +78,7 @@ module.exports = createPreview = async (propiedades) => {
     .secondLevel {
         display: flex;
         justify-content: space-between;
+        margin-top: 20px;
         width: 100%;
     }
       @font-face {
@@ -144,7 +145,6 @@ module.exports = createPreview = async (propiedades) => {
     </div>
 </div>
 
-
 <div style="display: flex">
     <div style="width: 12in">
         <img style="width: 12in" src="${imageHelix(headline)}">
@@ -156,6 +156,7 @@ module.exports = createPreview = async (propiedades) => {
         <div class="region">${secondRegionName}</div>
     </div>
 </div>
+
 </body>
 </html>`);
     await page.screenshot({path: `previews/${name}.png`});

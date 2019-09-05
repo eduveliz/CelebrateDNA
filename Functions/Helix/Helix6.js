@@ -196,10 +196,10 @@ module.exports = createPreview = async (propiedades) => {
            $("#headline").append('<label class="name">'+firstName + '</label><label class="dna"> DNA</label>')    
         }
         if(headline === "Celebrating My DNA!"){
-           $("#headline").append('<label style="font-size: 20pt;" class="name">Celebrating </label><label style="font-size: 20pt;"  class="dna"> My DNA</label>')    
+           $("#headline").append('<label style="font-size: 22pt;" class="name">Celebrating </label><label style="font-size: 22pt;"  class="dna"> My DNA</label>')    
         }
         if(headline === "Dig Your Roots!"){
-           $("#headline").append('<label class="name">Dig Your </label><label class="dna">Roots!</label>')    
+           $("#headline").append('<label style="font-size: 28pt;" class="name">Dig Your </label><label font-size: 28pt; class="dna">Roots!</label>')    
         }
            })
     }); 
