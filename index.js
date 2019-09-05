@@ -8,9 +8,7 @@ const axios = require('axios');
 
 const ttSelector = require('./Functions/Maps/TshirtAndHoddies/BrigthMaps/23andMe/ttSelector');
 //brigth
-const ttPreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/BrigthMaps/23andMe/ttPreviewSelector');
-const ancestryPreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/BrigthMaps/Ancestry/AncestryPreviewSelector');
-const myHeritagePreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/BrigthMaps/MyHeritage/MyHeritagePreviewSelector');
+const ttPreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/BrigthMaps/ttPreviewSelector');
 //earth
 const ancestryPreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/Ancestry/AncestryPreviewSelector');
 const ttPreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/23andMe/ttPreviewSelector');
@@ -55,22 +53,11 @@ app.post('/brigth', jsonParser, function (req, res) {
     console.log(req.body);
     const id = 123;
     const regionNumber = req.body.regions.length;
-    if (req.body.company === "Maps") {
-        return ancestryPreviewSelector(regionNumber, id, req.body).then(() => {
-            res.end('{"success" : "Updated Successfully", "status" : 200}');
-        });
-    }
-    if (req.body.company === "23andMe") {
-        return ttPreviewSelector(regionNumber, id, req.body).then(() => {
-            res.end('{"success" : "Updated Successfully", "status" : 200}');
-        });
-    }
 
-    if (req.body.company === "MyHeritageDNA") {
-        return myHeritagePreviewSelector(regionNumber, id, req.body).then(() => {
-            res.end('{"success" : "Updated Successfully", "status" : 200}');
-        });
-    }
+    return ttPreviewSelector(regionNumber, id, req.body).then(() => {
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    });
+
 });
 
 app.post('/earth', jsonParser, function (req, res) {
