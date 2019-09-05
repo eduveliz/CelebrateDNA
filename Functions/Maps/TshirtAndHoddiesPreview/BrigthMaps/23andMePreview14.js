@@ -179,10 +179,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
             <div class="fontColor" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${firstRegionNumber}
+                ${firstRegionNumber}%
             </div>
             <div class="fontColor" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${secondRegionNumber}
+                ${secondRegionNumber}%
             </div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
@@ -198,10 +198,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
             <div class="fontColor" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${threeRegionNumber}
+                ${threeRegionNumber}%
             </div>
             <div class="fontColor" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                 ${fourRegionNumber}
+                 ${fourRegionNumber}%
             </div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
@@ -217,10 +217,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
             <div class="fontColor" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                 ${fiveRegionNumber}
+                 ${fiveRegionNumber}%
             </div>
             <div class="fontColor" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                  ${sixRegionNumber}
+                  ${sixRegionNumber}%
             </div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
@@ -236,10 +236,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
             <div  class="fontColor" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${sevenRegionNumber}
+                ${sevenRegionNumber}%
             </div>
             <div  class="fontColor" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${eightRegionNumber}
+                ${eightRegionNumber}%
             </div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
@@ -255,10 +255,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
             <div class="fontColor" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${nineRegionNumber}
+                ${nineRegionNumber}%
             </div>
             <div  class="fontColor" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #58A7B1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${tenRegionNumber}
+                ${tenRegionNumber}%
             </div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
@@ -274,10 +274,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
             <div class="fontColor" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #98985F;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${elevenRegionNumber}
+                ${elevenRegionNumber} %
             </div>
             <div  class="fontColor" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #EC008B;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${twelveRegionNumber}
+                ${twelveRegionNumber} %
             </div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
@@ -292,10 +292,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
             <div class="fontColor" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #52C4D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${thirteenRegionNumber}
+                ${thirteenRegionNumber} %
             </div>
             <div  class="fontColor" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #EE66A2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${fourteenRegionNumber}
+                ${fourteenRegionNumber} %
             </div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">

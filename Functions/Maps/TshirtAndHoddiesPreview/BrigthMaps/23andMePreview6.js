@@ -73,6 +73,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
      .fontColor {
         color:${fontColor(colorProduct)};
         font-family:${font};
+        margin-top: 20px
     }
     
         @font-face {
