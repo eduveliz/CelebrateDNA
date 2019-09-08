@@ -35,24 +35,43 @@ module.exports = createPreview = async (propiedades) => {
             return 'https://moolab.ml/DNA/white.png';
         }
         if (color === "White") {
-            return "https://moolab.ml/DNA/verde.png"
+            return "https://moolab.ml/DNA/rojo.png"
         }
         if (color === "Black") {
             return "https://moolab.ml/DNA/amarillo.png"
+        }
+        if (color === "White with Green/Yellow") {
+            return "https://moolab.ml/DNA/verde.png"
+        }
+        if (color === "Navy with Orange & White") {
+            return "https://moolab.ml/DNA/naranja.png"
+        }
+        if (color === "Navy with Grey & White") {
+            return "https://moolab.ml/DNA/azul.png"
         }
     };
 
     fontColor = (color) => {
         if (color === "Navy") {
-            return "#31365B";
+            return "white";
         }
         if (color === "White") {
-            return "#106242"
+            return "#72709A"
         }
         if (color === "Black") {
-            return "White"
+            return "#E0AC3B"
+        }
+        if (color === "White with Green/Yellow") {
+            return "#1D6A50"
+        }
+        if (color === "Navy with Orange & White") {
+            return "#DD613B"
+        }
+        if (color === "Navy with Grey & White") {
+            return "#B6B5B8"
         }
     };
+
 
     const fontColors = fontColor(propiedades.colorProduct);
     const font = fontStyle(propiedades.fontStyle);

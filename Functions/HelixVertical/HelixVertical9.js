@@ -43,6 +43,18 @@ module.exports = createPreview = async (propiedades) => {
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
 
+    fontSize = (font) => {
+        if (font === "Noteworthy") {
+            return "90pt"
+        }
+        if (font === "Baskerville") {
+            return "80pt"
+        }
+        if (font === "Funnier") {
+            return "62pt"
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -69,7 +81,7 @@ module.exports = createPreview = async (propiedades) => {
     }
     
     .headline{
-    font-size: 62pt;
+     font-size: ${fontSize(font)};
     font-family: ${font};
     text-align: center;
     color: white;

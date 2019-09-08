@@ -40,5 +40,14 @@ module.exports = colorProduct = (colorSelected) => {
         case "Black":
             return color = "Black";
             break;
+        case "White with Green/Yellow":
+            return color = "white";
+            break;
+        case "Navy with Orange & White":
+            return color = "#2A2738";
+            break;
+        case "Navy with Grey & White":
+            return color = "#2A2738";
+            break;
     }
 };
