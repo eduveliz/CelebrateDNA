@@ -56,7 +56,7 @@ module.exports = createPreview = async (propiedades) => {
             return "42pt"
         }
         if (font === "Funnier") {
-            return "38pt"
+            return "32pt"
         }
     };
 
@@ -168,7 +168,7 @@ module.exports = createPreview = async (propiedades) => {
         <div style="margin-left: -18%;color: white;flex: 1;width: 700px;height: 40px">
             ${fiveRegionName} ${fiveRegionNumber} %
         </div>
-        <div style="margin-left: -15%; color: white;flex: 1;width: 700px;height: 40px">
+        <div style="margin-left: -13%; color: white;flex: 1;width: 700px;height: 40px">
             ${sixRegionName} ${sixRegionNumber} %
         </div>
         <div style="margin-left: -10%;color: white;flex: 1;width: 700px;height: 40px">
