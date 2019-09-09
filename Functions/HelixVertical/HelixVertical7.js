@@ -48,6 +48,17 @@ module.exports = createPreview = async (propiedades) => {
             return "62pt"
         }
     };
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "42pt"
+        }
+        if (font === "Baskerville") {
+            return "42pt"
+        }
+        if (font === "Funnier") {
+            return "38pt"
+        }
+    };
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -70,7 +81,7 @@ module.exports = createPreview = async (propiedades) => {
         width: 735px;
         display: flex;
         flex-direction: column;
-        font-size: 42pt;
+        font-size: ${fontSizeRegion(font)};
         font-family: ${font};
     }
     
@@ -154,7 +165,7 @@ module.exports = createPreview = async (propiedades) => {
         <div style="margin-left: -25%;color: white;flex: 1;width: 700px;height: 40px">
             ${fourRegionName} ${fourRegionNumber} %
         </div>
-        <div style="margin-left: -20%;color: white;flex: 1;width: 700px;height: 40px">
+        <div style="margin-left: -18%;color: white;flex: 1;width: 700px;height: 40px">
             ${fiveRegionName} ${fiveRegionNumber} %
         </div>
         <div style="margin-left: -15%; color: white;flex: 1;width: 700px;height: 40px">

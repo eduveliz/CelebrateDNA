@@ -43,6 +43,17 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "42pt"
+        }
+        if (font === "Baskerville") {
+            return "42pt"
+        }
+        if (font === "Funnier") {
+            return "38pt"
+        }
+    };
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -64,7 +75,7 @@ module.exports = createPreview = async (propiedades) => {
         width: 735px;
         display: flex;
         flex-direction: column;
-        font-size: 42pt;
+        font-size: ${fontSizeRegion(font)};
         font-family: ${font};
     }
     
