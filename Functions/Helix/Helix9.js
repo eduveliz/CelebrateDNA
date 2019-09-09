@@ -1,5 +1,9 @@
 const puppeteer = require('puppeteer');
+const toArray = require('lodash.toarray');
+const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
+const fontColor = require('../Helix/FontColor');
+const colorProductSelect = require('../../Functions/Color/Color');
 const imageHelix = require('../Helix/ImageHelix');
 
 
@@ -35,6 +39,9 @@ module.exports = createPreview = async (propiedades) => {
 
     //Headline
     const headline = propiedades.headLine;
+    const backgroundColor = colorBackground(propiedades.color);
+    const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
+    const colorProduct = propiedades.colorProduct;
 
     const font = fontStyle(propiedades.fontStyle);
 
@@ -75,7 +82,7 @@ module.exports = createPreview = async (propiedades) => {
     }
 
     .region {
-        color: white;
+        color: ${fontColor(colorProduct)};
         font-size: 19pt;
         font-family:${font};
         text-align: center;
@@ -150,7 +157,7 @@ module.exports = createPreview = async (propiedades) => {
   }
 </style>
 
-<body style="width: 12in;height:16.04in;background-color: #231F20">
+<body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
 <div class="firstLevel">
     <div style="width: 100%">
         <div class="region">${firstRegionName}</div>

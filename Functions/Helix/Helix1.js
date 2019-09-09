@@ -1,11 +1,14 @@
 const puppeteer = require('puppeteer');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
 const imageHelix = require('../Helix/ImageHelix');
+const fontColor = require('../Helix/FontColor');
+const colorProductSelect = require('../../Functions/Color/Color');
 
 module.exports = createPreview = async (propiedades) => {
     const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNumber = propiedades.regions[0].porcentaje;
+    const colorProduct = propiedades.colorProduct;
     //Background Map
     //Headline
     const headline = propiedades.headLine;
@@ -48,7 +51,7 @@ module.exports = createPreview = async (propiedades) => {
     .region {
         font-size: 42pt;
         font-family:${font};
-        color: white;
+        color: ${fontColor(colorProduct)};
         text-align: center;
     }
   @font-face {
@@ -106,7 +109,7 @@ module.exports = createPreview = async (propiedades) => {
     font-style: normal;
   }
 </style>
-<body style="width: 12in;height:16.04in;background-color: #233B37">
+<body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
 <div style="display: flex;margin-top: 30%">
     <div class="textDNA">
         <div id="headline"></div>
@@ -116,7 +119,7 @@ module.exports = createPreview = async (propiedades) => {
     </div>
 </div>
 <div style="width: 100%; margin-top: 20px">
-    <div class="region">${firstRegionName} ${firstRegionNumber}  %</div>
+    <div class="region">${firstRegionName} ${firstRegionNumber}%</div>
 </div>
 </body>
 </html>

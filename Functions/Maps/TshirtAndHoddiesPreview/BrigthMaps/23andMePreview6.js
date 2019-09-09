@@ -38,10 +38,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const colorProduct = propiedades.colorProduct;
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
+
     //Headline
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
+    const typeFont = font === "Funnier" ? "30px" : "38px";
+
     companyMap = (company) => {
         if (company === "Ancestry") {
             return ancestryMap;
@@ -73,7 +76,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
      .fontColor {
         color:${fontColor(colorProduct)};
         font-family:${font};
-        margin-top: 20px
+        margin-top: 20px;
+        font:${typeFont}
     }
     
         @font-face {
@@ -139,7 +143,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     ${map}
 </div>
 
-<div style="margin-top: 50px">
+<div style="margin-top: 50px;margin-right: 12px">
     <div style="display: flex; justify-content: space-around;">
         <div class='fontColor' style="height:38px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
            ${firstRegionNumber}%
@@ -160,24 +164,24 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             ${sixRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-left: 20px">
+    <div style="display: flex; justify-content: space-around">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class='fontColor' style="color:white;font-size: 25px;display: flex;text-align: center;justify-content: center">${firstRegionName}</div>
+            <div class='fontColor' style="display: flex;text-align: center;justify-content: center">${firstRegionName}</div>
         </div>
         <div style="width:100%;height:60px; display: flex; justify-content: center">
-            <div class='fontColor' style="color:white;font-size: 25px;display: flex;text-align: center;justify-content: center">${secondRegionName}</div>
+            <div class='fontColor' style="display: flex;text-align: center;justify-content: center">${secondRegionName}</div>
         </div>
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class='fontColor' style="color:white;font-size: 25px;display: flex;text-align: center;justify-content: center">${threeRegionName}</div>
+            <div class='fontColor' style="display: flex;text-align: center;justify-content: center">${threeRegionName}</div>
         </div>
         <div style=" width:100%;height:60px;display: flex; justify-content: center">
-            <div class='fontColor'style="color:white;font-size: 25px;display: flex;text-align: center;justify-content: center">${fourRegionName}</div>
+            <div class='fontColor'style="display: flex;text-align: center;justify-content: center">${fourRegionName}</div>
         </div>
         <div style=" width:100%;height:60px;display: flex; justify-content: center">
-            <div class='fontColor' style="color:white;font-size: 25px;display: flex;text-align: center;justify-content: center">${fiveRegionName}</div>
+            <div class='fontColor' style="display: flex;text-align: center;justify-content: center">${fiveRegionName}</div>
         </div>
         <div style="width:100%; height:60px;display: flex; justify-content: center">
-            <div class='fontColor' style="color:white;font-size: 25px;display: flex;text-align: center;justify-content: center">${sixRegionName}</div>
+            <div class='fontColor' style="display: flex;text-align: center;justify-content: center">${sixRegionName}</div>
         </div>
     </div>
 </div>

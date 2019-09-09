@@ -4,6 +4,12 @@ module.exports = regionNamebyId = (regionName) => {
         case "Indonesian":
             return regionNameId = "#indonesian, #indonesian-2 ,#indonesian-3 , #indonesian-4";
             break;
+        case "Indonesia":
+            return regionNameId = "#Indonesia";
+            break;
+        case "W. African":
+            return regionNameId = "#westAfrican";
+            break;
         case "W. African":
             return regionNameId = "#westAfrican";
             break;
@@ -42,6 +48,9 @@ module.exports = regionNamebyId = (regionName) => {
             break;
         case "Chinese":
             return regionNameId = "#chinese";
+            break;
+        case "Chinese, Vietnamese":
+            return regionNameId = "#chineseVietnamese";
             break;
         case "British, Irish":
             return regionNameId = "#britishIrish";
@@ -94,13 +103,16 @@ module.exports = regionNamebyId = (regionName) => {
         case "Sub-Saharan":
             return regionNameId = "#subSaharan";
             break;
+        case "Thai, Cambodian":
+            return regionNameId = "#thaiCambodian";
+            break;
         case "N. E. African":
             return regionNameId = "#northEastAfrican";
             break;
         case "N.European":
             return regionNameId = "#northEuropean";
             break;
-        case "European":
+        case "European ":
             return regionNameId = "#european";
             break;
         case "S. European":
@@ -172,7 +184,7 @@ module.exports = regionNamebyId = (regionName) => {
         case "Filipino, Indo.":
             return regionNameId = "#filipinoIndo";
             break;
-        case "N.W. Europe":
+        case "N.W. Europe ":
             return regionNameId = "northWestEurope";
             break;
         case "Native American":
@@ -194,7 +206,7 @@ module.exports = regionNamebyId = (regionName) => {
             return regionNameId = "#japanese";
             break;
         case "Maasai":
-            return regionNameId = "#maasai";
+            return regionNameId = "#Maasai";
             break;
         case "Kenyan":
             return regionNameId = "#kenyan";
@@ -206,7 +218,7 @@ module.exports = regionNamebyId = (regionName) => {
             return regionNameId = "#irishScottish";
             break;
         case "Ethiopian Jewish":
-            return regionNameId = "#ethiopiaJewish";
+            return regionNameId = "#EthiopiaJewish";
             break;
         case "W. African":
             return regionNameId = "#wAfrican";

@@ -70,7 +70,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     .fontColor {
         color:${fontColor(colorProduct)};
         font-family:${font};
-        margin-top: 20px
+        text-align: center;
     }
     
            @font-face {
@@ -136,7 +136,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     ${map}
 </div>
 
-<div style="margin-top: 50px">
+<div style="margin-top: 50px;margin-right: 14px">
     <div style="display: flex; justify-content: space-around;">
         <div class='fontColor' style="color:white;height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
             ${firstRegionNumber} %
@@ -154,8 +154,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             ${fiveRegionNumber} %
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;">
-        <div style="width:100%;height:60px;display: flex; justify-content: center">
+    <div style="display: flex; justify-content: space-around;margin-top: 20px;">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;">
             <div class='fontColor' style="font-size: 25px;">${firstRegionName}</div>
         </div>
         <div style="width:100%;height:60px; display: flex; justify-content: center">

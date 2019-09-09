@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
-const fontColor = require('../../Functions/FontStyle/FontStyle');
+const fontColor = require('../Helix/FontColor');
 const colorProductSelect = require('../../Functions/Color/Color');
 const imageHelix = require('../Helix/ImageHelix');
 
@@ -71,8 +71,8 @@ module.exports = createPreview = async (propiedades) => {
     }
 
     .region {
-        color: white;
-        font-size: 42pt;
+        color: ${fontColor(colorProduct)};
+        font-size: 34pt;
         font-family:${font};
         text-align: center;
     }
@@ -146,15 +146,13 @@ module.exports = createPreview = async (propiedades) => {
   }
 </style>
 
-<body style="width: 12in;height:16.04in;background-color: #231F20">
+<body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
 <div class="firstLevel">
-    <div style="width: 100%">
-        <div class="region">${firstRegionName}</div>
-        <div class="region">${firstRegionNumber} %</div>
+    <div style="width: 100%;">
+ <div><pre class="region">${firstRegionName}  ${firstRegionNumber}%</pre></div>
     </div>
     <div style="width: 100%">
-        <div class="region">${secondRegionName}</div>
-        <div class="region">${secondRegionNumber} %</div>
+ <div><pre class="region">${secondRegionName}  ${secondRegionNumber}%</pre></div>
     </div>
 </div>
 
@@ -168,16 +166,14 @@ module.exports = createPreview = async (propiedades) => {
 
 <div class="secondLevel">
     <div style="width: 100%">
-        <div class="region">${threeRegionNumber} %</div>
-        <div class="region">${threeRegionName}</div>
+        <div><pre class="region">${threeRegionName}  ${threeRegionNumber}%</pre></div>
     </div>
     <div style="width: 100%">
-        <div class="region">${fourRegionNumber} %</div>
-        <div class="region">${fourRegionName}</div>
+        <div><pre class="region">${fourRegionName}  ${fourRegionNumber}%</pre></div>
     </div>
     <div style="width: 100%">
-        <div class="region">${fiveRegionNumber} %</div>
-        <div class="region">${fiveRegionName}</div>
+        <div><pre class="region">${fiveRegionName}  ${fiveRegionNumber}%</pre></div>
+ 
     </div>
 </div>
 </body>

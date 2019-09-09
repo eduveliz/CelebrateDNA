@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
-const fontColor = require('../../Functions/FontStyle/FontStyle');
+const fontColor = require('../Helix/FontColor');
 const colorProductSelect = require('../../Functions/Color/Color');
 const imageHelix = require('../Helix/ImageHelix');
 
@@ -65,7 +65,7 @@ module.exports = createPreview = async (propiedades) => {
     }
 
     .region {
-        color: white;
+        color: ${fontColor(colorProduct)};
         font-size: 42pt;
         font-family:${font};
         text-align: center;
@@ -75,12 +75,12 @@ module.exports = createPreview = async (propiedades) => {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        margin-top: 30%;
+        margin-bottom: 30px;
     }
 
     .secondLevel {
         display: flex;
-        margin-top: 20px;    
+        margin-top: 30px;
         justify-content: space-between;
         width: 100%;
     }
@@ -140,26 +140,25 @@ module.exports = createPreview = async (propiedades) => {
   }
 </style>
 
-<body style="width: 12in;height:16.04in;background-color: #231F20">
-<div class="firstLevel">
-    <div style="width: 100%">
-        <div class="region">${firstRegionName}</div>
-        <div class="region">${firstRegionNumber} %</div>
+<body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
+<div style="margin-top: 100px">
+    <div class="firstLevel">
+        <div style="width: 100%">
+            <div><pre class="region">${firstRegionName}  ${firstRegionNumber}%</pre></div>
+        </div>
     </div>
-</div>
-<div style="display: flex">
-    <div style="width: 12in">
-        <img style="width: 12in" src="${imageHelix(headline)}">
+    <div style="display: flex">
+        <div style="width: 12in">
+            <img style="width: 12in" src="${imageHelix(headline)}">
+        </div>
     </div>
-</div>
-<div class="secondLevel">
-    <div style="width: 100%">
-        <div class="region">${secondRegionNumber} %</div>
-        <div class="region">${secondRegionName}</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${threeRegionNumber} %</div>
-        <div class="region">${threeRegionName}</div>
+    <div class="secondLevel">
+        <div style="width: 100%">
+            <div><pre class="region">${secondRegionName}  ${secondRegionNumber}%</pre></div>
+        </div>
+        <div style="width: 100%">
+            <div><pre class="region">${threeRegionName}  ${threeRegionNumber}%</pre></div>
+        </div>
     </div>
 </div>
 </body>
