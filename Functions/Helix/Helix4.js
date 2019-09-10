@@ -30,6 +30,34 @@ module.exports = createPreview = async (propiedades) => {
     const firstName = propiedades.personalHeadline;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
+    console.log(font);
+
+    fontSize = (font) => {
+        if (font === "Noteworthy") {
+            return "90pt"
+        }
+        if (font === "Baskerville") {
+            return "80pt"
+        }
+        if (font === "Funnier") {
+            return "62pt"
+        }
+    };
+
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "38pt"
+        }
+        if (font === "Baskerville") {
+            return "42pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "42pt"
+        }
+        if (font === "Funnier") {
+            return "30pt"
+        }
+    };
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -70,7 +98,7 @@ module.exports = createPreview = async (propiedades) => {
 
     .region {
         color: ${fontColor(colorProduct)};
-        font-size: 42pt;
+        font-size: ${fontSizeRegion(font)};
         font-family:${font};
         text-align: center;
     }

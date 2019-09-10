@@ -34,6 +34,33 @@ module.exports = createPreview = async (propiedades) => {
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
 
+    fontSize = (font) => {
+        if (font === "Noteworthy") {
+            return "90pt"
+        }
+        if (font === "Baskerville") {
+            return "80pt"
+        }
+        if (font === "Funnier") {
+            return "62pt"
+        }
+    };
+
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "45pt"
+        }
+        if (font === "Baskerville") {
+            return "42pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "42pt"
+        }
+        if (font === "Funnier") {
+            return "28pt"
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -72,7 +99,7 @@ module.exports = createPreview = async (propiedades) => {
 
     .region {
         color: ${fontColor(colorProduct)};
-        font-size: 34pt;
+        font-size: ${fontSizeRegion(font)};
         font-family:${font};
         text-align: center;
     }
@@ -81,12 +108,12 @@ module.exports = createPreview = async (propiedades) => {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        margin-top: 30%;
+        margin-bottom: 30px;
     }
 
     .secondLevel {
         display: flex;
-        margin-top: 20px;    
+        margin-top: 30px;
         justify-content: space-between;
         width: 100%;
     }
@@ -147,12 +174,14 @@ module.exports = createPreview = async (propiedades) => {
 </style>
 
 <body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
+
+<div style="margin-top: 120px">
 <div class="firstLevel">
     <div style="width: 100%;">
- <div><pre class="region">${firstRegionName}  ${firstRegionNumber}%</pre></div>
+ <div><pre class="region">${firstRegionName} ${firstRegionNumber}%</pre></div>
     </div>
     <div style="width: 100%">
- <div><pre class="region">${secondRegionName}  ${secondRegionNumber}%</pre></div>
+ <div><pre class="region">${secondRegionName} ${secondRegionNumber}%</pre></div>
     </div>
 </div>
 
@@ -166,15 +195,15 @@ module.exports = createPreview = async (propiedades) => {
 
 <div class="secondLevel">
     <div style="width: 100%">
-        <div><pre class="region">${threeRegionName}  ${threeRegionNumber}%</pre></div>
+        <div><pre class="region">${threeRegionName} ${threeRegionNumber}%</pre></div>
     </div>
     <div style="width: 100%">
-        <div><pre class="region">${fourRegionName}  ${fourRegionNumber}%</pre></div>
+        <div><pre class="region">${fourRegionName} ${fourRegionNumber}%</pre></div>
     </div>
     <div style="width: 100%">
-        <div><pre class="region">${fiveRegionName}  ${fiveRegionNumber}%</pre></div>
- 
+        <div><pre class="region">${fiveRegionName} ${fiveRegionNumber}%</pre></div>
     </div>
+</div>
 </div>
 </body>
 </html>

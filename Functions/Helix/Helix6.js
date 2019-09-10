@@ -37,6 +37,33 @@ module.exports = createPreview = async (propiedades) => {
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
 
+    fontSize = (font) => {
+        if (font === "Noteworthy") {
+            return "90pt"
+        }
+        if (font === "Baskerville") {
+            return "80pt"
+        }
+        if (font === "Funnier") {
+            return "62pt"
+        }
+    };
+
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "36pt"
+        }
+        if (font === "Baskerville") {
+            return "42pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "32pt"
+        }
+        if (font === "Funnier") {
+            return "24pt"
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -75,7 +102,7 @@ module.exports = createPreview = async (propiedades) => {
 
     .region {
         color: ${fontColor(colorProduct)};
-        font-size: 30pt;
+        font-size: ${fontSizeRegion(font)};
         font-family:${font};
         text-align: center;
     }
@@ -149,6 +176,8 @@ module.exports = createPreview = async (propiedades) => {
 </style>
 
 <body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
+
+<div style="margin-top: 120px">
 <div class="firstLevel">
     <div style="width: 100%">
         <div class="region">${firstRegionName}</div>
@@ -185,6 +214,7 @@ module.exports = createPreview = async (propiedades) => {
         <div class="region">${sixRegionNumber} %</div>
         <div class="region">${sixRegionName}</div>
     </div>
+</div>
 </div>
 <script>    
     $(function () {

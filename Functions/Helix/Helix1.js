@@ -14,6 +14,31 @@ module.exports = createPreview = async (propiedades) => {
     const headline = propiedades.headLine;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
+
+    fontSize = (font) => {
+        if (font === "Noteworthy") {
+            return "90pt"
+        }
+        if (font === "Baskerville") {
+            return "80pt"
+        }
+        if (font === "Funnier") {
+            return "62pt"
+        }
+    };
+
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "42pt"
+        }
+        if (font === "Baskerville") {
+            return "42pt"
+        }
+        if (font === "Funnier") {
+            return "38pt"
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`

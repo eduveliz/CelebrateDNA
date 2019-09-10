@@ -46,6 +46,33 @@ module.exports = createPreview = async (propiedades) => {
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
 
+    fontSize = (font) => {
+        if (font === "Noteworthy") {
+            return "90pt"
+        }
+        if (font === "Baskerville") {
+            return "80pt"
+        }
+        if (font === "Funnier") {
+            return "62pt"
+        }
+    };
+
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "45pt"
+        }
+        if (font === "Baskerville") {
+            return "42pt"
+        }
+        if (font === "Myriad Pro Bold") {
+            return "42pt"
+        }
+        if (font === "Funnier") {
+            return "30pt"
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -91,12 +118,13 @@ module.exports = createPreview = async (propiedades) => {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        margin-top: 30%;
+        margin-bottom: 30px;
     }
+
     .secondLevel {
         display: flex;
-        margin-top: 20px;
         justify-content: space-between;
+        margin-top: 30px;
         width: 100%;
     }
       @font-face {
