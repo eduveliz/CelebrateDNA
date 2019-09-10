@@ -141,7 +141,7 @@ module.exports = createPreview = async (propiedades) => {
     font-style: normal;
   }
 </style>
-<body style="width: 12in;height:16in;background-color: black">
+<body style="width: 12in;height:16in;background-color: ${colorProductSelect(colorProduct)}">
 <div style="display: flex">
     <div style="margin-left: 50px">
         <img style="width: 7.14in;height: 12.92in" src="https://moolab.ml/Twister.png">
