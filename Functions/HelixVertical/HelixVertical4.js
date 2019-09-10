@@ -139,23 +139,23 @@ module.exports = createPreview = async (propiedades) => {
     font-style: normal;
   }
 </style>
-<body style="width: 12in;height:16in;background-color: ${colorProductSelect(colorProduct)}">
+<body style="width: 12in;height:16in;background-color: black">
 <div style="display: flex">
     <div style="margin-left: 50px">
         <img style="width: 7.14in;height: 12.92in" src="https://moolab.ml/Twister.png">
     </div>
     <div class="regions">
-        <div style="margin-left: 10%;color: white; flex: 1; width: 700px;height: 40px">
-            ${firstRegionName} ${firstRegionNumber} %
+        <div style="margin-left: 5%;color: white; flex: 1; width: 700px;height: 40px">
+            ${firstRegionName} ${firstRegionNumber}%
         </div>
         <div style="margin-left:-15%; color: white;flex: 1;width: 700px;height: 40px">
-             ${secondRegionName} ${secondRegionNumber} %
+             ${secondRegionName} ${secondRegionNumber}%
         </div>
         <div style="margin-left: -10%;color: white;flex: 1;width: 700px;height: 40px">
-            ${threeRegionName} ${threeRegionNumber} %
+            ${threeRegionName} ${threeRegionNumber}%
         </div>
         <div style="margin-left: -5%;color: white;flex: 1;width: 700px;height: 40px">
-            ${fourRegionName} ${fourRegionNumber} %
+            ${fourRegionName} ${fourRegionNumber}%
         </div>
     </div>
 </div>
