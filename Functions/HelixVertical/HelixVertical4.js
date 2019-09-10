@@ -48,7 +48,7 @@ module.exports = createPreview = async (propiedades) => {
             return "42pt"
         }
         if (font === "Funnier") {
-            return "38pt"
+            return "34pt"
         }
     };
 
