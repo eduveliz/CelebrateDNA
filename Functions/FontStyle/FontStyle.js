@@ -28,5 +28,8 @@ module.exports = fontStyle = (fontSelected) => {
         case "NoteworthyBold":
             return fontStyle = "Noteworthy";
             break;
+        case "Noteworhty Bold":
+            return fontStyle = "Noteworthy";
+            break;
     }
 };

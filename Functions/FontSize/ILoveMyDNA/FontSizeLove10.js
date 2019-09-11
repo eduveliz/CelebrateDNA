@@ -17,7 +17,7 @@ module.exports = font = (fontSelected) => {
             return fontSize = "35pt";
             break;
         case "EmbossedTapeThree":
-            return fontSize = "35pt";
+            return fontSize = "";
             break;
         case "Noteworhty Bold":
             return fontSize = "40pt";
