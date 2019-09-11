@@ -52,5 +52,8 @@ module.exports = colorProduct = (colorSelected) => {
         case "Heather Prism Dusty Blue":
             return color = "#A0BEB4";
             break;
+        case "Athletic Heather":
+            return color = "#C5C5C7";
+            break;
     }
 };
