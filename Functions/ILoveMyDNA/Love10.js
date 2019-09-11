@@ -41,7 +41,7 @@ module.exports = createPreview = async (propiedades) => {
 
     imageColor = (color) => {
         if (color === "Navy") {
-            return 'https://moolab.ml/DNA/white.png';
+            return 'https://moolab.ml/DNA/rojo.png';
         }
         if (color === "White") {
             return "https://moolab.ml/DNA/white.png"

@@ -26,7 +26,7 @@ module.exports = createPreview = async (propiedades) => {
 
     imageColor = (color) => {
         if (color === "Navy") {
-            return 'https://moolab.ml/DNA/white.png';
+            return 'https://moolab.ml/DNA/rojo.png';
         }
         if (color === "White") {
             return "https://moolab.ml/DNA/white.png"
@@ -69,7 +69,7 @@ module.exports = createPreview = async (propiedades) => {
 
     const fontColors = fontColor(propiedades.colorProduct);
     const font = fontStyle(propiedades.fontStyle);
-    const top = font === "Embossing" || font === "Funnier" ? "280px" : "180px";
+    const top = font === "Embossing" || font === "Funnier" ? "380px" : "280px";
 
     console.log("font", font);
     console.log("fontSize", fontSize(font));
@@ -160,11 +160,11 @@ module.exports = createPreview = async (propiedades) => {
 <div style="display: flex;margin-left: 70px">
     <img style="width: 7.14in;height: 12.92in" src="${imageColor(propiedades.colorProduct)}">
     <div class="region">
-        <div style="margin-top: 50px">${firstRegionName} ${firstRegionNumber}%</div>
-        <div style="margin-top: 50px">${secondRegionName} ${secondRegionNumber}%</div>
-        <div style="margin-top: 50px">${threeRegionName} ${threeRegionNumber}%</div>
-        <div style="margin-top: 50px">${fourRegionName} ${fourRegionNumber}%</div>
-        <div style="margin-top: 50px">${fiveRegionName} ${fiveRegionNumber}%</div>
+        <div style="margin-top: 25px">${firstRegionName} ${firstRegionNumber}%</div>
+        <div style="margin-top: 25px">${secondRegionName} ${secondRegionNumber}%</div>
+        <div style="margin-top: 25px">${threeRegionName} ${threeRegionNumber}%</div>
+        <div style="margin-top: 25px">${fourRegionName} ${fourRegionNumber}%</div>
+        <div style="margin-top: 25px">${fiveRegionName} ${fiveRegionNumber}%</div>
     </div>
 </div>
 </body>

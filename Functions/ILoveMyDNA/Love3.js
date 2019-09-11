@@ -19,7 +19,7 @@ module.exports = createPreview = async (propiedades) => {
 
     imageColor = (color) => {
         if (color === "Navy") {
-            return 'https://moolab.ml/DNA/white.png';
+            return 'https://moolab.ml/DNA/rojo.png';
         }
         if (color === "White") {
             return "https://moolab.ml/DNA/white.png"
@@ -58,7 +58,6 @@ module.exports = createPreview = async (propiedades) => {
             return "#B6B5B8"
         }
     };
-
 
     const fontColors = fontColor(propiedades.colorProduct);
     const font = fontStyle(propiedades.fontStyle);
@@ -151,8 +150,8 @@ module.exports = createPreview = async (propiedades) => {
     <img style="width: 7.14in;height: 12.92in" src="${imageColor(propiedades.colorProduct)}">
     <div class="region">
         <div>${firstRegionName} ${firstRegionNumber}%</div>
-        <div style="margin-top: 50px">${secondRegionName} ${secondRegionNumber}%</div>
-        <div style="margin-top: 50px">${threeRegionName} ${threeRegionNumber}%</div>
+        <div style="margin-top: 25px">${secondRegionName} ${secondRegionNumber}%</div>
+        <div style="margin-top: 25px">${threeRegionName} ${threeRegionNumber}%</div>
     </div>
 </div>
 </body>

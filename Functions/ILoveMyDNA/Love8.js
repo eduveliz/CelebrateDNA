@@ -35,7 +35,7 @@ module.exports = createPreview = async (propiedades) => {
 
     imageColor = (color) => {
         if (color === "Navy") {
-            return 'https://moolab.ml/DNA/white.png';
+            return 'https://moolab.ml/DNA/rojo.png';
         }
         if (color === "White") {
             return "https://moolab.ml/DNA/white.png"
@@ -165,15 +165,15 @@ module.exports = createPreview = async (propiedades) => {
 <div style="display: flex;margin-left: 70px">
     <img style="width: 7.14in;height: 12.92in" src="${imageColor(propiedades.colorProduct)}">
     <div class="region">
-        <div style="margin-top: 7px">${firstRegionName} ${firstRegionNumber}%</div>
-        <div style="margin-top: 7px">${secondRegionName} ${secondRegionNumber}%</div>
-        <div style="margin-top: 7px">${threeRegionName} ${threeRegionNumber}%</div>
-        <div style="margin-top: 7px">${fourRegionName} ${fourRegionNumber}%</div>
-        <div style="margin-top: 7px">${fiveRegionName} ${fiveRegionNumber}%</div>
-        <div style="margin-top: 7px">${sixRegionName} ${sixRegionNumber}%</div>
-        <div style="margin-top: 7px">${sevenRegionName} ${sevenRegionNumber}%</div>
-        <div style="margin-top: 7px">${eightRegionName} ${eightRegionNumber}%</div>
-    </div>                                             7
+        <div style="margin-top: 10px">${firstRegionName} ${firstRegionNumber}%</div>
+        <div style="margin-top: 10px">${secondRegionName} ${secondRegionNumber}%</div>
+        <div style="margin-top: 10px">${threeRegionName} ${threeRegionNumber}%</div>
+        <div style="margin-top: 10px">${fourRegionName} ${fourRegionNumber}%</div>
+        <div style="margin-top: 10px">${fiveRegionName} ${fiveRegionNumber}%</div>
+        <div style="margin-top: 10px">${sixRegionName} ${sixRegionNumber}%</div>
+        <div style="margin-top: 10px">${sevenRegionName} ${sevenRegionNumber}%</div>
+        <div style="margin-top: 10px">${eightRegionName} ${eightRegionNumber}%</div>
+    </div>                                             
 </div>
 </body>
 </html>

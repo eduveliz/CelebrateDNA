@@ -2,7 +2,7 @@ module.exports = font = (fontSelected) => {
     let fontSize;
     switch (fontSelected) {
         case "Noteworthy":
-            return fontSize = "36pt";
+            return fontSize = "50pt";
             break;
         case "Baskerville":
             return fontSize = "40pt";
@@ -20,13 +20,13 @@ module.exports = font = (fontSelected) => {
             return fontSize = "35pt";
             break;
         case "Noteworhty Bold":
-            return fontSize = "45pt";
+            return fontSize = "50pt";
             break;
         case "MyriadPro-Bold":
-            return fontSize = "40pt";
+            return fontSize = "55pt";
             break;
         case "Embossing":
-            return fontSize = "42pt";
+            return fontSize = "38pt";
             break;
     }
 };
