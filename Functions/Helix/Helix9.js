@@ -34,15 +34,13 @@ module.exports = createPreview = async (propiedades) => {
     const eightRegionName = propiedades.regions[7].region;
     const eightRegionNumber = propiedades.regions[7].porcentaje;
 
-    const nineRegionName = propiedades.regions[8].region;
-    const nineRegionNumber = propiedades.regions[8].porcentaje;
-
-    //Headline
-    const headline = propiedades.headLine;
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
     const colorProduct = propiedades.colorProduct;
-
+    //Headline
+    const headline = propiedades.headLine;
+    const firstName = propiedades.personalHeadline;
+    //FontSize
     const font = fontStyle(propiedades.fontStyle);
 
     fontSize = (font) => {
@@ -59,16 +57,16 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "40pt"
+            return "28pt"
         }
         if (font === "Baskerville") {
             return "42pt"
         }
         if (font === "MyriadPro-Bold") {
-            return "38pt"
+            return "28pt"
         }
         if (font === "Funnier") {
-            return "28pt"
+            return "26pt"
         }
     };
 
@@ -83,7 +81,8 @@ module.exports = createPreview = async (propiedades) => {
     await page.setContent(`<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">    <title>Title</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <style>
     .textDNA {
@@ -110,22 +109,22 @@ module.exports = createPreview = async (propiedades) => {
 
     .region {
         color: ${fontColor(colorProduct)};
-        font-size: 19pt;
         font-family:${font};
+        font-size: ${fontSizeRegion(font)};
         text-align: center;
     }
 
     .firstLevel {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         width: 100%;
-        margin-bottom: 30px;
+        margin-top: 30%;
     }
 
     .secondLevel {
+        margin-top: 30px;       
         display: flex;
         justify-content: space-between;
-        margin-top: 30px;
         width: 100%;
     }
       @font-face {
@@ -186,21 +185,21 @@ module.exports = createPreview = async (propiedades) => {
 
 <body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
 <div class="firstLevel">
-    <div style="width: 100%">
+    <div style="width: 100%;">
         <div class="region">${firstRegionName}</div>
         <div class="region">${firstRegionNumber}%</div>
     </div>
-    <div style="width: 100%">
+    <div style="width: 100%;">
         <div class="region">${secondRegionName}</div>
-        <div class="region">${secondRegionNumber} %</div>
+        <div class="region">${secondRegionNumber}%</div>
     </div>
-    <div style="width: 100%">
+    <div style="width: 100%;">
         <div class="region">${threeRegionName}</div>
-        <div class="region">${threeRegionNumber} %</div>
+        <div class="region">${threeRegionNumber}%</div>
     </div>
-    <div style="width: 100%">
+    <div style="width: 100%;">
         <div class="region">${fourRegionName}</div>
-        <div class="region">${fourRegionNumber} %</div>
+        <div class="region">${fourRegionNumber}%</div>
     </div>
 </div>
 
