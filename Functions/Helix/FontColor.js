@@ -6,6 +6,6 @@ module.exports = fontColor = (color) => {
     } else if (color === "Steel Blue") {
         return "white";
     } else {
-        return "#DDDFE1";
+        return "#58585B";
     }
 };

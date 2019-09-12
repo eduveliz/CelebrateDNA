@@ -177,33 +177,39 @@ module.exports = createPreview = async (propiedades) => {
 
 <div style="margin-top: 120px">
 <div class="firstLevel">
-    <div style="width: 100%;">
- <div><pre class="region">${firstRegionName} ${firstRegionNumber}%</pre></div>
+    <div style="width: 100%">
+        <div class="region">${firstRegionName}</div>
+        <div class="region">${firstRegionNumber}%</div>
     </div>
     <div style="width: 100%">
- <div><pre class="region">${secondRegionName} ${secondRegionNumber}%</pre></div>
+        <div class="region">${secondRegionName}</div>
+        <div class="region">${secondRegionNumber}%</div>
     </div>
 </div>
 
 
 <div style="display: flex">
     <div style="width: 12in">
-        <img style="width: 12in" src="${imageHelix(headline)}">
+        <img style="width: 12in; border: solid 1px black;" src="${imageHelix(headline)}">
     </div>
 </div>
 
 
 <div class="secondLevel">
     <div style="width: 100%">
-        <div><pre class="region">${threeRegionName} ${threeRegionNumber}%</pre></div>
+        <div class="region">${threeRegionNumber}%</div>
+        <div class="region">${threeRegionName}</div>
     </div>
     <div style="width: 100%">
-        <div><pre class="region">${fourRegionName} ${fourRegionNumber}%</pre></div>
+        <div class="region">${fourRegionNumber}%</div>
+        <div class="region">${fourRegionName}</div>
     </div>
     <div style="width: 100%">
-        <div><pre class="region">${fiveRegionName} ${fiveRegionNumber}%</pre></div>
+        <div class="region">${fiveRegionNumber}%</div>
+        <div class="region">${fiveRegionName}</div>
     </div>
 </div>
+
 </div>
 </body>
 </html>

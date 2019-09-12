@@ -175,10 +175,10 @@ module.exports = createPreview = async (propiedades) => {
 
 <body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
 <div class="firstLevel">
-    <div style="width: 100%">
+    <div style="width: 100%;">
         <div><pre class="region">${firstRegionName}  ${firstRegionNumber}%</pre></div>
     </div>
-    <div style="width: 100%">
+    <div style="width: 100%;">
         <div><pre class="region">${secondRegionName}  ${secondRegionNumber}%</pre></div>
     </div>
 </div>

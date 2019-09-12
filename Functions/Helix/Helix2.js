@@ -25,6 +25,22 @@ module.exports = createPreview = async (propiedades) => {
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
 
+
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "50pt"
+        }
+        if (font === "Baskerville") {
+            return "42pt"
+        }
+        if (font === "Funnier") {
+            return "38pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "50pt"
+        }
+    };
+    console.log(font);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -62,9 +78,9 @@ module.exports = createPreview = async (propiedades) => {
     }
 
     .region {
-         color: ${fontColor(colorProduct)};
+        color: ${fontColor(colorProduct)};
         font-family:${font};
-        font-size: 42pt;
+        font-size: ${fontSizeRegion(font)};
         text-align: center;
     }
 
@@ -72,13 +88,13 @@ module.exports = createPreview = async (propiedades) => {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
     }
 
     .secondLevel {
         display: flex;
         justify-content: space-between;
-        margin-top: 30px;
+        margin-top: 10px;
         width: 100%;
     }
       @font-face {
@@ -141,7 +157,7 @@ module.exports = createPreview = async (propiedades) => {
 <div style="margin-top: 100px">
     <div class="firstLevel">
         <div style="width: 100%">
-            <div><pre class="region">${firstRegionName} ${firstRegionNumber} %</pre></div>
+            <div><pre class="region">${firstRegionName} ${firstRegionNumber}%</pre></div>
         </div>
     </div>
     <div style="display: flex">
@@ -151,7 +167,7 @@ module.exports = createPreview = async (propiedades) => {
     </div>
     <div class="secondLevel">
         <div style="width: 100%">
-            <div><pre class="region">${secondRegionName}  ${secondRegionNumber} %</pre></div>
+            <div><pre class="region">${secondRegionName}  ${secondRegionNumber}%</pre></div>
         </div>
     </div>
 </div>

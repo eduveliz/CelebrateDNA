@@ -29,13 +29,16 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "42pt"
+            return "50pt"
         }
         if (font === "Baskerville") {
             return "42pt"
         }
         if (font === "Funnier") {
             return "38pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "50pt"
         }
     };
 
@@ -74,7 +77,7 @@ module.exports = createPreview = async (propiedades) => {
     }
 
     .region {
-        font-size: 42pt;
+        font-size: ${fontSizeRegion(font)};
         font-family:${font};
         color: ${fontColor(colorProduct)};
         text-align: center;

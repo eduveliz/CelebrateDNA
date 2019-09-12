@@ -53,6 +53,9 @@ module.exports = createPreview = async (propiedades) => {
         if (font === "Baskerville") {
             return "42pt"
         }
+        if (font === "Funnier") {
+            return "34pt"
+        }
     };
 
     const browser = await puppeteer.launch();

@@ -54,7 +54,7 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "36pt"
+            return "30pt"
         }
         if (font === "Baskerville") {
             return "42pt"
@@ -183,15 +183,15 @@ module.exports = createPreview = async (propiedades) => {
 <div class="firstLevel">
     <div style="width: 100%">
         <div class="region">${firstRegionName}</div>
-        <div class="region">${firstRegionNumber} %</div>
+        <div class="region">${firstRegionNumber}%</div>
     </div>
     <div style="width: 100%">
         <div class="region">${secondRegionName}</div>
-        <div class="region">${secondRegionNumber} %</div>
+        <div class="region">${secondRegionNumber}%</div>
     </div>
     <div style="width: 100%">
         <div class="region">${threeRegionName}</div>
-        <div class="region">${threeRegionNumber} %</div>
+        <div class="region">${threeRegionNumber}%</div>
     </div>
 </div>
 
