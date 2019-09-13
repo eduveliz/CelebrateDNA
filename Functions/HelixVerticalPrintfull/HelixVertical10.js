@@ -5,43 +5,48 @@ const fontStyle = require('../../Functions/FontStyle/FontStyle');
 const fontColor = require('../../Functions/FontStyle/FontStyle');
 const colorProductSelect = require('../../Functions/Color/Color');
 
-module.exports = createPreview = async (propiedades) => {
-    const name = propiedades.nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
+module.exports = createPreview = async (nameFile, propiedades) => {
+    const name = nameFile;
+    const datos = toArray(propiedades.line_items[0].properties);
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
+    const firstRegionName = datos[1];
+    const firstRegionNumber = datos[2];
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
+    const secondRegionName = datos[3];
+    const secondRegionNumber = datos[4];
 
-    const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNumber = propiedades.regions[3].porcentaje;
+    const threeRegionName = datos[5];
+    const threeRegionNumber = datos[6];
 
-    const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNumber = propiedades.regions[4].porcentaje;
+    const fourRegionName = datos[7];
+    const fourRegionNumber = datos[8];
 
-    const sixRegionName = propiedades.regions[5].region;
-    const sixRegionNumber = propiedades.regions[5].porcentaje;
+    const fiveRegionName = datos[9];
+    const fiveRegionNumber = datos[10];
 
-    const sevenRegionName = propiedades.regions[6].region;
-    const sevenRegionNumber = propiedades.regions[6].porcentaje;
+    const sixRegionName = datos[11];
+    const sixRegionNumber = datos[12];
 
-    const eightRegionName = propiedades.regions[7].region;
-    const eightRegionNumber = propiedades.regions[7].porcentaje;
+    const sevenRegionName = datos[13];
+    const sevenRegionNumber = datos[14];
 
-    const nineRegionName = propiedades.regions[8].region;
-    const nineRegionNumber = propiedades.regions[8].porcentaje;
+    const eightRegionName = datos[15];
+    const eightRegionNumber = datos[16];
+
+    const nineRegionName = datos[17];
+    const nineRegionNumber = datos[18];
+
+    const tenRegionName = datos[19];
+    const tenRegionNumber = datos[20];
 
     //Background Map
-    const colorProduct = propiedades.colorProduct;
+    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
     //Headline
-
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
+    const headline = datos[21] === "Personalized headline" ? datos[22] : datos[21];
 
     //FontSize
-    const font = fontStyle(propiedades.fontStyle);
+    const font = fontStyle(datos[23]);
+
 
     fontSize = (font) => {
         if (font === "Noteworthy") {
@@ -74,7 +79,6 @@ module.exports = createPreview = async (propiedades) => {
             return "#58585B"
         }
     };
-
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -101,7 +105,7 @@ module.exports = createPreview = async (propiedades) => {
     }
     
     .headline{
-     font-size: ${fontSize(font)};
+    font-size: ${fontSize(font)};
     font-family: ${font};
     text-align: center;
     color:${colorFont(font)}
@@ -168,10 +172,10 @@ module.exports = createPreview = async (propiedades) => {
         <img style="width: 7.14in;height: 12.92in" src="https://moolab.ml/Twister.png">
     </div>
     <div class="regions">
-        <div style="margin-left: 10%;color:${colorFont(font)}; flex: 1; width: 700px;height: 40px">
+        <div style="margin-left: 10%;color: white; flex: 1; width: 700px;height: 40px">
             ${firstRegionName} ${firstRegionNumber}%
         </div>
-        <div style="margin-left:-4%; c  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left:-4%;   color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
              ${secondRegionName} ${secondRegionNumber}%
         </div>
         <div style="margin-left: -15%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
@@ -183,17 +187,20 @@ module.exports = createPreview = async (propiedades) => {
         <div style="margin-left: -20%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
             ${fiveRegionName} ${fiveRegionNumber}%
         </div>
-        <div style="margin-left: -15%;   color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left: -15%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
             ${sixRegionName} ${sixRegionNumber}%
         </div>
         <div style="margin-left: -10%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
             ${sevenRegionName} ${sevenRegionNumber}%
         </div>
-        <div style="margin-left: -5%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left: -8%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
             ${eightRegionName} ${eightRegionNumber}%
         </div>
-        <div style="margin-left: 5%;color:${colorFont(font)};flex: 1;width: 700px;height: 40px"> 
+        <div style="margin-left: -8%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px"> 
             ${nineRegionName} ${nineRegionNumber}%
+        </div>
+        <div style="margin-left: -8%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
+             ${tenRegionName} ${tenRegionNumber}%
         </div>
     </div>
 </div>
@@ -207,6 +214,6 @@ module.exports = createPreview = async (propiedades) => {
         height: 1536,
         deviceScaleFactor: 1,
     });
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.screenshot({path: `public/${name}.png`});
     await browser.close();
 };

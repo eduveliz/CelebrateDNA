@@ -21,7 +21,8 @@ const helixVerticalSelector = require('./Functions/HelixVertical/HelixVerticalSe
 const helixSelectorPrintfull = require('./Functions/HelixPrintfull/HelixSelector');
 const setNumberRegionsHelix = require('./Functions/RegionNumbers/setRegionNumberHelix');
 //printFull Vertical
-
+const helixVerticalSelectorPrintfull = require('./Functions/HelixVerticalPrintfull/HelixVerticalSelector');
+const setNumberRegionsHelixVertical = require('./Functions/RegionNumbers/setRegionNumberHelixVertical');
 
 
 //Donut
@@ -148,7 +149,7 @@ app.post('/printfull', jsonParser, function (req, res) {
     const nameFile = Date.now();
     const sku = req.body.line_items[0].sku;
     const id = line_items[0].id;
-    console.log("dato regiones", toArray(cantidad).length);
+    console.log("dato regiones general", toArray(cantidad).length);
 
     // const name = shipping_address.first_name;
     // const address1 = shipping_address.address1;
@@ -157,7 +158,32 @@ app.post('/printfull', jsonParser, function (req, res) {
     // const countryCode = shipping_address.country_code;
     // const zip = shipping_address.zip;
 
-    helixSelectorPrintfull(setNumberRegionsHelix(toArray(cantidad).length), req.body, nameFile).then(() => {
+    // helixSelectorPrintfull(setNumberRegionsHelix(toArray(cantidad).length), req.body, nameFile).then(() => {
+    //     return axios.post('https://api.printful.com/orders', {
+    //             "recipient": {
+    //                 "name": "Alex",
+    //                 "address1": "19749 Dearborn St",
+    //                 "city": "Chatsworth",
+    //                 "state_code": "CA",
+    //                 "country_code": "US",
+    //                 "zip": "91311"
+    //             },
+    //             "items": [{
+    //                 "variant_id": sku,
+    //                 "quantity": 1,
+    //                 "files": [{
+    //                     "url": "https://987560b2.ngrok.io/" + nameFile + ".png"
+    //                 }]
+    //             }]
+    //         },
+    //         {
+    //             headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+    //         }
+    //     ).catch(reason => console.log("asd" + reason));
+    //
+    // }).catch(error => console.log('este es el error', error));
+
+    helixVerticalSelectorPrintfull(setNumberRegionsHelixVertical(toArray(cantidad).length), req.body, nameFile).then(() => {
         return axios.post('https://api.printful.com/orders', {
                 "recipient": {
                     "name": "Alex",
@@ -181,6 +207,7 @@ app.post('/printfull', jsonParser, function (req, res) {
         ).catch(reason => console.log("asd" + reason));
 
     }).catch(error => console.log('este es el error', error));
+
 
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });

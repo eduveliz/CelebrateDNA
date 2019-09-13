@@ -10,30 +10,6 @@ module.exports = createPreview = async (propiedades) => {
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNumber = propiedades.regions[0].porcentaje;
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
-
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
-
-    const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNumber = propiedades.regions[3].porcentaje;
-
-    const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNumber = propiedades.regions[4].porcentaje;
-
-    const sixRegionName = propiedades.regions[5].region;
-    const sixRegionNumber = propiedades.regions[5].porcentaje;
-
-    const sevenRegionName = propiedades.regions[6].region;
-    const sevenRegionNumber = propiedades.regions[6].porcentaje;
-
-    const eightRegionName = propiedades.regions[7].region;
-    const eightRegionNumber = propiedades.regions[7].porcentaje;
-
-    const nineRegionName = propiedades.regions[8].region;
-    const nineRegionNumber = propiedades.regions[8].porcentaje;
-
     //Background Map
     const colorProduct = propiedades.colorProduct;
     //Headline
@@ -42,38 +18,6 @@ module.exports = createPreview = async (propiedades) => {
 
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
-
-    fontSize = (font) => {
-        if (font === "Noteworthy") {
-            return "80pt"
-        }
-        if (font === "Baskerville") {
-            return "70pt"
-        }
-        if (font === "Funnier") {
-            return "52pt"
-        }
-    };
-
-    fontSizeRegion = (font) => {
-        if (font === "Noteworthy") {
-            return "40pt"
-        }
-        if (font === "Baskerville") {
-            return "38pt"
-        }
-        if (font === "Funnier") {
-            return "30pt"
-        }
-    };
-
-    colorFont = () => {
-        if (colorProduct === "Navy" || colorProduct === "Black" || colorProduct === "Steel Blue") {
-            return "White"
-        } else {
-            return "#58585B"
-        }
-    };
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -91,20 +35,20 @@ module.exports = createPreview = async (propiedades) => {
         z-index: 1;            
         position: relative;
         right: 250px;
-        top: 480px;
+        top: 480px; 
         height: 758px;
         width: 735px;
         display: flex;
         flex-direction: column;
-        font-size: ${fontSizeRegion(font)};
+        font-size: 32pt;
         font-family: ${font};
     }
     
     .headline{
-     font-size: ${fontSize(font)};
+    font-size: 62pt;
     font-family: ${font};
     text-align: center;
-    color:${colorFont(font)}
+    color: white;
     }
     
   @font-face {
@@ -162,38 +106,14 @@ module.exports = createPreview = async (propiedades) => {
     font-style: normal;
   }
 </style>
-<body style="width: 12in;height:16in;background-color: ${colorProductSelect(colorProduct)}">
+<body style="width: 12in;height:16in;background-color: black">
 <div style="display: flex">
     <div style="margin-left: 50px">
         <img style="width: 7.14in;height: 12.92in" src="https://moolab.ml/Twister.png">
     </div>
     <div class="regions">
-        <div style="margin-left: 10%;color:${colorFont(font)}; flex: 1; width: 700px;height: 40px">
-            ${firstRegionName} ${firstRegionNumber}%
-        </div>
-        <div style="margin-left:-4%; c  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
-             ${secondRegionName} ${secondRegionNumber}%
-        </div>
-        <div style="margin-left: -15%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
-            ${threeRegionName} ${threeRegionNumber}%
-        </div>
-        <div style="margin-left: -25%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
-            ${fourRegionName} ${fourRegionNumber}%
-        </div>
-        <div style="margin-left: -20%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
-            ${fiveRegionName} ${fiveRegionNumber}%
-        </div>
-        <div style="margin-left: -15%;   color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
-            ${sixRegionName} ${sixRegionNumber}%
-        </div>
-        <div style="margin-left: -10%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
-            ${sevenRegionName} ${sevenRegionNumber}%
-        </div>
-        <div style="margin-left: -5%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
-            ${eightRegionName} ${eightRegionNumber}%
-        </div>
-        <div style="margin-left: 5%;color:${colorFont(font)};flex: 1;width: 700px;height: 40px"> 
-            ${nineRegionName} ${nineRegionNumber}%
+        <div style="margin-left: 10%;color: white; display: flex; flex: 1; width: 700px;height: 40px">
+            <div style="display: flex;justify-content: center;align-content: center;flex-direction: column">${firstRegionName} ${firstRegionNumber} %</div>
         </div>
     </div>
 </div>
