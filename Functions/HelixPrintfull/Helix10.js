@@ -185,8 +185,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </style>
 
 <body style="width: 12in;height:16.04in;">
-
-
+<div style="margin-top: 1.1in">
 <div class="firstLevel">
     <div style="width: 100%">
         <div class="region">${firstRegionName}</div>
@@ -239,6 +238,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         <div class="region">${tenRegionNumber}%</div>
         <div class="region">${tenRegionName}</d
     </div>
+</div>
 </div>
 </body>
 </html>

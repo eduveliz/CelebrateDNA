@@ -117,7 +117,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         display: flex;
         justify-content: space-around;
         width: 100%;
-        margin-top: 30%;
     }
 
     .secondLevel {
@@ -183,6 +182,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </style>
 
 <body style="width: 12in;height:16.04in;">
+<div style="margin-top: 1.2in">
 <div class="firstLevel">
     <div style="width: 100%;">
         <div class="region">${firstRegionName}</div>
@@ -227,6 +227,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         <div class="region">${eightRegionNumber}%</div>
         <div class="region">${eightRegionName}</div>
     </div>
+</div>
 </div>
 </body>
 </html>

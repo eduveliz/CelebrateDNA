@@ -20,6 +20,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const secondRegionNumber = datos[4];
 
     const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
+    console.log("color", colorProduct);
     //Headline
     const headline = datos[5];
     //const firstName = propiedades.personalHeadline;
@@ -155,7 +156,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </style>
 
 <body style="width: 12in;height:16.04in;">
-<div style="margin-top: 100px">
+<div style="margin-top: 2in">
     <div class="firstLevel">
     </div>
     <div style="display: flex">

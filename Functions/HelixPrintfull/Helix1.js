@@ -141,17 +141,14 @@ module.exports = createPreview = async (nameFile, propiedades) => {
   }
 </style>
 <body style="width: 12in;height:16.04in;">
-<div style="display: flex;margin-top: 30%">
-    <div class="textDNA">
-        <div id="headline"></div>
-    </div>
-    <div style="width: 12in">
-        <img style="width: 12in" src="${imageHelix(headline)}">
-    </div>
-</div>
-<div style="width: 100%; margin-top: 20px">
-    <div class="region">${firstRegionName} ${firstRegionNumber}%</div>
-</div>
+        <div style="display: flex;margin-top: 2in">
+            <div style="width: 12in">
+                <img style="width: 12in" src="${imageHelix(headline)}">
+            </div>
+        </div>
+        <div style="width: 100%; margin-top: 20px">
+            <div class="region">${firstRegionName} ${firstRegionNumber}%</div>
+        </div>
 </body>
 </html>
 `);
