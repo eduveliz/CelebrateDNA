@@ -37,6 +37,21 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
     const map = companyMap(propiedades.company);
 
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "30pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "30pt"
+        }
+        if (font === "Funnier") {
+            return "30pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "30pt"
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -48,8 +63,22 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <style>
     .fontColor {
         color:${fontColor(colorProduct)};
-        font-family:Funnier 
+        font-family:Funnier ;
+        font-size: ${fontSizeRegion(font)};
     }
+    .fontColorNumber {
+        color:${fontColor(colorProduct)};
+        font-family:Funnier ;
+        font-size: ${fontSizeRegion(font)};
+    }
+    .fontColorHeadline {
+        color:${fontColor(colorProduct)};
+        font-family:Funnier ;
+        font-size: ${fontSizeRegion(font)};
+        text-align: center; 
+        font-size:89px; 
+    }
+    
     @font-face {
     font-family: 'Futura';
     src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
@@ -109,20 +138,19 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)}">
-<h1 class='fontColor' style="text-align: center; font-size:89px ">${headline} </h1>
+<h1 class='fontColorHeadline'>${headline}</h1>
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
-
 <div style="margin-top: 50px;margin-right: 20px">
     <div style="display: flex; justify-content: space-around;">
-        <div class="fontColor" style="color:white;height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+        <div class="fontColor" style="color:white;height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber} %
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-top: 30px">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class="fontColor" style="font-size: 35px;">${firstRegionName}</div>
+            <div class="fontColor">${firstRegionName}</div>
         </div>
     </div>
 </div>

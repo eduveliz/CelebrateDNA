@@ -43,6 +43,20 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
     const map = companyMap(propiedades.company);
 
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "30pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "30pt"
+        }
+        if (font === "Funnier") {
+            return "30pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "30pt"
+        }
+    };
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -55,6 +69,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     .fontColor {
         color:${fontColor(colorProduct)};
         font-family:${font};
+    }
+    
+    .fontRegion {
+    font-size:${fontSizeRegion(font)} ;
+    font-family:${font};
     }
     
         @font-face {
@@ -135,13 +154,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class="fontColor"  style="margin-top: 30px;font-size: 25px;">${firstRegionName}</div>
+            <div class="fontRegion"  style="margin-top: 30px;font-size: 25px;">${firstRegionName}</div>
         </div>
         <div style="width:100%;height:60px; display: flex; justify-content: center">
-            <div class="fontColor"  style="margin-top: 30px;font-size: 25px">${secondRegionName}</div>
+            <div class="fontRegion"  style="margin-top: 30px;font-size: 25px">${secondRegionName}</div>
         </div>
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class="fontColor"  style="margin-top: 30px;font-size: 25px">${threeRegionName}</div>
+            <div class="fontRegion"  style="margin-top: 30px;font-size: 25px">${threeRegionName}</div>
         </div>
     </div>
 </div>

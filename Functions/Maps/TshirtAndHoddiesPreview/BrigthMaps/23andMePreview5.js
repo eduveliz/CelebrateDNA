@@ -60,6 +60,20 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         deviceScaleFactor: 1,
     });
 
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "30pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "30pt"
+        }
+        if (font === "Funnier") {
+            return "30pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "30pt"
+        }
+    };
     await page.setContent(`
     <!DOCTYPE html>
 <html lang="en">
@@ -156,19 +170,19 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
     <div style="display: flex; justify-content: space-around;margin-top: 20px;">
         <div style="width:100%;height:60px;display: flex; justify-content: center;">
-            <div class='fontColor' style="font-size: 25px;">${firstRegionName}</div>
+            <div class='fontRegion' style="font-size: 25px;">${firstRegionName}</div>
         </div>
         <div style="width:100%;height:60px; display: flex; justify-content: center">
-            <div class='fontColor' style="font-size: 25px">${secondRegionName}</div>
+            <div class='fontRegion' style="font-size: 25px">${secondRegionName}</div>
         </div>
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class='fontColor' style="font-size: 25px">${threeRegionName}</div>
+            <div class='fontRegion' style="font-size: 25px">${threeRegionName}</div>
         </div>
         <div style=" width:100%;height:60px;display: flex; justify-content: center">
-            <div class='fontColor' style="font-size: 25px">${fourRegionName}</div>
+            <div class='fontRegion' style="font-size: 25px">${fourRegionName}</div>
         </div>
         <div style=" width:100%;height:60px;display: flex; justify-content: center">
-            <div class='fontColor' style="font-size: 25px">${fiveRegionName}</div>
+            <div class='fontRegion' style="font-size: 25px">${fiveRegionName}</div>
         </div>
     </div>
 </div>

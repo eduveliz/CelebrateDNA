@@ -71,7 +71,20 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
     const map = companyMap(propiedades.company);
-
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "30pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "30pt"
+        }
+        if (font === "Funnier") {
+            return "30pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "30pt"
+        }
+    };
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -157,7 +170,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 <div style="display: flex; justify-content:space-between;width:98%;margin-top: 50px;padding: 10px">
     <div id="firstGroup" style="width: 100%;">
         <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
-            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${firstRegionName}</div>
+            <div class="fontRegion" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${firstRegionName}</div>
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
@@ -170,13 +183,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
             <div style="width: 50%"></div>
-            <div class="fontColor" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${secondRegionName}</div>
+            <div class="fontRegion" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${secondRegionName}</div>
         </div>
     </div>
 
        <div id="secondGroup" style="width: 100%;">
         <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
-            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${secondRegionName}</div>
+            <div class="fontRegion" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${secondRegionName}</div>
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
@@ -189,13 +202,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
             <div style="width: 50%"></div>
-            <div class="fontColor" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${threeRegionName}</div>
+            <div class="fontRegion" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${threeRegionName}</div>
         </div>
     </div>
      
    <div id="secondGroup" style="width: 100%;">
         <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
-            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${fiveRegionName}</div>
+            <div class="fontRegion" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${fiveRegionName}</div>
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
@@ -208,13 +221,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
             <div style="width: 50%"></div>
-            <div class="fontColor" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${sixRegionName}</div>
+            <div class="fontRegion" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${sixRegionName}</div>
         </div>
     </div>
 
     <div id="fourGroup" style="width: 100% ; ">
         <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
-            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${sevenRegionName}</div>
+            <div class="fontRegion" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${sevenRegionName}</div>
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
@@ -227,13 +240,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
             <div style="width: 50%"></div>
-            <div class="fontColor" style="font-size: 25px; width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${eightRegionName}</div>
+            <div class="fontRegion" style="font-size: 25px; width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${eightRegionName}</div>
         </div>
     </div>
 
     <div id="fiveGroup" style="width: 100%; ">
         <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
-            <div class="fontColor" style="font-size: 25px;text-align: center;width: 50%;display: flex;justify-content: center;align-items: center ">${nineRegionName}</div>
+            <div class="fontRegion" style="font-size: 25px;text-align: center;width: 50%;display: flex;justify-content: center;align-items: center ">${nineRegionName}</div>
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
@@ -246,7 +259,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
             <div style="width: 50%"></div>
-            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${tenRegionName}</div>
+            <div class="fontRegion" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${tenRegionName}</div>
         </div>
     </div>
 </div>

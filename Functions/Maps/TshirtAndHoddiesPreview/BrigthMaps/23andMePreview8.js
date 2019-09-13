@@ -63,6 +63,20 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
     const map = companyMap(propiedades.company);
 
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "30pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "30pt"
+        }
+        if (font === "Funnier") {
+            return "30pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "30pt"
+        }
+    };
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -181,28 +195,28 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
     <div style="display: flex; justify-content: space-around;">
         <div style="height:60px;width:100%;display: flex; justify-content: center">
-            <div class="RegionName" >${firstRegionName}</div>
+            <div class="fontRegion" >${firstRegionName}</div>
         </div>
         <div style="width:100%;height:60px; display: flex; justify-content: center">
-            <div class="RegionName" >${secondRegionName}</div>
+            <div class="fontRegion" >${secondRegionName}</div>
         </div>
         <div style=" width:100%;height:60px;display: flex; justify-content: center">
-            <div class="RegionName" >${threeRegionName}</div>
+            <div class="fontRegion" >${threeRegionName}</div>
         </div>
         <div style="width:100%; height:60px;display: flex; justify-content: center">
-            <div class="RegionName">${fourRegionName}</div>
+            <div class="fontRegion">${fourRegionName}</div>
         </div>
         <div style="width:100%; height:60px;display: flex; justify-content: center">
-            <div class="RegionName" >${fiveRegionName}</div>
+            <div class="fontRegion" >${fiveRegionName}</div>
         </div>
         <div style=" width:100%;height:60px;display: flex; justify-content: center">
-            <div class="RegionName" >${sixRegionName}</div>
+            <div class="fontRegion" >${sixRegionName}</div>
         </div>
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class="RegionName" >${sevenRegionName}</div>
+            <div class="fontRegion" >${sevenRegionName}</div>
         </div>
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class ="RegionName" >${eightRegionName}</div>
+            <div class ="fontRegion" >${eightRegionName}</div>
         </div>
     </div>
 </div>

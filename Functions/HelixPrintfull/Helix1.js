@@ -1,32 +1,22 @@
 const puppeteer = require('puppeteer');
-const toArray = require('lodash.toarray');
-const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
+const imageHelix = require('../Helix/ImageHelix');
 const fontColor = require('../Helix/FontColor');
 const colorProductSelect = require('../../Functions/Color/Color');
-const imageHelix = require('../Helix/ImageHelix');
+const toArray = require('lodash.toarray');
 
+module.exports = createPreview = async (nameFile, propiedades) => {
+    console.log("region one")
+    const datos = toArray(propiedades.line_items[0].properties);
+    const name = nameFile;
+    const firstRegionName = datos[1];
+    const firstRegionNumber = datos[2];
+    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
 
-module.exports = createPreview = async (propiedades) => {
-    //Regions  */ RegionsNamesSelectors is for Jquery/*
-    const name = propiedades.nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
-
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
-
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
-
-    const backgroundColor = colorBackground(propiedades.color);
-    const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = propiedades.colorProduct;
     //Headline
-    const headline = propiedades.headLine;
-    const firstName = propiedades.personalHeadline;
+    const headline = datos[3];
     //FontSize
-    const font = fontStyle(propiedades.fontStyle);
+    const font = fontStyle(datos[4]);
 
     fontSize = (font) => {
         if (font === "Noteworthy") {
@@ -42,32 +32,30 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "35pt"
+            return "50pt"
         }
         if (font === "Baskerville") {
             return "42pt"
         }
-        if (font === "Myriad Pro Bold") {
-            return "42pt"
-        }
         if (font === "Funnier") {
-            return "30pt"
+            return "38pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "50pt"
         }
     };
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.setViewport({
-        width: 1152,
-        height: 1536,
-        deviceScaleFactor: 1,
-    });
-
-    await page.setContent(`<html lang="en">
+    await page.setContent(`
+    <!DOCTYPE html> 
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <style>
     .textDNA {
         font-size: 24pt;
@@ -92,26 +80,12 @@ module.exports = createPreview = async (propiedades) => {
     }
 
     .region {
-        color: ${fontColor(colorProduct)};
         font-size: ${fontSizeRegion(font)};
         font-family:${font};
+        color: ${fontColor(colorProduct)};
         text-align: center;
     }
-
-    .firstLevel {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        margin-bottom: 30px;
-    }
-
-    .secondLevel {
-        display: flex;
-        margin-top: 30px;
-        justify-content: space-between;
-        width: 100%;
-    }
-      @font-face {
+  @font-face {
     font-family: 'Futura';
     src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
         url('https://moolab.ml/Fonts/Futura-Bold.woff') format('woff');
@@ -166,33 +140,26 @@ module.exports = createPreview = async (propiedades) => {
     font-style: normal;
   }
 </style>
-
-<body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
-<div style="margin-top: 100px">
-    <div class="firstLevel">
-    <div style="width: 100%">
-        <div class="region">${firstRegionName}</div>
-        <div class="region">${firstRegionNumber}%</div>
+<body style="width: 12in;height:16.04in;">
+<div style="display: flex;margin-top: 30%">
+    <div class="textDNA">
+        <div id="headline"></div>
     </div>
-    </div>
-    <div style="display: flex">
-        <div style="width: 12in">
-            <img style="width: 12in" src="${imageHelix(headline)}">
-        </div>
-    </div>
-    <div class="secondLevel">
-    <div style="width: 100%">
-        <div class="region">${secondRegionNumber}%</div>
-        <div class="region">${secondRegionName}</div>
-    </div> 
-     <div style="width: 100%">
-         <div class="region">${threeRegionNumber}%</div>
-        <div class="region">${threeRegionName}</div>
-    </div>
+    <div style="width: 12in">
+        <img style="width: 12in" src="${imageHelix(headline)}">
     </div>
 </div>
+<div style="width: 100%; margin-top: 20px">
+    <div class="region">${firstRegionName} ${firstRegionNumber}%</div>
+</div>
 </body>
-</html>`);
-    await page.screenshot({path: `previews/${name}.png`});
+</html>
+`);
+    await page.setViewport({
+        width: 1152,
+        height: 1536,
+        deviceScaleFactor: 1,
+    });
+    await page.screenshot({path: `public/${name}.png`});
     await browser.close();
 };

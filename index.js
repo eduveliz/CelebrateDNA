@@ -15,6 +15,8 @@ const ttPreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview
 const myHeritagePreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/MyHeritage/MyHeritagePreviewSelector');
 //Helix
 const helixSelector = require('./Functions/Helix/HelixSelector');
+const helixSelectorPrintfull = require('./Functions/HelixPrintfull/HelixSelector');
+const setNumberRegionsHelix = require('./Functions/RegionNumbers/setRegionNumberHelix');
 const helixVerticalSelector = require('./Functions/HelixVertical/HelixVerticalSelector');
 
 //Donut
@@ -57,7 +59,6 @@ app.post('/brigth', jsonParser, function (req, res) {
     return ttPreviewSelector(regionNumber, id, req.body).then(() => {
         res.end('{"success" : "Updated Successfully", "status" : 200}');
     });
-
 });
 
 app.post('/earth', jsonParser, function (req, res) {
@@ -136,42 +137,56 @@ app.post('/black', jsonParser, function (req, res) {
     });
 });
 
-
 app.post('/printfull', jsonParser, function (req, res) {
-
     //const regionNumber = toArray(req.body.line_items[0].properties).length;
     const {line_items, shipping_address} = req.body;
-    const productos = line_items;
+    const cantidad = line_items[0].properties;
+    const nameFile = Date.now();
+    const sku = req.body.line_items[0].sku;
+    //console.log(req.body.line_items[0].properties);
+    const id = line_items[0].id;
+    console.log(id);
+    console.log();
+    // const name = shipping_address.first_name;
+    // const address1 = shipping_address.address1;
+    // const city = shipping_address.city;
+    // const stateCode = shipping_address.province_code;
+    // const countryCode = shipping_address.country_code;
+    // const zip = shipping_address.zip;
 
-    const name = shipping_address.first_name;
-    const address1 = shipping_address.address1;
-    const city = shipping_address.city;
-    const stateCode = shipping_address.province_code;
-    const countryCode = shipping_address.country_code;
-    const zip = shipping_address.zip;
+    const name = "Alex";
+    const address1 = "calle fantasma";
+    const city = "Los Angeles";
+    const stateCode = "Usa";
+    const countryCode = "USA";
+    const zip = "91311";
 
-    productos.map((producto) => {
-        axios.post(' https://api.printful.com/orders', {
-            "recipient": {
-                "name": name,
-                "address1": address1,
-                "city": city,
-                "state_code": stateCode,
-                "country_code": countryCode,
-                "zip": zip
-            },
-            "items": [{
-                "variant_id": 8905,
-                "quantity": producto.quantity,
-                "files": [{
-                    "url": "https://b52b2a64.ngrok.io/DNA/amarillo.png"
+    console.log("here");
+    helixSelectorPrintfull(setNumberRegionsHelix(toArray(cantidad).length), req.body, nameFile).then(() => {
+        return axios.post('https://api.printful.com/orders', {
+                "recipient": {
+                    "name": "Alex",
+                    "address1": "19749 Dearborn St",
+                    "city": "Chatsworth",
+                    "state_code": "CA",
+                    "country_code": "US",
+                    "zip": "91311"
+                },
+                "items": [{
+                    "variant_id": sku,
+                    "quantity": 1,
+                    "files": [{
+                        "url": "https://f8ce54cd.ngrok.io/" + nameFile + ".png"
+                    }]
                 }]
-            }]
-        }, {headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}});
-        //  console.log(producto)
-    });
+            },
+            {
+                headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+            }
+        ).catch(reason => console.log("asd" + reason));
 
-    console.log(colors.yellow(Date.now()));
+    }).catch(error => console.log('este es el error', error));
+
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 

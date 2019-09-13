@@ -75,7 +75,20 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
     const map = companyMap(propiedades.company);
-
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "30pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "30pt"
+        }
+        if (font === "Funnier") {
+            return "30pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "30pt"
+        }
+    };
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -161,14 +174,14 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 <div style="display: flex; justify-content:space-around;width:100%;margin-top: 50px;margin-left: 35px;">
     <div id="firstGroup" style="width: 100%;">
         <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
-            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${firstRegionName}</div>
+            <div class="fontRegion" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${firstRegionName}</div>
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
             <div class="fontColor" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
                 ${firstRegionNumber}%
             </div>
-            <div class="fontColor" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+            <div class="fontRegion" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
                 ${secondRegionNumber}%
             </div>
         </div>

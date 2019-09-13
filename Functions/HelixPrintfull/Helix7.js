@@ -7,9 +7,9 @@ const colorProductSelect = require('../../Functions/Color/Color');
 const imageHelix = require('../Helix/ImageHelix');
 
 
-module.exports = createPreview = async (propiedades) => {
+module.exports = createPreview = async (nameFile, propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
-    const name = propiedades.nameFile;
+    const name = nameFile;
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNumber = propiedades.regions[0].porcentaje;
 
@@ -19,9 +19,21 @@ module.exports = createPreview = async (propiedades) => {
     const threeRegionName = propiedades.regions[2].region;
     const threeRegionNumber = propiedades.regions[2].porcentaje;
 
+    const fourRegionName = propiedades.regions[3].region;
+    const fourRegionNumber = propiedades.regions[3].porcentaje;
+
+    const fiveRegionName = propiedades.regions[4].region;
+    const fiveRegionNumber = propiedades.regions[4].porcentaje;
+
+    const sixRegionName = propiedades.regions[5].region;
+    const sixRegionNumber = propiedades.regions[5].porcentaje;
+
+    const sevenRegionName = propiedades.regions[6].region;
+    const sevenRegionNumber = propiedades.regions[6].porcentaje;
+
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = propiedades.colorProduct;
+    const colorProduct = propiedades.line_items[0].split('- ').pop().split('/')[0];
     //Headline
     const headline = propiedades.headLine;
     const firstName = propiedades.personalHeadline;
@@ -42,16 +54,16 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "35pt"
+            return "30pt"
         }
         if (font === "Baskerville") {
             return "42pt"
         }
-        if (font === "Myriad Pro Bold") {
-            return "42pt"
+        if (font === "MyriadPro-Bold") {
+            return "36pt"
         }
         if (font === "Funnier") {
-            return "30pt"
+            return "24pt"
         }
     };
 
@@ -63,10 +75,10 @@ module.exports = createPreview = async (propiedades) => {
         deviceScaleFactor: 1,
     });
 
-    await page.setContent(`<html lang="en">
+    await page.setContent(`<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8">    <title>Title</title>
 </head>
 <style>
     .textDNA {
@@ -107,8 +119,8 @@ module.exports = createPreview = async (propiedades) => {
 
     .secondLevel {
         display: flex;
-        margin-top: 30px;
         justify-content: space-between;
+        margin-top: 30px;
         width: 100%;
     }
       @font-face {
@@ -167,32 +179,51 @@ module.exports = createPreview = async (propiedades) => {
   }
 </style>
 
-<body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
-<div style="margin-top: 100px">
-    <div class="firstLevel">
+<body style="width: 12in;height:16.04in;">
+<div class="firstLevel">
     <div style="width: 100%">
         <div class="region">${firstRegionName}</div>
         <div class="region">${firstRegionNumber}%</div>
     </div>
-    </div>
-    <div style="display: flex">
-        <div style="width: 12in">
-            <img style="width: 12in" src="${imageHelix(headline)}">
-        </div>
-    </div>
-    <div class="secondLevel">
     <div style="width: 100%">
-        <div class="region">${secondRegionNumber}%</div>
         <div class="region">${secondRegionName}</div>
-    </div> 
-     <div style="width: 100%">
-         <div class="region">${threeRegionNumber}%</div>
-        <div class="region">${threeRegionName}</div>
+        <div class="region">${secondRegionNumber}%</div>
     </div>
+    <div style="width: 100%">
+        <div class="region">${threeRegionName}</div>
+        <div class="region">${threeRegionNumber}%</div>
+    </div>
+</div>
+
+
+<div style="display: flex">
+    <div style="width: 12in">
+        <img style="width: 12in" src="${imageHelix(headline)}">
+    </div>
+</div>
+
+
+<div class="secondLevel">
+    <div style="width: 100%">
+        <div class="region">${fourRegionNumber} %</div>
+        <div class="region">${fourRegionName}</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${fiveRegionNumber} %</div>
+        <div class="region">${fiveRegionName}</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${sixRegionNumber} %</div>
+        <div class="region">${sixRegionName}</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${sevenRegionNumber} %</div>
+        <div class="region">${sevenRegionName}</div>
     </div>
 </div>
 </body>
-</html>`);
+</html>
+`);
     await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };

@@ -7,9 +7,9 @@ const colorProductSelect = require('../../Functions/Color/Color');
 const imageHelix = require('../Helix/ImageHelix');
 
 
-module.exports = createPreview = async (propiedades) => {
+module.exports = createPreview = async (nameFile, propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
-    const name = propiedades.nameFile;
+    const name = nameFile;
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNumber = propiedades.regions[0].porcentaje;
 
@@ -21,7 +21,7 @@ module.exports = createPreview = async (propiedades) => {
 
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = propiedades.colorProduct;
+    const colorProduct = propiedades.line_items[0].split('- ').pop().split('/')[0];
     //Headline
     const headline = propiedades.headLine;
     const firstName = propiedades.personalHeadline;
@@ -167,7 +167,7 @@ module.exports = createPreview = async (propiedades) => {
   }
 </style>
 
-<body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
+<body style="width: 12in;height:16.04in;">
 <div style="margin-top: 100px">
     <div class="firstLevel">
     <div style="width: 100%">

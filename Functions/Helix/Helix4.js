@@ -175,11 +175,13 @@ module.exports = createPreview = async (propiedades) => {
 
 <body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
 <div class="firstLevel">
-    <div style="width: 100%;">
-        <div><pre class="region">${firstRegionName}  ${firstRegionNumber}%</pre></div>
+    <div style="width: 100%">
+        <div class="region">${firstRegionName}</div>
+        <div class="region">${firstRegionNumber}%</div>
     </div>
-    <div style="width: 100%;">
-        <div><pre class="region">${secondRegionName}  ${secondRegionNumber}%</pre></div>
+    <div style="width: 100%">
+        <div class="region">${secondRegionName}</div>
+        <div class="region">${secondRegionNumber}%</div>
     </div>
 </div>
 
@@ -191,10 +193,12 @@ module.exports = createPreview = async (propiedades) => {
 
 <div class="secondLevel">
     <div style="width: 100%">
-        <div><pre class="region">${threeRegionName}  ${threeRegionNumber}%</pre></div>
+        <div class="region">${threeRegionNumber}%</div>
+        <div class="region">${threeRegionName}</div>
     </div>
     <div style="width: 100%">
-        <div><pre class="region">${fourRegionName}  ${fourRegionNumber}%</pre></div>
+        <div class="region">${fourRegionNumber}%</div>
+        <div class="region">${fourRegionName}</div>
     </div>
 </div>
 </body>

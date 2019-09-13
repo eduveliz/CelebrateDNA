@@ -7,38 +7,23 @@ const colorProductSelect = require('../../Functions/Color/Color');
 const imageHelix = require('../Helix/ImageHelix');
 
 
-module.exports = createPreview = async (propiedades) => {
+module.exports = createPreview = async (nameFile, propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
-    const name = propiedades.nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
+    const datos = toArray(propiedades.line_items[0].properties);
+    console.log("AS" + datos);
+    const name = nameFile;
+    const firstRegionName = datos[1];
+    const firstRegionNumber = datos[2];
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
-
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
-
-    const backgroundColor = colorBackground(propiedades.color);
-    const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = propiedades.colorProduct;
+    const secondRegionName = datos[3];
+    const secondRegionNumber = datos[3];
+    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
     //Headline
-    const headline = propiedades.headLine;
-    const firstName = propiedades.personalHeadline;
+    const headline = datos[3];
+    //const firstName = propiedades.personalHeadline;
     //FontSize
-    const font = fontStyle(propiedades.fontStyle);
+    const font = fontStyle(datos[4]);
 
-    fontSize = (font) => {
-        if (font === "Noteworthy") {
-            return "90pt"
-        }
-        if (font === "Baskerville") {
-            return "80pt"
-        }
-        if (font === "Funnier") {
-            return "62pt"
-        }
-    };
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -47,14 +32,14 @@ module.exports = createPreview = async (propiedades) => {
         if (font === "Baskerville") {
             return "42pt"
         }
-        if (font === "Myriad Pro Bold") {
-            return "42pt"
-        }
         if (font === "Funnier") {
-            return "30pt"
+            return "38pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "50pt"
         }
     };
-
+    console.log(font);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -93,8 +78,8 @@ module.exports = createPreview = async (propiedades) => {
 
     .region {
         color: ${fontColor(colorProduct)};
-        font-size: ${fontSizeRegion(font)};
         font-family:${font};
+        font-size: ${fontSizeRegion(font)};
         text-align: center;
     }
 
@@ -102,13 +87,13 @@ module.exports = createPreview = async (propiedades) => {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
     }
 
     .secondLevel {
         display: flex;
-        margin-top: 30px;
         justify-content: space-between;
+        margin-top: 10px;
         width: 100%;
     }
       @font-face {
@@ -167,13 +152,9 @@ module.exports = createPreview = async (propiedades) => {
   }
 </style>
 
-<body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
+<body style="width: 12in;height:16.04in;">
 <div style="margin-top: 100px">
     <div class="firstLevel">
-    <div style="width: 100%">
-        <div class="region">${firstRegionName}</div>
-        <div class="region">${firstRegionNumber}%</div>
-    </div>
     </div>
     <div style="display: flex">
         <div style="width: 12in">
@@ -182,15 +163,16 @@ module.exports = createPreview = async (propiedades) => {
     </div>
     <div class="secondLevel">
     <div style="width: 100%">
-        <div class="region">${secondRegionNumber}%</div>
+        <div class="region">${firstRegionNumber}%</div>       
+        <div class="region">${firstRegionName}</div>
+    </div>
+    <div style="width: 100%">
+         <div class="region">${secondRegionNumber}%</div>
         <div class="region">${secondRegionName}</div>
-    </div> 
-     <div style="width: 100%">
-         <div class="region">${threeRegionNumber}%</div>
-        <div class="region">${threeRegionName}</div>
     </div>
     </div>
 </div>
+
 </body>
 </html>`);
     await page.screenshot({path: `previews/${name}.png`});

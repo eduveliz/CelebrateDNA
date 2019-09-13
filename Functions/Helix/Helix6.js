@@ -51,7 +51,7 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "36pt"
+            return "35pt"
         }
         if (font === "Baskerville") {
             return "42pt"
