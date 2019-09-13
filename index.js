@@ -23,6 +23,9 @@ const setNumberRegionsHelix = require('./Functions/RegionNumbers/setRegionNumber
 //printFull Vertical
 const helixVerticalSelectorPrintfull = require('./Functions/HelixVerticalPrintfull/HelixVerticalSelector');
 const setNumberRegionsHelixVertical = require('./Functions/RegionNumbers/setRegionNumberHelixVertical');
+//printfull I love my dna
+const loveSelectorPrintfull = require('./Functions/ILoveMyDNAPrintfull/LoveSelector');
+const setNumberRegionsLove = require('./Functions/RegionNumbers/setRegionNumberLovel');
 
 
 //Donut
@@ -158,7 +161,37 @@ app.post('/printfull', jsonParser, function (req, res) {
     // const countryCode = shipping_address.country_code;
     // const zip = shipping_address.zip;
 
-    // helixSelectorPrintfull(setNumberRegionsHelix(toArray(cantidad).length), req.body, nameFile).then(() => {
+    if (id === "asdasd") {
+        helixSelectorPrintfull(setNumberRegionsHelix(toArray(cantidad).length), req.body, nameFile).then(() => {
+            return axios.post('https://api.printful.com/orders', {
+                    "recipient": {
+                        "name": "Alex",
+                        "address1": "19749 Dearborn St",
+                        "city": "Chatsworth",
+                        "state_code": "CA",
+                        "country_code": "US",
+                        "zip": "91311"
+                    },
+                    "items": [{
+                        "variant_id": sku,
+                        "quantity": 1,
+                        "files": [{
+                            "url": "https://987560b2.ngrok.io/" + nameFile + ".png"
+                        }]
+                    }]
+                },
+                {
+                    headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+                }
+            ).catch(reason => console.log("asd" + reason));
+
+        }).catch(error => console.log('este es el error', error));
+    }
+
+
+    if (id === "")
+
+    // helixVerticalSelectorPrintfull(setNumberRegionsHelixVertical(toArray(cantidad).length), req.body, nameFile).then(() => {
     //     return axios.post('https://api.printful.com/orders', {
     //             "recipient": {
     //                 "name": "Alex",
@@ -183,7 +216,8 @@ app.post('/printfull', jsonParser, function (req, res) {
     //
     // }).catch(error => console.log('este es el error', error));
 
-    helixVerticalSelectorPrintfull(setNumberRegionsHelixVertical(toArray(cantidad).length), req.body, nameFile).then(() => {
+
+    loveSelectorPrintfull(setNumberRegionsLove(toArray(cantidad).length), req.body, nameFile).then(() => {
         return axios.post('https://api.printful.com/orders', {
                 "recipient": {
                     "name": "Alex",

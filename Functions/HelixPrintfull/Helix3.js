@@ -194,6 +194,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </div>
 </body>
 </html>`);
-    await page.screenshot({path: `public/${name}.png`});
+    await page.evaluate(() => document.body.style.background = 'transparent');
+    await page.screenshot({path: `public/${name}.png`, omitBackground: true});
     await browser.close();
 };
