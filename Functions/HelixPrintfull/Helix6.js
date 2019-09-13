@@ -10,32 +10,31 @@ const imageHelix = require('../Helix/ImageHelix');
 module.exports = createPreview = async (nameFile, propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
     const name = nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
+    const datos = toArray(propiedades.line_items[0].properties);
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
+    const firstRegionName = datos[1];
+    const firstRegionNumber = datos[2];
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
+    const secondRegionName = datos[3];
+    const secondRegionNumber = datos[4];
 
-    const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNumber = propiedades.regions[3].porcentaje;
+    const threeRegionName = datos[5];
+    const threeRegionNumber = datos[6];
 
-    const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNumber = propiedades.regions[4].porcentaje;
+    const fourRegionName = datos[7];
+    const fourRegionNumber = datos[8];
 
-    const sixRegionName = propiedades.regions[5].region;
-    const sixRegionNumber = propiedades.regions[5].porcentaje;
+    const fiveRegionName = datos[9];
+    const fiveRegionNumber = datos[10];
 
-    const backgroundColor = colorBackground(propiedades.color);
-    const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = propiedades.line_items[0].split('- ').pop().split('/')[0];
+    const sixRegionName = datos[11];
+    const sixRegionNumber = datos[12];
+
+    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
     //Headline
-    const headline = propiedades.headLine;
-    const firstName = propiedades.personalHeadline;
+    const headline = datos[13];
     //FontSize
-    const font = fontStyle(propiedades.fontStyle);
+    const font = fontStyle(datos[14]);
 
     fontSize = (font) => {
         if (font === "Noteworthy") {
@@ -216,27 +215,9 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
 </div>
 </div>
-<script>    
-    $(function () {
-        $(document).ready(function () {
-        let headline = "${headline}";
-        let firstName = "${firstName}";
-        
-        if(headline === "First Name"){
-           $("#headline").append('<label class="name">'+firstName + '</label><label class="dna"> DNA</label>')    
-        }
-        if(headline === "Celebrating My DNA!"){
-           $("#headline").append('<label style="font-size: 22pt;" class="name">Celebrating </label><label style="font-size: 22pt;"  class="dna"> My DNA</label>')    
-        }
-        if(headline === "Dig Your Roots!"){
-           $("#headline").append('<label style="font-size: 28pt;" class="name">Dig Your </label><label font-size: 28pt; class="dna">Roots!</label>')    
-        }
-           })
-    }); 
-</script>
 </body>
 </html>
 `);
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.screenshot({path: `public/${name}.png`});
     await browser.close();
 };

@@ -11,7 +11,6 @@ const helix10 = require('./Helix10');
 
 module.exports = helixSelector = async (regionNumber, properties, namefile) => {
     if (regionNumber === 1) {
-        console.log("lelgue");
         return helix1(namefile, properties)
     }
     if (regionNumber === 2) {

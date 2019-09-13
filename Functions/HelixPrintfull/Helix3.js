@@ -10,23 +10,24 @@ const imageHelix = require('../Helix/ImageHelix');
 module.exports = createPreview = async (nameFile, propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
     const name = nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
+    const datos = toArray(propiedades.line_items[0].properties);
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
+    const firstRegionName = datos[1];
+    const firstRegionNumber = datos[2];
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
+    const secondRegionName = datos[3];
+    const secondRegionNumber = datos[4];
+
+    const threeRegionName = datos[5];
+    const threeRegionNumber = datos[6];
 
     const backgroundColor = colorBackground(propiedades.color);
-    const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = propiedades.line_items[0].split('- ').pop().split('/')[0];
+
+    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
     //Headline
-    const headline = propiedades.headLine;
-    const firstName = propiedades.personalHeadline;
+    const headline = datos[7];
     //FontSize
-    const font = fontStyle(propiedades.fontStyle);
+    const font = fontStyle(datos[8]);
 
     fontSize = (font) => {
         if (font === "Noteworthy") {
@@ -193,6 +194,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </div>
 </body>
 </html>`);
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.screenshot({path: `public/${name}.png`});
     await browser.close();
 };

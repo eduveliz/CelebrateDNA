@@ -15,9 +15,14 @@ const ttPreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview
 const myHeritagePreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/MyHeritage/MyHeritagePreviewSelector');
 //Helix
 const helixSelector = require('./Functions/Helix/HelixSelector');
+const helixVerticalSelector = require('./Functions/HelixVertical/HelixVerticalSelector');
+
+//printFull horizontal helix
 const helixSelectorPrintfull = require('./Functions/HelixPrintfull/HelixSelector');
 const setNumberRegionsHelix = require('./Functions/RegionNumbers/setRegionNumberHelix');
-const helixVerticalSelector = require('./Functions/HelixVertical/HelixVerticalSelector');
+//printFull Vertical
+
+
 
 //Donut
 const donut = require('./Functions/Donut/DonutSelector');
@@ -138,15 +143,13 @@ app.post('/black', jsonParser, function (req, res) {
 });
 
 app.post('/printfull', jsonParser, function (req, res) {
-    //const regionNumber = toArray(req.body.line_items[0].properties).length;
     const {line_items, shipping_address} = req.body;
     const cantidad = line_items[0].properties;
     const nameFile = Date.now();
     const sku = req.body.line_items[0].sku;
-    //console.log(req.body.line_items[0].properties);
     const id = line_items[0].id;
-    console.log(id);
-    console.log();
+    console.log("dato regiones", toArray(cantidad).length);
+
     // const name = shipping_address.first_name;
     // const address1 = shipping_address.address1;
     // const city = shipping_address.city;
@@ -154,14 +157,6 @@ app.post('/printfull', jsonParser, function (req, res) {
     // const countryCode = shipping_address.country_code;
     // const zip = shipping_address.zip;
 
-    const name = "Alex";
-    const address1 = "calle fantasma";
-    const city = "Los Angeles";
-    const stateCode = "Usa";
-    const countryCode = "USA";
-    const zip = "91311";
-
-    console.log("here");
     helixSelectorPrintfull(setNumberRegionsHelix(toArray(cantidad).length), req.body, nameFile).then(() => {
         return axios.post('https://api.printful.com/orders', {
                 "recipient": {
@@ -176,7 +171,7 @@ app.post('/printfull', jsonParser, function (req, res) {
                     "variant_id": sku,
                     "quantity": 1,
                     "files": [{
-                        "url": "https://f8ce54cd.ngrok.io/" + nameFile + ".png"
+                        "url": "https://987560b2.ngrok.io/" + nameFile + ".png"
                     }]
                 }]
             },

@@ -2,13 +2,13 @@ module.exports = regionNumber = (cantidad) => {
     if (cantidad === 5) {
         return 1;
     }
-    if (cantidad === 11) {
+    if (cantidad === 7) {
         return 2;
     }
     if (cantidad === 9) {
         return 3;
     }
-    if (cantidad === 12) {
+    if (cantidad === 11) {
         return 4;
     }
     if (cantidad === 13) {

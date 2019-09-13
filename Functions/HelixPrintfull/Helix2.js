@@ -9,20 +9,22 @@ const imageHelix = require('../Helix/ImageHelix');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
+    console.log("region 2");
     const datos = toArray(propiedades.line_items[0].properties);
-    console.log("AS" + datos);
+    console.log(datos);
     const name = nameFile;
     const firstRegionName = datos[1];
     const firstRegionNumber = datos[2];
 
     const secondRegionName = datos[3];
-    const secondRegionNumber = datos[3];
+    const secondRegionNumber = datos[4];
+
     const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
     //Headline
-    const headline = datos[3];
+    const headline = datos[5];
     //const firstName = propiedades.personalHeadline;
     //FontSize
-    const font = fontStyle(datos[4]);
+    const font = fontStyle(datos[6]);
 
 
     fontSizeRegion = (font) => {
@@ -175,6 +177,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
 </body>
 </html>`);
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.screenshot({path: `public/${name}.png`});
     await browser.close();
 };

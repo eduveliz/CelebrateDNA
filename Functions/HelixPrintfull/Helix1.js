@@ -6,7 +6,7 @@ const colorProductSelect = require('../../Functions/Color/Color');
 const toArray = require('lodash.toarray');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
-    console.log("region one")
+    console.log("region one");
     const datos = toArray(propiedades.line_items[0].properties);
     const name = nameFile;
     const firstRegionName = datos[1];
