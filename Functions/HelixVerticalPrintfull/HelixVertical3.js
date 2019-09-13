@@ -6,9 +6,7 @@ const fontColor = require('../../Functions/FontStyle/FontStyle');
 const colorProductSelect = require('../../Functions/Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
-
     const datos = toArray(propiedades.line_items[0].properties);
-    console.log("data", datos);
 
     const name = nameFile;
     const firstRegionName = datos[1];
@@ -177,6 +175,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         height: 1536,
         deviceScaleFactor: 1,
     });
-    await page.screenshot({path: `public/${name}.png`});
+    await page.evaluate(() => document.body.style.background = 'transparent');
+    await page.screenshot({path: `public/${name}.png`, omitBackground: true});
     await browser.close();
 };
