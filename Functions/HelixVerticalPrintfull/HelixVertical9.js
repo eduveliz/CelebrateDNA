@@ -70,13 +70,12 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
 
     colorFont = () => {
-        if (colorProduct === "Navy" || colorProduct === "Black" || colorProduct === "Steel Blue") {
+        if (colorProduct === "Navy " || colorProduct === "Black " || colorProduct === "Steel Blue ") {
             return "White"
         } else {
             return "#58585B"
         }
     };
-
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -164,7 +163,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     font-style: normal;
   }
 </style>
-<body style="width: 12in;height:16in;background-color: ${colorProductSelect(colorProduct)}">
+<body style="width: 12in;height:16in;">
+<div style="margin-top: 0.5in">
 <div style="display: flex">
     <div style="margin-left: 50px">
         <img style="width: 7.14in;height: 12.92in" src="https://moolab.ml/Twister.png">
@@ -200,6 +200,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
 </div>
 <div class="headline">${headline}</div>
+</div>
 </body>
 </html>
 `);

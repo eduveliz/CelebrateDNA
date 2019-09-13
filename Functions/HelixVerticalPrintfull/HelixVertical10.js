@@ -73,7 +73,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
 
     colorFont = () => {
-        if (colorProduct === "Navy" || colorProduct === "Black" || colorProduct === "Steel Blue") {
+        if (colorProduct === "Navy " || colorProduct === "Black " || colorProduct === "Steel Blue ") {
             return "White"
         } else {
             return "#58585B"
@@ -166,19 +166,20 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     font-style: normal;
   }
 </style>
-<body style="width: 12in;height:16in;background-color: ${colorProductSelect(colorProduct)}">
+<body style="width: 12in;height:16in;">
+<div style="margin-top: 0.5in">
 <div style="display: flex">
     <div style="margin-left: 50px">
         <img style="width: 7.14in;height: 12.92in" src="https://moolab.ml/Twister.png">
     </div>
     <div class="regions">
-        <div style="margin-left: 10%;color: white; flex: 1; width: 700px;height: 40px">
+        <div style="margin-left: 10%;color:${colorFont(font)}; flex: 1; width: 700px;height: 40px">
             ${firstRegionName} ${firstRegionNumber}%
         </div>
-        <div style="margin-left:-4%;   color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left:-4%;color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
              ${secondRegionName} ${secondRegionNumber}%
         </div>
-        <div style="margin-left: -15%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left: -15%; color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
             ${threeRegionName} ${threeRegionNumber}%
         </div>
         <div style="margin-left: -25%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
@@ -205,6 +206,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
 </div>
 <div class="headline">${headline}</div>
+</div>
 </body>
 </html>
 `);

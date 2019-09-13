@@ -170,10 +170,6 @@ module.exports = createPreview = async (propiedades) => {
 <body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
 <div style="margin-top: 100px">
     <div class="firstLevel">
-    <div style="width: 100%">
-        <div class="region">${firstRegionName}</div>
-        <div class="region">${firstRegionNumber}%</div>
-    </div>
     </div>
     <div style="display: flex">
         <div style="width: 12in">
@@ -181,6 +177,10 @@ module.exports = createPreview = async (propiedades) => {
         </div>
     </div>
     <div class="secondLevel">
+    <div style="width: 100%">
+        <div class="region">${firstRegionName}</div>
+    <div class="region">${firstRegionNumber}%</div>
+    </div>
     <div style="width: 100%">
         <div class="region">${secondRegionNumber}%</div>
         <div class="region">${secondRegionName}</div>

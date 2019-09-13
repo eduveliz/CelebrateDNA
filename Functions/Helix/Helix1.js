@@ -138,6 +138,10 @@ module.exports = createPreview = async (propiedades) => {
   }
 </style>
 <body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
+<div  style="z-index:1;width:100%;height: 20%;position:absolute;display:block;background-image: url('https://56d92f44.ngrok.io/Water/water.png');">
+<img style="width=12in ;height=16.04in;" src="https://56d92f44.ngrok.io/Water/water.png">
+</div>
+<div id="marca" >
 <div style="display: flex;margin-top: 30%">
     <div class="textDNA">
         <div id="headline"></div>
@@ -148,6 +152,10 @@ module.exports = createPreview = async (propiedades) => {
 </div>
 <div style="width: 100%; margin-top: 20px">
     <div class="region">${firstRegionName} ${firstRegionNumber}%</div>
+</div>
+</div>
+<div>
+<img width="350px" height="350px" src="https://56d92f44.ngrok.io/Water/note.png">
 </div>
 </body>
 </html>
