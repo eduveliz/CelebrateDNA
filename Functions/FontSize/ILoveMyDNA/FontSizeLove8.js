@@ -14,7 +14,7 @@ module.exports = font = (fontSelected) => {
             return fontSize = "40pt";
             break;
         case "Myriad Pro Bold":
-            return fontSize = "52pt";
+            return fontSize = "45pt";
             break;
         case "EmbossedTapeThree":
             return fontSize = "35pt";
@@ -23,7 +23,7 @@ module.exports = font = (fontSelected) => {
             return fontSize = "40pt";
             break;
         case "MyriadPro-Bold":
-            return fontSize = "40pt";
+            return fontSize = "45pt";
             break;
         case "Embossing":
             return fontSize = "38pt";

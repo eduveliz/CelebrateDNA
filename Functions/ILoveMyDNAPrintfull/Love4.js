@@ -69,7 +69,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     const fontColors = fontColor(color);
     const font = fontStyle(datos[8].toString());
-    const top = font === "Embossing" || font === "Funnier" ? "380px" : "270px";
+    const top = font === "Embossing" || font === "Funnier" ? "500px" : "400px";
 
     console.log("font", font);
     console.log("fontSize", fontSize(font));
@@ -156,8 +156,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         font-style: normal;
     }
 </style>
-<body style="width: 12in;height:16in;background-color:${colorProduct}">
-<div style="display: flex;margin-left: 70px">
+<div style="margin-top: 1.1in">
+<div style="display: flex;margin-left: 70px;">
     <img style="width: 7.14in;height: 12.92in" src="${imageColor(color)}">
     <div class="region">
         <div style="margin-top: 25px">${firstRegionName} ${firstRegionNumber}%</div>
@@ -166,6 +166,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         <div style="margin-top: 25px">${fourRegionName} ${fourRegionNumber}%</div>
     </div>
 </div>
+</div>
+
 </body>
 </html>
 `);

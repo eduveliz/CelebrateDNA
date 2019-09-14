@@ -195,7 +195,37 @@ app.post('/printfull', jsonParser, function (req, res) {
     //
     //
     // if (id === ""){
-    helixVerticalSelectorPrintfull(setNumberRegionsHelixVertical(toArray(cantidad).length), req.body, nameFile).then(() => {
+    // helixVerticalSelectorPrintfull(setNumberRegionsHelixVertical(toArray(cantidad).length), req.body, nameFile).then(() => {
+    //     return axios.post('https://api.printful.com/orders', {
+    //             "recipient": {
+    //                 "name": "Alex",
+    //                 "address1": "19749 Dearborn St",
+    //                 "city": "Chatsworth",
+    //                 "state_code": "CA",
+    //                 "country_code": "US",
+    //                 "zip": "91311"
+    //             },
+    //             "items": [{
+    //                 "variant_id": sku,
+    //                 "quantity": 1,
+    //                 "files": [{
+    //                     "url": "https://56d92f44.ngrok.io/" + nameFile + ".png"
+    //                 }]
+    //             }]
+    //         },
+    //         {
+    //             headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+    //         }
+    //     ).catch(reason => console.log("asd" + reason));
+    //
+    // }).catch(error => console.log('este es el error', error));
+    //
+    // res.end('{"success" : "Updated Successfully", "status" : 200}');
+    // }
+    //
+    //
+    // if(id==="as"){
+    loveSelectorPrintfull(setNumberRegionsLove(toArray(cantidad).length), req.body, nameFile).then(() => {
         return axios.post('https://api.printful.com/orders', {
                 "recipient": {
                     "name": "Alex",
@@ -209,7 +239,7 @@ app.post('/printfull', jsonParser, function (req, res) {
                     "variant_id": sku,
                     "quantity": 1,
                     "files": [{
-                        "url": "https://56d92f44.ngrok.io/" + nameFile + ".png"
+                        "url": "https://f831fd72.ngrok.io/" + nameFile + ".png"
                     }]
                 }]
             },
@@ -219,36 +249,6 @@ app.post('/printfull', jsonParser, function (req, res) {
         ).catch(reason => console.log("asd" + reason));
 
     }).catch(error => console.log('este es el error', error));
-
-    res.end('{"success" : "Updated Successfully", "status" : 200}');
-    // }
-    //
-    //
-    // if(id==="as"){
-    //     loveSelectorPrintfull(setNumberRegionsLove(toArray(cantidad).length), req.body, nameFile).then(() => {
-    //         return axios.post('https://api.printful.com/orders', {
-    //                 "recipient": {
-    //                     "name": "Alex",
-    //                     "address1": "19749 Dearborn St",
-    //                     "city": "Chatsworth",
-    //                     "state_code": "CA",
-    //                     "country_code": "US",
-    //                     "zip": "91311"
-    //                 },
-    //                 "items": [{
-    //                     "variant_id": sku,
-    //                     "quantity": 1,
-    //                     "files": [{
-    //                         "url": "https://987560b2.ngrok.io/" + nameFile + ".png"
-    //                     }]
-    //                 }]
-    //             },
-    //             {
-    //                 headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
-    //             }
-    //         ).catch(reason => console.log("asd" + reason));
-    //
-    //     }).catch(error => console.log('este es el error', error));
     // }
     //
     //     res.end('{"success" : "Updated Successfully", "status" : 200}');

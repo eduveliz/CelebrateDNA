@@ -79,7 +79,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     const fontColors = fontColor(color);
     const font = fontStyle(datos[16].toString());
-    const top = font === "Embossing" || font === "Funnier" ? "270px" : "220px";
+    const top = font === "Embossing" || font === "Funnier" ? "360px" : "310px";
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -162,8 +162,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         font-style: normal;
     }
 </style>
-<body style="width: 12in;height:16in;background-color:${colorProduct}">
-<div style="display: flex;margin-left: 70px">
+<div style="display: flex;margin-left: 70px;margin-top: 1.1in">
        <img style="width: 7.14in;height: 12.92in" src="${imageColor(color)}">
     <div class="region">
         <div style="margin-top: 10px">${firstRegionName} ${firstRegionNumber}%</div>

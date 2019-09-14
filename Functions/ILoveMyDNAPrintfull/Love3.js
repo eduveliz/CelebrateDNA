@@ -151,7 +151,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     }
 </style>
 <body style="width: 12in;height:16in;">
-<div style="display: flex;margin-left: 70px">
+<div style="display: flex;margin-left: 70px;margin-top: 1.1in">
     <img style="width: 7.14in;height: 12.92in" src="${imageColor(color)}">
     <div class="region">
         <div>${firstRegionName} ${firstRegionNumber}%</div>
