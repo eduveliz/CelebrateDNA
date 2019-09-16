@@ -154,13 +154,13 @@ app.post('/printfull', jsonParser, function (req, res) {
     const id = line_items[0].product_id.toString();
     console.log("dato regiones general", toArray(cantidad).length);
 
-    // const name = shipping_address.first_name;
-    // const address1 = shipping_address.address1;
-    // const city = shipping_address.city;
-    // const stateCode = shipping_address.province_code;
-    // const countryCode = shipping_address.country_code;
-    // const zip = shipping_address.zip;
-    //console.log(req.body);
+    const name = shipping_address.first_name;
+    const address1 = shipping_address.address1;
+    const city = shipping_address.city;
+    const stateCode = shipping_address.province_code;
+    const countryCode = shipping_address.country_code;
+    const zip = shipping_address.zip;
+    console.log(req.body);
 
     console.log("id", id);
 
