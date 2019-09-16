@@ -168,6 +168,8 @@ module.exports = createPreview = async (propiedades) => {
 </style>
 
 <body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
+<div  style="   z-index:1;width:100%;height: 20%;position:absolute;display:block;background-image:url('https://moolab.ml/Water/water.png');">
+</div>
 <div style="margin-top: 100px">
     <div class="firstLevel">
     </div>
@@ -190,6 +192,12 @@ module.exports = createPreview = async (propiedades) => {
         <div class="region">${threeRegionName}</div>
     </div>
     </div>
+</div>
+<div style="margin-top: 300px;color: ${fontColor(colorProduct)};">
+<h1>1.  T-shirt colors are approximated and not actual color. </h1>
+<h1>2.  Image is not actual size so the font may appear much smaller than in actuality.  </h1>
+<h1>3.  See models on the product page for better representation of graphic size and position.</h1>
+<h1>Intellectual Property. All Rights Reserved 2019.  CelebrateDNA™</h1>
 </div>
 </body>
 </html>`);

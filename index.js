@@ -151,7 +151,7 @@ app.post('/printfull', jsonParser, function (req, res) {
     const cantidad = line_items[0].properties;
     const nameFile = Date.now();
     const sku = req.body.line_items[0].sku;
-    const id = line_items[0].id;
+    const id = line_items[0].product_id.toString();
     console.log("dato regiones general", toArray(cantidad).length);
 
     // const name = shipping_address.first_name;
@@ -160,100 +160,96 @@ app.post('/printfull', jsonParser, function (req, res) {
     // const stateCode = shipping_address.province_code;
     // const countryCode = shipping_address.country_code;
     // const zip = shipping_address.zip;
+    //console.log(req.body);
 
     console.log("id", id);
 
+    if (id === "1864978006059" || id === "1865315287083") {
+        helixSelectorPrintfull(setNumberRegionsHelix(toArray(cantidad).length), req.body, nameFile).then(() => {
+            return axios.post('https://api.printful.com/orders', {
+                    "recipient": {
+                        "name": name,
+                        "address1": address1,
+                        "city": city,
+                        "state_code": stateCode,
+                        "country_code": countryCode,
+                        "zip": zip
+                    },
+                    "items": [{
+                        "variant_id": sku,
+                        "quantity": 1,
+                        "files": [{
+                            "url": "https://moolab.ml/" + nameFile + ".png"
+                        }]
+                    }]
+                },
+                {
+                    headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+                }
+            ).catch(reason => console.log("Error" + reason));
 
-    console.log("aqui");
-    // helixSelectorPrintfull(setNumberRegionsHelix(toArray(cantidad).length), req.body, nameFile).then(() => {
-    //     return axios.post('https://api.printful.com/orders', {
-    //             "recipient": {
-    //                 "name": "Alex",
-    //                 "address1": "19749 Dearborn St",
-    //                 "city": "Chatsworth",
-    //                 "state_code": "CA",
-    //                 "country_code": "US",
-    //                 "zip": "91311"
-    //             },
-    //             "items": [{
-    //                 "variant_id": sku,
-    //                 "quantity": 1,
-    //                 "files": [{
-    //                     "url": "https://56d92f44.ngrok.io/" + nameFile + ".png"
-    //                 }]
-    //             }]
-    //         },
-    //         {
-    //             headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
-    //         }
-    //     ).catch(reason => console.log("asd" + reason));
-    //
-    // }).catch(error => console.log('este es el error', error));
-    //
-    // res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }).then(() => {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
+    }
 
-    //
-    //
-    // if (id === ""){
-    // helixVerticalSelectorPrintfull(setNumberRegionsHelixVertical(toArray(cantidad).length), req.body, nameFile).then(() => {
-    //     return axios.post('https://api.printful.com/orders', {
-    //             "recipient": {
-    //                 "name": "Alex",
-    //                 "address1": "19749 Dearborn St",
-    //                 "city": "Chatsworth",
-    //                 "state_code": "CA",
-    //                 "country_code": "US",
-    //                 "zip": "91311"
-    //             },
-    //             "items": [{
-    //                 "variant_id": sku,
-    //                 "quantity": 1,
-    //                 "files": [{
-    //                     "url": "https://56d92f44.ngrok.io/" + nameFile + ".png"
-    //                 }]
-    //             }]
-    //         },
-    //         {
-    //             headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
-    //         }
-    //     ).catch(reason => console.log("asd" + reason));
-    //
-    // }).catch(error => console.log('este es el error', error));
-    //
-    // res.end('{"success" : "Updated Successfully", "status" : 200}');
-    // }
-    //
-    //
-    // if(id==="as"){
+    if (id === "1865318268971" || id === "1864993439787") {
+        helixVerticalSelectorPrintfull(setNumberRegionsHelixVertical(toArray(cantidad).length), req.body, nameFile).then(() => {
+            return axios.post('https://api.printful.com/orders', {
+                    "recipient": {
+                        "name": name,
+                        "address1": address1,
+                        "city": city,
+                        "state_code": stateCode,
+                        "country_code": countryCode,
+                        "zip": zip
+                    },
+                    "items": [{
+                        "variant_id": sku,
+                        "quantity": 1,
+                        "files": [{
+                            "url": "https://moolab.ml/" + nameFile + ".png"
+                        }]
+                    }]
+                },
+                {
+                    headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+                }
+            ).catch(reason => console.log("Error" + reason));
+
+        }).then(() => {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        })
+    }
+
+    if (id === "1865350643755" || id === "1865381838891") {
     loveSelectorPrintfull(setNumberRegionsLove(toArray(cantidad).length), req.body, nameFile).then(() => {
         return axios.post('https://api.printful.com/orders', {
                 "recipient": {
-                    "name": "Alex",
-                    "address1": "19749 Dearborn St",
-                    "city": "Chatsworth",
-                    "state_code": "CA",
-                    "country_code": "US",
-                    "zip": "91311"
+                    "name": name,
+                    "address1": address1,
+                    "city": city,
+                    "state_code": stateCode,
+                    "country_code": countryCode,
+                    "zip": zip
                 },
                 "items": [{
                     "variant_id": sku,
                     "quantity": 1,
                     "files": [{
-                        "url": "https://f831fd72.ngrok.io/" + nameFile + ".png"
+
                     }]
                 }]
             },
             {
                 headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
             }
-        ).catch(reason => console.log("asd" + reason));
+        ).catch(reason => console.log("Error" + reason));
 
-    }).catch(error => console.log('este es el error', error));
-    // }
-    //
-    //     res.end('{"success" : "Updated Successfully", "status" : 200}');
-    // });
-    res.end('{"success" : "Updated Successfully", "status" : 200}');
+    }).then(() => {
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    })
+    }
 });
 
 const PORT = process.env.PORT || 3000;
