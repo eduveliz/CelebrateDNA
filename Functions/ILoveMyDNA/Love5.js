@@ -67,9 +67,20 @@ module.exports = createPreview = async (propiedades) => {
     };
 
 
+    fontTop = (font) => {
+        if (font === "Embossing") {
+            return "400px";
+        }
+        if (font === "Funnier") {
+            return "430px"
+        } else {
+            return "320px"
+        }
+    };
+
     const fontColors = fontColor(propiedades.colorProduct);
     const font = fontStyle(propiedades.fontStyle);
-    const top = font === "Embossing" || font === "Funnier" ? "380px" : "280px";
+    const top = fontTop(font);
 
     console.log("font", font);
     console.log("fontSize", fontSize(font));
@@ -91,10 +102,11 @@ module.exports = createPreview = async (propiedades) => {
     .region {
         z-index: 1;
         position: absolute;
-        width: 755px;
+        width: 720px;   
         height: 528px;
+        text-align: center;
+          left: ${font === "Embossing" || font === "Funnier" ? "400px" : "380px"};
         color: ${fontColors};
-        left: 450px;
         top: ${top};
         font-family: ${font};
         font-size: ${fontSize(font)};

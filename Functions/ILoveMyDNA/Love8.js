@@ -75,10 +75,21 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+    fontTop = (font) => {
+        if (font === "Embossing") {
+            return "300px";
+        }
+        if (font === "Funnier") {
+            return "355px"
+        } else {
+            return "220px"
+        }
+    };
+
 
     const fontColors = fontColor(propiedades.colorProduct);
     const font = fontStyle(propiedades.fontStyle);
-    const top = font === "Embossing" || font === "Funnier" ? "270px" : "220px";
+    const top = fontTop(font);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -93,18 +104,18 @@ module.exports = createPreview = async (propiedades) => {
     <title>Title</title>
 </head>
 <style>
-    .region {
+  .region {
         z-index: 1;
         position: absolute;
-        width: 755px;
+        width: 720px;   
         height: 528px;
+        text-align: center;
+        left: ${font === "Embossing" || font === "Funnier" ? "400px" : "350px"};
         color: ${fontColors};
-        left: 450px;
         top: ${top};
         font-family: ${font};
         font-size: ${fontSize(font)};
     }
-
     @font-face {
         font-family: 'Futura';
         src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),

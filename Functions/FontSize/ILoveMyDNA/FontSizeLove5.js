@@ -8,7 +8,7 @@ module.exports = font = (fontSelected) => {
             return fontSize = "40pt";
             break;
         case "Funnier":
-            return fontSize = "50pt";
+            return fontSize = "40pt";
             break;
         case "Futura Bold":
             return fontSize = "40pt";
