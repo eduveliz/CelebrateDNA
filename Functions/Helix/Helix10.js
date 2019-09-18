@@ -184,7 +184,6 @@ module.exports = createPreview = async (propiedades) => {
 </style>
 
 <body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
-<div  style="z-index:1;width:100%;height: 20%;position:absolute;display:block;background-image: url('https://moolab.ml/Water/water.png');">
 </div>
 <div class="firstLevel">
     <div style="width: 100%">

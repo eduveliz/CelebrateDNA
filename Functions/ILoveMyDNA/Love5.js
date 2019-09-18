@@ -81,10 +81,6 @@ module.exports = createPreview = async (propiedades) => {
     const fontColors = fontColor(propiedades.colorProduct);
     const font = fontStyle(propiedades.fontStyle);
     const top = fontTop(font);
-
-    console.log("font", font);
-    console.log("fontSize", fontSize(font));
-
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -105,7 +101,7 @@ module.exports = createPreview = async (propiedades) => {
         width: 720px;   
         height: 528px;
         text-align: center;
-          left: ${font === "Embossing" || font === "Funnier" ? "400px" : "380px"};
+        left: ${font === "Embossing" || font === "Funnier" ? "400px" : "400px"};
         color: ${fontColors};
         top: ${top};
         font-family: ${font};
@@ -183,7 +179,7 @@ module.exports = createPreview = async (propiedades) => {
 <h1>1.  T-shirt colors are approximated and not actual color. </h1>
 <h1>2.  Image is not actual size so the font may appear much smaller than in actuality.  </h1>
 <h1>3.  See models on the product page for better representation of graphic size and position.</h1>
-<h1>Intellectual Property. All Rights Reserved 2019.  CelebrateDNA™</h1>
+<h1 style="text-align: center">Intellectual Property. All Rights Reserved 2019.  CelebrateDNA™</h1>
 </div>
 </body>
 </html>

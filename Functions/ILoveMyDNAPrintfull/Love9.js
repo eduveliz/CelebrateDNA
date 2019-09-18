@@ -1,9 +1,7 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
-const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
 const fontSize = require('../FontSize/ILoveMyDNA/FontSizeLove9');
-const colorProductSelect = require('../../Functions/Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const name = nameFile;
@@ -80,6 +78,16 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
 
+    fontTop = (font) => {
+        if (font === "Embossing") {
+            return "262px";
+        }
+        if (font === "Funnier") {
+            return "325px"
+        } else {
+            return "210px"
+        }
+    };
 
     const fontColors = fontColor(color);
     const font = fontStyle(datos[18].toString());
@@ -102,10 +110,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     .region {
         z-index: 1;
         position: absolute;
-        width: 755px;
-        color: ${fontColors};
+        width: 720px;   
         height: 528px;
-        left: 450px;              
+        text-align: center;
+        left: ${font === "Embossing" || font === "Funnier" ? "400px" : "330px"};
+        color: ${fontColors};
         top: ${top};
         font-family: ${font};
         font-size: ${fontSize(font)};

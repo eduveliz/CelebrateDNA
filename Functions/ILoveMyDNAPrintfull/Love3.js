@@ -64,9 +64,20 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
 
+    fontTop = (font) => {
+        if (font === "Embossing") {
+            return "600px";
+        }
+        if (font === "Funnier") {
+            return "520px"
+        } else {
+            return "450px"
+        }
+    };
+
     const fontColors = fontColor(color);
     const font = fontStyle(datos[6].toString());
-    const top = font === "Embossing" || font === "Funnier" ? "500px" : "400px";
+    const top = fontTop(font);
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -87,7 +98,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         position: absolute;
         width: 755px;
         height: 528px;
-        left: 450px;
+        left: ${font === "Embossing" || font === "Funnier" ? "450px" : "380px"};
         color: ${fontColors};
         top: ${top};
         font-family: ${font};

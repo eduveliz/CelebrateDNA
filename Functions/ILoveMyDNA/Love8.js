@@ -77,7 +77,7 @@ module.exports = createPreview = async (propiedades) => {
 
     fontTop = (font) => {
         if (font === "Embossing") {
-            return "300px";
+            return "340px";
         }
         if (font === "Funnier") {
             return "355px"
@@ -85,7 +85,6 @@ module.exports = createPreview = async (propiedades) => {
             return "220px"
         }
     };
-
 
     const fontColors = fontColor(propiedades.colorProduct);
     const font = fontStyle(propiedades.fontStyle);
@@ -190,7 +189,7 @@ module.exports = createPreview = async (propiedades) => {
 <h1>1.  T-shirt colors are approximated and not actual color. </h1>
 <h1>2.  Image is not actual size so the font may appear much smaller than in actuality.  </h1>
 <h1>3.  See models on the product page for better representation of graphic size and position.</h1>
-<h1>Intellectual Property. All Rights Reserved 2019.  CelebrateDNA™</h1>
+<h1 style="text-align: center">Intellectual Property. All Rights Reserved 2019.  CelebrateDNA™</h1>
 </div>
 </body>
 </html>

@@ -70,7 +70,7 @@ module.exports = createPreview = async (propiedades) => {
         if (font === "Funnier") {
             return "450px"
         } else {
-            return "320px"
+            return "400px"
         }
     };
 
@@ -97,7 +97,7 @@ module.exports = createPreview = async (propiedades) => {
         width: 730px;
         height: 528px;
         text-align: center;
-        left: ${font === "Embossing" || font === "Funnier" ? "400px" : "400px"};
+        left: ${font === "Embossing" || font === "Funnier" ? "400px" : "380px"};
         color: ${fontColors};
         top: ${top};
         font-family: ${font};
@@ -164,17 +164,17 @@ module.exports = createPreview = async (propiedades) => {
 <div style="display: flex;margin-left: 70px">
     <img style="width: 7.14in;height: 12.92in" src="${imageColor(propiedades.colorProduct)}">
     <div class="region">
-        <div style="margin-top: 25px">${firstRegionName} ${firstRegionNumber}%</div>
-        <div style="margin-top: 25px">${secondRegionName} ${secondRegionNumber}%</div>
-        <div style="margin-top: 25px">${threeRegionName} ${threeRegionNumber}%</div>
-        <div style="margin-top: 25px">${fourRegionName} ${fourRegionNumber}%</div>
+        <div style="margin-top: 28px">${firstRegionName} ${firstRegionNumber}%</div>
+        <div style="margin-top: 28px">${secondRegionName} ${secondRegionNumber}%</div>
+        <div style="margin-top: 28px">${threeRegionName} ${threeRegionNumber}%</div>
+        <div style="margin-top: 28px">${fourRegionName} ${fourRegionNumber}%</div>
     </div>
 </div>
 <div style="margin-top: 20px;color: ${fontColors};">
 <h1>1.  T-shirt colors are approximated and not actual color. </h1>
 <h1>2.  Image is not actual size so the font may appear much smaller than in actuality.  </h1>
 <h1>3.  See models on the product page for better representation of graphic size and position.</h1>
-<h1>Intellectual Property. All Rights Reserved 2019.  CelebrateDNA™</h1>
+<h1 style="text-align: center">Intellectual Property. All Rights Reserved 2019.  CelebrateDNA™</h1>
 </div>
 </body>
 </html>

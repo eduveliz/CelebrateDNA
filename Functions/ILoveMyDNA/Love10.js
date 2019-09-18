@@ -1,6 +1,4 @@
 const puppeteer = require('puppeteer');
-const toArray = require('lodash.toarray');
-const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
 const fontSize = require('../FontSize/ILoveMyDNA/FontSizeLove10');
 const colorProductSelect = require('../../Functions/Color/Color');
@@ -83,12 +81,12 @@ module.exports = createPreview = async (propiedades) => {
 
     fontTop = (font) => {
         if (font === "Embossing") {
-            return "270px";
+            return "300px";
         }
         if (font === "Funnier") {
-            return "300px"
+            return "325px"
         } else {
-            return "210px"
+            return "270px"
         }
     };
 
@@ -121,7 +119,7 @@ module.exports = createPreview = async (propiedades) => {
         font-family: ${font};
         font-size: ${fontSize(font)};
     }
-
+    
     @font-face {
         font-family: 'Futura';
         src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
@@ -198,7 +196,7 @@ module.exports = createPreview = async (propiedades) => {
 <h1>1.  T-shirt colors are approximated and not actual color. </h1>
 <h1>2.  Image is not actual size so the font may appear much smaller than in actuality.  </h1>
 <h1>3.  See models on the product page for better representation of graphic size and position.</h1>
-<h1>Intellectual Property. All Rights Reserved 2019.  CelebrateDNA™</h1>
+<h1 style="text-align: center">Intellectual Property. All Rights Reserved 2019.  CelebrateDNA™</h1>
 </div>
 </body>
 </html>

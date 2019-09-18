@@ -1,14 +1,11 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
-const colorBackground = require('../../Functions/ColorsBackground/BrightMap');
 const fontStyle = require('../../Functions/FontStyle/FontStyle');
 const fontSize = require('../FontSize/ILoveMyDNA/FontSizeLove5');
-const colorProductSelect = require('../../Functions/Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const name = nameFile;
     const datos = toArray(propiedades.line_items[0].properties);
-    console.log("5", datos);
     const firstRegionName = datos[0];
     const firstRegionNumber = datos[1];
 
@@ -68,14 +65,20 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
 
+    fontTop = (font) => {
+        if (font === "Embossing") {
+            return "490px";
+        }
+        if (font === "Funnier") {
+            return "430px"
+        } else {
+            return "400px"
+        }
+    };
 
     const fontColors = fontColor(color);
     const font = fontStyle(datos[10].toString());
-    const top = font === "Embossing" || font === "Funnier" ? "420px" : "370px";
-
-    console.log("font", font);
-    console.log("fontSize", fontSize(font));
-
+    const top = fontTop(font);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -96,7 +99,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         width: 755px;
         height: 528px;
         color: ${fontColors};
-        left: 450px;
+        text-align: center;   
+        left: ${font === "Embossing" || font === "Funnier" ? "400px" : "400px"};
         top: ${top};
         font-family: ${font};
         font-size: ${fontSize(font)};

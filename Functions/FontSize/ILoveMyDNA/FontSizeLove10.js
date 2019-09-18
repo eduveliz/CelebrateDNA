@@ -23,10 +23,10 @@ module.exports = font = (fontSelected) => {
             return fontSize = "40pt";
             break;
         case "MyriadPro-Bold":
-            return fontSize = "42pt";
+            return fontSize = "38pt";
             break;
         case "Embossing":
-            return fontSize = "38pt";
+            return fontSize = "36pt";
             break;
     }
 };

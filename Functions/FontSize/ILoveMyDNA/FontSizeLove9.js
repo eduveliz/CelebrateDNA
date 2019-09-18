@@ -26,7 +26,7 @@ module.exports = font = (fontSelected) => {
             return fontSize = "39pt";
             break;
         case "Embossing":
-            return fontSize = "38pt";
+            return fontSize = "36pt";
             break;
     }
 };
