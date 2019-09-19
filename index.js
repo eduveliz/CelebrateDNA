@@ -1,18 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const http = require('http');
 const jsonParser = bodyParser.json();
 const path = require('path');
 const axios = require('axios');
 
-const ttSelector = require('./Functions/Maps/TshirtAndHoddies/BrigthMaps/23andMe/ttSelector');
 //brigth
-const ttPreviewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/BrigthMaps/ttPreviewSelector');
+const previewSelector = require('./Functions/Maps/TshirtAndHoddiesPreview/BrigthMaps/ttPreviewSelector');
+
 //earth
 const ancestryPreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/Ancestry/AncestryPreviewSelector');
 const ttPreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/23andMe/ttPreviewSelector');
 const myHeritagePreviewSelectorEarth = require('./Functions/Maps/TshirtAndHoddiesPreview/Earth Tone/MyHeritage/MyHeritagePreviewSelector');
+
 //Helix
 const helixSelector = require('./Functions/Helix/HelixSelector');
 const helixVerticalSelector = require('./Functions/HelixVertical/HelixVerticalSelector');
@@ -27,20 +27,17 @@ const setNumberRegionsHelixVertical = require('./Functions/RegionNumbers/setRegi
 const loveSelectorPrintfull = require('./Functions/ILoveMyDNAPrintfull/LoveSelector');
 const setNumberRegionsLove = require('./Functions/RegionNumbers/setRegionNumberLovel');
 
-
 //Donut
 const donut = require('./Functions/Donut/DonutSelector');
 
-//IlovemyDna
+//IloveMyDna
 const love = require('./Functions/ILoveMyDNA/LoveSelector');
 
 //Yellow
-const YelloeSelector = require('./Functions/Totes/Yellow/RegionYellowPreview');
-
+const YellowSelector = require('./Functions/Totes/Yellow/RegionYellowPreview');
 
 //Black
 const RegionSelector = require('./Functions/Totes/Black/Maps/RegionSelector');
-
 
 const toArray = require('lodash.toarray');
 const colors = require('colors');
@@ -60,12 +57,11 @@ app.get('/previews/:id', jsonParser, function (req, res) {
 });
 
 app.post('/brigth', jsonParser, function (req, res) {
-    console.log("creating...");
+    console.log("creating...".red);
     console.log(req.body);
-    const id = 123;
     const regionNumber = req.body.regions.length;
 
-    return ttPreviewSelector(regionNumber, id, req.body).then(() => {
+    return previewSelector(regionNumber, req.body).then(() => {
         res.end('{"success" : "Updated Successfully", "status" : 200}');
     });
 });
@@ -131,7 +127,7 @@ app.post('/Yellow', jsonParser, function (req, res) {
     console.log(req.body);
     const id = 123;
     const regionNumber = req.body.regions.length;
-    return YelloeSelector(regionNumber, id, req.body).then(() => {
+    return YellowSelector(regionNumber, id, req.body).then(() => {
         res.end('{"success" : "Updated Successfully", "status" : 200}');
     });
 });
@@ -150,7 +146,7 @@ app.post('/printfull', jsonParser, function (req, res) {
     const {line_items, shipping_address} = req.body;
     const cantidad = line_items[0].properties;
     const nameFile = Date.now();
-    const sku = req.body.line_items[0].sku;
+    const sku = line_items[0].sku;
     const id = line_items[0].product_id.toString();
     console.log("dato regiones general", toArray(cantidad).length);
 
@@ -195,6 +191,7 @@ app.post('/printfull', jsonParser, function (req, res) {
             ).catch(reason => console.log("Error" + reason));
 
         }).then(() => {
+            console.log("Diseño enviardo");
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         });
     }
@@ -224,6 +221,7 @@ app.post('/printfull', jsonParser, function (req, res) {
             ).catch(reason => console.log("Error" + reason));
 
         }).then(() => {
+            console.log("Diseño enviardo");
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         })
     }
@@ -253,6 +251,7 @@ app.post('/printfull', jsonParser, function (req, res) {
         ).catch(reason => console.log("Error" + reason));
 
     }).then(() => {
+        console.log("Diseño enviardo");
         res.end('{"success" : "Updated Successfully", "status" : 200}');
     })
     }

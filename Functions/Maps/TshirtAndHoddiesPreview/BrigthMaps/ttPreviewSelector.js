@@ -1,59 +1,59 @@
-const tt14 = require('./23andMePreview14');
-const tt13 = require('./23andMePreview13');
-const tt12 = require('./23andMePreview12');
-const tt11 = require('./23andMePreview11');
-const tt10 = require('./23andMePreview10');
-const tt9 = require('./23andMePreview9');
-const tt8 = require('./23andMePreview8');
-const tt7 = require('./23andMePreview7');
-const tt6 = require('./23andMePreview6');
-const tt5 = require('./23andMePreview5');
-const tt4 = require('./23andMePreview4');
-const tt3 = require('./23andMePreview3');
-const tt2 = require('./23andMePreview2');
-const tt1 = require('./23andMePreview1');
+const region14 = require('./Region14');
+const region13 = require('./Region13');
+const region12 = require('./Region12');
+const region11 = require('./Region11');
+const region10 = require('./Region10');
+const region9 = require('./Region9');
+const region8 = require('./Region8');
+const region7 = require('./Region7');
+const region6 = require('./Region6');
+const region5 = require('./Region5');
+const region4 = require('./Region4');
+const region3 = require('./Region3');
+const region2 = require('./Region2');
+const region1 = require('./Region1');
 
-module.exports = ttPreviewSelector = async (regionNumber, id, properties) => {
+module.exports = ttPreviewSelector = async (regionNumber, properties) => {
     if (regionNumber === 1) {
-        return tt1(id, properties)
+        return region1(properties)
     }
     if (regionNumber === 2) {
-        return tt2(id, properties)
+        return region2(properties)
     }
     if (regionNumber === 3) {
-        return tt3(id, properties)
+        return region3(properties)
     }
     if (regionNumber === 4) {
-        return tt4(id, properties)
+        return region4(properties)
     }
     if (regionNumber === 5) {
-        return tt5(id, properties)
+        return region5(properties)
     }
     if (regionNumber === 6) {
-        return tt6(id, properties)
+        return region6(properties)
     }
     if (regionNumber === 7) {
-        return tt7(id, properties)
+        return region7(properties)
     }
     if (regionNumber === 8) {
-        return tt8(id, properties)
+        return region8(properties)
     }
     if (regionNumber === 9) {
-        return tt9(id, properties)
+        return region9(properties)
     }
     if (regionNumber === 10) {
-        return tt10(id, properties)
+        return region10(properties)
     }
     if (regionNumber === 11) {
-        return tt11(id, properties)
+        return region11(properties)
     }
     if (regionNumber === 12) {
-        return tt12(id, properties)
+        return region12(properties)
     }
     if (regionNumber === 13) {
-        return tt13(id, properties)
+        return region13(properties)
     }
     if (regionNumber === 14) {
-        return tt14(id, properties)
+        return region14(properties)
     }
 };
