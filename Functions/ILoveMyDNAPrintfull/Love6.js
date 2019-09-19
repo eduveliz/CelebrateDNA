@@ -75,7 +75,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return "450px";
         }
         if (font === "Funnier") {
-            return "350px"
+            return "420px"
         } else {
             return "350px"
         }

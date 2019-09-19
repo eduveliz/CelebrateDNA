@@ -170,8 +170,6 @@ app.post('/printfull', jsonParser, function (req, res) {
 
     console.log(req.body);
 
-    console.log("id", id);
-
     if (id === "1864978006059" || id === "1865315287083") {
         helixSelectorPrintfull(setNumberRegionsHelix(toArray(cantidad).length), req.body, nameFile).then(() => {
             return axios.post('https://api.printful.com/orders', {
@@ -245,7 +243,7 @@ app.post('/printfull', jsonParser, function (req, res) {
                     "variant_id": sku,
                     "quantity": 1,
                     "files": [{
-                        "url": "https://moolab.ml/" + nameFile + ".png"
+                        "url": "https://87d91b6f.ngrok.io/" + nameFile + ".png"
                     }]
                 }]
             },
