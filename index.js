@@ -243,7 +243,7 @@ app.post('/printfull', jsonParser, function (req, res) {
                     "variant_id": sku,
                     "quantity": 1,
                     "files": [{
-                        "url": "https://87d91b6f.ngrok.io/" + nameFile + ".png"
+                        "url": "https://moolab.ml/" + nameFile + ".png"
                     }]
                 }]
             },
