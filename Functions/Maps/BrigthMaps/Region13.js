@@ -1,12 +1,14 @@
 const puppeteer = require('puppeteer');
-const colorBackground = require('../../../ColorsBackground/BrightMap');
-const regionNames = require('../../../RegionNames/RegionNames');
-const fontStyle = require('../../../FontStyle/FontStyle');
-const fontColor = require('../../../FontColor/FontColor');
-const colorProductSelect = require('../../../Color/Color');
+const toArray = require('lodash.toarray');
+const colorBackground = require('../../ColorsBackground/BrightMap');
+const regionNames = require('../../RegionNames/RegionNames');
+const fontStyle = require('../../FontStyle/FontStyle');
+const fontColor = require('../../FontColor/FontColor');
+const colorProductSelect = require('../../Color/Color');
 const ancestryMap = require('../AncestryMap');
 const ttMap = require('../TTMap');
 const myHeritageMap = require('../MyHeritageMap');
+
 
 module.exports = createPreview = async (propiedades) => {
     const name = propiedades.nameFile;
@@ -62,10 +64,7 @@ module.exports = createPreview = async (propiedades) => {
     const thirteenRegionNameSelector = regionNames(propiedades.regions[12].region);
     const thirteenRegionNumber = propiedades.regions[12].porcentaje;
 
-    const fourteenRegionName = propiedades.regions[13].region;
-    const fourteenRegionNameSelector = regionNames(propiedades.regions[13].region);
-    const fourteenRegionNumber = propiedades.regions[13].porcentaje;
-
+    //Background Map
     const colorProduct = propiedades.colorProduct;
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
@@ -73,7 +72,6 @@ module.exports = createPreview = async (propiedades) => {
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
-
     companyMap = (company) => {
         if (company === "Ancestry") {
             return ancestryMap;
@@ -101,6 +99,7 @@ module.exports = createPreview = async (propiedades) => {
             return "30pt"
         }
     };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -174,17 +173,18 @@ module.exports = createPreview = async (propiedades) => {
     font-weight: normal;
     font-style: normal;
     }
+
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)}">
-<h1 class='fontColor' style="text-align: center;font-size:89px ">${headline} </h1>
+<body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)} ">
+<h1 class='fontColor' style="text-align: center;font-size:89px;">${headline} </h1>
 
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
 
-<div style="display: flex; justify-content:space-around;width:94%;margin-top: 50px;margin-left: 35px;">
+<div style="display: flex; justify-content:space-around;width:98%;margin-top: 50px;margin-left: 35px;">
     <div id="firstGroup" style="width: 100%;">
         <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
             <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${firstRegionName}</div>
@@ -219,7 +219,7 @@ module.exports = createPreview = async (propiedades) => {
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
             <div style="width: 50%"></div>
-            <div class="fontColor" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${fourRegionName}</div>
+            <div class="fontColor" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${threeRegionName}</div>
         </div>
     </div>
      
@@ -287,10 +287,10 @@ module.exports = createPreview = async (propiedades) => {
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
             <div class="fontColor" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #98985F;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${elevenRegionNumber} %
+                ${elevenRegionNumber}%
             </div>
             <div  class="fontColor" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #EC008B;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${twelveRegionNumber} %
+                ${twelveRegionNumber}%
             </div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
@@ -298,32 +298,24 @@ module.exports = createPreview = async (propiedades) => {
             <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${twelveRegionName}</div>
         </div>
     </div>
-   <div id="sevenxGroup" style="width: 100%; ">
+    <div id="sevenGroup" style="width: 100% ;">
         <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
-            <div class="fontColor" style="font-size: 25px;text-align: center;width: 50%;display: flex;justify-content: center;align-items: center ">${thirteenRegionName}</div>
+            <div class="fontColor" style="font-size: 25px;width: 50%; text-align: center;display: flex;justify-content: center;align-items: center">${thirteenRegionName}</div>
             <div style="width: 50%"></div>
         </div>
-        <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div class="fontColor" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #52C4D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${thirteenRegionNumber} %
+        <div style="height: 80px; ">
+            <div class="fontColor" style="color:white;height:38px; width:50%; border-radius: 20px;background-color: #52C4D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+                ${thirteenRegionNumber}%
             </div>
-            <div  class="fontColor" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #EE66A2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${fourteenRegionNumber} %
-            </div>
-        </div>
-        <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
-            <div style="width: 50%"></div>
-            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${fourteenRegionName}</div>
         </div>
     </div>
 </div>
 <script>    
-
     $(function () {
         $(document).ready(function () {
             $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
             $("#regions").attr("fill", "transparent");
-         
+            
             //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
             $("${secondRegionNameSelector}").attr("fill", "#6C61AA");
@@ -344,7 +336,6 @@ module.exports = createPreview = async (propiedades) => {
             $("${twelveRegionNameSelector}").attr("fill", "#EC008B");
             //seven color
             $("${thirteenRegionNameSelector}").attr("fill", "#52C4D2").attr("stroke-width", "2");
-            $("${fourteenRegionNameSelector}").attr("fill", "#EE66A2");
         });
     });
 </script>

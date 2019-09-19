@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "CelebrateDNA",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -24,5 +24,8 @@
   },
   "devDependencies": {
     "lodash.toarray": "^4.4.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@eduveliz"
   }
 }
