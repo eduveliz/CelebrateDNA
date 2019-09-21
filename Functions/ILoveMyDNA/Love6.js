@@ -80,6 +80,18 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+    shadow = () => {
+        if (propiedades.colorProduct === 'Navy with Orange & White') {
+            return 'text-shadow:3px 3px 0 #DE603C,-1px -1px 0 #DE603C,1px -1px 0 #DE603C,-1px 1px 0 #DE603C,1px 1px 0 #DE603C;'
+        }
+        if (propiedades.colorProduct === 'Navy') {
+            return 'text-shadow:3px 3px 0 #AFB4B9,-1px -1px 0 #AFB4B9,1px -1px 0 #AFB4B9,-1px 1px 0 #AFB4B9,1px 1px 0 #AFB4B9;'
+        }
+        if (propiedades.colorProduct === 'Navy with Grey & White') {
+            return 'text-shadow:3px 3px 0 #AFB4B9,-1px -1px 0 #AFB4B9,1px -1px 0 #AFB4B9,-1px 1px 0 #AFB4B9,1px 1px 0 #AFB4B9;'
+        }
+    };
+
     const fontColors = fontColor(propiedades.colorProduct);
     const font = fontStyle(propiedades.fontStyle);
     const top = fontTop(font);
@@ -103,6 +115,7 @@ module.exports = createPreview = async (propiedades) => {
         width: 720px;   
         height: 528px;
         text-align: center;
+        ${shadow()};    
         left: ${font === "Embossing" || font === "Funnier" ? "410px" : "400px"};
         color: ${fontColors};
         top: ${top};
