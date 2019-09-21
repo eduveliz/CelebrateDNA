@@ -10,12 +10,6 @@ module.exports = font = (fontSelected) => {
         case "Funnier":
             return fontSize = "40pt";
             break;
-        case "Futura Bold":
-            return fontSize = "40pt";
-            break;
-        case "Myriad Pro Bold":
-            return fontSize = "52pt";
-            break;
         case "EmbossedTapeThree":
             return fontSize = "35pt";
             break;
@@ -31,4 +25,3 @@ module.exports = font = (fontSelected) => {
     }
 };
 
-//#FFFFFF

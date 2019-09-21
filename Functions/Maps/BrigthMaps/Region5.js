@@ -51,6 +51,22 @@ module.exports = createPreview = async (propiedades) => {
             return myHeritageMap;
         }
     };
+
+    fontHeadline = () => {
+        if (font === "Noteworthy") {
+            return "110px"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "110px"
+        }
+        if (font === "Funnier") {
+            return "85px"
+        }
+        if (font === "Noteworhty Bold") {
+            return "110px"
+        }
+    };
+
     const map = companyMap(propiedades.company);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -59,6 +75,21 @@ module.exports = createPreview = async (propiedades) => {
         height: 1536,
         deviceScaleFactor: 1,
     });
+
+    fontSizeNumber = () => {
+        if (font === "Noteworthy") {
+            return "35pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "35pt"
+        }
+        if (font === "Funnier") {
+            return "30pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "35pt"
+        }
+    };
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -74,6 +105,8 @@ module.exports = createPreview = async (propiedades) => {
             return "30pt"
         }
     };
+
+
     await page.setContent(`
     <!DOCTYPE html>
 <html lang="en">
@@ -85,6 +118,19 @@ module.exports = createPreview = async (propiedades) => {
         color:${fontColor(colorProduct)};
         font-family:${font};
         text-align: center;
+    }
+    
+    .fontColorNumber {
+        color:${fontColor(colorProduct)};
+        font-family:${font} ;
+        font-size: ${fontSizeNumber()};
+    }
+    
+    .fontColorHeadline {
+        color:${fontColor(colorProduct)};
+        font-family:${font} ;
+        text-align: center; 
+        font-size:${fontHeadline()};
     }
     
            @font-face {
@@ -145,7 +191,7 @@ module.exports = createPreview = async (propiedades) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)} ">
-<h1 class='fontColor' style="text-align: center;font-size:89px;">${headline} </h1>
+<h1 class='fontColorHeadline'>${headline}</h1>
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>

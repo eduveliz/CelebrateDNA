@@ -40,18 +40,49 @@ module.exports = createPreview = async (propiedades) => {
     };
     const map = companyMap(propiedades.company);
 
+
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "30pt"
+            return "40pt"
         }
         if (font === "MyriadPro-Bold") {
-            return "30pt"
+            return "40pt"
         }
         if (font === "Funnier") {
             return "30pt"
         }
         if (font === "Noteworhty Bold") {
+            return "40pt"
+        }
+    }
+
+    fontSizeNumber = () => {
+        if (font === "Noteworthy") {
+            return "35pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "35pt"
+        }
+        if (font === "Funnier") {
             return "30pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "35pt"
+        }
+    };
+
+    fontHeadline = () => {
+        if (font === "Noteworthy") {
+            return "110px"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "110px"
+        }
+        if (font === "Funnier") {
+            return "85px"
+        }
+        if (font === "Noteworhty Bold") {
+            return "110px"
         }
     };
 
@@ -66,7 +97,19 @@ module.exports = createPreview = async (propiedades) => {
     <style>
     .fontColor {
         color:${fontColor(colorProduct)};
-        font-family:${font};
+        font-family:${font} ;
+        font-size: ${fontSizeRegion(font)};
+    }
+    .fontColorNumber {
+        color:${fontColor(colorProduct)};
+        font-family:${font} ;
+        font-size: ${fontSizeNumber()};
+    }
+    .fontColorHeadline {
+        color:${fontColor(colorProduct)};
+        font-family:${font} ;
+        text-align: center; 
+        font-size:${fontHeadline()};
     }
           @font-face {
     font-family: 'Futura';
@@ -126,26 +169,26 @@ module.exports = createPreview = async (propiedades) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)} ">
-<h1 class='fontColor' style="text-align: center;font-size:89px;">${headline} </h1>
+<h1 class='fontColorHeadline'>${headline}</h1>
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
 
 <div style="margin-top: 50px;margin-right: 17px">
     <div style="display: flex; justify-content: space-around;">
-        <div class="fontColor" style="color:white;height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+        <div class="fontColorNumber" style="color:white;height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber}%
         </div>
-        <div class="fontColor" style="color:white;height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+        <div class="fontColorNumber" style="color:white;height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${secondRegionNumber}%
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class="fontColor" style="margin-top: 30px;font-size: 33px;">${firstRegionName}</div>
+            <div class="fontColor" >${firstRegionName}</div>
         </div>
         <div style="width:100%;height:60px; display: flex; justify-content: center">
-            <div class="fontColor" style="margin-top: 30px;font-size: 33px">${secondRegionName}</div>
+            <div class="fontColor" >${secondRegionName}</div>
         </div>
     </div>
 </div>

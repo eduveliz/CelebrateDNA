@@ -77,6 +77,35 @@ module.exports = createPreview = async (propiedades) => {
             return "30pt"
         }
     };
+
+    fontSizeNumber = () => {
+        if (font === "Noteworthy") {
+            return "35pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "35pt"
+        }
+        if (font === "Funnier") {
+            return "30pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "35pt"
+        }
+    };
+    fontHeadline = () => {
+        if (font === "Noteworthy") {
+            return "110px"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "110px"
+        }
+        if (font === "Funnier") {
+            return "85px"
+        }
+        if (font === "Noteworhty Bold") {
+            return "110px"
+        }
+    };
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -103,6 +132,18 @@ module.exports = createPreview = async (propiedades) => {
         font-family:${font};
     }
     
+    .fontColorNumber {
+        color:${fontColor(colorProduct)};
+        font-family:${font} ;
+        font-size: ${fontSizeNumber()};
+    }
+    
+    .fontColorHeadline {
+        color:${fontColor(colorProduct)};
+        font-family:${font} ;
+        text-align: center; 
+        font-size:${fontHeadline()};
+    }
         @font-face {
     font-family: 'Futura';
     src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
@@ -161,7 +202,7 @@ module.exports = createPreview = async (propiedades) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)} ">
-<h1 class='fontColor' style="text-align: center;font-size:89px;">${headline} </h1>
+<h1 class='fontColorHeadline'>${headline}</h1>
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>

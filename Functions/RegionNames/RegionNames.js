@@ -2,13 +2,10 @@ module.exports = regionNamebyId = (regionName) => {
     let regionNameId;
     switch (regionName) {
         case "Indonesian":
-            return regionNameId = "#indonesian, #indonesian-2 ,#indonesian-3 , #indonesian-4";
+            return regionNameId = "#indonesian";
             break;
         case "Indonesia":
             return regionNameId = "#Indonesia";
-            break;
-        case "W. African":
-            return regionNameId = "#westAfrican";
             break;
         case "W. African":
             return regionNameId = "#westAfrican";
@@ -52,13 +49,16 @@ module.exports = regionNamebyId = (regionName) => {
         case "Chinese, Vietnamese":
             return regionNameId = "#chineseVietnamese";
             break;
+        case "Chinese Dai":
+            return regionNameId = "#chineseDai";
+            break;
         case "British, Irish":
             return regionNameId = "#britishIrish";
             break;
         case "Sudanese":
             return regionNameId = "#sudanese";
             break;
-        case "ethiopian":
+        case "Ethiopian":
             return regionNameId = "#ethiopian";
             break;
         case "Somali":
@@ -71,7 +71,7 @@ module.exports = regionNamebyId = (regionName) => {
             return regionNameId = "#northAfricaArabia";
             break;
         case "Western Asian":
-            return regionNameId = "#westernAsian , #westernAsian2";
+            return regionNameId = "#westernAsian";
             break;
         case "Italian":
             return regionNameId = "#italian";
@@ -94,7 +94,7 @@ module.exports = regionNamebyId = (regionName) => {
         case "Siberian":
             return regionNameId = "#siberian";
             break;
-        case "korean":
+        case "Korean":
             return regionNameId = "#korean";
             break;
         case "Vietnamese":
@@ -172,6 +172,9 @@ module.exports = regionNamebyId = (regionName) => {
         case "Yemenite Jewish":
             return regionNameId = "#yemeniteJewish";
             break;
+        case "Yemenite":
+            return regionNameId = "#yemenite";
+            break;
         case "Middle Eastern":
             return regionNameId = "#middleEastern";
             break;
@@ -185,6 +188,12 @@ module.exports = regionNamebyId = (regionName) => {
             return regionNameId = "#filipinoIndo";
             break;
         case "N.W. Europe ":
+            return regionNameId = "northWestEurope";
+            break;
+        case "N.E. African":
+            return regionNameId = "eastfrican";
+            break;
+        case "N.W. Europe":
             return regionNameId = "northWestEurope";
             break;
         case "Native American":
@@ -206,7 +215,7 @@ module.exports = regionNamebyId = (regionName) => {
             return regionNameId = "#japanese";
             break;
         case "Maasai":
-            return regionNameId = "#Maasai";
+            return regionNameId = "#maasai";
             break;
         case "Kenyan":
             return regionNameId = "#kenyan";
@@ -218,7 +227,7 @@ module.exports = regionNamebyId = (regionName) => {
             return regionNameId = "#irishScottish";
             break;
         case "Ethiopian Jewish":
-            return regionNameId = "#EthiopiaJewish";
+            return regionNameId = "#ethiopiaJewish";
             break;
         case "W. African":
             return regionNameId = "#wAfrican";
@@ -251,7 +260,7 @@ module.exports = regionNamebyId = (regionName) => {
             return regionNameId = "#southEastAsia";
             break;
         case "Melanesia":
-            return regionNameId = "#Melanesia";
+            return regionNameId = "#melanesia";
             break;
         case "Philippines":
             return regionNameId = "#philippines , #philippines-2";
@@ -340,6 +349,9 @@ module.exports = regionNamebyId = (regionName) => {
         case "Spain":
             return regionNameId = "#spain";
             break;
+        case "Spain, Portugal":
+            return regionNameId = "#spainPortugal";
+            break;
         case "Findland":
             return regionNameId = "#findland";
             break;
@@ -371,8 +383,15 @@ module.exports = regionNamebyId = (regionName) => {
             return regionNameId = "#andean";
             break;
         case "Baltic":
+            return regionNameId = "#baltic";
+            break;
+        case "Baltic States":
             return regionNameId = "#balticStates";
             break;
+        case "Japan, Korea":
+            return regionNameId = "#japanKorean";
+        case "Mizrahi Jewish":
+            return regionNameId = "#mizrahiJewish"
     }
 };
 
