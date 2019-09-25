@@ -80,29 +80,28 @@ module.exports = createPreview = async (propiedades) => {
     const map = companyMap(propiedades.company);
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "30pt"
+            return "15pt"
         }
         if (font === "MyriadPro-Bold") {
-            return "30pt"
+            return "15pt"
         }
         if (font === "Funnier") {
-            return "30pt"
+            return "11pt"
         }
         if (font === "Noteworhty Bold") {
-            return "30pt"
+            return "20pt"
         }
     };
 
-
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return "35pt"
+            return "30pt"
         }
         if (font === "MyriadPro-Bold") {
-            return "35pt"
+            return "30pt"
         }
         if (font === "Funnier") {
-            return "30pt"
+            return "18pt"
         }
         if (font === "Noteworhty Bold") {
             return "35pt"
@@ -138,16 +137,19 @@ module.exports = createPreview = async (propiedades) => {
     <meta charset="UTF-8">
     <title>23andMe</title>
     <style>
-    .fontColor {
-        color:${fontColor(colorProduct)};
-        font-family:${font};
-    }
-    
     .fontColorNumber {
         color:${fontColor(colorProduct)};
         font-family:${font} ;
         font-size: ${fontSizeNumber()};
     }
+    
+    .fontColor {
+        color:${fontColor(colorProduct)};
+        font-family:${font};
+        text-align: center;
+        font-size: ${fontSizeRegion(font)};
+    }
+    
     
     .fontColorHeadline {
         color:${fontColor(colorProduct)};

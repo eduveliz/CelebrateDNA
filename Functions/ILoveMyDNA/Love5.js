@@ -50,7 +50,7 @@ module.exports = createPreview = async (propiedades) => {
             return "white";
         }
         if (color === "White") {
-            return "#72709A"
+            return "#2C2B6E"
         }
         if (color === "Black") {
             return "#E0AC3B"
@@ -177,7 +177,7 @@ module.exports = createPreview = async (propiedades) => {
         font-style: normal;
     }
 </style>
-<body style="width: 12in;height:16in;background-color:${colorProduct}">v
+<body style="width: 12in;height:16in;background-color:${colorProduct}">
 <div style="display: flex;margin-left: 70px">
     <img style="width: 7.14in;height: 12.92in" src="${imageColor(propiedades.colorProduct)}">
     <div class="region">

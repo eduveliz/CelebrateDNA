@@ -49,7 +49,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return "white";
         }
         if (color === "White ") {
-            return "#72709A"
+            return "#2C2B6E"
         }
         if (color === "Black ") {
             return "#E0AC3B"

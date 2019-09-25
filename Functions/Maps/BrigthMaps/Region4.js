@@ -57,7 +57,7 @@ module.exports = createPreview = async (propiedades) => {
             return "30pt"
         }
         if (font === "Funnier") {
-            return "30pt"
+            return "26pt"
         }
         if (font === "Noteworhty Bold") {
             return "30pt"
@@ -65,7 +65,7 @@ module.exports = createPreview = async (propiedades) => {
     };
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return "35pt"
+            return "28pt"
         }
         if (font === "MyriadPro-Bold") {
             return "35pt"
@@ -74,7 +74,7 @@ module.exports = createPreview = async (propiedades) => {
             return "30pt"
         }
         if (font === "Noteworhty Bold") {
-            return "35pt"
+            return "28pt"
         }
     };
 
@@ -104,6 +104,8 @@ module.exports = createPreview = async (propiedades) => {
     .fontColor {
         color:${fontColor(colorProduct)};
         font-family:${font};
+        text-align: center;
+        font-size: ${fontSizeRegion(font)};
     }
     
     .fontColorNumber {
@@ -184,31 +186,31 @@ module.exports = createPreview = async (propiedades) => {
 
 <div style="margin-top: 50px">
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
-        <div class='fontColor' style="margin-top: 30px;color:white;height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber}%
         </div>
-        <div class='fontColor' style="margin-top: 30px;color:white;height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${secondRegionNumber}%
         </div>
-        <div class='fontColor' style="margin-top: 30px;color:white;height:60px; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:60px; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${threeRegionNumber}%
         </div>
-        <div class='fontColor' style="margin-top: 30px;color:white;height:60px; width:100%;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:60px; width:100%;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${fourRegionNumber}%
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
-        <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class='fontRegion' style="font-size: 25px;">${firstRegionName}</div>
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+            <div class='fontColor'>${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center">
-            <div class='fontRegion' style="font-size: 25px">${secondRegionName}</div>
+        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+            <div class='fontColor'>${secondRegionName}</div>
         </div>
-        <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class='fontRegion' style="font-size: 25px">${threeRegionName}</div>
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+            <div class='fontColor'>${threeRegionName}</div>
         </div>
-        <div style=" width:100%;height:60px;display: flex; justify-content: center">
-            <div class='fontRegion' style="font-size: 25px">${fourRegionName}</div>
+        <div style=" width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+            <div class='fontColor'>${fourRegionName}</div>
         </div>
     </div>
 </div>
