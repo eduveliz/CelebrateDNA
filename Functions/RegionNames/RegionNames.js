@@ -268,6 +268,9 @@ module.exports = regionNamebyId = (regionName) => {
         case "Turkey, Caucasus":
             return regionNameId = "#turkeyCaucasus";
             break;
+        case "Turkey":
+            return regionNameId = "#turkey";
+            break;
         case "australia":
             return regionNameId = "#Australia-2";
             break;
@@ -283,8 +286,11 @@ module.exports = regionNamebyId = (regionName) => {
         case "Iran, Persia":
             return regionNameId = "#iranPersia";
             break;
+        case "Finland":
+            return regionNameId = "#finland";
+            break;
         case "S.East Asia":
-            return regionNameId = "#southEastAsia2";
+            return regionNameId = "#southEastAsia";
             break;
         case "Polynesia":
             return regionNameId = "#polynesia";
@@ -329,7 +335,7 @@ module.exports = regionNamebyId = (regionName) => {
             return regionNameId = "#japan";
             break;
         case "Philippines":
-            return regionNameId = "#philippines-3";
+            return regionNameId = "#philippines";
             break;
         case "Native American":
             return regionNameId = "#nativeAmerican";
@@ -342,6 +348,9 @@ module.exports = regionNamebyId = (regionName) => {
             break;
         case "Germanic Europe":
             return regionNameId = "#germanicEurope";
+            break;
+        case "Germanic":
+            return regionNameId = "#germanic";
             break;
         case "Basque":
             return regionNameId = "#spain";//BASQUE NO DEBE SER SELECIONADA
@@ -392,6 +401,8 @@ module.exports = regionNamebyId = (regionName) => {
             return regionNameId = "#japanKorean";
         case "Mizrahi Jewish":
             return regionNameId = "#mizrahiJewish"
+        case "Jewish":
+            return regionNameId = "#jewish"
     }
 };
 
