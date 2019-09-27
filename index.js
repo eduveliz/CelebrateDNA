@@ -9,9 +9,7 @@ const axios = require('axios');
 const previewSelector = require('./Functions/Maps/BrigthMaps/ttPreviewSelector');
 
 //earth
-// const ancestryPreviewSelectorEarth = require('./Functions/Maps/Earth Tone/Ancestry/AncestryPreviewSelector');
-// const ttPreviewSelectorEarth = require('./Functions/Maps/Earth Tone/23andMe/ttPreviewSelector');
-// const myHeritagePreviewSelectorEarth = require('./Functions/Maps/Earth Tone/MyHeritage/MyHeritagePreviewSelector');
+const earthSelector = require('./Functions/Maps/Earth Tone/earthPreviewSelector');
 
 //Helix
 const helixSelector = require('./Functions/Helix/HelixSelector');
@@ -66,26 +64,15 @@ app.post('/brigth', jsonParser, function (req, res) {
     });
 });
 
-// app.post('/earth', jsonParser, function (req, res) {
-//     console.log("creating Earth...");
-//     const id = 123;
-//     const regionNumber = req.body.regions.length;
-//     if (req.body.company === "Maps") {
-//         return ancestryPreviewSelectorEarth(regionNumber, id, req.body).then(() => {
-//             res.end('{"success" : "Updated Successfully", "status" : 200}');
-//         });
-//     }
-//     if (req.body.company === "23andMe") {
-//         return ttPreviewSelectorEarth(regionNumber, id, req.body).then(() => {
-//             res.end('{"success" : "Updated Successfully", "status" : 200}');
-//         });
-//     }
-//     if (req.body.company === "MyHeritageDNA") {
-//         return myHeritagePreviewSelectorEarth(regionNumber, id, req.body).then(() => {
-//             res.end('{"success" : "Updated Successfully", "status" : 200}');
-//         });
-//     }
-// });
+app.post('/earth', jsonParser, function (req, res) {
+    console.log("creating Earth Tones...".red);
+    console.log(req.body);
+    const regionNumber = req.body.regions.length;
+
+    return earthSelector(regionNumber, req.body).then(() => {
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    });
+});
 
 app.post('/helixHorizontal', jsonParser, function (req, res) {
     console.log("creating Helix... " + req.body.nameFile);
