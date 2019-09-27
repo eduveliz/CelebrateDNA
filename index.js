@@ -75,7 +75,7 @@ app.post('/earth', jsonParser, function (req, res) {
 });
 
 app.post('/helixHorizontal', jsonParser, function (req, res) {
-    console.log("creating Helix... " + req.body.nameFile);
+    console.log("creating Helix... ".red + req.body.nameFile);
     console.log(req.body);
     const regionNumber = req.body.regions.length;
     return helixSelector(regionNumber, req.body).then(() => {
@@ -84,7 +84,7 @@ app.post('/helixHorizontal', jsonParser, function (req, res) {
 });
 
 app.post('/helixVertical', jsonParser, function (req, res) {
-    console.log("creating Helix Vertical... " + req.body.nameFile);
+    console.log("creating Helix Vertical...".red + req.body.nameFile);
     console.log(req.body);
     const regionNumber = req.body.regions.length;
     return helixVerticalSelector(regionNumber, req.body).then(() => {
@@ -102,6 +102,7 @@ app.post('/donut', jsonParser, function (req, res) {
 });
 
 app.post('/loveDNA', jsonParser, function (req, res) {
+    console.log("creating I Love My DNA...".red + req.body.nameFile);
     console.log(req.body);
     const regionNumber = req.body.regions.length;
     return love(regionNumber, req.body).then(() => {

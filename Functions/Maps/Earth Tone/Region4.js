@@ -44,7 +44,7 @@ module.exports = createPreview = async (propiedades) => {
             return ttMap;
         }
         if (company === "MyHeritageDNA") {
-            return MyHeritageMap;
+            return myHeritageMap;
         }
     };
     const map = companyMap(propiedades.company);

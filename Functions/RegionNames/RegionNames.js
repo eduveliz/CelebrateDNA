@@ -123,7 +123,7 @@ module.exports = regionNamebyId = (regionName) => {
             break;
         case "Mongolian":
             console.log("Find Region Name".yellow);
-            return regionNameId = "#mongolianManchurian";
+            return regionNameId = "#mongolian";
             break;
         case "Siberian":
             console.log("Find Region Name".yellow);
@@ -170,6 +170,10 @@ module.exports = regionNamebyId = (regionName) => {
             return regionNameId = "#congolese";
             break;
         case "Central Asia":
+            console.log("Find Region Name".yellow);
+            return regionNameId = "#centralAsia";
+            break;
+        case "Central, N.Asia":
             console.log("Find Region Name".yellow);
             return regionNameId = "#centralAsia";
             break;
@@ -229,9 +233,13 @@ module.exports = regionNamebyId = (regionName) => {
             console.log("Find Region Name".yellow);
             return regionNameId = "#southAsian";
             break;
+        case "Eskimo, Inuit":
+            console.log("Find Region Name".yellow);
+            return regionNameId = "#eskimo";
+            break;
         case "Yemenite Jewish":
             console.log("Find Region Name".yellow);
-            return regionNameId = "#yemeniteJewish";
+            return regionNameId = "#yemenite";
             break;
         case "Yemenite":
             console.log("Find Region Name".yellow);
@@ -253,11 +261,19 @@ module.exports = regionNamebyId = (regionName) => {
             console.log("Find Region Name".yellow);
             return regionNameId = "#filipinoIndo";
             break;
+        case "West Asia":
+            console.log("Find Region Name".yellow);
+            return regionNameId = "#westernAsian";
+            break;
         case "N.E. African":
             console.log("Find Region Name".yellow);
-            return regionNameId = "eastfrican";
+            return regionNameId = "eastAfrican";
             break;
         case "N.W. Europe":
+            console.log("Find Region Name");
+            return regionNameId = "northWestEurope";
+            break;
+        case "N.W. Europe ":
             console.log("Find Region Name");
             return regionNameId = "northWestEurope";
             break;
@@ -272,10 +288,6 @@ module.exports = regionNamebyId = (regionName) => {
         case "Mongolian":
             console.log("Find Region Name".yellow);
             return regionNameId = "#mongolian";
-            break;
-        case "Eskimo, Inuit":
-            console.log("Find Region Name".yellow);
-            return regionNameId = "#Eskimo_Inuit-2, #eskimoInuit3";
             break;
         case "Native American":
             console.log("Find Region Name".yellow);
@@ -307,7 +319,7 @@ module.exports = regionNamebyId = (regionName) => {
             break;
         case "W. African":
             console.log("Find Region Name".yellow);
-            return regionNameId = "#wAfrican";
+            return regionNameId = "#westAfrican";
             break;
         case "Amazonian":
             console.log("Find Region Name".yellow);
@@ -326,6 +338,10 @@ module.exports = regionNamebyId = (regionName) => {
             return regionNameId = "#melanesian";
             break;
         case "Polynesian":
+            console.log("Find Region Name".yellow);
+            return regionNameId = "#polynesian";
+            break;
+        case "Polynesia":
             console.log("Find Region Name".yellow);
             return regionNameId = "#polynesian";
             break;
