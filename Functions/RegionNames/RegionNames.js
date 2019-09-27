@@ -353,7 +353,7 @@ module.exports = regionNamebyId = (regionName) => {
             console.log("Find Region Name".yellow);
             return regionNameId = "#sephardic";
             break;
-        case "S.E Asia":
+        case "S.E. Asia":
             console.log("Find Region Name".yellow);
             return regionNameId = "#southEastAsia";
             break;

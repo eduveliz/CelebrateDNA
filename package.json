@@ -24,8 +24,5 @@
   },
   "devDependencies": {
     "lodash.toarray": "^4.4.0"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@eduveliz"
   }
 }
