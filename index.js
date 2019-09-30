@@ -239,7 +239,7 @@ app.post('/printfull', jsonParser, function (req, res) {
         ).catch(reason => console.log("Error" + reason));
 
     }).then(() => {
-        console.log("Diseño enviardo");
+        console.log("Diseño enviardo correctamente");
         res.end('{"success" : "Updated Successfully", "status" : 200}');
     })
     }
