@@ -84,7 +84,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     await page.setViewport({
         width: 1152,
         height: 1536,
-        deviceScaleFactor: 1,
+        deviceScaleFactor: 3,
     });
     await page.setContent(`<!DOCTYPE html>
 <html lang="en">
