@@ -111,6 +111,7 @@ module.exports = createPreview = async (propiedades) => {
     .fontColorNumber {
         color:${fontColor(colorProduct)};
         font-family:${font} ;
+        border: 2px solid white;
         font-size: ${fontSizeNumber()};
     }
    
@@ -221,10 +222,16 @@ module.exports = createPreview = async (propiedades) => {
             $("#regions").attr("fill", "transparent");
             //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
+            $("${firstRegionNameSelector}").attr("stroke", "white");
+            
             $("${secondRegionNameSelector}").attr("fill", "#6C61AA");
+            $("${secondRegionNameSelector}").attr("stroke", "white");
             //second color
             $("${threeRegionNameSelector}").attr("fill", "#BE1E2D");
-            $("${fourRegionNameSelector}").attr("fill", "#F9AF41");            
+            $("${threeRegionNameSelector}").attr("stroke", "white");
+            
+            $("${fourRegionNameSelector}").attr("fill", "#F9AF41");    
+            $("${fourRegionNameSelector}").attr("stroke", "white");
         });
     });
 </script>

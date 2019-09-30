@@ -124,7 +124,8 @@ module.exports = createPreview = async (propiedades) => {
     
     .fontColorNumber {
         color:${fontColor(colorProduct)};
-        font-family:${font} ;
+        font-family:${font};
+        border: 2px solid white;
         font-size: ${fontSizeNumber()};
     }
     

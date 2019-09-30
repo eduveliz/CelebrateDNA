@@ -103,6 +103,7 @@ module.exports = createPreview = async (propiedades) => {
     .fontColorNumber {
         color:${fontColor(colorProduct)};
         font-family:${font} ;
+        border: 2px solid white;
         font-size: ${fontSizeNumber()};
     }
     .fontColorHeadline {
@@ -183,7 +184,7 @@ module.exports = createPreview = async (propiedades) => {
             ${secondRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;">
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 10pt" : "0"}">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
             <div class="fontColor" >${firstRegionName}</div>
         </div>

@@ -121,15 +121,16 @@ module.exports = createPreview = async (propiedades) => {
     <title>23andMe</title>
     <style>
     .RegionName {
-    font-size: 22px;
-    text-align: center;
-    color: ${fontColor(colorProduct)};    
-    font-family:${font};   
+        font-size: 22px;
+        text-align: center;
+        color: ${fontColor(colorProduct)};    
+        font-family:${font};   
     }  
     
     .fontColorNumber {
         color:${fontColor(colorProduct)};
-        font-family:${font} ;
+        font-family:${font};
+        border: 2px solid white;
         font-size: ${fontSizeNumber()};
     }
     
@@ -280,18 +281,32 @@ module.exports = createPreview = async (propiedades) => {
             
             //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
+            $("${firstRegionNameSelector}").attr("stroke", "white");
+            
             $("${secondRegionNameSelector}").attr("fill", "#6C61AA");
+            $("${secondRegionNameSelector}").attr("stroke", "white");
             //second color
             $("${threeRegionNameSelector}").attr("fill", "#BE1E2D");
-            $("${fourRegionNameSelector}").attr("fill", "#F9AF41");
+            $("${threeRegionNameSelector}").attr("stroke", "white");
+            
+            $("${fourRegionNameSelector}").attr("fill", "#F9AF41");    
+            $("${fourRegionNameSelector}").attr("stroke", "white");
             //three color
             $("${fiveRegionNameSelector}").attr("fill", "#00833D");
+            $("${fiveRegionNameSelector}").attr("stroke", "white");
+            
             $("${sixRegionNameSelector}").attr("fill", "#9794D2");
+            $("${sixRegionNameSelector}").attr("stroke", "white");
             //four color
             $("${sevenRegionNameSelector}").attr("fill", "#699279");
+            $("${sevenRegionNameSelector}").attr("stroke", "white");
+            
             $("${eightRegionNameSelector}").attr("fill", "#A4469A");
+            $("${eightRegionNameSelector}").attr("stroke", "white");
             //five color
             $("${nineRegionNameSelector}").attr("fill", "#CB8DBE");
+            $("${nineRegionNameSelector}").attr("stroke", "white");
+            
         });
     });
 </script>

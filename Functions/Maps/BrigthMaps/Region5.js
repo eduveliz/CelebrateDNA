@@ -105,8 +105,6 @@ module.exports = createPreview = async (propiedades) => {
             return "28pt"
         }
     };
-
-
     await page.setContent(`
     <!DOCTYPE html>
 <html lang="en">
@@ -239,14 +237,20 @@ module.exports = createPreview = async (propiedades) => {
             $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
             $("#regions").attr("fill", "transparent");
             
-            //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
+            $("${firstRegionNameSelector}").attr("stroke", "white");
+            
             $("${secondRegionNameSelector}").attr("fill", "#6C61AA");
+            $("${secondRegionNameSelector}").attr("stroke", "white");
             //second color
             $("${threeRegionNameSelector}").attr("fill", "#BE1E2D");
-            $("${fourRegionNameSelector}").attr("fill", "#F9AF41");
+            $("${threeRegionNameSelector}").attr("stroke", "white");
+            
+            $("${fourRegionNameSelector}").attr("fill", "#F9AF41");    
+            $("${fourRegionNameSelector}").attr("stroke", "white");
             //three color
             $("${fiveRegionNameSelector}").attr("fill", "#00833D");
+            $("${fiveRegionNameSelector}").attr("stroke", "white");
             //four color
         });
     });
