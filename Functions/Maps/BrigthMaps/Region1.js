@@ -175,8 +175,8 @@ module.exports = createPreview = async (propiedades) => {
 </div>
 <div style="margin-top: 50px;margin-right: 20px">
     <div style="display: flex; justify-content: space-around;">
-        <div class="fontColorNumber" style="color:white;height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
-            ${firstRegionNumber} %
+        <div class="fontColorNumber" style="color:white;height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;text-align: center;align-items: center">
+            ${firstRegionNumber}%
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-top: 10px">
