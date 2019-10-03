@@ -13,19 +13,19 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const datos = toArray(propiedades.line_items[0].properties);
     console.log(datos);
     const name = nameFile;
-    const firstRegionName = datos[1];
-    const firstRegionNumber = datos[2];
+    const firstRegionName = datos[1].value;
+    const firstRegionNumber = datos[2].value;
 
-    const secondRegionName = datos[3];
-    const secondRegionNumber = datos[4];
+    const secondRegionName = datos[3].value;
+    const secondRegionNumber = datos[4].value;
 
     const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
     console.log("color", colorProduct);
     //Headline
-    const headline = datos[5];
+    const headline = datos[5].value;
     //const firstName = propiedades.personalHeadline;
     //FontSize
-    const font = fontStyle(datos[6]);
+    const font = fontStyle(datos[6].value);
 
 
     fontSizeRegion = (font) => {

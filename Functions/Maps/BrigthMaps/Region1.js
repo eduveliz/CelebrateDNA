@@ -4,6 +4,7 @@ const colorBackground = require('../../ColorsBackground/BrightMap');
 const regionNameTT = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
+const lineMaps = require('../../LinesMap/LineMaps');
 const colorProductSelect = require('../../Color/Color');
 const ancestryMap = require('../AncestryMap');
 const ttMap = require('../TTMap');
@@ -100,7 +101,7 @@ module.exports = createPreview = async (propiedades) => {
     .fontColorNumber {
         color:${fontColor(colorProduct)};
         font-family:${font};
-        border: 2px solid white;
+        border: 2px solid ${lineMaps(colorProduct)};
         font-size: ${fontSizeNumber()};
     }
     .fontColorHeadline {
@@ -175,7 +176,7 @@ module.exports = createPreview = async (propiedades) => {
 </div>
 <div style="margin-top: 50px;margin-right: 20px">
     <div style="display: flex; justify-content: space-around;">
-        <div class="fontColorNumber" style="color:white;height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;text-align: center;align-items: center">
+        <div class="fontColorNumber" style="color:white;height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;text-align: center;align-items: center;display:flex;justify-content: center">
             ${firstRegionNumber}%
         </div>
     </div>
@@ -191,7 +192,9 @@ module.exports = createPreview = async (propiedades) => {
             $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
             $("#regions").attr("fill", "transparent");
             //Primary color
-            $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
+          
+            $("${firstRegionNameSelector}").attr("fill", "#27A9E1");       
+            $("${firstRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
           });
     });
 </script>

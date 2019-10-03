@@ -38,9 +38,9 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
     //Headline
-    const headline = datos[17];
+    const headline = datos[17].value;
     //FontSize
-    const font = fontStyle(datos[18]);
+    const font = fontStyle(datos[18].value);
 
     fontSize = (font) => {
         if (font === "Noteworthy") {

@@ -11,6 +11,9 @@ const helix1 = require('./HelixVertical1');
 
 module.exports = helixSelector = async (regionNumber, properties, nameFile) => {
 
+    console.log("region selected".blue);
+    console.log("regionNumber", regionNumber);
+
     if (regionNumber === 10) {
         return helix10(nameFile, properties)
     }

@@ -9,14 +9,14 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const name = nameFile;
     const datos = toArray(propiedades.line_items[0].properties);
 
-    const firstRegionName = datos[0];
-    const firstRegionNumber = datos[1];
+    const firstRegionName = datos[0].value;
+    const firstRegionNumber = datos[1].value;
 
-    const secondRegionName = datos[2];
-    const secondRegionNumber = datos[3];
+    const secondRegionName = datos[2].value;
+    const secondRegionNumber = datos[3].value;
 
-    const threeRegionName = datos[4];
-    const threeRegionNumber = datos[5];
+    const threeRegionName = datos[4].value;
+    const threeRegionNumber = datos[5].value;
 
     const color = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
 
@@ -76,7 +76,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
 
     const fontColors = fontColor(color);
-    const font = fontStyle(datos[6].toString());
+    const font = fontStyle(datos[6].value.toString());
     const top = fontTop(font);
 
     const browser = await puppeteer.launch();

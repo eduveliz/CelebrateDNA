@@ -4,6 +4,7 @@ const colorBackground = require('../../ColorsBackground/BrightMap');
 const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
+const lineMaps = require('../../LinesMap/LineMaps');
 const colorProductSelect = require('../../Color/Color');
 const ancestryMap = require('../AncestryMap');
 const ttMap = require('../TTMap');
@@ -130,7 +131,7 @@ module.exports = createPreview = async (propiedades) => {
     .fontColorNumber {
         color:${fontColor(colorProduct)};
         font-family:${font};
-        border: 2px solid white;
+        border: 2px solid ${lineMaps(colorProduct)};
         font-size: ${fontSizeNumber()};
     }
     
@@ -281,32 +282,31 @@ module.exports = createPreview = async (propiedades) => {
             
             //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
-            $("${firstRegionNameSelector}").attr("stroke", "white");
+            $("${firstRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
             
             $("${secondRegionNameSelector}").attr("fill", "#6C61AA");
-            $("${secondRegionNameSelector}").attr("stroke", "white");
+            $("${secondRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
             //second color
             $("${threeRegionNameSelector}").attr("fill", "#BE1E2D");
-            $("${threeRegionNameSelector}").attr("stroke", "white");
+            $("${threeRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
             
             $("${fourRegionNameSelector}").attr("fill", "#F9AF41");    
-            $("${fourRegionNameSelector}").attr("stroke", "white");
+            $("${fourRegionNameSelector}").attr("stroke","${lineMaps(colorProduct)}");
             //three color
             $("${fiveRegionNameSelector}").attr("fill", "#00833D");
-            $("${fiveRegionNameSelector}").attr("stroke", "white");
+            $("${fiveRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
             
             $("${sixRegionNameSelector}").attr("fill", "#9794D2");
-            $("${sixRegionNameSelector}").attr("stroke", "white");
+            $("${sixRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
             //four color
             $("${sevenRegionNameSelector}").attr("fill", "#699279");
-            $("${sevenRegionNameSelector}").attr("stroke", "white");
+            $("${sevenRegionNameSelector}").attr("stroke","${lineMaps(colorProduct)}");
             
             $("${eightRegionNameSelector}").attr("fill", "#A4469A");
-            $("${eightRegionNameSelector}").attr("stroke", "white");
+            $("${eightRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
             //five color
             $("${nineRegionNameSelector}").attr("fill", "#CB8DBE");
-            $("${nineRegionNameSelector}").attr("stroke", "white");
-            
+            $("${nineRegionNameSelector}").attr("stroke","${lineMaps(colorProduct)}"); 
         });
     });
 </script>

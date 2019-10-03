@@ -5,6 +5,7 @@ const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
 const colorProductSelect = require('../../Color/Color');
+const lineMaps = require('../../LinesMap/LineMaps');
 const ancestryMap = require('../AncestryMap');
 const ttMap = require('../TTMap');
 const myHeritageMap = require('../MyHeritageMap');
@@ -127,7 +128,7 @@ module.exports = createPreview = async (propiedades) => {
     .fontColorNumber {
         color:${fontColor(colorProduct)};
         font-family:${font} ;
-        border: 2px solid white;
+        border: 2px solid ${lineMaps(colorProduct)};
         font-size: ${fontSizeNumber()};
     }
     
@@ -270,16 +271,29 @@ module.exports = createPreview = async (propiedades) => {
             
             //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
+            $("${firstRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
+            
             $("${secondRegionNameSelector}").attr("fill", "#6C61AA");
+            $("${secondRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
             //second color
             $("${threeRegionNameSelector}").attr("fill", "#BE1E2D");
-            $("${fourRegionNameSelector}").attr("fill", "#F9AF41");
+            $("${threeRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
+            
+            $("${fourRegionNameSelector}").attr("fill", "#F9AF41");    
+            $("${fourRegionNameSelector}").attr("stroke","${lineMaps(colorProduct)}");
             //three color
             $("${fiveRegionNameSelector}").attr("fill", "#00833D");
+            $("${fiveRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
+            
             $("${sixRegionNameSelector}").attr("fill", "#9794D2");
+            $("${sixRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
             //four color
             $("${sevenRegionNameSelector}").attr("fill", "#699279");
+            $("${sevenRegionNameSelector}").attr("stroke","${lineMaps(colorProduct)}");
+            
             $("${eightRegionNameSelector}").attr("fill", "#A4469A");
+            $("${eightRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
+            //five color
         });
     });
 </script>

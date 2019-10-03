@@ -12,22 +12,22 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const name = nameFile;
     const datos = toArray(propiedades.line_items[0].properties);
 
-    const firstRegionName = datos[1];
-    const firstRegionNumber = datos[2];
+    const firstRegionName = datos[1].value;
+    const firstRegionNumber = datos[2].value;
 
-    const secondRegionName = datos[3];
-    const secondRegionNumber = datos[4];
+    const secondRegionName = datos[3].value;
+    const secondRegionNumber = datos[4].value;
 
-    const threeRegionName = datos[5];
-    const threeRegionNumber = datos[6];
+    const threeRegionName = datos[5].value;
+    const threeRegionNumber = datos[6].value;
 
     const backgroundColor = colorBackground(propiedades.color);
 
     const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
     //Headline
-    const headline = datos[7];
+    const headline = datos[7].value;
     //FontSize
-    const font = fontStyle(datos[8]);
+    const font = fontStyle(datos[8].value);
 
     fontSize = (font) => {
         if (font === "Noteworthy") {

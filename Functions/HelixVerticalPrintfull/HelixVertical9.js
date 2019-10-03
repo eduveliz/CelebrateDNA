@@ -9,41 +9,41 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const name = nameFile;
     const datos = toArray(propiedades.line_items[0].properties);
 
-    const firstRegionName = datos[1];
-    const firstRegionNumber = datos[2];
+    const firstRegionName = datos[1].value;
+    const firstRegionNumber = datos[2].value;
 
-    const secondRegionName = datos[3];
-    const secondRegionNumber = datos[4];
+    const secondRegionName = datos[3].value;
+    const secondRegionNumber = datos[4].value;
 
-    const threeRegionName = datos[5];
-    const threeRegionNumber = datos[6];
+    const threeRegionName = datos[5].value;
+    const threeRegionNumber = datos[6].value;
 
-    const fourRegionName = datos[7];
-    const fourRegionNumber = datos[8];
+    const fourRegionName = datos[7].value;
+    const fourRegionNumber = datos[8].value;
 
-    const fiveRegionName = datos[9];
-    const fiveRegionNumber = datos[10];
+    const fiveRegionName = datos[9].value;
+    const fiveRegionNumber = datos[10].value;
 
-    const sixRegionName = datos[11];
-    const sixRegionNumber = datos[12];
+    const sixRegionName = datos[11].value;
+    const sixRegionNumber = datos[12].value;
 
-    const sevenRegionName = datos[13];
-    const sevenRegionNumber = datos[14];
+    const sevenRegionName = datos[13].value;
+    const sevenRegionNumber = datos[14].value;
 
-    const eightRegionName = datos[15];
-    const eightRegionNumber = datos[16];
+    const eightRegionName = datos[15].value;
+    const eightRegionNumber = datos[16].value;
 
-    const nineRegionName = datos[17];
-    const nineRegionNumber = datos[18];
+    const nineRegionName = datos[17].value;
+    const nineRegionNumber = datos[18].value;
 
 
     //Background Map
     const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
     //Headline
-    const headline = datos[19] === "Personalized headline" ? datos[20] : datos[19];
+    const headline = datos[19].value === "Personalized headline" ? datos[20].value : datos[19].value;
 
     //FontSize
-    const font = fontStyle(datos[21]);
+    const font = fontStyle(datos[21].value);
 
     fontSize = (font) => {
         if (font === "Noteworthy") {

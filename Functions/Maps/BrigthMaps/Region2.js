@@ -4,6 +4,7 @@ const colorBackground = require('../../ColorsBackground/BrightMap');
 const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
+const lineMaps = require('../../LinesMap/LineMaps');
 const colorProductSelect = require('../../Color/Color');
 const ancestryMap = require('../AncestryMap');
 const ttMap = require('../TTMap');
@@ -103,7 +104,7 @@ module.exports = createPreview = async (propiedades) => {
     .fontColorNumber {
         color:${fontColor(colorProduct)};
         font-family:${font} ;
-        border: 2px solid white;
+        border: 2px solid ${lineMaps(colorProduct)};
         font-size: ${fontSizeNumber()};
     }
     .fontColorHeadline {
@@ -200,7 +201,11 @@ module.exports = createPreview = async (propiedades) => {
             $("#regions").attr("fill", "transparent");
             //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
-            $("${secondRegionNameSelector}").attr("fill", "#6C61AA");          
+            $("${firstRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
+            
+            $("${secondRegionNameSelector}").attr("fill", "#6C61AA");
+            $("${secondRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
+  
         });
     });
 </script>

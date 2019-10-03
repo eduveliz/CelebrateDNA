@@ -5,6 +5,7 @@ const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
 const colorProductSelect = require('../../Color/Color');
+const lineMaps = require('../../LinesMap/LineMaps');
 const ancestryMap = require('../AncestryMap');
 const ttMap = require('../TTMap');
 const myHeritageMap = require('../MyHeritageMap');
@@ -123,6 +124,7 @@ module.exports = createPreview = async (propiedades) => {
     .fontColorNumber {
         color:${fontColor(colorProduct)};
         font-family:${font} ;
+        border: 2px solid ${lineMaps(colorProduct)};
         font-size: ${fontSizeNumber()};
     }
     
@@ -207,13 +209,13 @@ module.exports = createPreview = async (propiedades) => {
         <div class='fontColorNumber' style="color:white;height:40px; width:100%;  border-radius: 20px; background-color: #a25562;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${threeRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="color:white;height:40px; width:100%;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white;height:40px; width:100%;  border-radius: 20px; background-color: #5c4955;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${fourRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="color:white;height:40px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white;height:40px; width:100%; border-radius: 20px;background-color: #b19e3f;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${fiveRegionNumber}%
         </div>
-        <div class="fontColorNumber" style="color:white;height:40px; width:100%; border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="color:white;height:40px; width:100%; border-radius: 20px; background-color: #603813;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${sixRegionNumber}%
         </div>
     </div>
@@ -247,13 +249,22 @@ module.exports = createPreview = async (propiedades) => {
             
             //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#616C44");
+            $("${firstRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
+            
             $("${secondRegionNameSelector}").attr("fill", "#6D0008");
+            $("${secondRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");    
             //second color
             $("${threeRegionNameSelector}").attr("fill", "#A25562");
+            $("${threeRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}")
+           
             $("${fourRegionNameSelector}").attr("fill", "#5C4955");
+            $("${fourRegionNameSelector}").attr("stroke","${lineMaps(colorProduct)}");
             //three color
             $("${fiveRegionNameSelector}").attr("fill", "#B19E3F");
+            $("${fiveRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
+            
             $("${sixRegionNameSelector}").attr("fill", "#603813");
+            $("${sixRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
             //four color
         });
     });

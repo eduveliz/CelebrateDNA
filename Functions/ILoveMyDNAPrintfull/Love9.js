@@ -7,32 +7,32 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const name = nameFile;
     const datos = toArray(propiedades.line_items[0].properties);
 
-    const firstRegionName = datos[0];
-    const firstRegionNumber = datos[1];
+    const firstRegionName = datos[0].value;
+    const firstRegionNumber = datos[1].value;
 
-    const secondRegionName = datos[2];
-    const secondRegionNumber = datos[3];
+    const secondRegionName = datos[2].value;
+    const secondRegionNumber = datos[3].value;
 
-    const threeRegionName = datos[4];
-    const threeRegionNumber = datos[5];
+    const threeRegionName = datos[4].value;
+    const threeRegionNumber = datos[5].value;
 
-    const fourRegionName = datos[6];
-    const fourRegionNumber = datos[7];
+    const fourRegionName = datos[6].value;
+    const fourRegionNumber = datos[7].value;
 
-    const fiveRegionName = datos[8];
-    const fiveRegionNumber = datos[9];
+    const fiveRegionName = datos[8].value;
+    const fiveRegionNumber = datos[9].value;
 
-    const sixRegionName = datos[10];
-    const sixRegionNumber = datos[11];
+    const sixRegionName = datos[10].value;
+    const sixRegionNumber = datos[11].value;
 
-    const sevenRegionName = datos[12];
-    const sevenRegionNumber = datos[13];
+    const sevenRegionName = datos[12].value;
+    const sevenRegionNumber = datos[13].value;
 
-    const eightRegionName = datos[14];
-    const eightRegionNumber = datos[15];
+    const eightRegionName = datos[14].value;
+    const eightRegionNumber = datos[15].value;
 
-    const nineRegionName = datos[16];
-    const nineRegionNumber = datos[17];
+    const nineRegionName = datos[16].value;
+    const nineRegionNumber = datos[17].value;
 
     const color = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
 
@@ -90,7 +90,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
 
     const fontColors = fontColor(color);
-    const font = fontStyle(datos[18].toString());
+    const font = fontStyle(datos[18].value.toString());
     const top = fontTop(font);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
