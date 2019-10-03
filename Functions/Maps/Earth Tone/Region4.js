@@ -202,7 +202,7 @@ module.exports = createPreview = async (propiedades) => {
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "pt"}">
             <div class='fontColor'>${firstRegionName}</div>
         </div>
         <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
