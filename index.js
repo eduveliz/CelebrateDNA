@@ -11,25 +11,30 @@ const previewSelector = require('./Functions/Maps/BrigthMaps/ttPreviewSelector')
 //earth
 const earthSelector = require('./Functions/Maps/Earth Tone/earthPreviewSelector');
 
-//Helix
-const helixSelector = require('./Functions/Helix/HelixSelector');
-const helixVerticalSelector = require('./Functions/HelixVertical/HelixVerticalSelector');
+//PreviewHelix
+const helixSelector = require('./Functions/PreviewHelix/HelixSelector');
+const helixVerticalSelector = require('./Functions/PreviewHelixVertical/HelixVerticalSelector');
 
 //printFull horizontal helix
-const helixSelectorPrintfull = require('./Functions/HelixPrintfull/HelixSelector');
+const helixSelectorPrintfull = require('./Functions/PrintfullHelix/HelixSelector');
 const setNumberRegionsHelix = require('./Functions/RegionNumbers/setRegionNumberHelix');
 //printFull Vertical
-const helixVerticalSelectorPrintfull = require('./Functions/HelixVerticalPrintfull/HelixVerticalSelector');
+const helixVerticalSelectorPrintfull = require('./Functions/PrintfullHelixVertical/HelixVerticalSelector');
 const setNumberRegionsHelixVertical = require('./Functions/RegionNumbers/setRegionNumberHelixVertical');
 //printfull I love my dna
-const loveSelectorPrintfull = require('./Functions/ILoveMyDNAPrintfull/LoveSelector');
+const loveSelectorPrintfull = require('./Functions/PrintfullILoveMyDNA/LoveSelector');
 const setNumberRegionsLove = require('./Functions/RegionNumbers/setRegionNumberLovel');
 
-//Donut
-const donut = require('./Functions/Donut/DonutSelector');
+//printfull
+const mapsPrintfullBrigth = require('./Functions/PrintFullMaps/BrigthMaps/brigthPreviewSelector');
+const mapsPrintfullEarth = require('./Functions/PrintFullMaps/Earth Tone/earthPreviewSelector');
+const setNumberMaps = require('./Functions/RegionNumbers/setRegionNumberMaps');
+
+//PreviewDonut
+const donut = require('./Functions/PreviewDonut/DonutSelector');
 
 //IloveMyDna
-const love = require('./Functions/ILoveMyDNA/LoveSelector');
+const love = require('./Functions/PreviewILoveMyDNA/LoveSelector');
 
 //Yellow
 const YellowSelector = require('./Functions/Totes/Yellow/RegionYellowPreview');
@@ -75,7 +80,7 @@ app.post('/earth', jsonParser, function (req, res) {
 });
 
 app.post('/helixHorizontal', jsonParser, function (req, res) {
-    console.log("creating Helix... ".red + req.body.nameFile);
+    console.log("creating PreviewHelix... ".red + req.body.nameFile);
     console.log(req.body);
     const regionNumber = req.body.regions.length;
     return helixSelector(regionNumber, req.body).then(() => {
@@ -84,7 +89,7 @@ app.post('/helixHorizontal', jsonParser, function (req, res) {
 });
 
 app.post('/helixVertical', jsonParser, function (req, res) {
-    console.log("creating Helix Vertical...".red + req.body.nameFile);
+    console.log("creating PreviewHelix Vertical...".red + req.body.nameFile);
     console.log(req.body);
     const regionNumber = req.body.regions.length;
     return helixVerticalSelector(regionNumber, req.body).then(() => {
@@ -93,7 +98,7 @@ app.post('/helixVertical', jsonParser, function (req, res) {
 });
 
 app.post('/donut', jsonParser, function (req, res) {
-    console.log("creating Helix Vertical... " + req.body.nameFile);
+    console.log("creating PreviewHelix Vertical... " + req.body.nameFile);
     console.log(req.body);
     const regionNumber = req.body.regions.length;
     return donut(regionNumber, req.body).then(() => {
@@ -137,7 +142,7 @@ app.post('/printfull', jsonParser, function (req, res) {
     const nameFile = Date.now();
     const sku = line_items[0].sku;
     const id = line_items[0].product_id.toString();
-    console.log("dato regiones general", toArray(cantidad).length);
+    console.log("Numero de Regiones", toArray(cantidad).length);
 
     const name = shipping_address.first_name;
     const address1 = shipping_address.address1;
@@ -153,6 +158,31 @@ app.post('/printfull', jsonParser, function (req, res) {
     // const countryCode = "US";
     // const zip = "91311";
 
+    mapsPrintfullBrigth(setNumberMaps(toArray(cantidad).length, req.body)).then(() => {
+        return axios.post('https://api.printful.com/orders', {
+                "recipient": {
+                    "name": name,
+                    "address1": address1,
+                    "city": city,
+                    "state_code": stateCode,
+                    "country_code": countryCode,
+                    "zip": zip
+                },
+                "items": [{
+                    "variant_id": sku,
+                    "quantity": 1,
+                    "files": [{
+                        "url": "https://moolab.ml/" + nameFile + ".png"
+                    }]
+                }]
+            },
+            {
+                headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+            }
+        ).catch(reason => console.log("Error" + reason));
+    });
+
+    mapsPrintfullEarth();
 
     if (id === "1864978006059" || id === "1865315287083") {
         helixSelectorPrintfull(setNumberRegionsHelix(toArray(cantidad).length), req.body, nameFile).then(() => {

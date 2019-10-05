@@ -5,10 +5,9 @@ const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
 const colorProductSelect = require('../../Color/Color');
-const ancestryMap = require('../AncestryMap');
-const ttMap = require('../TTMap');
-const myHeritageMap = require('../MyHeritageMap');
-
+const ancestryMap = require('../../AncestryMap');
+const ttMap = require('../../TTMap');
+const myHeritageMap = require('../../MyHeritageMap');
 
 module.exports = createPreview = async (propiedades) => {
     const name = propiedades.nameFile;
