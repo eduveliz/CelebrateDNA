@@ -158,33 +158,62 @@ app.post('/printfull', jsonParser, function (req, res) {
     const countryCode = "US";
     const zip = "91311";
 
-    mapsPrintfullBrigth(setNumberMaps(toArray(cantidad).length), req.body, nameFile).then(() => {
-        axios.post('https://api.printful.com/orders', {
-                "recipient": {
-                    "name": name,
-                    "address1": address1,
-                    "city": city,
-                    "state_code": stateCode,
-                    "country_code": countryCode,
-                    "zip": zip
-                },
-                "items": [{
-                    "variant_id": sku,
-                    "quantity": 1,
-                    "files": [{
-                        "url": "https://b956a150.ngrok.io/" + nameFile + ".png"
+    if (id === "") {
+        mapsPrintfullBrigth(setNumberMaps(toArray(cantidad).length), req.body, nameFile).then(() => {
+            axios.post('https://api.printful.com/orders', {
+                    "recipient": {
+                        "name": name,
+                        "address1": address1,
+                        "city": city,
+                        "state_code": stateCode,
+                        "country_code": countryCode,
+                        "zip": zip
+                    },
+                    "items": [{
+                        "variant_id": sku,
+                        "quantity": 1,
+                        "files": [{
+                            "url": "https://b956a150.ngrok.io/" + nameFile + ".png"
+                        }]
                     }]
-                }]
-            },
-            {
-                headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
-            }
-        ).catch(reason => console.log("Error" + reason));
+                },
+                {
+                    headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+                }
+            ).catch(reason => console.log("Error" + reason));
 
-        return res.end('{"success" : "Updated Successfully", "status" : 200}');
-    });
+            return res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
+    }
 
-//    mapsPrintfullEarth();
+    if (id === "1859442409515") {
+        mapsPrintfullEarth(setNumberMaps(toArray(cantidad).length), req.body, nameFile).then(() => {
+            axios.post('https://api.printful.com/orders', {
+                    "recipient": {
+                        "name": name,
+                        "address1": address1,
+                        "city": city,
+                        "state_code": stateCode,
+                        "country_code": countryCode,
+                        "zip": zip
+                    },
+                    "items": [{
+                        "variant_id": sku,
+                        "quantity": 1,
+                        "files": [{
+                            "url": "https://b956a150.ngrok.io/" + nameFile + ".png"
+                        }]
+                    }]
+                },
+                {
+                    headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+                }
+            ).catch(reason => console.log("Error" + reason));
+
+            return res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
+    }
+
 
     // if (id === "1864978006059" || id === "1865315287083") {
     //     helixSelectorPrintfull(setNumberRegionsHelix(toArray(cantidad).length), req.body, nameFile).then(() => {
