@@ -4,6 +4,9 @@ module.exports = fontColor = (colorSelected) => {
         case "Heather Prism Mint":
             return fontColor = "#6D6E70";
             break;
+        case "Heather Prism Mint ":
+            return fontColor = "#6D6E70";
+            break;
         case "Ash":
             return fontColor = "#6D6E70";
             break;
@@ -17,6 +20,9 @@ module.exports = fontColor = (colorSelected) => {
             return fontColor = "#6D6E70";
             break;
         case "Steel Blue":
+            return fontColor = "#FFFFFF";
+            break;
+        case "Steel Blue ":
             return fontColor = "#FFFFFF";
             break;
         case "Kelly":

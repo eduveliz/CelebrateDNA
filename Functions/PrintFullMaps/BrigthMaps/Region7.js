@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
-const regionNames = require('../../RegionNames/RegionNames');
+const regionName = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const lineMaps = require('../../LinesMap/LineMaps');
 const fontColor = require('../../FontColor/FontColor');
@@ -10,43 +10,46 @@ const ancestryMap = require('../../AncestryMap');
 const ttMap = require('../../TTMap');
 const myHeritageMap = require('../../MyHeritageMap');
 
-module.exports = createPreview = async (propiedades) => {
-    const name = propiedades.nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
+module.exports = createPreview = async (nameFile, propiedades) => {
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNameSelector = regionNames(propiedades.regions[1].region);
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
+    const datos = toArray(propiedades.line_items[0].properties);
+    const name = nameFile;
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNameSelector = regionNames(propiedades.regions[2].region);
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
+    const firstRegionName = datos[1];
+    const firstRegionNameSelector = regionName(datos[1]);
+    const firstRegionNumber = datos[2];
 
-    const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNameSelector = regionNames(propiedades.regions[3].region);
-    const fourRegionNumber = propiedades.regions[3].porcentaje;
+    const secondRegionName = datos[3];
+    const secondRegionNameSelector = regionName(datos[3]);
+    const secondRegionNumber = datos[4];
 
-    const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNameSelector = regionNames(propiedades.regions[4].region);
-    const fiveRegionNumber = propiedades.regions[4].porcentaje;
+    const threeRegionName = datos[5];
+    const threeRegionNameSelector = regionName(datos[5]);
+    const threeRegionNumber = datos[6];
 
-    const sixRegionName = propiedades.regions[5].region;
-    const sixRegionNameSelector = regionNames(propiedades.regions[5].region);
-    const sixRegionNumber = propiedades.regions[5].porcentaje;
+    const fourRegionName = datos[7];
+    const fourRegionNameSelector = regionName(datos[7]);
+    const fourRegionNumber = datos[8];
 
-    const sevenRegionName = propiedades.regions[6].region;
-    const sevenRegionNameSelector = regionNames(propiedades.regions[6].region);
-    const sevenRegionNumber = propiedades.regions[6].porcentaje;
+    const fiveRegionName = datos[9];
+    const fiveRegionNameSelector = regionName(datos[9]);
+    const fiveRegionNumber = datos[10];
 
-    const colorProduct = propiedades.colorProduct;
-    const backgroundColor = colorBackground(propiedades.color);
+    const sixRegionName = datos[11];
+    const sixRegionNameSelector = regionName(datos[11]);
+    const sixRegionNumber = datos[12];
+
+    const sevenRegionName = datos[13];
+    const sevenRegionNameSelector = regionName(datos[13]);
+    const sevenRegionNumber = datos[14];
+
+    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
+    const backgroundColor = colorBackground(datos[15]);
     const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
     //Headline
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
+    const headline = datos[16] === "Personalized headline" ? datos[17] : datos[16];
     //FontSize
-    const font = fontStyle(propiedades.fontStyle);
+    const font = fontStyle(datos[18]);
     companyMap = (company) => {
         if (company === "Ancestry") {
             return ancestryMap;
@@ -58,7 +61,7 @@ module.exports = createPreview = async (propiedades) => {
             return myHeritageMap;
         }
     };
-    const map = companyMap(propiedades.company);
+    const map = companyMap(datos[0]);
 
 
     fontSizeRegion = (font) => {
@@ -106,7 +109,7 @@ module.exports = createPreview = async (propiedades) => {
     await page.setViewport({
         width: 1152,
         height: 1536,
-        deviceScaleFactor: 1,
+        deviceScaleFactor: 3,
     });
 
     await page.setContent(`
@@ -140,6 +143,7 @@ module.exports = createPreview = async (propiedades) => {
     .fontColorHeadline {
         color:${fontColor(colorProduct)};
         font-family:${font} ;
+        margin-bottom: 0px;
         text-align: center; 
         font-size:${fontHeadline()};
     }
@@ -201,11 +205,11 @@ module.exports = createPreview = async (propiedades) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)} ">
+<div style="margin-top: 120pt">
 <h1 class='fontColorHeadline'>${headline}</h1>
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
-
 <div style="margin-top: 50px;margin-right: 20px">
      <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="color:white;height:38px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
@@ -255,7 +259,7 @@ module.exports = createPreview = async (propiedades) => {
         </div>
     </div>
 </div>
-
+</div>
 
 <script>    
     $(function () {
@@ -290,6 +294,7 @@ module.exports = createPreview = async (propiedades) => {
 </body>
 </html>
 `);
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.evaluate(() => document.body.style.background = 'transparent');
+    await page.screenshot({path: `public/${name}.png`, omitBackground: true});
     await browser.close();
 };

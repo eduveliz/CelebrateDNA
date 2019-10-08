@@ -3,6 +3,9 @@ module.exports = design = (product) => {
     switch (product) {
         case "Steel Blue":
             return line = "white";
+            break
+        case "Steel Blue ":
+            return line = "white";
             break;
         case "Kelly":
             return line = "white";
