@@ -10,24 +10,27 @@ const ancestryMap = require('../../AncestryMap');
 const ttMap = require('../../TTMap');
 const myHeritageMap = require('../../MyHeritageMap');
 
-module.exports = createPreview = async (propiedades) => {
-    const name = propiedades.nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
+module.exports = createPreview = async (nameFile, propiedades) => {
+    const datos = toArray(propiedades.line_items[0].properties);
+    console.log(datos);
+    const name = nameFile;
+    const firstRegionName = datos[1];
+    const firstRegionNameSelector = regionName(datos[1]);
+    const firstRegionNumber = datos[2];
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNameSelector = regionNames(propiedades.regions[1].region);
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
+    const secondRegionName = datos[3];
+    const secondRegionNameSelector = regionName(datos[3]);
+    const secondRegionNumber = datos[4];
 
     //Background Map
-    const colorProduct = propiedades.colorProduct;
-    const backgroundColor = colorBackground(propiedades.color);
+    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
+    const backgroundColor = colorBackground(datos[5]);
     const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
     //Headline
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
+    const headline = datos[6] === "Personalized headline" ? datos[7] : datos[6];
     //FontSize
-    const font = fontStyle(propiedades.fontStyle);
+    const font = fontStyle(datos[8]);
+
     companyMap = (company) => {
         if (company === "Ancestry") {
             return ancestryMap;
@@ -39,7 +42,7 @@ module.exports = createPreview = async (propiedades) => {
             return myHeritageMap;
         }
     };
-    const map = companyMap(propiedades.company);
+    const map = companyMap(datos[0]);
 
 
     fontSizeRegion = (font) => {
@@ -171,6 +174,7 @@ module.exports = createPreview = async (propiedades) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)} ">
+<div style="margin-top: 120pt">
 <h1 class='fontColorHeadline'>${headline}</h1>
 <div style="width: 100%;text-align: center;">
     ${map}
@@ -194,6 +198,7 @@ module.exports = createPreview = async (propiedades) => {
         </div>
     </div>
 </div>
+</div>
 <script>    
     $(function () {
         $(document).ready(function () {
@@ -214,8 +219,9 @@ module.exports = createPreview = async (propiedades) => {
     await page.setViewport({
         width: 1152,
         height: 1536,
-        deviceScaleFactor: 1,
+        deviceScaleFactor: 3,
     });
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.evaluate(() => document.body.style.background = 'transparent');
+    await page.screenshot({path: `public/${name}.png`, omitBackground: true});
     await browser.close();
 };

@@ -221,8 +221,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </div>
 </div>
 
-
-
 <script>    
     $(function () {
         $(document).ready(function () {

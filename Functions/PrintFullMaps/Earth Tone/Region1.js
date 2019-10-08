@@ -10,20 +10,21 @@ const ancestryMap = require('../../AncestryMap');
 const ttMap = require('../../TTMap');
 const myHeritageMap = require('../../MyHeritageMap');
 
-module.exports = createPreview = async (propiedades) => {
-    const name = propiedades.nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNameSelector = regionNameTT(propiedades.regions[0].region);
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
+module.exports = createPreview = async (nameFile, propiedades) => {
+    const datos = toArray(propiedades.line_items[0].properties);
+    console.log("propiedades", datos);
+    const name = nameFile;
+    const firstRegionName = datos[1];
+    const firstRegionNameSelector = regionNameTT(datos[1]);
+    const firstRegionNumber = datos[2];
     //Background Map
-    const colorProduct = propiedades.colorProduct;
-    const backgroundColor = colorBackground(propiedades.color);
+    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
+    const backgroundColor = colorBackground(datos[3]);
     const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
-
     //Headline
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
+    const headline = datos[4] === "Personalized headline" ? datos[5] : datos[4];
     //FontSize
-    const font = fontStyle(propiedades.fontStyle);
+    const font = fontStyle(datos[6]);
 
     companyMap = (company) => {
         if (company === "Ancestry") {
@@ -36,7 +37,7 @@ module.exports = createPreview = async (propiedades) => {
             return myHeritageMap;
         }
     };
-    const map = companyMap(propiedades.company);
+    const map = companyMap(datos[0]);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -170,6 +171,7 @@ module.exports = createPreview = async (propiedades) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)}">
+<div style="margin-top: 120pt">
 <h1 class='fontColorHeadline'>${headline}</h1>
 <div style="width: 100%;text-align: center;">
     ${map}
@@ -185,6 +187,7 @@ module.exports = createPreview = async (propiedades) => {
             <div class="fontColor">${firstRegionName}</div>
         </div>
     </div>
+</div>
 </div>
 <script>    
     $(function () {
@@ -203,8 +206,9 @@ module.exports = createPreview = async (propiedades) => {
     await page.setViewport({
         width: 1152,
         height: 1536,
-        deviceScaleFactor: 1,
+        deviceScaleFactor: 3,
     });
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.evaluate(() => document.body.style.background = 'transparent');
+    await page.screenshot({path: `public/${name}.png`, omitBackground: true});
     await browser.close();
 };
