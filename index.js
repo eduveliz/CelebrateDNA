@@ -144,21 +144,21 @@ app.post('/printfull', jsonParser, function (req, res) {
     const id = line_items[0].product_id.toString();
     console.log("Numero de Regiones", toArray(cantidad).length);
 
-    // const name = shipping_address.first_name;
-    // const address1 = shipping_address.address1;
-    // const city = shipping_address.city;
-    // const stateCode = shipping_address.province_code;
-    // const countryCode = shipping_address.country_code;
-    // const zip = shipping_address.zip;
+    const name = shipping_address.first_name;
+    const address1 = shipping_address.address1;
+    const city = shipping_address.city;
+    const stateCode = shipping_address.province_code;
+    const countryCode = shipping_address.country_code;
+    const zip = shipping_address.zip;
 
-    const name = "Eduardo";
-    const address1 = "19749 Dearborn St";
-    const city = "Chatsworth";
-    const stateCode = "CA";
-    const countryCode = "US";
-    const zip = "91311";
+    // const name = "Eduardo";
+    // const address1 = "19749 Dearborn St";
+    // const city = "Chatsworth";
+    // const stateCode = "CA";
+    // const countryCode = "US";
+    // const zip = "91311";
 
-    if (id === "") {
+    if (id === "1857838415915") {
         mapsPrintfullBrigth(setNumberMaps(toArray(cantidad).length), req.body, nameFile).then(() => {
             axios.post('https://api.printful.com/orders', {
                     "recipient": {
@@ -173,7 +173,7 @@ app.post('/printfull', jsonParser, function (req, res) {
                         "variant_id": sku,
                         "quantity": 1,
                         "files": [{
-                            "url": "https://b956a150.ngrok.io/" + nameFile + ".png"
+                            "url": "https://moolab.ml/" + nameFile + ".png"
                         }]
                     }]
                 },
@@ -201,7 +201,7 @@ app.post('/printfull', jsonParser, function (req, res) {
                         "variant_id": sku,
                         "quantity": 1,
                         "files": [{
-                            "url": "https://b956a150.ngrok.io/" + nameFile + ".png"
+                            "url": "https://moolab.ml/" + nameFile + ".png"
                         }]
                     }]
                 },
@@ -215,93 +215,93 @@ app.post('/printfull', jsonParser, function (req, res) {
     }
 
 
-    // if (id === "1864978006059" || id === "1865315287083") {
-    //     helixSelectorPrintfull(setNumberRegionsHelix(toArray(cantidad).length), req.body, nameFile).then(() => {
-    //         return axios.post('https://api.printful.com/orders', {
-    //                 "recipient": {
-    //                     "name": name,
-    //                     "address1": address1,
-    //                     "city": city,
-    //                     "state_code": stateCode,
-    //                     "country_code": countryCode,
-    //                     "zip": zip
-    //                 },
-    //                 "items": [{
-    //                     "variant_id": sku,
-    //                     "quantity": 1,
-    //                     "files": [{
-    //                         "url": "https://moolab.ml/" + nameFile + ".png"
-    //                     }]
-    //                 }]
-    //             },
-    //             {
-    //                 headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
-    //             }
-    //         ).catch(reason => console.log("Error" + reason));
-    //
-    //     }).then(() => {
-    //         res.end('{"success" : "Updated Successfully", "status" : 200}');
-    //     });
-    // }
-    //
-    // if (id === "1865318268971" || id === "1864993439787") {
-    //     console.log("product Detect".america);
-    //     helixVerticalSelectorPrintfull(setNumberRegionsHelixVertical(toArray(cantidad).length), req.body, nameFile).then(() => {
-    //         return axios.post('https://api.printful.com/orders', {
-    //                 "recipient": {
-    //                     "name": name,
-    //                     "address1": address1,
-    //                     "city": city,
-    //                     "state_code": stateCode,
-    //                     "country_code": countryCode,
-    //                     "zip": zip
-    //                 },
-    //                 "items": [{
-    //                     "variant_id": sku,
-    //                     "quantity": 1,
-    //                     "files": [{
-    //                         "url": "https://moolab.ml/" + nameFile + ".png"
-    //                     }]
-    //                 }]
-    //             },
-    //             {
-    //                 headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
-    //             }).then(() => {
-    //             res.end('{"success" : "Updated Successfully", "status" : 200}');
-    //         }).catch(reason => console.log("Error" + reason));
-    //     });
-    //     return res.end('{"success" : "Updated Successfully", "status" : 200}')
-    // }
-    //
-    // if (id === "1865350643755" || id === "1865381838891") {
-    //     loveSelectorPrintfull(setNumberRegionsLove(toArray(cantidad).length), req.body, nameFile).then(() => {
-    //         return axios.post('https://api.printful.com/orders', {
-    //                 "recipient": {
-    //                     "name": name,
-    //                     "address1": address1,
-    //                     "city": city,
-    //                     "state_code": stateCode,
-    //                     "country_code": countryCode,
-    //                     "zip": zip
-    //                 },
-    //                 "items": [{
-    //                     "variant_id": sku,
-    //                     "quantity": 1,
-    //                     "files": [{
-    //                         "url": "https://moolab.ml/" + nameFile + ".png"
-    //                     }]
-    //                 }]
-    //             },
-    //             {
-    //                 headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
-    //             }
-    //         ).catch(reason => console.log("Error" + reason));
-    //
-    //     }).then(() => {
-    //         console.log("Diseño enviardo correctamente");
-    //         res.end('{"success" : "Updated Successfully", "status" : 200}');
-    //     })
-    // }
+    if (id === "1864978006059" || id === "1865315287083") {
+        helixSelectorPrintfull(setNumberRegionsHelix(toArray(cantidad).length), req.body, nameFile).then(() => {
+            return axios.post('https://api.printful.com/orders', {
+                    "recipient": {
+                        "name": name,
+                        "address1": address1,
+                        "city": city,
+                        "state_code": stateCode,
+                        "country_code": countryCode,
+                        "zip": zip
+                    },
+                    "items": [{
+                        "variant_id": sku,
+                        "quantity": 1,
+                        "files": [{
+                            "url": "https://moolab.ml/" + nameFile + ".png"
+                        }]
+                    }]
+                },
+                {
+                    headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+                }
+            ).catch(reason => console.log("Error" + reason));
+
+        }).then(() => {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
+    }
+
+    if (id === "1865318268971" || id === "1864993439787") {
+        console.log("product Detect".america);
+        helixVerticalSelectorPrintfull(setNumberRegionsHelixVertical(toArray(cantidad).length), req.body, nameFile).then(() => {
+            return axios.post('https://api.printful.com/orders', {
+                    "recipient": {
+                        "name": name,
+                        "address1": address1,
+                        "city": city,
+                        "state_code": stateCode,
+                        "country_code": countryCode,
+                        "zip": zip
+                    },
+                    "items": [{
+                        "variant_id": sku,
+                        "quantity": 1,
+                        "files": [{
+                            "url": "https://moolab.ml/" + nameFile + ".png"
+                        }]
+                    }]
+                },
+                {
+                    headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+                }).then(() => {
+                res.end('{"success" : "Updated Successfully", "status" : 200}');
+            }).catch(reason => console.log("Error" + reason));
+        });
+        return res.end('{"success" : "Updated Successfully", "status" : 200}')
+    }
+
+    if (id === "1865350643755" || id === "1865381838891") {
+        loveSelectorPrintfull(setNumberRegionsLove(toArray(cantidad).length), req.body, nameFile).then(() => {
+            return axios.post('https://api.printful.com/orders', {
+                    "recipient": {
+                        "name": name,
+                        "address1": address1,
+                        "city": city,
+                        "state_code": stateCode,
+                        "country_code": countryCode,
+                        "zip": zip
+                    },
+                    "items": [{
+                        "variant_id": sku,
+                        "quantity": 1,
+                        "files": [{
+                            "url": "https://moolab.ml/" + nameFile + ".png"
+                        }]
+                    }]
+                },
+                {
+                    headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+                }
+            ).catch(reason => console.log("Error" + reason));
+
+        }).then(() => {
+            console.log("Diseño enviardo correctamente");
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        })
+    }
 });
 
 const PORT = process.env.PORT || 3000;
