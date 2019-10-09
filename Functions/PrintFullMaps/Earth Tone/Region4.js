@@ -14,30 +14,30 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const datos = toArray(propiedades.line_items[0].properties);
     const name = nameFile;
     //Regions  */ RegionsNamesSelectors is for Jquery/*
-    const firstRegionName = datos[1];
-    const firstRegionNameSelector = regionName(datos[1]);
-    const firstRegionNumber = datos[2];
+    const firstRegionName = datos[1].value;
+    const firstRegionNameSelector = regionName(datos[1].value);
+    const firstRegionNumber = datos[2].value;
 
-    const secondRegionName = datos[3];
-    const secondRegionNameSelector = regionName(datos[3]);
-    const secondRegionNumber = datos[4];
+    const secondRegionName = datos[3].value;
+    const secondRegionNameSelector = regionName(datos[3].value);
+    const secondRegionNumber = datos[4].value;
 
-    const threeRegionName = datos[5];
-    const threeRegionNameSelector = regionName(datos[5]);
-    const threeRegionNumber = datos[6];
+    const threeRegionName = datos[5].value;
+    const threeRegionNameSelector = regionName(datos[5].value);
+    const threeRegionNumber = datos[6].value;
 
-    const fourRegionName = datos[7];
-    const fourRegionNameSelector = regionName(datos[7]);
-    const fourRegionNumber = datos[8];
+    const fourRegionName = datos[7].value;
+    const fourRegionNameSelector = regionName(datos[7].value);
+    const fourRegionNumber = datos[8].value;
 
     //Background Map
     const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
-    const backgroundColor = colorBackground(datos[9]);
+    const backgroundColor = colorBackground(datos[9].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
     //Headline
-    const headline = datos[10] === "Personalized headline" ? datos[11] : datos[10];
+    const headline = datos[10].value === "Personalized headline" ? datos[11].value : datos[10].value;
     //FontSize
-    const font = fontStyle(datos[12]);
+    const font = fontStyle(datos[12].value);
     companyMap = (company) => {
         if (company === "Ancestry") {
             return ancestryMap;
@@ -49,7 +49,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return myHeritageMap;
         }
     };
-    const map = companyMap(datos[0]);
+    const map = companyMap(datos[0].value);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
