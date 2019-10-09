@@ -158,7 +158,7 @@ app.post('/printfull', jsonParser, function (req, res) {
     // const countryCode = "US";
     // const zip = "91311";
 
-    if (id === "1857838415915") {
+    if (id === "1857838415915" || id === "1859574300715") {
         mapsPrintfullBrigth(setNumberMaps(toArray(cantidad).length), req.body, nameFile).then(() => {
             axios.post('https://api.printful.com/orders', {
                     "recipient": {
@@ -186,7 +186,7 @@ app.post('/printfull', jsonParser, function (req, res) {
         });
     }
 
-    if (id === "1859442409515") {
+    if (id === "1859442409515" || id === "1859617882155") {
         mapsPrintfullEarth(setNumberMaps(toArray(cantidad).length), req.body, nameFile).then(() => {
             axios.post('https://api.printful.com/orders', {
                     "recipient": {
