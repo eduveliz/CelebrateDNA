@@ -14,22 +14,22 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const datos = toArray(propiedades.line_items[0].properties);
     console.log(datos);
     const name = nameFile;
-    const firstRegionName = datos[1];
-    const firstRegionNameSelector = regionName(datos[1]);
-    const firstRegionNumber = datos[2];
+    const firstRegionName = datos[1].value;
+    const firstRegionNameSelector = regionName(datos[1].value);
+    const firstRegionNumber = datos[2].value;
 
-    const secondRegionName = datos[3];
-    const secondRegionNameSelector = regionName(datos[3]);
-    const secondRegionNumber = datos[4];
+    const secondRegionName = datos[3].value;
+    const secondRegionNameSelector = regionName(datos[3].value);
+    const secondRegionNumber = datos[4].value;
 
     //Background Map
     const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
-    const backgroundColor = colorBackground(datos[5]);
+    const backgroundColor = colorBackground(datos[5].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
     //Headline
-    const headline = datos[6] === "Personalized headline" ? datos[7] : datos[6];
+    const headline = datos[6].value === "Personalized headline" ? datos[7].value : datos[6].value;
     //FontSize
-    const font = fontStyle(datos[8]);
+    const font = fontStyle(datos[8].value);
 
 
     companyMap = (company) => {
@@ -43,7 +43,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return myHeritageMap;
         }
     };
-    const map = companyMap(datos[0]);
+    const map = companyMap(datos[0].value);
 
 
     fontSizeRegion = (font) => {
@@ -59,7 +59,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         if (font === "Noteworhty Bold") {
             return "40pt"
         }
-    }
+    };
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {

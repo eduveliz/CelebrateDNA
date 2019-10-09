@@ -15,41 +15,41 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const datos = toArray(propiedades.line_items[0].properties);
     const name = nameFile;
 
-    const firstRegionName = datos[1];
-    const firstRegionNameSelector = regionName(datos[1]);
-    const firstRegionNumber = datos[2];
+    const firstRegionName = datos[1].value;
+    const firstRegionNameSelector = regionName(datos[1].value);
+    const firstRegionNumber = datos[2].value;
 
-    const secondRegionName = datos[3];
-    const secondRegionNameSelector = regionName(datos[3]);
-    const secondRegionNumber = datos[4];
+    const secondRegionName = datos[3].value;
+    const secondRegionNameSelector = regionName(datos[3].value);
+    const secondRegionNumber = datos[4].value;
 
-    const threeRegionName = datos[5];
-    const threeRegionNameSelector = regionName(datos[5]);
-    const threeRegionNumber = datos[6];
+    const threeRegionName = datos[5].value;
+    const threeRegionNameSelector = regionName(datos[5].value);
+    const threeRegionNumber = datos[6].value;
 
-    const fourRegionName = datos[7];
-    const fourRegionNameSelector = regionName(datos[7]);
-    const fourRegionNumber = datos[8];
+    const fourRegionName = datos[7].value;
+    const fourRegionNameSelector = regionName(datos[7].value);
+    const fourRegionNumber = datos[8].value;
 
-    const fiveRegionName = datos[9];
-    const fiveRegionNameSelector = regionName(datos[9]);
-    const fiveRegionNumber = datos[10];
+    const fiveRegionName = datos[9].value;
+    const fiveRegionNameSelector = regionName(datos[9].value);
+    const fiveRegionNumber = datos[10].value;
 
-    const sixRegionName = datos[11];
-    const sixRegionNameSelector = regionName(datos[11]);
-    const sixRegionNumber = datos[12];
+    const sixRegionName = datos[11].value;
+    const sixRegionNameSelector = regionName(datos[11].value);
+    const sixRegionNumber = datos[12].value;
 
-    const sevenRegionName = datos[13];
-    const sevenRegionNameSelector = regionName(datos[13]);
-    const sevenRegionNumber = datos[14];
+    const sevenRegionName = datos[13].value;
+    const sevenRegionNameSelector = regionName(datos[13].value);
+    const sevenRegionNumber = datos[14].value;
 
     const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
-    const backgroundColor = colorBackground(datos[15]);
+    const backgroundColor = colorBackground(datos[15].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
     //Headline
-    const headline = datos[16] === "Personalized headline" ? datos[17] : datos[16];
+    const headline = datos[16].value === "Personalized headline" ? datos[17].value : datos[16].value;
     //FontSize
-    const font = fontStyle(datos[18]);
+    const font = fontStyle(datos[18].value);
     companyMap = (company) => {
         if (company === "Ancestry") {
             return ancestryMap;
@@ -61,8 +61,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return myHeritageMap;
         }
     };
-    const map = companyMap(datos[0]);
-
+    const map = companyMap(datos[0].value);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {

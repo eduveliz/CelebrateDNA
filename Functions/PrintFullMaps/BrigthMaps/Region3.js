@@ -16,25 +16,25 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     console.log(datos);
     const name = nameFile;
 
-    const firstRegionName = datos[1];
-    const firstRegionNameSelector = regionName(datos[1]);
-    const firstRegionNumber = datos[2];
+    const firstRegionName = datos[1].value;
+    const firstRegionNameSelector = regionName(datos[1].value);
+    const firstRegionNumber = datos[2].value;
 
-    const secondRegionName = datos[3];
-    const secondRegionNameSelector = regionName(datos[3]);
-    const secondRegionNumber = datos[4];
+    const secondRegionName = datos[3].value;
+    const secondRegionNameSelector = regionName(datos[3].value);
+    const secondRegionNumber = datos[4].value;
 
-    const threeRegionName = datos[5];
-    const threeRegionNameSelector = regionName(datos[5]);
-    const threeRegionNumber = datos[6];
+    const threeRegionName = datos[5].value;
+    const threeRegionNameSelector = regionName(datos[5].value);
+    const threeRegionNumber = datos[6].value;
 
     const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
-    const backgroundColor = colorBackground(datos[7]);
+    const backgroundColor = colorBackground(datos[7].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
     //Headline
-    const headline = datos[8] === "Personalized headline" ? datos[9] : datos[8];
+    const headline = datos[8].value === "Personalized headline" ? datos[9].value : datos[8].value;
     //FontSize
-    const font = fontStyle(datos[10]);
+    const font = fontStyle(datos[10].value);
     companyMap = (company) => {
         if (company === "Ancestry") {
             return ancestryMap;
@@ -46,7 +46,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return myHeritageMap;
         }
     };
-    const map = companyMap(datos[0]);
+    const map = companyMap(datos[0].value);
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {

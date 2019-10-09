@@ -14,17 +14,17 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const datos = toArray(propiedades.line_items[0].properties);
     console.log("propiedades", datos);
     const name = nameFile;
-    const firstRegionName = datos[1];
-    const firstRegionNameSelector = regionNameTT(datos[1]);
-    const firstRegionNumber = datos[2];
+    const firstRegionName = datos[1].value;
+    const firstRegionNameSelector = regionNameTT(datos[1].value);
+    const firstRegionNumber = datos[2].value;
     //Background Map
     const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
-    const backgroundColor = colorBackground(datos[3]);
+    const backgroundColor = colorBackground(datos[3].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
     //Headline
-    const headline = datos[4] === "Personalized headline" ? datos[5] : datos[4];
+    const headline = datos[4].value === "Personalized headline" ? datos[5].value : datos[4].value;
     //FontSize
-    const font = fontStyle(datos[6]);
+    const font = fontStyle(datos[6].value);
 
     companyMap = (company) => {
         if (company === "Ancestry") {
@@ -37,7 +37,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return myHeritageMap;
         }
     };
-    const map = companyMap(datos[0]);
+    const map = companyMap(datos[0].value);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
