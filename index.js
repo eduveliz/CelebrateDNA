@@ -37,10 +37,9 @@ const donut = require('./Functions/PreviewDonut/DonutSelector');
 const love = require('./Functions/PreviewILoveMyDNA/LoveSelector');
 
 //Yellow
-const YellowSelector = require('./Functions/Totes/Yellow/RegionYellowPreview');
-
+const YellowSelector = require('./Functions/PreviewTotes/Yellow/RegionYellowPreview');
 //Black
-const RegionSelector = require('./Functions/Totes/Black/Maps/RegionSelector');
+const RegionSelector = require('./Functions/PreviewTotes/Black/Maps/RegionSelector');
 
 const toArray = require('lodash.toarray');
 const colors = require('colors');
