@@ -1,9 +1,10 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
-const regionNames = require('../../RegionNames/RegionNameAncestry');
+const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
+const lineMaps = require('../../LinesMap/LineMaps');
 const colorProductSelect = require('../../Color/Color');
 const ancestryMap = require('../../AncestryMap');
 const ttMap = require('../../TTMap');
@@ -68,6 +69,45 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
     const map = companyMap(propiedades.company);
 
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "14pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "14pt"
+        }
+        if (font === "Funnier") {
+            return "10pt"
+        }
+    };
+
+    fontSizeNumber = () => {
+        if (font === "Noteworthy") {
+            return "16pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "18pt"
+        }
+        if (font === "Funnier") {
+            return "12pt"
+        }
+    };
+
+    fontHeadline = () => {
+        if (font === "Noteworthy") {
+            return "110px"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "110px"
+        }
+        if (font === "Funnier") {
+            return "85px"
+        }
+        if (font === "Noteworhty Bold") {
+            return "110px"
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -83,19 +123,29 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <meta charset="UTF-8">
     <title>23andMe</title>
     <style>
-    .RegionName {
-    font-size: 22px;
-    text-align: center;
-    color: ${fontColor(colorProduct)};    
-    font-family:${font};   
-    }  
-   .fontColor {
-    color: ${fontColor(colorProduct)};
-    font-family:${font};
+    .fontColor {
+        color:${fontColor(colorProduct)};
+        font-family:${font};
+        font-size: ${fontSizeRegion(font)};
     }
     .fontColorRegion {
         color:white;
         font-family:${font};
+        border: 2px solid ${lineMaps(colorProduct)};
+        font-size: ${fontSizeNumber()};   
+    }
+    
+    .fontColorHeadline {
+        color:${fontColor(colorProduct)};
+        font-family:${font} ;
+        text-align: center; 
+        font-size:${fontHeadline()};
+    }
+    
+    .fontColorNumber {
+        font-family:${font};
+        color: white;
+        font-size: ${fontSizeNumber()};
     }
     
         @font-face {
@@ -156,7 +206,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:13in;height:11in;background-color: ${colorProductSelect(colorProduct)}">
-<h1 class='fontColor' style="text-align: center;font-size:89px;">${headline} </h1>
+<h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
 
 <div style="width: 100%;text-align: center;">
     ${map}
@@ -185,10 +235,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px; background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
              ${sevenRegionNumber} %
         </div>
-        <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
+        <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;">
              ${eightRegionNumber} %
         </div>
-        <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px; background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
+        <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px; background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${nineRegionNumber} %
         </div>
     </div>

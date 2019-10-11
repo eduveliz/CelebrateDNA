@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
-const regionNames = require('../../RegionNames/RegionNameAncestry');
+const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
 const colorProductSelect = require('../../Color/Color');
@@ -71,6 +71,36 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
     const map = companyMap(propiedades.company);
+
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "18pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "18pt"
+        }
+        if (font === "Funnier") {
+            return "13pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "20pt"
+        }
+    };
+
+    fontSizeNumber = () => {
+        if (font === "Noteworthy") {
+            return "16pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "20pt"
+        }
+        if (font === "Funnier") {
+            return "16pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "35pt"
+        }
+    };
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
