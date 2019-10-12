@@ -52,22 +52,21 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "40pt"
-        }
-        if (font === "MyriadPro-Bold") {
-            return "40pt"
-        }
-        if (font === "Funnier") {
             return "30pt"
         }
+        if (font === "MyriadPro-Bold") {
+            return "30pt"
+        }
+        if (font === "Funnier") {
+            return "26pt"
+        }
         if (font === "Noteworhty Bold") {
-            return "40pt"
+            return "30pt"
         }
     };
-
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return "35pt"
+            return "28pt"
         }
         if (font === "MyriadPro-Bold") {
             return "35pt"
@@ -76,7 +75,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return "30pt"
         }
         if (font === "Noteworhty Bold") {
-            return "35pt"
+            return "28pt"
         }
     };
 
@@ -207,7 +206,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             ${fourRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-right: 20px">
+    <div style="display: flex; justify-content: space-around;margin-right: 20px;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
             <div class='fontColor'>${firstRegionName}</div>
         </div>

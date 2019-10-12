@@ -238,7 +238,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
       ${eightRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;">
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
         <div style="height:60px;width:100%;display: flex; justify-content: center">
             <div class="fontColor" >${firstRegionName}</div>
         </div>

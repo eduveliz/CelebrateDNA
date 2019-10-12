@@ -41,7 +41,6 @@ module.exports = createPreview = async (propiedades) => {
     };
     const map = companyMap(propiedades.company);
 
-
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
             return "40pt"

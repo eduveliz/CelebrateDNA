@@ -43,21 +43,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
     const map = companyMap(propiedades.company);
 
-    fontSizeRegion = (font) => {
-        if (font === "Noteworthy") {
-            return "40pt"
-        }
-        if (font === "MyriadPro-Bold") {
-            return "40pt"
-        }
-        if (font === "Funnier") {
-            return "30pt"
-        }
-        if (font === "Noteworhty Bold") {
-            return "40pt"
-        }
-    };
-
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
             return "35pt"
@@ -70,6 +55,20 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
         if (font === "Noteworhty Bold") {
             return "35pt"
+        }
+    };
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "40pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "40pt"
+        }
+        if (font === "Funnier") {
+            return "26pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "40pt"
         }
     };
 
@@ -196,7 +195,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
          ${threeRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-right: 20px">
+    <div style="display: flex; justify-content: space-around;margin-right: 20px;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
             <div class="fontColor">${firstRegionName}</div>
         </div>

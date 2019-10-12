@@ -1,15 +1,13 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
-const colorBackground = require('../../../ColorsBackground/BrightMap');
-const regionNames = require('../../../RegionNames/RegionNameAncestry');
-const fontStyle = require('../../../FontStyle/FontStyle');
-const fontColor = require('../../../FontColor/FontColor');
-const colorProductSelect = require('../../../Color/Color');
-const ancestryMap = require('../../../AncestryMap');
-const ttMap = require('../../../TTMap');
-const MyHeritageMap = require('../../../MyHeritageMap');
+const colorBackground = require('../../ColorsBackground/BrightMap');
+const regionNames = require('../../RegionNames/RegionNameAncestry');
+const fontStyle = require('../../FontStyle/FontStyle');
+const fontColor = require('../../FontColor/FontColor');
+const colorProductSelect = require('../../Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
+    //Regions  */ RegionsNamesSelectors is for Jquery/*
     const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
@@ -18,6 +16,14 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const secondRegionName = propiedades.regions[1].region;
     const secondRegionNameSelector = regionNames(propiedades.regions[1].region);
     const secondRegionNumber = propiedades.regions[1].porcentaje;
+
+    const threeRegionName = propiedades.regions[2].region;
+    const threeRegionNameSelector = regionNames(propiedades.regions[2].region);
+    const threeRegionNumber = propiedades.regions[2].porcentaje;
+
+    const fourRegionName = propiedades.regions[3].region;
+    const fourRegionNameSelector = regionNames(propiedades.regions[3].region);
+    const fourRegionNumber = propiedades.regions[3].porcentaje;
 
     //Background Map
     const backgroundColor = colorBackground(propiedades.color);
@@ -57,7 +63,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         color:white;
         font-family:${font};
     }
-          @font-face {
+        @font-face {
     font-family: 'Futura';
     src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
         url('https://moolab.ml/Fonts/Futura-Bold.woff') format('woff');
@@ -110,13 +116,12 @@ module.exports = createPreview = async (nameFile, propiedades) => {
          url('https://moolab.ml/Fonts/MyriadPro-Bold.woff') format('woff'), url('https://moolab.ml/Fonts/MyriadPro-Bold.ttf')  format('truetype');
     font-weight: normal;
     font-style: normal;
-    }
+  }
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:13in;height:11in;background-color: ${colorProductSelect(colorProduct)}">
 <h1 class='fontColor' style="text-align: center;font-size:89px;">${headline} </h1>
-
 <div style="width: 100%;text-align: center;">
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 847.6 481.4">
         <title>Ancestry</title>
@@ -575,23 +580,38 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </g>
     </svg>
 </div>
-<div style="margin-top: 50px;margin-right: 17px">
-    <div style="display: flex; justify-content: space-around;">
-        <div class="fontColorRegion" style="height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+
+<div style="margin-top: 50px">
+<div style="margin-top: 50px">
+    <div style="display: flex; justify-content: space-around;margin-right: 20px">
+        <div class='fontColorRegion' style="height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
             ${firstRegionNumber}%
         </div>
-        <div class="fontColorRegion" style="height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+        <div class='fontColorRegion' style="height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
             ${secondRegionNumber}%
         </div>
+        <div class='fontColorRegion' style="height:60px; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+            ${threeRegionNumber}%
+        </div>
+        <div class='fontColorRegion' style="height:60px; width:100%;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
+            ${fourRegionNumber}%
+        </div>
     </div>
-    <div style="display: flex; justify-content: space-around;">
+    <div style="display: flex; justify-content: space-around;margin-right: 20px">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class="fontColor" style="font-size: 33px;">${firstRegionName}</div>
+            <div class='fontColor' style="font-size: 25px;">${firstRegionName}</div>
         </div>
         <div style="width:100%;height:60px; display: flex; justify-content: center">
-            <div class="fontColor" style="font-size: 33px">${secondRegionName}</div>
+            <div class='fontColor' style="font-size: 25px">${secondRegionName}</div>
+        </div>
+        <div style="width:100%;height:60px;display: flex; justify-content: center">
+            <div class='fontColor' style="font-size: 25px">${threeRegionName}</div>
+        </div>
+        <div style=" width:100%;height:60px;display: flex; justify-content: center">
+            <div class='fontColor' style="font-size: 25px">${fourRegionName}</div>
         </div>
     </div>
+</div>
 </div>
 <script>    
     $(function () {
@@ -600,7 +620,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             $("#regions").attr("fill", "transparent");
             //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
-            $("${secondRegionNameSelector}").attr("fill", "#6C61AA");          
+            $("${secondRegionNameSelector}").attr("fill", "#6C61AA");
+            //second color
+            $("${threeRegionNameSelector}").attr("fill", "#BE1E2D");
+            $("${fourRegionNameSelector}").attr("fill", "#F9AF41");            
         });
     });
 </script>

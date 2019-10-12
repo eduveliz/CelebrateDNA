@@ -1,12 +1,12 @@
 const puppeteer = require('puppeteer');
-const colorBackground = require('../../../ColorsBackground/BrightMap');
-const regionNames = require('../../../RegionNames/RegionNameAncestry');
-const fontStyle = require('../../../FontStyle/FontStyle');
-const fontColor = require('../../../FontColor/FontColor');
-const colorProductSelect = require('../../../Color/Color');
-const ancestryMap = require('../../../AncestryMap');
-const ttMap = require('../../../TTMap');
-const MyHeritageMap = require('../../../MyHeritageMap');
+const colorBackground = require('../../ColorsBackground/BrightMap');
+const regionNames = require('../../RegionNames/RegionNameAncestry');
+const fontStyle = require('../../FontStyle/FontStyle');
+const fontColor = require('../../FontColor/FontColor');
+const colorProductSelect = require('../../Color/Color');
+const ancestryMap = require('../../AncestryMap');
+const ttMap = require('../../TTMap');
+const MyHeritageMap = require('../../MyHeritageMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const name = propiedades.nameFile;

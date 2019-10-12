@@ -39,7 +39,7 @@ const love = require('./Functions/PreviewILoveMyDNA/LoveSelector');
 //Yellow
 const YellowSelector = require('./Functions/PreviewTotes/Yellow/RegionYellowPreview');
 //Black
-const RegionSelector = require('./Functions/PreviewTotes/Black/Maps/RegionSelector');
+const RegionSelector = require('./Functions/PreviewTotes/Black/RegionSelector');
 
 const toArray = require('lodash.toarray');
 const colors = require('colors');

@@ -76,7 +76,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
 
-
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
             return "17pt"
@@ -231,7 +230,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
     </div>
     
-    <div style="display: flex; justify-content: space-around;">
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
             <div class="fontColor" >${firstRegionName}</div>
         </div>
