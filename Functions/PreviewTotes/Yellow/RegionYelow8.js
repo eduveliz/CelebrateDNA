@@ -50,6 +50,12 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const colorProduct = propiedades.fontColor;
     //Headline
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
+
+    const statement = propiedades.statement;
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementOne;
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : propiedades.personalStatementTwo;
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementThree;
+    const sizeStatement = "Small";
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
     companyMap = (company) => {
@@ -108,10 +114,22 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
 
+    fontStatement = () => {
+        if (sizeStatement === "Small") {
+            return "100pt"
+        }
+        if (sizeStatement === "Medium") {
+            return "110px";
+        }
+        if (sizeStatement === "Large") {
+            return "85px"
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
-        width: 1270,
+        width: 1270 * 2,
         height: 1280,
         deviceScaleFactor: 1,
     });
@@ -140,6 +158,15 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         font-family:${font} ;
         text-align: center; 
         font-size:${fontHeadline()};
+    }
+    
+    .fontStatement{
+        color:${fontColor(colorProduct)};
+        font-family:${font};
+        font-size: ${fontStatement()};
+        text-align: center;
+        justify-content: center;
+        align-items: center
     }
     
     .fontColorNumber {
@@ -205,7 +232,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:13in;height:11in;background-color: ${colorProductSelect(colorProduct)}">
+<body style="background-color: ${colorProductSelect(colorProduct)};display: flex">
+<div>
 <h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
 <div style="width: 100%;text-align: center;">
     ${map}
@@ -265,6 +293,15 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
     </div>
 </div>
+</div>
+    <div>
+        <h1 style="text-align: center">Flip side</h1>
+        <div class="fontStatement" style="width:13in;height:11in;">
+            <p>${personalStatementOne}</p>
+            <p>${personalStatementTwo}</p>
+            <p>${personalStatementThree}</p>
+        </div>
+    </div>
 
 <script>    
     $(function () {

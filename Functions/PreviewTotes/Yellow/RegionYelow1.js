@@ -23,8 +23,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     //Headline
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
 
-    const statement = "S";
-    const personalStatement = propiedades.personalStatement;
+    const statement = propiedades.statement;
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementOne;
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : propiedades.personalStatementTwo;
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementThree;
     const sizeStatement = "Small";
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
@@ -88,7 +90,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontStatement = () => {
         if (sizeStatement === "Small") {
-            return "120pt"
+            return "100pt"
         }
         if (sizeStatement === "Medium") {
             return "110px";
@@ -116,7 +118,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         color:${fontColor(colorProduct)};
         font-family:${font};
         font-size: ${fontStatement()};
-        display: flex;
         text-align: center;
         justify-content: center;
         align-items: center
@@ -222,10 +223,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
     <div>
         <h1 style="text-align: center">Flip side</h1>
-        <div class="fontStatement" style="width:13in;height:11in;">${personalStatement}</div>
+        <div class="fontStatement" style="width:13in;height:11in;">
+            <p>${personalStatementOne}</p>
+            <p>${personalStatementTwo}</p>
+            <p>${personalStatementThree}</p>
+        </div>
     </div>
-    
-
+   
 <script>    
     $(function () {
         $(document).ready(function () {
