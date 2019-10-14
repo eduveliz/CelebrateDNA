@@ -145,6 +145,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         color:${fontColor(colorProduct)};
         font-family:${font};
         font-size: ${fontSizeRegion(font)};
+        text-align: center;
+        align-items: center;
     }
     .fontColorRegion {
         color:white;
@@ -243,61 +245,61 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
 <div style="margin-top: 50px;margin-right: 20px">
     <div style="display: flex; justify-content: space-around;">
-        <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
-            ${firstRegionNumber} %
+        <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
+            ${firstRegionNumber}%
         </div>
-        <div class="fontColorRegion"  style="height:38px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
-            ${secondRegionNumber} %
+        <div class="fontColorNumber"  style="color:white;height:38px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
+            ${secondRegionNumber}%
         </div>
-        <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
-            ${threeRegionNumber} %
+        <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
+            ${threeRegionNumber}%
         </div>
-        <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
-             ${fourRegionNumber} %
+        <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
+             ${fourRegionNumber}%
         </div>
-        <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px; background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
-            ${fiveRegionNumber} %
+        <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px; background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
+            ${fiveRegionNumber}%
         </div>
-        <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
-            ${sixRegionNumber} %
+        <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
+            ${sixRegionNumber}%
         </div>
-        <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px; background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
-             ${sevenRegionNumber} %
+        <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px; background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
+             ${sevenRegionNumber}%
         </div>
-        <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;">
-             ${eightRegionNumber} %
+        <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
+             ${eightRegionNumber}%
         </div>
-        <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px; background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;">
-            ${nineRegionNumber} %
+        <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px; background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 20px;">
+            ${nineRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "5pt"}">
         <div style="height:60px; width:100%;display: flex; justify-content: center">
-            <div class='RegionName' >${firstRegionName}</div>
+            <div class='fontColor' >${firstRegionName}</div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: center">
-            <div class='RegionName' >${secondRegionName}</div>
+            <div class='fontColor' >${secondRegionName}</div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: center">
-            <div class='RegionName' >${threeRegionName}</div>
+            <div class='fontColor' >${threeRegionName}</div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: center">
-            <div class='RegionName'>${fourRegionName}</div>
+            <div class='fontColor'>${fourRegionName}</div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: center">
-            <div class='RegionName' >${fiveRegionName}</div>
+            <div class='fontColor' >${fiveRegionName}</div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: center">
-            <div class='RegionName' >${sixRegionName}</div>
+            <div class='fontColor' >${sixRegionName}</div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: center">
-            <div class='RegionName' >${sevenRegionName}</div>
+            <div class='fontColor' >${sevenRegionName}</div>
         </div>
         <div style="height:60px; width:100%;display: flex; justify-content: center">
-            <div class='RegionName' >${eightRegionName}</div>
+            <div class='fontColor' >${eightRegionName}</div>
         </div>
-        <div style="height:60px; width:100%;display: flex; justify-content: center">
-            <div class='RegionName' >${nineRegionName}</div>
+        <div style="height:60px; width:100%;display: flex; justify-content: center;text-align: center">
+            <div class='fontColor' >${nineRegionName}</div>
         </div>
     </div>
 </div>

@@ -136,6 +136,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         color:${fontColor(colorProduct)};
         font-family:${font};
         font-size: ${fontSizeRegion(font)};
+        text-align: center;
+        align-items: center;
     }
     .fontColorRegion {
         color:white;
@@ -224,31 +226,31 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="background-color: ${colorProductSelect(colorProduct)};display: flex">
+
 <div>
 <h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
-<div style="width: 100%;text-align: center;">
-    ${map}
-</div>
-
-<div style="margin-top: 50px">
+    <div style="width: 100%;text-align: center;">
+        ${map}
+    </div>
+<div style="margin-top: 50px;margin-right: 12px">
     <div style="display: flex; justify-content: space-around;">
-        <div class='fontColorNumber' style="height:38px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
-           ${firstRegionNumber} %
+        <div class='fontColorNumber' style="color:white;height:40px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
+           ${firstRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="height:38px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
-            ${secondRegionNumber} %
+        <div class='fontColorNumber' style="color:white;height:40px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${secondRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="height:38px; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;">
-            ${threeRegionNumber} %
+        <div class='fontColorNumber' style="color:white;height:40px; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${threeRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="height:38px; width:100%;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;">
-            ${fourRegionNumber} %
+        <div class='fontColorNumber' style="color:white;height:40px; width:100%;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${fourRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;">
-            ${fiveRegionNumber} %
+        <div class='fontColorNumber' style="color:white;height:40px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${fiveRegionNumber}%
         </div>
-        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;">
-            ${sixRegionNumber} %
+        <div class="fontColorNumber" style="color:white;height:40px; width:100%; border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${sixRegionNumber}%
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
