@@ -28,7 +28,12 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const threeRegionNameSelector = regionName(datos[5].value);
     const threeRegionNumber = datos[6].value;
 
-    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
+    const colorProduct = propiedades.line_items[0].name.split('- ').pop().split('/')[0].toString();
+
+    console.log("color",colorProduct);
+
+    console.log("color letter",fontColor(colorProduct));
+
     const backgroundColor = colorBackground(datos[7].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
     //Headline
@@ -62,7 +67,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return "35pt"
         }
     };
-
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -105,7 +109,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <style>
     .fontColor {
         color:${fontColor(colorProduct)};
-        font-family:${font} ;
+        font-family:${font};
         font-size: ${fontSizeRegion(font)};
     }
     
@@ -208,13 +212,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
         <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
-            <div class="fontColor" style="text-align: center">${firstRegionName}</div>
+            <div class="fontColor" style="text-align: center;">${firstRegionName}</div>
         </div>
         <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
-            <div class="fontColor" style="text-align: center">${secondRegionName}</div>
+            <div class="fontColor" style="text-align: center;">${secondRegionName}</div>
         </div>
         <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
-            <div class="fontColor"  style="text-align: center">${threeRegionName}</div>
+            <div class="fontColor"  style="text-align: center;">${threeRegionName}</div>
         </div>
     </div>
 </div>

@@ -31,7 +31,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const fourRegionNumber = datos[8].value;
 
     //Background Map
-    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
+    const colorProduct = propiedades.line_items[0].name.split('- ').pop().split('/')[0].toString();
     const backgroundColor = colorBackground(datos[9].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
     //Headline

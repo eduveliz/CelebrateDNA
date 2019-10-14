@@ -299,7 +299,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     <div id="fiveGroup" style="width: 100%; ">
         <div style="height:60px; width:100%;display: flex; justify-content: initial;margin-bottom:7pt ">
-            <div class="fontColor" style="text-align: center;width: 50%;display: flex;justify-content: center;align-items: center ">${nineRegionName}</div>
+            <div class="fontColor" style="
+            text-align: center;width: 50%;display: flex;justify-content: center;align-items: center ">${nineRegionName}</div>
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">

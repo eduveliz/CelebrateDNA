@@ -89,14 +89,26 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
 
     fontStatement = () => {
-        if (sizeStatement === "Small") {
-            return "100pt"
+        if (font === "Noteworthy") {
+            return "175pt"
         }
-        if (sizeStatement === "Medium") {
+        if (font === "Medium") {
             return "110px";
         }
-        if (sizeStatement === "Large") {
+        if (font === "Large") {
             return "85px"
+        }
+    };
+
+    fontSpaceStatement=()=>{
+        if (font === "Noteworthy") {
+            return "0px"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "0px";
+        }
+        if (font === "Funnier") {
+            return "0px"
         }
     };
 
@@ -118,7 +130,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         color:${fontColor(colorProduct)};
         font-family:${font};
         font-size: ${fontStatement()};
-        text-align: center;
+        text-align: center; 
         justify-content: center;
         align-items: center
     }
@@ -223,9 +235,9 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <div>
         <h1 style="text-align: center">Flip side</h1>
         <div class="fontStatement" style="width:13in;height:11in;">
-            <p>${personalStatementOne}</p>
-            <p>${personalStatementTwo}</p>
-            <p>${personalStatementThree}</p>
+            <div>${personalStatementOne}</div>
+            <div>${personalStatementTwo}</div>
+            <div>${personalStatementThree}</div>
         </div>
     </div>
    

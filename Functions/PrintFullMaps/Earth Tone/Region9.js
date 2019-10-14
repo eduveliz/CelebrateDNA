@@ -50,7 +50,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const nineRegionNameSelector = regionName(datos[17].value);
     const nineRegionNumber = datos[18].value;
 
-    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
+    const colorProduct = propiedades.line_items[0].name.split('- ').pop().split('/')[0].toString();
     const backgroundColor = colorBackground(datos[19].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";   //Headline
 

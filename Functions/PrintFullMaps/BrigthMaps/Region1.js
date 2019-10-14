@@ -18,7 +18,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const firstRegionNameSelector = regionNameTT(datos[1].value);
     const firstRegionNumber = datos[2].value;
     //Background Map
-    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
+    const colorProduct = propiedades.line_items[0].name.split('- ').pop().split('/')[0].toString();
     const backgroundColor = colorBackground(datos[3].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
     //Headline
