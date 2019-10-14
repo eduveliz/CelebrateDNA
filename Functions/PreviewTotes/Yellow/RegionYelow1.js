@@ -201,7 +201,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </head>
 <body style="background-color: ${colorProductSelect(colorProduct)};display: flex">
    <div>  
-    <h1 style="text-align: center">Flip side</h1>
         <div style="width:13in;height:11in">
             <h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
             <div style="width: 100%;text-align: center;">

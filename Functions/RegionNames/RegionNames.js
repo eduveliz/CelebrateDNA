@@ -29,7 +29,7 @@ module.exports = regionNamebyId = (regionName) => {
             console.log("Find Region Name".yellow);
             return regionNameId = "#sierraLeon";
             break;
-        case "Scandinavian":
+        case "Scandinavia":
             console.log("Find Region Name".yellow);
             return regionNameId = "#scandinavian";
             break;
