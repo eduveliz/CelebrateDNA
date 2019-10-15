@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const colorBackground = require('../../ColorsBackground/BrightMap');
-const regionNames = require('../../RegionNames/RegionNameAncestry');
+const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
 const colorProductSelect = require('../../Color/Color');
@@ -31,6 +31,75 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
         if (company === "MyHeritageDNA") {
             return MyHeritageMap;
+        }
+    };
+
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "40pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "40pt"
+        }
+        if (font === "Funnier") {
+            return "30pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "40pt"
+        }
+    };
+
+    fontSizeNumber = () => {
+        if (font === "Noteworthy") {
+            return "35pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "35pt"
+        }
+        if (font === "Funnier") {
+            return "30pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "35pt"
+        }
+    };
+
+    fontHeadline = () => {
+        if (font === "Noteworthy") {
+            return "110px"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "110px"
+        }
+        if (font === "Funnier") {
+            return "85px"
+        }
+        if (font === "Noteworhty Bold") {
+            return "110px"
+        }
+    };
+
+    fontStatement = () => {
+        if (font === "Noteworthy") {
+            return "175pt"
+        }
+        if (font === "Medium") {
+            return "110px";
+        }
+        if (font === "Large") {
+            return "85px"
+        }
+    };
+
+    fontSpaceStatement = () => {
+        if (font === "Noteworthy") {
+            return "0px"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "0px";
+        }
+        if (font === "Funnier") {
+            return "0px"
         }
     };
     const map = companyMap(propiedades.company);

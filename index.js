@@ -37,7 +37,7 @@ const donut = require('./Functions/PreviewDonut/DonutSelector');
 const love = require('./Functions/PreviewILoveMyDNA/LoveSelector');
 
 //Yellow
-const YellowSelector = require('./Functions/PreviewTotes/Yellow/RegionYellowPreview');
+const YellowSelector = require('./Functions/PreviewTotes/Yellow/RegionSelector');
 //Black
 const RegionSelector = require('./Functions/PreviewTotes/Black/RegionSelector');
 

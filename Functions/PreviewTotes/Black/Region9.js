@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
-const regionNames = require('../../RegionNames/RegionNameAncestry');
+const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
 const colorProductSelect = require('../../Color/Color');
@@ -63,8 +63,59 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return MyHeritageMap;
         }
     };
-    const map = companyMap(propiedades.company);
 
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "14pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "14pt"
+        }
+        if (font === "Funnier") {
+            return "10pt"
+        }
+    };
+
+    fontSizeNumber = () => {
+        if (font === "Noteworthy") {
+            return "16pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "18pt"
+        }
+        if (font === "Funnier") {
+            return "12pt"
+        }
+    };
+
+    fontHeadline = () => {
+        if (font === "Noteworthy") {
+            return "110px"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "110px"
+        }
+        if (font === "Funnier") {
+            return "85px"
+        }
+        if (font === "Noteworhty Bold") {
+            return "110px"
+        }
+    };
+
+    fontStatement = () => {
+        if (sizeStatement === "Small") {
+            return "100pt"
+        }
+        if (sizeStatement === "Medium") {
+            return "110px";
+        }
+        if (sizeStatement === "Large") {
+            return "85px"
+        }
+    };
+
+    const map = companyMap(propiedades.company);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
