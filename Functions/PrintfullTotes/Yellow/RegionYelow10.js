@@ -1,10 +1,13 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
-const regionNames = require('../../RegionNames/RegionNameAncestry');
+const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
 const colorProductSelect = require('../../Color/Color');
+const ancestryMap = require('../../AncestryMap');
+const ttMap = require('../../TTMap');
+const MyHeritageMap = require('../../MyHeritageMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
@@ -54,6 +57,12 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const colorProduct = propiedades.fontColor;
     //Headline
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
+
+    const statement = propiedades.statement;
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementOne;
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : propiedades.personalStatementTwo;
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementThree;
+    const sizeStatement = "Small";
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
     companyMap = (company) => {
@@ -69,10 +78,52 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
     const map = companyMap(propiedades.company);
 
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return "18pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "18pt"
+        }
+        if (font === "Funnier") {
+            return "13pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "20pt"
+        }
+    };
+
+    fontSizeNumber = () => {
+        if (font === "Noteworthy") {
+            return "16pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "20pt"
+        }
+        if (font === "Funnier") {
+            return "16pt"
+        }
+        if (font === "Noteworhty Bold") {
+            return "35pt"
+        }
+    };
+
+    fontStatement = () => {
+        if (sizeStatement === "Small") {
+            return "100pt"
+        }
+        if (sizeStatement === "Medium") {
+            return "110px";
+        }
+        if (sizeStatement === "Large") {
+            return "85px"
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
-        width: 1270,
+        width: 1270 * 2,
         height: 1280,
         deviceScaleFactor: 1,
     });
@@ -87,10 +138,21 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     .fontColor {
         color:${fontColor(colorProduct)};
         font-family:${font};
+        text-align: center;
+        align-items: center;
     }
     .fontColorRegion {
         color:white;
         font-family:${font};
+    }
+    
+    .fontStatement{
+        color:${fontColor(colorProduct)};
+        font-family:${font};
+        font-size: ${fontStatement()};
+        text-align: center;
+        justify-content: center;
+        align-items: center
     }
     
     @font-face {
@@ -150,109 +212,121 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:13in;height:11in;background-color: ${colorProductSelect(colorProduct)}">
+<body style="width:13in;height:11in;background-color: ${colorProductSelect(colorProduct)};display: flex">
+<div>
 <h1 class='fontColor' style="text-align: center;font-size:89px;">${headline} </h1>
 
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
 
-<div style="display: flex; justify-content:space-between;width:98%;margin-top: 50px;padding: 10px">
+<div style="display: flex; justify-content:space-between;width:98%;margin-top: 50px;padding: 5px">
     <div id="firstGroup" style="width: 100%;">
-        <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
-            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${firstRegionName}</div>
+        <div style="height:60px; width:100%;display: flex; justify-content: initial;margin-bottom:7pt">
+            <div class="fontColor" style="width: 50%;text-align: center;display: flex;justify-content: center;align-items:center ">${firstRegionName}</div>
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
-            <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px;background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${firstRegionNumber} %
+            <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
+                ${firstRegionNumber}%
             </div>
-            <div class="fontColorRegion" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${secondRegionNumber} %
+            <div class="fontColorNumber" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
+                ${secondRegionNumber}%
             </div>
         </div>
-        <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
+        <div style="width:100%;display: flex; justify-content: flex-end;">
             <div style="width: 50%"></div>
-            <div class="fontColor" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${secondRegionName}</div>
+            <div class="fontColor" style="width:50%;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${secondRegionName}</div>
         </div>
     </div>
 
-       <div id="secondGroup" style="width: 100%;">
-        <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
-            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${secondRegionName}</div>
+    <div id="secondGroup" style="width: 100%;">
+        <div style="height:60px; width:100%;display: flex; justify-content: initial;margin-bottom:7pt">
+            <div class="fontColor" style="width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${threeRegionName}</div>
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
-            <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px;background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${threeRegionNumber} %
+            <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;">
+                ${threeRegionNumber}%
             </div>
-            <div class="fontColorRegion" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                 ${fourRegionNumber} %
+            <div class="fontColorNumber" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;">
+                 ${fourRegionNumber}%
             </div>
         </div>
-        <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
+        <div style=" width:100%;display: flex; justify-content: flex-end;">
             <div style="width: 50%"></div>
-            <div class="fontColor" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${threeRegionName}</div>
+            <div class="fontColor" style="width:50%;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${fourRegionName}</div>
         </div>
     </div>
      
-   <div id="secondGroup" style="width: 100%;">
-        <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
-            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${fiveRegionName}</div>
+    <div id="secondGroup" style="width: 100%;">
+        <div style="height:60px; width:100%;display: flex; justify-content: initial;margin-bottom:7pt ">
+            <div class="fontColor" style="width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${fiveRegionName}</div>
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px;">
-            <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                 ${fiveRegionNumber} %
+            <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;">
+                 ${fiveRegionNumber}%
             </div>
-            <div class="fontColorRegion" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                  ${sixRegionNumber} %
+            <div class="fontColorNumber" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;">
+                  ${sixRegionNumber}%
             </div>
         </div>
-        <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
+        <div style="width:100%;display: flex; justify-content: flex-end;">
             <div style="width: 50%"></div>
-            <div class="fontColor" style="width:50%;font-size: 25px;margin-bottom: 20px;text-align: center;display: flex;justify-content: center;align-items: center">${sixRegionName}</div>
+            <div class="fontColor" style="width:50%;text-align: center;display: flex;justify-content: center;align-items: center">${sixRegionName}</div>
         </div>
     </div>
 
-    <div id="fourGroup" style="width: 100% ; ">
-        <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
-            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${sevenRegionName}</div>
+    <div id="fourGroup" style="width: 100%;">
+        <div style="height:60px; width:100%;display: flex; justify-content: initial;margin-bottom:7pt ">
+            <div class="fontColor" style="width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${sevenRegionName}</div>
             <div style="width: 50%"></div>
         </div>
         <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div  class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px;background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${sevenRegionNumber} %
+            <div  class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;">
+                ${sevenRegionNumber}%
             </div>
-            <div  class="fontColorRegion" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${eightRegionNumber} %
+            <div class="fontColorNumber" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;">
+                ${eightRegionNumber}%
             </div>
         </div>
-        <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
+         <div style=" width:100%;display: flex; justify-content: flex-end;">
             <div style="width: 50%"></div>
-            <div class="fontColor" style="font-size: 25px; width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${eightRegionName}</div>
+            <div class="fontColor" style="width:50%;text-align: center;display: flex;justify-content: center;align-items: center">${eightRegionName}</div>
         </div>
     </div>
 
     <div id="fiveGroup" style="width: 100%; ">
-        <div style="height:60px; width:100%;display: flex; justify-content: initial; ">
-            <div class="fontColor" style="font-size: 25px;text-align: center;width: 50%;display: flex;justify-content: center;align-items: center ">${nineRegionName}</div>
+        <div style="height:60px; width:100%;display: flex; justify-content: initial;margin-bottom:7pt ">
+            <div class="fontColor" style="
+            text-align: center;width: 50%;display: flex;justify-content: center;align-items: center ">${nineRegionName}</div>
             <div style="width: 50%"></div>
         </div>
-        <div style="display: flex; justify-content: space-around;height: 80px; ">
-            <div class="fontColorRegion" style="height:38px; width:100%; border-radius: 20px;background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${nineRegionNumber} %
+        <div style="display: flex; justify-content: space-around;height: 80px;">
+            <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #CB8DBE;align-items: center;text-align: center;display: flex;justify-content: center;">
+                ${nineRegionNumber}%
             </div>
-            <div  class="fontColorRegion" style="height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #58A7B1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-                ${tenRegionNumber} %
+            <div  class="fontColorNumber" style="color:white;height:38px;width: 100%; border-radius: 20px;margin-top: 32px; background-color: #58A7B1;align-items: center;text-align: center;display: flex;justify-content: center;">
+                ${tenRegionNumber}%
             </div>
         </div>
-        <div style="height:60px; width:100%;display: flex; justify-content: flex-end;">
+        <div style="width:100%;display: flex; justify-content: flex-end;">
             <div style="width: 50%"></div>
-            <div class="fontColor" style="font-size: 25px;width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${tenRegionName}</div>
+            <div class="fontColor" style="width: 50%;text-align: center;display: flex;justify-content: center;align-items: center">${tenRegionName}</div>
         </div>
     </div>
 </div>
+</div>
+
+    <div>
+        <h1 style="text-align: center">Flip side</h1>
+        <div class="fontStatement" style="width:13in;height:11in;">
+            <p>${personalStatementOne}</p>
+            <p>${personalStatementTwo}</p>
+            <p>${personalStatementThree}</p>
+        </div>
+    </div>
 
 <script>    
     $(function () {

@@ -33,7 +33,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     //Background Map
     const colorProduct = propiedades.line_items[0].name.split('- ').pop().split('/')[0].toString();
     const backgroundColor = colorBackground(datos[9].value);
-    const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
+    const backgroundLineWorld = fontColor(colorProduct);
     //Headline
     const headline = datos[10].value === "Personalized headline" ? datos[11].value : datos[10].value;
     //FontSize

@@ -1,53 +1,55 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
-const regionName = require('../../RegionNames/RegionNames');
+const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
-const colorProductSelect = require('../../Color/Color');
 const lineMaps = require('../../LinesMap/LineMaps');
+const colorProductSelect = require('../../Color/Color');
 const ancestryMap = require('../../AncestryMap');
 const ttMap = require('../../TTMap');
-const myHeritageMap = require('../../MyHeritageMap');
+const MyHeritageMap = require('../../MyHeritageMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
-    const name = nameFile;
-    const datos = toArray(propiedades.line_items[0].properties);
+    //Regions  */ RegionsNamesSelectors is for Jquery/*
+    const name = propiedades.nameFile;
+    const firstRegionName = propiedades.regions[0].region;
+    const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
+    const firstRegionNumber = propiedades.regions[0].porcentaje;
 
-    const firstRegionName = datos[1].value;
-    const firstRegionNameSelector = regionName(datos[1].value);
-    const firstRegionNumber = datos[2].value;
+    const secondRegionName = propiedades.regions[1].region;
+    const secondRegionNameSelector = regionNames(propiedades.regions[1].region);
+    const secondRegionNumber = propiedades.regions[1].porcentaje;
 
-    const secondRegionName = datos[3].value;
-    const secondRegionNameSelector = regionName(datos[3].value);
-    const secondRegionNumber = datos[4].value;
+    const threeRegionName = propiedades.regions[2].region;
+    const threeRegionNameSelector = regionNames(propiedades.regions[2].region);
+    const threeRegionNumber = propiedades.regions[2].porcentaje;
 
-    const threeRegionName = datos[5].value;
-    const threeRegionNameSelector = regionName(datos[5]);
-    const threeRegionNumber = datos[6];
+    const fourRegionName = propiedades.regions[3].region;
+    const fourRegionNameSelector = regionNames(propiedades.regions[3].region);
+    const fourRegionNumber = propiedades.regions[3].porcentaje;
 
-    const fourRegionName = datos[7];
-    const fourRegionNameSelector = regionName(datos[7].value);
-    const fourRegionNumber = datos[8].value;
+    const fiveRegionName = propiedades.regions[4].region;
+    const fiveRegionNameSelector = regionNames(propiedades.regions[4].region);
+    const fiveRegionNumber = propiedades.regions[4].porcentaje;
 
-    const fiveRegionName = datos[9].value;
-    const fiveRegionNameSelector = regionName(datos[9].value);
-    const fiveRegionNumber = datos[10].value;
+    const sixRegionName = propiedades.regions[5].region;
+    const sixRegionNameSelector = regionNames(propiedades.regions[5].region);
+    const sixRegionNumber = propiedades.regions[5].porcentaje;
 
-    const sixRegionName = datos[11].value;
-    const sixRegionNameSelector = regionName(datos[11].value);
-    const sixRegionNumber = datos[12].value;
-
-    const colorProduct = propiedades.line_items[0].name.split('- ').pop().split('/')[0].toString();
-    const backgroundColor = colorBackground(datos[13].value);
-    const backgroundLineWorld = fontColor(colorProduct);
-
+    const backgroundColor = colorBackground(propiedades.color);
+    const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
+    const colorProduct = propiedades.fontColor;
     //Headline
-    const headline = datos[14].value === "Personalized headline" ? datos[15].value : datos[14].value;
-    //FontSize
-    const font = fontStyle(datos[16].value);
-    const typeFont = font === "Funnier" ? "30px" : "38px";
+    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
 
+    const statement = propiedades.statement;
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementOne;
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : propiedades.personalStatementTwo;
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementThree;
+    const sizeStatement = "Small";
+    //FontSize
+    const font = fontStyle(propiedades.fontStyle);
     companyMap = (company) => {
         if (company === "Ancestry") {
             return ancestryMap;
@@ -56,10 +58,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return ttMap;
         }
         if (company === "MyHeritageDNA") {
-            return myHeritageMap;
+            return MyHeritageMap;
         }
     };
-    const map = companyMap(datos[0].value);
+    const map = companyMap(propiedades.company);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -87,6 +89,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return "15pt"
         }
     };
+
     fontHeadline = () => {
         if (font === "Noteworthy") {
             return "110px"
@@ -102,12 +105,24 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
 
+    fontStatement = () => {
+        if (sizeStatement === "Small") {
+            return "100pt"
+        }
+        if (sizeStatement === "Medium") {
+            return "110px";
+        }
+        if (sizeStatement === "Large") {
+            return "85px"
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
-        width: 1152,
-        height: 1536,
-        deviceScaleFactor: 3,
+        width: 1270 * 2,
+        height: 1280,
+        deviceScaleFactor: 1,
     });
 
     await page.setContent(`
@@ -120,25 +135,40 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     .fontColor {
         color:${fontColor(colorProduct)};
         font-family:${font};
-        text-align: center;
         font-size: ${fontSizeRegion(font)};
+        text-align: center;
+        align-items: center;
     }
-    .fontColorNumber {
-        color:${fontColor(colorProduct)};
-        font-family:${font} ;
+    .fontColorRegion {
+        color:white;
+        font-family:${font};
         border: 2px solid ${lineMaps(colorProduct)};
-        font-size: ${fontSizeNumber()};
+        font-size: ${fontSizeNumber()};   
+    }
+    
+    .fontStatement{
+        color:${fontColor(colorProduct)};
+        font-family:${font};
+        font-size: ${fontStatement()};
+        text-align: center;
+        justify-content: center;
+        align-items: center
     }
     
     .fontColorHeadline {
         color:${fontColor(colorProduct)};
-        font-family:${font};
-        margin-bottom: 0px;
+        font-family:${font} ;
         text-align: center; 
         font-size:${fontHeadline()};
     }
     
-        @font-face {
+    .fontColorNumber {
+        font-family:${font};
+        color: white;
+        font-size: ${fontSizeNumber()};
+    }
+    
+    @font-face {
     font-family: 'Futura';
     src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
         url('https://moolab.ml/Fonts/Futura-Bold.woff') format('woff');
@@ -185,45 +215,45 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         font-weight: bold;
         font-style: normal;
     }
-    @font-face {
-        font-family: 'MyriadPro-Bold';
-        src: url('https://moolab.ml/Fonts/MyriadPro-Bold.eot') format('embedded-opentype'),  url('https://moolab.ml/Fonts/MyriadPro-Bold.otf')  format('opentype'),
-             url('https://moolab.ml/Fonts/MyriadPro-Bold.woff') format('woff'), url('https://moolab.ml/Fonts/MyriadPro-Bold.ttf')  format('truetype');
-        font-weight: normal;
-        font-style: normal;
-    }
+        @font-face {
+    font-family: 'MyriadPro-Bold';
+    src: url('https://moolab.ml/Fonts/MyriadPro-Bold.eot') format('embedded-opentype'),  url('https://moolab.ml/Fonts/MyriadPro-Bold.otf')  format('opentype'),
+         url('https://moolab.ml/Fonts/MyriadPro-Bold.woff') format('woff'), url('https://moolab.ml/Fonts/MyriadPro-Bold.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)} ">
-<div style="margin-top: 120pt">
-<h1 class='fontColorHeadline'>${headline}</h1>
-<div style="width: 100%;text-align: center;">
-    ${map}
-</div>
+<body style="background-color: ${colorProductSelect(colorProduct)};display: flex">
 
+<div>
+<h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
+    <div style="width: 100%;text-align: center;">
+        ${map}
+    </div>
 <div style="margin-top: 50px;margin-right: 12px">
     <div style="display: flex; justify-content: space-around;">
-        <div class='fontColorNumber' style="color:white;height:40px; width:100%;border-radius: 20px; background-color: #616c44;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white;height:40px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
            ${firstRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="color:white;height:40px; width:100%; border-radius: 20px; background-color: #6d0008;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white;height:40px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${secondRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="color:white;height:40px; width:100%;  border-radius: 20px; background-color: #a25562;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white;height:40px; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${threeRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="color:white;height:40px; width:100%;  border-radius: 20px; background-color: #5c4955;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white;height:40px; width:100%;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${fourRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="color:white;height:40px; width:100%; border-radius: 20px;background-color: #b19e3f;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white;height:40px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${fiveRegionNumber}%
         </div>
-        <div class="fontColorNumber" style="color:white;height:40px; width:100%; border-radius: 20px; background-color: #603813;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="color:white;height:40px; width:100%; border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${sixRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "5pt"}">
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
             <div class='fontColor' style="display: flex;text-align: center;justify-content: center">${firstRegionName}</div>
         </div>
@@ -246,6 +276,15 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </div>
 </div>
 
+    <div>
+        <h1 style="text-align: center">Flip side</h1>
+        <div class="fontStatement" style="width:13in;height:11in;">
+            <p>${personalStatementOne}</p>
+            <p>${personalStatementTwo}</p>
+            <p>${personalStatementThree}</p>
+        </div>
+    </div>
+
 <script>    
     $(function () {
         $(document).ready(function () {
@@ -253,23 +292,14 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             $("#regions").attr("fill", "transparent");
             
             //Primary color
-            $("${firstRegionNameSelector}").attr("fill", "#616C44");
-            $("${firstRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
-            
-            $("${secondRegionNameSelector}").attr("fill", "#6D0008");
-            $("${secondRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");    
+            $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
+            $("${secondRegionNameSelector}").attr("fill", "#6C61AA");
             //second color
-            $("${threeRegionNameSelector}").attr("fill", "#A25562");
-            $("${threeRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
-           
-            $("${fourRegionNameSelector}").attr("fill", "#5C4955");
-            $("${fourRegionNameSelector}").attr("stroke","${lineMaps(colorProduct)}");
+            $("${threeRegionNameSelector}").attr("fill", "#BE1E2D");
+            $("${fourRegionNameSelector}").attr("fill", "#F9AF41");
             //three color
-            $("${fiveRegionNameSelector}").attr("fill", "#B19E3F");
-            $("${fiveRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
-            
-            $("${sixRegionNameSelector}").attr("fill", "#603813");
-            $("${sixRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
+            $("${fiveRegionNameSelector}").attr("fill", "#00833D");
+            $("${sixRegionNameSelector}").attr("fill", "#9794D2");
             //four color
         });
     });
@@ -277,7 +307,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </body>
 </html>
 `);
-    await page.evaluate(() => document.body.style.background = 'transparent');
-    await page.screenshot({path: `public/${name}.png`, omitBackground: true});
+    await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };

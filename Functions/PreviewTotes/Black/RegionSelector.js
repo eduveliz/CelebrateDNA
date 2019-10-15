@@ -1,7 +1,3 @@
-const ancestry14 = require('./Region14');
-const ancestry13 = require('./Region13');
-const ancestry12 = require('./Region12');
-const ancestry11 = require('./Region11');
 const ancestry10 = require('./Region10');
 const ancestry9 = require('./Region9');
 const ancestry8 = require('./Region8');
@@ -44,17 +40,5 @@ module.exports = ttSelector = async (regionNumber, id, properties) => {
     }
     if (regionNumber === 10) {
         return ancestry10(id, properties)
-    }
-    if (regionNumber === 11) {
-        return ancestry11(id, properties)
-    }
-    if (regionNumber === 12) {
-        return ancestry12(id, properties)
-    }
-    if (regionNumber === 13) {
-        return ancestry13(id, properties)
-    }
-    if (regionNumber === 14) {
-        return ancestry14(id, properties)
     }
 };

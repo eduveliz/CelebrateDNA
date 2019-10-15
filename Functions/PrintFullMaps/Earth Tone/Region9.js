@@ -52,8 +52,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     const colorProduct = propiedades.line_items[0].name.split('- ').pop().split('/')[0].toString();
     const backgroundColor = colorBackground(datos[19].value);
-    const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";   //Headline
-
+    const backgroundLineWorld = fontColor(colorProduct);
+    //Headline
     const headline = datos[20].value === "Personalized headline" ? datos[21].value : datos[20].value;   //FontSize
 
     const font = fontStyle(datos[22].value);

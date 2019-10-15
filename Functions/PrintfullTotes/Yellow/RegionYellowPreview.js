@@ -1,3 +1,7 @@
+const ancestry14 = require('./RegionYelow14');
+const ancestry13 = require('./RegionYelow13');
+const ancestry12 = require('./RegionYelow12');
+const ancestry11 = require('./RegionYelow11');
 const ancestry10 = require('./RegionYelow10');
 const ancestry9 = require('./RegionYelow9');
 const ancestry8 = require('./RegionYelow8');

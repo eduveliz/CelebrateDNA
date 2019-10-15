@@ -50,7 +50,7 @@ module.exports = createPreview = async (propiedades) => {
 
     const colorProduct = propiedades.colorProduct;
     const backgroundColor = colorBackground(propiedades.color);
-    const backgroundLineWorld = backgroundColor === "transparent" ? fontColor(colorProduct) : "none";
+    const backgroundLineWorld = fontColor(colorProduct);
     //Headline
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
     //FontSize
