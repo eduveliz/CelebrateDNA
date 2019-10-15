@@ -221,7 +221,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 <script>    
     $(function () {
         $(document).ready(function () {
-            $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
+            $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}").attr("stroke-width","2px");
             $("#regions").attr("fill", "transparent");
             //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#616C44");

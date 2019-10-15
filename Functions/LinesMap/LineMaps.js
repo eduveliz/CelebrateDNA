@@ -10,6 +10,9 @@ module.exports = design = (product) => {
         case "Kelly":
             return line = "white";
             break;
+        case "Kelly ":
+            return line = "white";
+            break;
         case "Navy":
             return line = "white";
             break;
