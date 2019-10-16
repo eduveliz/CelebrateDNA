@@ -54,7 +54,7 @@ app.get("/", jsonParser, function (req, res) {
 
 app.get('/previews/:id', jsonParser, function (req, res) {
     const id = req.params.id;
-    console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
+    console.log(moment().format('MMMM Do YYYY, h:mm:ss a').bgMagenta);
     console.log("created ".yellow + id.blue);
     res.sendFile(path.join(__dirname + '/previews/' + id + '.png'));
 });
