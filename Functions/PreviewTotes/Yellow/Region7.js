@@ -110,16 +110,30 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
 
     fontStatement = () => {
-        if (sizeStatement === "Small") {
-            return "100pt"
+        if (font === "Noteworthy") {
+            return "175pt"
         }
-        if (sizeStatement === "Medium") {
-            return "110px";
+        if (font === "Funnier") {
+            return "120pt";
         }
-        if (sizeStatement === "Large") {
-            return "85px"
+        if (font === "MyriadPro-Bold") {
+            return "150pt"
+        }
+        ;
+    };
+
+    fontSpaceStatement = () => {
+        if (font === "Noteworthy") {
+            return "-50px"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "-50px";
+        }
+        if (font === "Funnier") {
+            return "30px"
         }
     };
+
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -163,7 +177,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         font-size: ${fontStatement()};
         text-align: center;
         justify-content: center;
-        align-items: center
+        align-items: center;
+        margin-top: ${font === "MyriadPro-Bold" || font === "Funnier" ? "300px" : "0"}; 
     }
     
     .fontColorNumber {
@@ -290,9 +305,9 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <div>
         <h1 style="text-align: center">Flip side</h1>
         <div class="fontStatement" style="width:13in;height:11in;">
-            <p>${personalStatementOne}</p>
-            <p>${personalStatementTwo}</p>
-            <p>${personalStatementThree}</p>
+            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementOne}</div>
+            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementTwo}</div>
+            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementThree}</div>
         </div>
     </div>
 

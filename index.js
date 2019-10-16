@@ -4,7 +4,7 @@ const app = express();
 const jsonParser = bodyParser.json();
 const path = require('path');
 const axios = require('axios');
-
+const moment = require('moment');
 //brigth
 const previewSelector = require('./Functions/Maps/BrigthMaps/ttPreviewSelector');
 
@@ -54,6 +54,7 @@ app.get("/", jsonParser, function (req, res) {
 
 app.get('/previews/:id', jsonParser, function (req, res) {
     const id = req.params.id;
+    console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
     console.log("created ".yellow + id.blue);
     res.sendFile(path.join(__dirname + '/previews/' + id + '.png'));
 });
