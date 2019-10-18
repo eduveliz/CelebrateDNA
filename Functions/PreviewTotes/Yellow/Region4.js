@@ -101,18 +101,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
 
     fontStatement = () => {
-        if (sizeStatement === "Small") {
-            return "100pt"
-        }
-        if (sizeStatement === "Medium") {
-            return "110px";
-        }
-        if (sizeStatement === "Large") {
-            return "85px"
-        }
-    };
-
-    fontStatement = () => {
         if (font === "Noteworthy") {
             return "175pt"
         }
@@ -123,6 +111,18 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return "150pt"
         }
         ;
+    };
+
+    fontSpaceStatement = () => {
+        if (font === "Noteworthy") {
+            return "-100px"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "-50px";
+        }
+        if (font === "Funnier") {
+            return "30px"
+        }
     };
 
     const browser = await puppeteer.launch();
@@ -149,7 +149,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         text-align: center;
         justify-content: center;
         align-items: center;
-        margin-top: ${font === "MyriadPro-Bold" || font === "Funnier" ? "300px" : "0"}; 
+        margin-top: ${font === "MyriadPro-Bold" || font === "Funnier" ? "300px" : "200px"};
     }
     .fontColorRegion {
         color:white;

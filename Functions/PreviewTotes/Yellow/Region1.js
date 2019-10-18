@@ -103,7 +103,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSpaceStatement=()=>{
         if (font === "Noteworthy") {
-            return "-50px"
+            return "-100px"
         }
         if (font === "MyriadPro-Bold") {
             return "-50px";
@@ -134,7 +134,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         text-align: center; 
         justify-content: center;
         align-items: center;
-        margin-top: ${font === "MyriadPro-Bold" || font === "Funnier" ? "300px" : "0"};
+        margin-top: ${font === "MyriadPro-Bold" || font === "Funnier" ? "300px" : "200px"};
     }
     .fontColorRegion {
         color:${fontColor(colorProduct)};
