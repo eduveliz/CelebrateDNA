@@ -55,7 +55,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const personalStatementOne = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementOne;
     const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : propiedades.personalStatementTwo;
     const personalStatementThree = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementThree;
-    const sizeStatement = "Small";
+
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
     companyMap = (company) => {
@@ -70,7 +70,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
     const map = companyMap(propiedades.company);
-
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -124,7 +123,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         if (font === "MyriadPro-Bold") {
             return "150pt"
         }
-        ;
     };
 
     fontSpaceStatement = () => {
@@ -138,7 +136,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return "30px"
         }
     };
-
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -178,8 +175,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     
     .fontStatement{
         color:${fontColor(colorProduct)};
-        font-family:${font};
-        font-size: ${fontStatement()};
+        font-family:${statement === "Replicate the map on both sides" ? "MyriadPro-Bold" : font};
+        font-size: ${statement === "Replicate the map on both sides" ? "100pt" : fontStatement()};
         text-align: center;
         justify-content: center;
         align-items: center;
@@ -259,28 +256,28 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 <div style="margin-top: 50px;margin-right: 20px">
     <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
-        ${firstRegionNumber} %
+        ${firstRegionNumber}%
         </div>
         <div class="fontColorNumber" style="color:white;height:38px; width:100%;  border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
-         ${secondRegionNumber} %
+         ${secondRegionNumber}%
         </div>
         <div class="fontColorNumber" style="color:white;height:38px; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;">
-        ${threeRegionNumber} %
+        ${threeRegionNumber}%
         </div>
         <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;">
-         ${fourRegionNumber} %
+         ${fourRegionNumber}%
         </div>
         <div class="fontColorNumber" style="color:white;height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;">
-         ${fiveRegionNumber} %
+         ${fiveRegionNumber}%
         </div>
         <div class="fontColorNumber" style="color:white;height:38px; width:100%;  border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;">
-         ${sixRegionNumber} %
+         ${sixRegionNumber}%
         </div>
         <div class="fontColorNumber" style="color:white;height:38px; width:100%;  border-radius: 20px;background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;">
-       ${sevenRegionNumber} %
+       ${sevenRegionNumber}%
         </div>
         <div class="fontColorNumber" style="color:white;height:38px; width:100%;  border-radius: 20px; background-color: #A4469A;align-items: center;text-align: center;display: flex;justify-content: center;">
-      ${eightRegionNumber} %
+      ${eightRegionNumber}%
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "5pt"}">

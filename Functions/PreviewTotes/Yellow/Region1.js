@@ -5,8 +5,8 @@ const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
 const colorProductSelect = require('../../Color/Color');
-const ancestryMap = require('../../AncestryMap');
 const lineMaps = require('../../LinesMap/LineMaps');
+const ancestryMap = require('../../AncestryMap');
 const ttMap = require('../../TTMap');
 const MyHeritageMap = require('../../MyHeritageMap');
 
@@ -27,7 +27,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const personalStatementOne = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementOne;
     const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : propiedades.personalStatementTwo;
     const personalStatementThree = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementThree;
-    const sizeStatement = "Small";
+
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
     companyMap = (company) => {
@@ -98,7 +98,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         if (font === "MyriadPro-Bold") {
             return "150pt"
         }
-        ;
     };
 
     fontSpaceStatement=()=>{
@@ -129,8 +128,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     }
     .fontStatement{
         color:${fontColor(colorProduct)};
-        font-family:${font};
-        font-size: ${fontStatement()};
+        font-family:${statement === "Replicate the map on both sides" ? "MyriadPro-Bold" : font};
+        font-size: ${statement === "Replicate the map on both sides" ? "100pt" : fontStatement()};
         text-align: center; 
         justify-content: center;
         align-items: center;
@@ -234,6 +233,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             </div>
         </div>
     </div>
+  
     <div>
         <h1 style="text-align: center">Flip side</h1>
         <div class="fontStatement" style="width:13in;height:11in;">

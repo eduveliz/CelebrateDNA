@@ -25,6 +25,12 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const colorProduct = propiedades.fontColor;
     //Headline
     const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
+
+    const statement = propiedades.statement;
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementOne;
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : propiedades.personalStatementTwo;
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementThree;
+
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
     companyMap = (company) => {
@@ -87,14 +93,26 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
 
     fontStatement = () => {
-        if (sizeStatement === "Small") {
-            return "100pt"
+        if (font === "Noteworthy") {
+            return "175pt"
         }
-        if (sizeStatement === "Medium") {
-            return "110px";
+        if (font === "Funnier") {
+            return "120pt";
         }
-        if (sizeStatement === "Large") {
-            return "85px"
+        if (font === "MyriadPro-Bold") {
+            return "150pt"
+        }
+    };
+
+    fontSpaceStatement = () => {
+        if (font === "Noteworthy") {
+            return "-100px";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "-50px";
+        }
+        if (font === "Funnier") {
+            return "30px"
         }
     };
 
@@ -110,12 +128,40 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     .fontColor {
         color:${fontColor(colorProduct)};
         font-family:${font};
+        font-size: ${fontSizeRegion(font)};
     }
+    
+    .fontStatement{
+        color:${fontColor(colorProduct)};
+        font-family:${statement === "Replicate the map on both sides" ? "MyriadPro-Bold" : font};
+        font-size: ${statement === "Replicate the map on both sides" ? "100pt" : fontStatement()};
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin-top: ${font === "MyriadPro-Bold" || font === "Funnier" ? "300px" : "200px"};
+    }
+    
     .fontColorRegion {
         color:white;
         font-family:${font};
+        border: 2px solid ${lineMaps(colorProduct)};
+        font-size: ${fontSizeNumber()};   
     }
-          @font-face {
+    
+    .fontColorHeadline {
+        color:${fontColor(colorProduct)};
+        font-family:${font} ;
+        text-align: center; 
+        font-size:${fontHeadline()};
+    }
+    
+    .fontColorNumber {
+        font-family:${font};
+        color: white;
+        font-size: ${fontSizeNumber()};
+    }
+    
+    @font-face {
     font-family: 'Futura';
     src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
         url('https://moolab.ml/Fonts/Futura-Bold.woff') format('woff');
@@ -172,30 +218,41 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:13in;height:11in;background-color: ${colorProductSelect(colorProduct)}">
-<h1 class='fontColor' style="text-align: center;font-size:89px;">${headline} </h1>
-<div style="width: 100%;text-align: center;">
-    ${map}
+<body style="background-color: ${colorProductSelect(colorProduct)};display: flex">
+<div>
+    <h1 class='fontColor' style="text-align: center;">${headline} </h1>
+    <div style="width: 100%;text-align: center;">
+        ${map}
+    </div>
+    <div style="margin-top: 50px;margin-right: 17px">
+        <div style="display: flex; justify-content: space-around;">
+            <div class="fontColorRegion" style="height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
+                ${firstRegionNumber}%
+            </div>
+            <div class="fontColorRegion" style="height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
+                ${secondRegionNumber}%
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+            <div style="width:100%;height:60px;display: flex; justify-content: center">
+                <div class="fontColor">${firstRegionName}</div>
+            </div>
+            <div style="width:100%;height:60px; display: flex; justify-content: center">
+                <div class="fontColor">${secondRegionName}</div>
+            </div>
+        </div>
+    </div>
 </div>
+   
+    <div>
+        <h1 style="text-align: center">Flip side</h1>
+        <div class="fontStatement" style="width:13in;height:11in;">
+            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementOne}</div>
+            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementTwo}</div>
+            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementThree}</div>
+        </div>
+    </div>
 
-<div style="margin-top: 50px;margin-right: 17px">
-    <div style="display: flex; justify-content: space-around;">
-        <div class="fontColorRegion" style="height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-            ${firstRegionNumber}%
-        </div>
-        <div class="fontColorRegion" style="height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;font-size: 30px;">
-            ${secondRegionNumber}%
-        </div>
-    </div>
-    <div style="display: flex; justify-content: space-around;">
-        <div style="width:100%;height:60px;display: flex; justify-content: center">
-            <div class="fontColor" style="font-size: 33px;">${firstRegionName}</div>
-        </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center">
-            <div class="fontColor" style="font-size: 33px">${secondRegionName}</div>
-        </div>
-    </div>
-</div>
 <script>    
     $(function () {
         $(document).ready(function () {
@@ -212,7 +269,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 `);
 
     await page.setViewport({
-        width: 1270,
+        width: 1270 * 2,
         height: 1280,
         deviceScaleFactor: 1,
     });

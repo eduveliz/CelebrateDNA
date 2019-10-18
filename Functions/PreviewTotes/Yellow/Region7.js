@@ -51,7 +51,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const personalStatementOne = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementOne;
     const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : propiedades.personalStatementTwo;
     const personalStatementThree = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementThree;
-    const sizeStatement = "Small";
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
     companyMap = (company) => {
@@ -119,7 +118,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         if (font === "MyriadPro-Bold") {
             return "150pt"
         }
-        ;
     };
 
     fontSpaceStatement = () => {
@@ -149,6 +147,12 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <meta charset="UTF-8">
     <title>23andMe</title>
     <style>
+    .RegionName {
+        font-size: 22px;
+        font-family: ${font};
+        text-align: center;
+        color: ${fontColor(colorProduct)};
+    }
     .fontColor {
         color:${fontColor(colorProduct)};
         font-family:${font};
@@ -172,8 +176,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     
     .fontStatement{
         color:${fontColor(colorProduct)};
-        font-family:${font};
-        font-size: ${fontStatement()};
+        font-family:${statement === "Replicate the map on both sides" ? "MyriadPro-Bold" : font};
+        font-size: ${statement === "Replicate the map on both sides" ? "100pt" : fontStatement()};
         text-align: center;
         justify-content: center;
         align-items: center;
@@ -276,7 +280,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
     
     <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "5pt"}">
-        <div style="width:100%;height:60px;display: flex; justify-content: center   ">
+        <div style="width:100%;height:60px;display: flex; justify-content: center">
             <div class="fontColor" >${firstRegionName}</div>
         </div>
         <div style="width:100%;height:60px; display: flex; justify-content: center">

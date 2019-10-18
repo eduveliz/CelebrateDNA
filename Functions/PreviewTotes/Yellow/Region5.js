@@ -114,7 +114,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         if (font === "MyriadPro-Bold") {
             return "150pt"
         }
-        ;
     };
 
     fontSpaceStatement = () => {
@@ -167,8 +166,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     
     .fontStatement{
         color:${fontColor(colorProduct)};
-        font-family:${font};
-        font-size: ${fontStatement()};
+        font-family:${statement === "Replicate the map on both sides" ? "MyriadPro-Bold" : font};
+        font-size: ${statement === "Replicate the map on both sides" ? "100pt" : fontStatement()};
         text-align: center;
         justify-content: center;
         align-items: center;
