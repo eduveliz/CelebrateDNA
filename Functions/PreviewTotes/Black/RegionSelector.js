@@ -11,6 +11,9 @@ const region1 = require('./Region1');
 
 
 module.exports = ttSelector = async (regionNumber, id, properties) => {
+
+    console.log("region", regionNumber);
+
     if (regionNumber === 1) {
         return region1(id, properties)
     }
@@ -38,7 +41,7 @@ module.exports = ttSelector = async (regionNumber, id, properties) => {
     if (regionNumber === 9) {
         return region9(id, properties)
     }
-    if (regionNumber === 10) {
+    if (regionNumber === 14) {
         return region10(id, properties)
     }
 };

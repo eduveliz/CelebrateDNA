@@ -4,6 +4,7 @@ const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
 const colorProductSelect = require('../../Color/Color');
+const lineMaps = require('../../LinesMap/LineMaps');
 const ancestryMap = require('../../AncestryMap');
 const ttMap = require('../../TTMap');
 const MyHeritageMap = require('../../MyHeritageMap');
