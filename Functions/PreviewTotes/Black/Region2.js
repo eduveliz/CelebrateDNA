@@ -94,25 +94,37 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontStatement = () => {
         if (font === "Noteworthy") {
-            return "175pt"
+            return "100pt"
         }
         if (font === "Funnier") {
             return "120pt";
         }
         if (font === "MyriadPro-Bold") {
-            return "150pt"
+            return "100pt"
         }
     };
 
     fontSpaceStatement = () => {
         if (font === "Noteworthy") {
-            return "-100px";
+            return "-60px"
         }
         if (font === "MyriadPro-Bold") {
             return "-50px";
         }
         if (font === "Funnier") {
             return "30px"
+        }
+    };
+
+    topStatement = () => {
+        if (font === "MyriadPro-Bold") {
+            return "100px"
+        }
+        if (font === "Funnier") {
+            return "60px"
+        }
+        if (font === "Noteworthy") {
+            return "100px";
         }
     };
 
@@ -126,26 +138,27 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <title>23andMe</title>
     <style>
     .fontColor {
-        color:${fontColor(colorProduct)};
+        color:#A7A9AB;
         font-family:${font};
+        text-align: center;
         font-size: ${fontSizeRegion(font)};
     }
     
     .fontStatement{
-        color:${fontColor(colorProduct)};
+        color:#A7A9AB;
         font-family:${statement === "Replicate the map on both sides" ? "MyriadPro-Bold" : font};
-        font-size: ${statement === "Replicate the map on both sides" ? "100pt" : fontStatement()};
+        font-size: ${statement === "Replicate the map on both sides" ? "80px" : fontStatement()};
         text-align: center;
         justify-content: center;
         align-items: center;
-        margin-top: ${font === "MyriadPro-Bold" || font === "Funnier" ? "300px" : "200px"};
+        margin-top: ${font === "MyriadPro-Bold" || font === "Funnier" ? "300px" : "110px"};
     }
     
     .fontColorRegion {
         color:white;
         font-family:${font};
-        border: 2px solid ${lineMaps(colorProduct)};
-        font-size: ${fontSizeNumber()};   
+        border: 2px solid #BBBDC0;
+        font-size: ${fontSizeNumber()};    
     }
     
     .fontColorHeadline {
@@ -155,10 +168,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         font-size:${fontHeadline()};
     }
     
-    .fontColorNumber {
-        font-family:${font};
-        color: white;
+    .fontColorNumber{
+        color: #FFFFFF;
         font-size: ${fontSizeNumber()};
+        border: 2px solid #BBBDC0;
+        font-family:${font};
     }
     
     @font-face {
@@ -218,18 +232,17 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="background-color: ${colorProductSelect(colorProduct)};display: flex">
+<body style="width:13in;height:11in;background-color: black;padding-top: 70px">
 <div>
-    <h1 class='fontColor' style="text-align: center;">${headline} </h1>
     <div style="width: 100%;text-align: center;">
         ${map}
     </div>
     <div style="margin-top: 50px;margin-right: 17px">
         <div style="display: flex; justify-content: space-around;">
-            <div class="fontColorRegion" style="height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
+            <div class="fontColorRegion" style="height:60px; width:100%;border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
                 ${firstRegionNumber}%
             </div>
-            <div class="fontColorRegion" style="height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
+            <div class="fontColorRegion" style="height:60px; width:100%; border-radius: 20px; background-color: #851f62;align-items: center;text-align: center;display: flex;justify-content: center;">
                 ${secondRegionNumber}%
             </div>
         </div>
@@ -244,23 +257,25 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
 </div>
    
-    <div>
-        <h1 style="text-align: center">Flip side</h1>
-        <div class="fontStatement" style="width:13in;height:11in;">
-            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementOne}</div>
-            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementTwo}</div>
-            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementThree}</div>
+    <div style="margin-top: 50px">
+    <hr>
+        <div class="fontStatement" style="width:13in;">
+            <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementOne}</div>
+            <div style="margin-top: ${statement === "Replicate the map on both sides" ? "200px" : fontSpaceStatement()};" >${personalStatementTwo}</div>
+            <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementThree}</div>
         </div>
     </div>
 
 <script>    
     $(function () {
         $(document).ready(function () {
-            $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
+            $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","#BBBDC0");
             $("#regions").attr("fill", "transparent");
-            //Primary color
-            $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
-            $("${secondRegionNameSelector}").attr("fill", "#6C61AA");          
+            $("${firstRegionNameSelector}").attr("fill", "#0A3542");
+            $("${firstRegionNameSelector}").attr("stroke", "#BBBDC0");
+            
+            $("${secondRegionNameSelector}").attr("fill", "#851F62");
+            $("${secondRegionNameSelector}").attr("stroke", "#BBBDC0");   
         });
     });
 </script>
@@ -269,8 +284,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 `);
 
     await page.setViewport({
-        width: 1270 * 2,
-        height: 1280,
+        width: 1270,
+        height: 1620,
         deviceScaleFactor: 1,
     });
     await page.screenshot({path: `previews/${name}.png`});

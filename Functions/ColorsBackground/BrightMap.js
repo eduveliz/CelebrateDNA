@@ -62,7 +62,7 @@ module.exports = colorBackground = (color) => {
             return hexValueColor = "#81868A";
             break;
         case "Dirty Camel":
-            return hexValueColor = "#D9AE92";
+            return hexValueColor = "#716558";
             break;
         case "Green":
             return hexValueColor = "#2D7051";

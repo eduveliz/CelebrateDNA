@@ -2,17 +2,12 @@ const puppeteer = require('puppeteer');
 const colorBackground = require('../../ColorsBackground/BrightMap');
 const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
-const fontColor = require('../../FontColor/FontColor');
-const colorProductSelect = require('../../Color/Color');
-const lineMaps = require('../../LinesMap/LineMaps');
 const ancestryMap = require('../../AncestryMap');
 const ttMap = require('../../TTMap');
 const MyHeritageMap = require('../../MyHeritageMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
-
-    console.log("test", propiedades);
 
     const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
@@ -56,13 +51,12 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const tenRegionNumber = propiedades.regions[9].porcentaje;
 
     const backgroundColor = colorBackground(propiedades.color);
-    const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = propiedades.fontColor;
+
     //Headline
     const statement = propiedades.statement;
     const personalStatementOne = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementOne;
-    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : propiedades.personalStatementTwo;
-    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementThree;
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementTwo;
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "The image will be duplicated on both sides of tote." : propiedades.personalStatementThree;
 
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
@@ -122,13 +116,25 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSpaceStatement = () => {
         if (font === "Noteworthy") {
-            return "-100px"
+            return "-60px"
         }
         if (font === "MyriadPro-Bold") {
             return "-50px";
         }
         if (font === "Funnier") {
             return "30px"
+        }
+    };
+
+    topStatement = () => {
+        if (font === "MyriadPro-Bold") {
+            return "100px"
+        }
+        if (font === "Funnier") {
+            return "60px"
+        }
+        if (font === "Noteworthy") {
+            return "100px";
         }
     };
     const map = companyMap(propiedades.company);
@@ -155,7 +161,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     }
     .fontColorRegion {
         color:white;
-        font-family:${font};
+        border: 2px solid #BBBDC0;
+        font-size: ${fontSizeNumber()};   
     }
     
     .fontColorNumber{
@@ -168,10 +175,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     .fontStatement{
         color:#A7A9AB;
         font-family:${statement === "Replicate the map on both sides" ? "MyriadPro-Bold" : font};
-        font-size:${fontStatement()};
+        font-size: ${statement === "Replicate the map on both sides" ? "80px" : fontStatement()};
         text-align: center;
         justify-content: center;
         align-items: center;
+        margin-top: ${topStatement()};
     }
     
     @font-face {
@@ -231,7 +239,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:13in;height:11in;background-color: black">
+<body style="width:13in;height:11in;background-color: black;padding-top: 70px">
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
@@ -333,12 +341,12 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
 </div>
 
-<div    >
-    <h1 style="text-align: center;color: white;margin-bottom: 0px">Flip side</h1>
+<div style="margin-top: 50px">
+<hr>
     <div class="fontStatement" style="width:13in;">
-        <div >${personalStatementOne}</div>
-        <div >${personalStatementTwo}</div>
-        <div >${personalStatementThree}</div>
+        <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementOne}</div>
+        <div style="margin-top: ${statement === "Replicate the map on both sides" ? "200px" : fontSpaceStatement()};" >${personalStatementTwo}</div>
+        <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementThree}</div>
     </div>
 </div>
 
@@ -377,7 +385,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             $("${nineRegionNameSelector}").attr("stroke","#BBBDC0");
             
             $("${tenRegionNameSelector}").attr("fill", "#1C4F34");
-             $("${tenRegionNameSelector}").attr("stroke", "#BBBDC0");    
+            $("${tenRegionNameSelector}").attr("stroke", "#BBBDC0");    
         });
     });
 </script>

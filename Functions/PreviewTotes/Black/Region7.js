@@ -132,12 +132,24 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
 
+    topStatement = () => {
+        if (font === "MyriadPro-Bold") {
+            return "100px"
+        }
+        if (font === "Funnier") {
+            return "60px"
+        }
+        if (font === "Noteworthy") {
+            return "100px";
+        }
+    };
+
     const map = companyMap(propiedades.company);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
-        width: 1270 * 2,
-        height: 1280,
+        width: 1270,
+        height: 1620,
         deviceScaleFactor: 1,
     });
 
@@ -156,16 +168,17 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     }
     
     .fontColor {
-        color:${fontColor(colorProduct)};
+        color:#A7A9AB;
         font-family:${font};
+        font-size: ${fontSizeRegion(font)};
         text-align: center;
         align-items: center;
-        font-size: ${fontSizeRegion(font)};
     }
+    
     .fontColorRegion {
-        color:white;
-        font-family:${font};        
-        border: 2px solid ${lineMaps(colorProduct)};
+        color: #FFFFFF;
+        font-family:${font};
+        border: 2px solid #BBBDC0;
         font-size: ${fontSizeNumber()};   
     }
     
@@ -177,19 +190,20 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     }
     
     .fontStatement{
-        color:${fontColor(colorProduct)};
+        color:#A7A9AB;
         font-family:${statement === "Replicate the map on both sides" ? "MyriadPro-Bold" : font};
-        font-size: ${statement === "Replicate the map on both sides" ? "100pt" : fontStatement()};
+        font-size: ${statement === "Replicate the map on both sides" ? "80px" : fontStatement()};
         text-align: center;
         justify-content: center;
         align-items: center;
-        margin-top: ${font === "MyriadPro-Bold" || font === "Funnier" ? "300px" : "200px"};
+        margin-top: ${topStatement()};
     }
     
     .fontColorNumber {
         font-family:${font};
-        color: white;
+        color: #FFFFFF;
         font-size: ${fontSizeNumber()};
+        border: 2px solid #BBBDC0;
     }
     
     @font-face {
@@ -249,35 +263,34 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="background-color: ${colorProductSelect(colorProduct)};display: flex">
+<body style="width:13in;height:11in;background-color: black;padding-top: 70px">
 <div>
-    <h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
-  
+ 
     <div style="width: 100%;text-align: center;">
         ${map}
     </div>
 
 <div style="margin-top: 50px;margin-right: 20px">
      <div style="display: flex; justify-content: space-around;">
-        <div class="fontColorNumber" style="height:38px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="height:38px; width:100%;border-radius: 20px; background-color: #0A3542;align-items: center;text-align: center;display: flex;justify-content: center;">
          ${firstRegionNumber}%
         </div>
-        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #851F62;align-items: center;text-align: center;display: flex;justify-content: center;">
          ${secondRegionNumber}%
         </div>
-        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #68672B;align-items: center;text-align: center;display: flex;justify-content: center;">
         ${threeRegionNumber}%
         </div>
-        <div  class="fontColorNumber" style="height:38px; width:100%;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div  class="fontColorNumber" style="height:38px; width:100%;  border-radius: 20px; background-color: #1B224E;align-items: center;text-align: center;display: flex;justify-content: center;">
        ${fourRegionNumber}%
         </div>
-        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px;background-color: #096F8E;align-items: center;text-align: center;display: flex;justify-content: center;">
        ${fiveRegionNumber}%
         </div>
-        <div class="fontColorNumber" style="height:38px; width:100%;  border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="height:38px; width:100%;  border-radius: 20px; background-color: #823D3E;align-items: center;text-align: center;display: flex;justify-content: center;">
         ${sixRegionNumber}%
         </div>
-        <div class="fontColorNumber" style="height:38px; width:100%;  border-radius: 20px;background-color: #699279;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="height:38px; width:100%;  border-radius: 20px;background-color: #350F29;align-items: center;text-align: center;display: flex;justify-content: center;">
         ${sevenRegionNumber}%
         </div>
     </div>
@@ -307,34 +320,41 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
 </div>
 </div>
-
-    <div>
-        <h1 style="text-align: center">Flip side</h1>
-        <div class="fontStatement" style="width:13in;height:11in;">
-            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementOne}</div>
-            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementTwo}</div>
-            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementThree}</div>
+    <div style="margin-top: 50px">
+        <hr>
+      <div class="fontStatement" style="width:13in;">
+            <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementOne}</div>
+            <div style="margin-top: ${statement === "Replicate the map on both sides" ? "200px" : fontSpaceStatement()};" >${personalStatementTwo}</div>
+            <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementThree}</div>
         </div>
     </div>
-
-
 <script>    
     $(function () {
         $(document).ready(function () {
-            $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
+            $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","#BBBDC0");
             $("#regions").attr("fill", "transparent");
             
             //Primary color
-            $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
-            $("${secondRegionNameSelector}").attr("fill", "#6C61AA");
+            $("${firstRegionNameSelector}").attr("fill", "#0A3542");
+            $("${firstRegionNameSelector}").attr("stroke", "#BBBDC0");
+            
+            $("${secondRegionNameSelector}").attr("fill", "#851F62");
+            $("${secondRegionNameSelector}").attr("stroke", "#BBBDC0");
             //second color
-            $("${threeRegionNameSelector}").attr("fill", "#BE1E2D");
-            $("${fourRegionNameSelector}").attr("fill", "#F9AF41");
+            $("${threeRegionNameSelector}").attr("fill", "#68672B");
+            $("${threeRegionNameSelector}").attr("stroke", "#BBBDC0");
+            
+            $("${fourRegionNameSelector}").attr("fill", "#1B224E");
+            $("${fourRegionNameSelector}").attr("stroke","#BBBDC0");
             //three color
-            $("${fiveRegionNameSelector}").attr("fill", "#00833D");
-            $("${sixRegionNameSelector}").attr("fill", "#9794D2");
+            $("${fiveRegionNameSelector}").attr("fill", "#096F8E");
+            $("${fiveRegionNameSelector}").attr("stroke","#BBBDC0");
+            
+            $("${sixRegionNameSelector}").attr("fill", "#823D3E");
+            $("${sixRegionNameSelector}").attr("stroke", "#BBBDC0");
             //four color
-            $("${sevenRegionNameSelector}").attr("fill", "#699279");
+            $("${sevenRegionNameSelector}").attr("fill", "#350F29");
+            $("${sevenRegionNameSelector}").attr("stroke","#BBBDC0");
         });
     });
 </script>
