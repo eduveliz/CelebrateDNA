@@ -60,11 +60,9 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const colorProduct = propiedades.fontColor;
     //Headline
     const statement = propiedades.statement;
-    const personalStatementOne = propiedades.personalStatementOne;
-    const personalStatementTwo = propiedades.personalStatementTwo;
-    const personalStatementThree = propiedades.personalStatementThree;
-
-    console.log(personalStatementOne)
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementOne;
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : propiedades.personalStatementTwo;
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementThree;
 
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
@@ -112,7 +110,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontStatement = () => {
         if (font === "Noteworthy") {
-            return "175pt"
+            return "100pt"
         }
         if (font === "Funnier") {
             return "120pt";
@@ -138,7 +136,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const page = await browser.newPage();
     await page.setViewport({
         width: 1270,
-        height: 1720,
+        height: 1620,
         deviceScaleFactor: 1,
     });
 
@@ -258,7 +256,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
     </div>
 
-       <div id="secondGroup" style="width: 100%;">
+   <div id="secondGroup" style="width: 100%;">
         <div style="height:60px; width:100%;display: flex; justify-content: initial;margin-bottom:7pt ">
             <div class="fontColor" style="width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${threeRegionName}</div>
             <div style="width: 50%"></div>
@@ -277,8 +275,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
     </div>
      
-   <div id="secondGroup" style="width: 100%;">
-        <div style="height:60px; width:100%;display: flex; justify-content: initial;margin-bottom:7pt ">
+   <div id="threeGroup" style="width: 100%;">
+        <div style="height:60px; width:100%;display: flex; justify-content: initial;margin-bottom:7pt">
             <div class="fontColor" style="width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${fiveRegionName}</div>
             <div style="width: 50%"></div>
         </div>
@@ -296,7 +294,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
     </div>
 
-    <div id="fourGroup" style="width: 100%;">
+   <div id="fourGroup" style="width: 100%;">
         <div style="height:60px; width:100%;display: flex; justify-content: initial;margin-bottom:7pt ">
             <div class="fontColor" style="width: 50%;text-align: center;display: flex;justify-content: center;align-items: center ">${sevenRegionName}</div>
             <div style="width: 50%"></div>
@@ -335,9 +333,9 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
 </div>
 
-<div>
-    <h1 style="text-align: center">Flip side</h1>
-    <div class="fontStatement"  style="width:13in;">
+<div    >
+    <h1 style="text-align: center;color: white;margin-bottom: 0px">Flip side</h1>
+    <div class="fontStatement" style="width:13in;">
         <div >${personalStatementOne}</div>
         <div >${personalStatementTwo}</div>
         <div >${personalStatementThree}</div>

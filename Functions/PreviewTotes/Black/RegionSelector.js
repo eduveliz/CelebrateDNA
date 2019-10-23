@@ -41,7 +41,7 @@ module.exports = ttSelector = async (regionNumber, id, properties) => {
     if (regionNumber === 9) {
         return region9(id, properties)
     }
-    if (regionNumber === 14) {
+    if (regionNumber === 10) {
         return region10(id, properties)
     }
 };
