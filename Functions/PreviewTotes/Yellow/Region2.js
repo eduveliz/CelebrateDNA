@@ -95,7 +95,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontStatement = () => {
         if (font === "Noteworthy") {
-            return "175pt"
+            return "100pt"
         }
         if (font === "Funnier") {
             return "120pt";
@@ -107,13 +107,25 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSpaceStatement = () => {
         if (font === "Noteworthy") {
-            return "-100px";
+            return "-60px";
         }
         if (font === "MyriadPro-Bold") {
             return "-50px";
         }
         if (font === "Funnier") {
             return "30px"
+        }
+    };
+
+    topStatement = () => {
+        if (font === "MyriadPro-Bold") {
+            return "100px"
+        }
+        if (font === "Funnier") {
+            return "60px"
+        }
+        if (font === "Noteworthy") {
+            return "100px";
         }
     };
 
@@ -135,11 +147,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     .fontStatement{
         color:${fontColor(colorProduct)};
         font-family:${statement === "Replicate the map on both sides" ? "MyriadPro-Bold" : font};
-        font-size: ${statement === "Replicate the map on both sides" ? "100pt" : fontStatement()};
+        font-size: ${statement === "Replicate the map on both sides" ? "80px" : fontStatement()};
         text-align: center;
         justify-content: center;
         align-items: center;
-        margin-top: ${font === "MyriadPro-Bold" || font === "Funnier" ? "300px" : "200px"};
+        margin-top: ${font === "MyriadPro-Bold" || font === "Funnier" ? "300px" : "110px"};
     }
     .fontColorRegion {
         color:white;
@@ -218,7 +230,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="background-color: ${colorProductSelect(colorProduct)};display: flex">
+<body style="background-color: ${colorProductSelect(colorProduct)}">
 <div>
 <h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
 <div style="width: 100%;text-align: center;">
@@ -243,14 +255,14 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         </div>
     </div>
 </div>
-    <div>
-        <h1 style="text-align: center">Flip side</h1>
-        <div class="fontStatement" style="width:13in;height:11in;">
-            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementOne}</div>
-            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementTwo}</div>
-            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementThree}</div>
+    <div style="margin-top: 50px">
+    <hr>
+        <div class="fontStatement" style="width:13in;">
+            <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementOne}</div>
+            <div style="margin-top: ${statement === "Replicate the map on both sides" ? "200px" : fontSpaceStatement()};" >${personalStatementTwo}</div>
+            <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementThree}</div>
         </div>
-    </div>
+    </div>  
 
 <script>    
     $(function () {
@@ -268,8 +280,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 `);
 
     await page.setViewport({
-        width: 1270 * 2,
-        height: 1280,
+        width: 1270,
+        height: 1720,
         deviceScaleFactor: 1,
     });
     await page.screenshot({path: `previews/${name}.png`});

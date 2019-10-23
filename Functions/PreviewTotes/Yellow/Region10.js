@@ -135,8 +135,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
-        width: 1270 * 2,
-        height: 1280,
+        width: 1270,
+        height: 1620,
         deviceScaleFactor: 1,
     });
 
@@ -161,7 +161,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     .fontStatement{
         color:${fontColor(colorProduct)};
         font-family:${statement === "Replicate the map on both sides" ? "MyriadPro-Bold" : font};
-        font-size: ${statement === "Replicate the map on both sides" ? "150pt" : fontStatement()};
+        font-size: ${statement === "Replicate the map on both sides" ? "80px" : fontStatement()};
         text-align: center;
         justify-content: center;
         align-items: center;
@@ -225,10 +225,9 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:13in;height:11in;background-color: ${colorProductSelect(colorProduct)};display: flex">
+<body style="width:13in;height:11in;background-color: ${colorProductSelect(colorProduct)};">
 <div>
 <h1 class='fontColor' style="text-align: center;font-size:89px;">${headline} </h1>
-
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
@@ -332,19 +331,19 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </div>
 </div>
 
-    <div>
-        <h1 style="text-align: center">Flip side</h1>
-        <div class="fontStatement" style="width:13in;height:11in;">
-            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementOne}</div>
-            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementTwo}</div>
-            <div style="margin-top: ${fontSpaceStatement()};">${personalStatementThree}</div>
+    <div style="margin-top: 50px">
+    <hr>
+        <div class="fontStatement" style="width:13in;">
+            <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementOne}</div>
+            <div style="margin-top: ${statement === "Replicate the map on both sides" ? "200px" : fontSpaceStatement()};" >${personalStatementTwo}</div>
+            <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementThree}</div>
         </div>
     </div>
 
 <script>    
     $(function () {
         $(document).ready(function () {
-            $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
+            $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","#BBBDC0");
             $("#regions").attr("fill", "transparent");
             
             //Primary color
