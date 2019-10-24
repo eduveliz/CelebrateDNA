@@ -98,16 +98,16 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return "100pt"
         }
         if (font === "Funnier") {
-            return "120pt";
+            return "100pt";
         }
         if (font === "MyriadPro-Bold") {
-            return "150pt"
+            return "120pt"
         }
     };
 
     fontSpaceStatement = () => {
         if (font === "Noteworthy") {
-            return "-60px";
+            return "-60px"
         }
         if (font === "MyriadPro-Bold") {
             return "-50px";
@@ -119,13 +119,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     topStatement = () => {
         if (font === "MyriadPro-Bold") {
-            return "100px"
+            return "50px"
         }
         if (font === "Funnier") {
-            return "60px"
+            return "40px"
         }
         if (font === "Noteworthy") {
-            return "100px";
+            return "60px";
         }
     };
 
@@ -151,7 +151,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         text-align: center;
         justify-content: center;
         align-items: center;
-        margin-top: ${font === "MyriadPro-Bold" || font === "Funnier" ? "300px" : "110px"};
+        margin-top: ${topStatement()};
     }
     .fontColorRegion {
         color:white;

@@ -92,10 +92,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return "100pt"
         }
         if (font === "Funnier") {
-            return "120pt";
+            return "100pt";
         }
         if (font === "MyriadPro-Bold") {
-            return "150pt"
+            return "120pt"
         }
     };
 
@@ -113,13 +113,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     topStatement = () => {
         if (font === "MyriadPro-Bold") {
-            return "100px"
+            return "50px"
         }
         if (font === "Funnier") {
-            return "60px"
+            return "40px"
         }
         if (font === "Noteworthy") {
-            return "100px";
+            return "60px";
         }
     };
 
