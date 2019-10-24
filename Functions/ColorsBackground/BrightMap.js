@@ -56,10 +56,10 @@ module.exports = colorBackground = (color) => {
             return hexValueColor = "#DB6679";
             break;
         case "MidnightBlue":
-            return hexValueColor = "#191970";
+            return hexValueColor = "#1B224E";
             break;
         case "CharcoalGrey":
-            return hexValueColor = "#81868A";
+            return hexValueColor = "#58585B";
             break;
         case "Dirty Camel":
             return hexValueColor = "#716558";
@@ -68,7 +68,7 @@ module.exports = colorBackground = (color) => {
             return hexValueColor = "#2D7051";
             break;
         case "Sea green":
-            return hexValueColor = "#90D8B4";
+            return hexValueColor = "#547B80";
             break;
     }
 };
