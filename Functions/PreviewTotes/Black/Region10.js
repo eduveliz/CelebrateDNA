@@ -51,12 +51,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const tenRegionNumber = propiedades.regions[9].porcentaje;
 
     const backgroundColor = colorBackground(propiedades.color);
-
+    const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
+    const colorProduct = propiedades.fontColor;
     //Headline
     const statement = propiedades.statement;
     const personalStatementOne = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementOne;
-    const personalStatementTwo = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementTwo;
-    const personalStatementThree = statement === "Replicate the map on both sides" ? "The image will be duplicated on both sides of tote." : propiedades.personalStatementThree;
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : propiedades.personalStatementTwo;
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementThree;
 
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
@@ -116,25 +117,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSpaceStatement = () => {
         if (font === "Noteworthy") {
-            return "-60px"
+            return "-100px"
         }
         if (font === "MyriadPro-Bold") {
             return "-50px";
         }
         if (font === "Funnier") {
             return "30px"
-        }
-    };
-
-    topStatement = () => {
-        if (font === "MyriadPro-Bold") {
-            return "100px"
-        }
-        if (font === "Funnier") {
-            return "60px"
-        }
-        if (font === "Noteworthy") {
-            return "100px";
         }
     };
     const map = companyMap(propiedades.company);
@@ -161,8 +150,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     }
     .fontColorRegion {
         color:white;
-        border: 2px solid #BBBDC0;
-        font-size: ${fontSizeNumber()};   
+        font-family:${font};
     }
     
     .fontColorNumber{
@@ -175,11 +163,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     .fontStatement{
         color:#A7A9AB;
         font-family:${statement === "Replicate the map on both sides" ? "MyriadPro-Bold" : font};
-        font-size: ${statement === "Replicate the map on both sides" ? "80px" : fontStatement()};
+        font-size:${fontStatement()};
         text-align: center;
         justify-content: center;
         align-items: center;
-        margin-top: ${font === "MyriadPro-Bold" || font === "Funnier" ? "300px" : "200px"};
     }
     
     @font-face {
@@ -239,7 +226,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:13in;height:11in;background-color: black;padding-top: 70px">
+<body style="width:13in;height:11in;background-color: black">
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
@@ -341,12 +328,12 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
 </div>
 
-<div style="margin-top: 50px">
-<hr>
+<div    >
+    <h1 style="text-align: center;color: white;margin-bottom: 0px">Flip side</h1>
     <div class="fontStatement" style="width:13in;">
-        <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementOne}</div>
-        <div style="margin-top: ${statement === "Replicate the map on both sides" ? "200px" : fontSpaceStatement()};" >${personalStatementTwo}</div>
-        <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementThree}</div>
+        <div >${personalStatementOne}</div>
+        <div >${personalStatementTwo}</div>
+        <div >${personalStatementThree}</div>
     </div>
 </div>
 
@@ -385,7 +372,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             $("${nineRegionNameSelector}").attr("stroke","#BBBDC0");
             
             $("${tenRegionNameSelector}").attr("fill", "#1C4F34");
-            $("${tenRegionNameSelector}").attr("stroke", "#BBBDC0");    
+             $("${tenRegionNameSelector}").attr("stroke", "#BBBDC0");    
         });
     });
 </script>
