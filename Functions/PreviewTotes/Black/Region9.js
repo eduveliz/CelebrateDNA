@@ -60,8 +60,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const personalStatementTwo = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementTwo;
     const personalStatementThree = statement === "Replicate the map on both sides" ? "The image will be duplicated on both sides of tote." : propiedades.personalStatementThree;
 
-
-
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
     companyMap = (company) => {

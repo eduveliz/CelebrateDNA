@@ -7,9 +7,11 @@ const axios = require('axios');
 const moment = require('moment');
 //brigth
 const previewSelector = require('./Functions/Maps/BrigthMaps/ttPreviewSelector');
+const mapsPrintfullBrigth = require('./Functions/PrintFullMaps/BrigthMaps/brigthPreviewSelector');
 
 //earth
 const earthSelector = require('./Functions/Maps/Earth Tone/earthPreviewSelector');
+const mapsPrintfullEarth = require('./Functions/PrintFullMaps/Earth Tone/earthPreviewSelector');
 
 //PreviewHelix
 const helixSelector = require('./Functions/PreviewHelix/HelixSelector');
@@ -25,9 +27,6 @@ const setNumberRegionsHelixVertical = require('./Functions/RegionNumbers/setRegi
 const loveSelectorPrintfull = require('./Functions/PrintfullILoveMyDNA/LoveSelector');
 const setNumberRegionsLove = require('./Functions/RegionNumbers/setRegionNumberLovel');
 
-//printfull
-const mapsPrintfullBrigth = require('./Functions/PrintFullMaps/BrigthMaps/brigthPreviewSelector');
-const mapsPrintfullEarth = require('./Functions/PrintFullMaps/Earth Tone/earthPreviewSelector');
 const setNumberMaps = require('./Functions/RegionNumbers/setRegionNumberMaps');
 
 //PreviewDonut
@@ -38,6 +37,10 @@ const love = require('./Functions/PreviewILoveMyDNA/LoveSelector');
 
 //Yellow
 const YellowSelector = require('./Functions/PreviewTotes/Yellow/RegionSelector');
+const YellowPrintfullSelector = require('./Functions/PrintfullYellowTotes/RegionSelector');
+const setNumberRegionTotes = require('./Functions/RegionNumbers/setRegionNumberTotes');
+
+
 //Black
 const RegionSelector = require('./Functions/PreviewTotes/Black/RegionSelector');
 
@@ -142,21 +145,20 @@ app.post('/printfull', jsonParser, function (req, res) {
     const nameFile = Date.now();
     const sku = line_items[0].sku;
     const id = line_items[0].product_id.toString();
-    console.log("Numero de Regiones", toArray(cantidad).length);
 
-    const name = shipping_address.first_name;
-    const address1 = shipping_address.address1;
-    const city = shipping_address.city;
-    const stateCode = shipping_address.province_code;
-    const countryCode = shipping_address.country_code;
-    const zip = shipping_address.zip;
+    // const name = shipping_address.first_name;
+    // const address1 = shipping_address.address1;
+    // const city = shipping_address.city;
+    // const stateCode = shipping_address.province_code;
+    // const countryCode = shipping_address.country_code;
+    // const zip = shipping_address.zip;
 
-    // const name = "Eduardo";
-    // const address1 = "19749 Dearborn St";
-    // const city = "Chatsworth";
-    // const stateCode = "CA";
-    // const countryCode = "US";
-    // const zip = "91311";
+    const name = "EduardoTest";
+    const address1 = "19749 Dearborn St";
+    const city = "Chatsworth";
+    const stateCode = "CA";
+    const countryCode = "US";
+    const zip = "91311";
 
     if (id === "1857838415915" || id === "1859574300715") {
         mapsPrintfullBrigth(setNumberMaps(toArray(cantidad).length), req.body, nameFile).then(() => {
@@ -245,7 +247,6 @@ app.post('/printfull', jsonParser, function (req, res) {
     }
 
     if (id === "1865318268971" || id === "1864993439787") {
-        console.log("product Detect".america);
         helixVerticalSelectorPrintfull(setNumberRegionsHelixVertical(toArray(cantidad).length), req.body, nameFile).then(() => {
             return axios.post('https://api.printful.com/orders', {
                     "recipient": {
@@ -302,6 +303,38 @@ app.post('/printfull', jsonParser, function (req, res) {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         })
     }
+
+    if (id === "1860907204651") {
+
+        YellowPrintfullSelector(setNumberRegionTotes(toArray(cantidad).length), nameFile, req.body).then(() => {
+            return axios.post('https://api.printful.com/orders', {
+                    "recipient": {
+                        "name": name,
+                        "address1": address1,
+                        "city": city,
+                        "state_code": stateCode,
+                        "country_code": countryCode,
+                        "zip": zip
+                    },
+                    "items": [{
+                        "variant_id": sku,
+                        "quantity": 1,
+                        "files": [{
+                            "url": "https://c8389465.ngrok.io/" + nameFile + ".png"
+                        }]
+                    }]
+                },
+                {
+                    headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+                }
+            ).catch(reason => console.log("Error" + reason));
+        }).then(() => {
+            console.log("Diseño enviardo correctamente");
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    }
+
 });
 
 const PORT = process.env.PORT || 3000;
