@@ -146,19 +146,19 @@ app.post('/printfull', jsonParser, function (req, res) {
     const sku = line_items[0].sku;
     const id = line_items[0].product_id.toString();
 
-    // const name = shipping_address.first_name;
-    // const address1 = shipping_address.address1;
-    // const city = shipping_address.city;
-    // const stateCode = shipping_address.province_code;
-    // const countryCode = shipping_address.country_code;
-    // const zip = shipping_address.zip;
+    const name = shipping_address.first_name;
+    const address1 = shipping_address.address1;
+    const city = shipping_address.city;
+    const stateCode = shipping_address.province_code;
+    const countryCode = shipping_address.country_code;
+    const zip = shipping_address.zip;
 
-    const name = "EduardoTest";
-    const address1 = "19749 Dearborn St";
-    const city = "Chatsworth";
-    const stateCode = "CA";
-    const countryCode = "US";
-    const zip = "91311";
+    // const name = "EduardoTest";
+    // const address1 = "19749 Dearborn St";
+    // const city = "Chatsworth";
+    // const stateCode = "CA";
+    // const countryCode = "US";
+    // const zip = "91311";
 
     if (id === "1857838415915" || id === "1859574300715") {
         mapsPrintfullBrigth(setNumberMaps(toArray(cantidad).length), req.body, nameFile).then(() => {
