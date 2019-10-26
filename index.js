@@ -304,8 +304,7 @@ app.post('/printfull', jsonParser, function (req, res) {
         })
     }
 
-    if (id === "1860907204651") {
-
+    if (id === "1860907204651" || id === "4317967155271") {
         YellowPrintfullSelector(setNumberRegionTotes(toArray(cantidad).length), nameFile, req.body).then(() => {
             return axios.post('https://api.printful.com/orders', {
                     "recipient": {
@@ -320,7 +319,7 @@ app.post('/printfull', jsonParser, function (req, res) {
                         "variant_id": sku,
                         "quantity": 1,
                         "files": [{
-                            "url": "https://c8389465.ngrok.io/" + nameFile + ".png"
+                            "url": "https://06ab62df.ngrok.io/printfull/" + nameFile + ".png"
                         }]
                     }]
                 },
@@ -328,6 +327,7 @@ app.post('/printfull', jsonParser, function (req, res) {
                     headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
                 }
             ).catch(reason => console.log("Error" + reason));
+            console.log(true);
         }).then(() => {
             console.log("Diseño enviardo correctamente");
             res.end('{"success" : "Updated Successfully", "status" : 200}');

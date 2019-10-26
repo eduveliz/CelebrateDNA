@@ -12,47 +12,48 @@ const MyHeritageMap = require('../MyHeritageMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const properties = toArray(propiedades.line_items[0].properties);
-    const name = propiedades.nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
+    const name = nameFile;
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNameSelector = regionNames(propiedades.regions[1].region);
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
+    const firstRegionName = properties[1];
+    const firstRegionNameSelector = regionNames(properties[1]);
+    const firstRegionNumber = properties[2];
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNameSelector = regionNames(propiedades.regions[2].region);
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
+    const secondRegionName = properties[3];
+    const secondRegionNameSelector = regionNames(properties[3]);
+    const secondRegionNumber = properties[4];
 
-    const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNameSelector = regionNames(propiedades.regions[3].region);
-    const fourRegionNumber = propiedades.regions[3].porcentaje;
+    const threeRegionName = properties[5];
+    const threeRegionNameSelector = regionNames(properties[5]);
+    const threeRegionNumber = properties[6];
 
-    const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNameSelector = regionNames(propiedades.regions[4].region);
-    const fiveRegionNumber = propiedades.regions[4].porcentaje;
+    const fourRegionName = properties[7];
+    const fourRegionNameSelector = regionNames(properties[7]);
+    const fourRegionNumber = properties[8];
 
-    const sixRegionName = propiedades.regions[5].region;
-    const sixRegionNameSelector = regionNames(propiedades.regions[5].region);
-    const sixRegionNumber = propiedades.regions[5].porcentaje;
+    const fiveRegionName = properties[9];
+    const fiveRegionNameSelector = regionNames(properties[9]);
+    const fiveRegionNumber = properties[10];
 
-    const sevenRegionName = propiedades.regions[6].region;
-    const sevenRegionNameSelector = regionNames(propiedades.regions[6].region);
-    const sevenRegionNumber = propiedades.regions[6].porcentaje;
+    const sixRegionName = properties[11];
+    const sixRegionNameSelector = regionNames(properties[11]);
+    const sixRegionNumber = properties[12];
 
-    const backgroundColor = colorBackground(propiedades.color);
+    const sevenRegionName = properties[13];
+    const sevenRegionNameSelector = regionNames(properties[13]);
+    const sevenRegionNumber = properties[14];
+
+    const backgroundColor = colorBackground(properties[15]);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = propiedades.fontColor;
+    const colorProduct = properties[18];
     //Headline
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
+    const headline = properties[16] === "Personalized headline" ? properties[17] : properties[16];
 
-    const statement = propiedades.statement;
-    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementOne;
-    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : propiedades.personalStatementTwo;
-    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementThree;
+    const statement = properties[20];
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[21];
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : properties[22];
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[23];
     //FontSize
-    const font = fontStyle(propiedades.fontStyle);
+    const font = fontStyle(properties[19]);
     companyMap = (company) => {
         if (company === "Ancestry") {
             return ancestryMap;
@@ -64,7 +65,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return MyHeritageMap;
         }
     };
-    const map = companyMap(propiedades.company);
+    const map = companyMap(properties[0]);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -110,13 +111,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontStatement = () => {
         if (font === "Noteworthy") {
-            return "100pt"
+            return "150pt"
         }
         if (font === "Funnier") {
-            return "100pt";
+            return "115pt";
         }
         if (font === "MyriadPro-Bold") {
-            return "120pt"
+            return "145pt"
         }
     };
 
@@ -285,7 +286,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="height:33in;width: 17in;align-items: center;text-align: center;justify-content: center">
- <div style="width: 13in;height: 11in;margin-left: 1.9in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
+ <div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
     <h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
     <div style="width: 100%;text-align: center;">
         ${map}
@@ -373,6 +374,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </body>
 </html>
 `);
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.screenshot({path: `public/${name}.png`});
     await browser.close();
 };

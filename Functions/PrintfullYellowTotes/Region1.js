@@ -13,24 +13,24 @@ const toArray = require('lodash.toarray');
 module.exports = createPreview = async (nameFile, propiedades) => {
     const properties = toArray(propiedades.line_items[0].properties);
     const name = nameFile;
-    const firstRegionName = properties[1];
-    const firstRegionNameSelector = regionNames(properties[1]);
-    const firstRegionNumber = properties[2];
+    const firstRegionName = properties[1].value;
+    const firstRegionNameSelector = regionNames(properties[1].value);
+    const firstRegionNumber = properties[2].value;
     //Background Map
-    const backgroundColor = colorBackground(properties[3]);
+    const backgroundColor = colorBackground(properties[3].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = properties[6];
+    const colorProduct = properties[6].value;
 
     //Headline
-    const headline = properties[4] === "Personalized headline" ? properties[5] : properties[4];
+    const headline = properties[4].value === "Personalized headline" ? properties[5].value : properties[4].value;
 
-    const statement = properties[8];
-    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[9];
-    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : properties[10];
-    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[11];
+    const statement = properties[8].value;
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[9].value;
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : properties[10].value;
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[11].value;
 
     //FontSize
-    const font = fontStyle(properties[7]);
+    const font = fontStyle(properties[7].value);
     companyMap = (company) => {
         if (company === "Ancestry") {
             return ancestryMap;
@@ -42,7 +42,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return MyHeritageMap;
         }
     };
-    const map = companyMap(properties[0]);
+    const map = companyMap(properties[0].value);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -298,6 +298,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         deviceScaleFactor: 3,
     });
 
-    await page.screenshot({path: `public/${name}.png`});
+    await page.screenshot({path: `public/printfull/${name}.png`});
     await browser.close();
 };

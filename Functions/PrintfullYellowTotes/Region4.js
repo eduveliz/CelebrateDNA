@@ -12,37 +12,40 @@ const MyHeritageMap = require('../MyHeritageMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const properties = toArray(propiedades.line_items[0].properties);
-    const name = propiedades.nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
+    const name = nameFile;
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNameSelector = regionNames(propiedades.regions[1].region);
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
+    const firstRegionName = properties[1];
+    const firstRegionNameSelector = regionNames(properties[1]);
+    const firstRegionNumber = properties[2];
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNameSelector = regionNames(propiedades.regions[2].region);
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
+    const secondRegionName = properties[3];
+    const secondRegionNameSelector = regionNames(properties[3]);
+    const secondRegionNumber = properties[4];
 
-    const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNameSelector = regionNames(propiedades.regions[3].region);
-    const fourRegionNumber = propiedades.regions[3].porcentaje;
+    const threeRegionName = properties[5];
+    const threeRegionNameSelector = regionNames(properties[5]);
+    const threeRegionNumber = properties[6];
+
+    const fourRegionName = properties[7];
+    const fourRegionNameSelector = regionNames(properties[7]);
+    const fourRegionNumber = properties[8];
 
     //Background Map
-    const backgroundColor = colorBackground(propiedades.color);
+    const backgroundColor = colorBackground(properties[9]);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = propiedades.fontColor;
+    const colorProduct = properties[12];
     //Headline
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
+    const headline = properties[10] === "Personalized headline"
+        ? properties[11]
+        : properties[10];
 
-    const statement = propiedades.statement;
-    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementOne;
-    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : propiedades.personalStatementTwo;
-    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementThree;
+    const statement = properties[14];
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[15];
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : properties[16];
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[17];
 
     //FontSize
-    const font = fontStyle(propiedades.fontStyle);
+    const font = fontStyle(properties[13]);
 
     companyMap = (company) => {
         if (company === "Ancestry") {
@@ -55,7 +58,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return MyHeritageMap;
         }
     };
-    const map = companyMap(propiedades.company);
+    const map = companyMap(properties[0]);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -104,13 +107,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontStatement = () => {
         if (font === "Noteworthy") {
-            return "100pt"
+            return "150pt"
         }
         if (font === "Funnier") {
-            return "100pt";
+            return "115pt";
         }
         if (font === "MyriadPro-Bold") {
-            return "120pt"
+            return "145pt"
         }
     };
 
@@ -265,8 +268,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-    <body style="height:33in;width: 17in;align-items: center;text-align: center;justify-content: center">
- <div style="width: 13in;height: 11in;margin-left: 1.9in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
+<body style="height:33in;width: 17in;align-items: center;text-align: center;justify-content: center">
+ <div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
 <h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
 <div style="width: 100%;text-align: center;">
     ${map}
@@ -335,6 +338,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         height: 3168,
         deviceScaleFactor: 3,
     });
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.screenshot({path: `public/${name}.png`});
     await browser.close();
 };

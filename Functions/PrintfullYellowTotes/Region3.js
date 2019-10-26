@@ -12,32 +12,34 @@ const MyHeritageMap = require('../MyHeritageMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const properties = toArray(propiedades.line_items[0].properties);
-    const name = propiedades.nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
+    console.log(properties);
+    const name = nameFile;
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNameSelector = regionNames(propiedades.regions[1].region);
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
+    const firstRegionName = properties[1];
+    const firstRegionNameSelector = regionNames(properties[1]);
+    const firstRegionNumber = properties[2];
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNameSelector = regionNames(propiedades.regions[2].region);
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
+    const secondRegionName = properties[3];
+    const secondRegionNameSelector = regionNames(properties[3]);
+    const secondRegionNumber = properties[4];
 
-    const backgroundColor = colorBackground(propiedades.color);
+    const threeRegionName = properties[5];
+    const threeRegionNameSelector = regionNames(properties[5]);
+    const threeRegionNumber = properties[6];
+
+    const backgroundColor = colorBackground(properties[7]);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = propiedades.fontColor;
+    const colorProduct = properties[10];
     //Headline
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
+    const headline = properties[8] === "Personalized headline" ? properties[9] : properties[8];
 
-    const statement = propiedades.statement;
-    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementOne;
-    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : propiedades.personalStatementTwo;
-    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : propiedades.personalStatementThree;
+    const statement = properties[12];
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[13];
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : properties[14];
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[15];
 
     //FontSize
-    const font = fontStyle(propiedades.fontStyle);
+    const font = fontStyle(properties[11]);
     companyMap = (company) => {
         if (company === "Ancestry") {
             return ancestryMap;
@@ -49,7 +51,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return MyHeritageMap;
         }
     };
-    const map = companyMap(propiedades.company);
+    const map = companyMap(properties[0]);
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
@@ -97,13 +99,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontStatement = () => {
         if (font === "Noteworthy") {
-            return "100pt"
+            return "150pt"
         }
         if (font === "Funnier") {
-            return "100pt";
+            return "115pt";
         }
         if (font === "MyriadPro-Bold") {
-            return "120pt"
+            return "145pt"
         }
     };
 
@@ -263,7 +265,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     ${map}
 </div>
 <div style="margin-top: 50px">
-    <div style="display: flex; justify-content: space-around;margin-right: 15px">
+    <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="color:white;height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
         ${firstRegionNumber}%
         </div>
@@ -274,7 +276,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
          ${threeRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-right: 20px">
+    <div style="display: flex; justify-content: space-around;">
         <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
             <div class="fontColor" style="text-align: center">${firstRegionName}</div>
         </div>
@@ -316,6 +318,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         height: 3168,
         deviceScaleFactor: 3,
     });
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.screenshot({path: `public/${name}.png`});
     await browser.close();
 };

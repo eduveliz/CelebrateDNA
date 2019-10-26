@@ -70,7 +70,7 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "14pt"
+            return "16pt"
         }
         if (font === "MyriadPro-Bold") {
             return "14pt"
