@@ -41,6 +41,9 @@ const YellowPrintfullSelector = require('./Functions/PrintfullYellowTotes/Region
 const setNumberRegionTotes = require('./Functions/RegionNumbers/setRegionNumberTotes');
 
 
+const boldPrintfullSelector = require('./Functions/PrintfullBoldTotes/RegionSelector');
+const setNumberRegionTotesBold = require('./Functions/RegionNumbers/setRegionNumberTotesBold');
+
 //Black
 const RegionSelector = require('./Functions/PreviewTotes/Black/RegionSelector');
 
@@ -146,19 +149,19 @@ app.post('/printfull', jsonParser, function (req, res) {
     const sku = line_items[0].sku;
     const id = line_items[0].product_id.toString();
 
-    const name = shipping_address.first_name;
-    const address1 = shipping_address.address1;
-    const city = shipping_address.city;
-    const stateCode = shipping_address.province_code;
-    const countryCode = shipping_address.country_code;
-    const zip = shipping_address.zip;
+    // const name = shipping_address.first_name;
+    // const address1 = shipping_address.address1;
+    // const city = shipping_address.city;
+    // const stateCode = shipping_address.province_code;
+    // const countryCode = shipping_address.country_code;
+    // const zip = shipping_address.zip;
 
-    // const name = "EduardoTest";
-    // const address1 = "19749 Dearborn St";
-    // const city = "Chatsworth";
-    // const stateCode = "CA";
-    // const countryCode = "US";
-    // const zip = "91311";
+    const name = "EduardoTest";
+    const address1 = "19749 Dearborn St";
+    const city = "Chatsworth";
+    const stateCode = "CA";
+    const countryCode = "US";
+    const zip = "91311";
 
     if (id === "1857838415915" || id === "1859574300715") {
         mapsPrintfullBrigth(setNumberMaps(toArray(cantidad).length), req.body, nameFile).then(() => {
@@ -319,7 +322,37 @@ app.post('/printfull', jsonParser, function (req, res) {
                         "variant_id": sku,
                         "quantity": 1,
                         "files": [{
-                            "url": "https://06ab62df.ngrok.io/printfull/" + nameFile + ".png"
+                            "url": "https://87cdc2c4.ngrok.io/" + nameFile + ".png"
+                        }]
+                    }]
+                },
+                {
+                    headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+                }
+            ).catch(reason => console.log("Error" + reason));
+        }).then(() => {
+            console.log("Diseño enviardo correctamente");
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        });
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    }
+
+    if (id === "1859664674859") {
+        boldPrintfullSelector(setNumberRegionTotesBold(toArray(cantidad).length), nameFile, req.body).then(() => {
+            return axios.post('https://api.printful.com/orders', {
+                    "recipient": {
+                        "name": name,
+                        "address1": address1,
+                        "city": city,
+                        "state_code": stateCode,
+                        "country_code": countryCode,
+                        "zip": zip
+                    },
+                    "items": [{
+                        "variant_id": sku,
+                        "quantity": 1,
+                        "files": [{
+                            "url": "https://e00b2858.ngrok.io/" + nameFile + ".png"
                         }]
                     }]
                 },
@@ -334,6 +367,7 @@ app.post('/printfull', jsonParser, function (req, res) {
         });
         res.end('{"success" : "Updated Successfully", "status" : 200}');
     }
+
 
 });
 

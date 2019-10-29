@@ -1,48 +1,49 @@
 const puppeteer = require('puppeteer');
+const toArray = require('lodash.toarray');
 const colorBackground = require('../ColorsBackground/BrightMap');
 const regionNames = require('../RegionNames/RegionNames');
 const fontStyle = require('../FontStyle/FontStyle');
 const fontColor = require('../FontColor/FontColor');
-const colorProductSelect = require('../Color/Color');
-const lineMaps = require('../LinesMap/LineMaps');
-const ancestryMap = require('../AncestryMap');
-const ttMap = require('../TTMap');
-const MyHeritageMap = require('../MyHeritageMap');
-const toArray = require('lodash.toarray');
+const companyMap = require('../CompanyMap/CompanyMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const properties = toArray(propiedades.line_items[0].properties);
     const name = nameFile;
-    const firstRegionName = properties[1].value;
-    const firstRegionNameSelector = regionNames(properties[1].value);
-    const firstRegionNumber = properties[2].value;
+    const map = companyMap(properties[0]);
+
+    const firstRegionName = properties[1];
+    const firstRegionNameSelector = regionNames(properties[1]);
+    const firstRegionNumber = properties[2];
+
+    const secondRegionName = properties[3];
+    const secondRegionNameSelector = regionNames(properties[3]);
+    const secondRegionNumber = properties[4];
+
     //Background Map
-    const backgroundColor = colorBackground(properties[3].value);
-    const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = properties[6].value;
+    const backgroundColor = colorBackground(properties[5]);
+    const font = fontStyle(properties[6]);
+    const statement = properties[7];
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[8];
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "" : properties[9];
+    const personalStatementThree = statement === "Replicate the map on both sides"
+        ? "The image will be duplicated on both sides of tote."
+        : properties[10];
 
-    //Headline
-    const headline = properties[4].value === "Personalized headline" ? properties[5].value : properties[4].value;
 
-    const statement = properties[8].value;
-    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[9].value;
-    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : properties[10].value;
-    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[11].value;
-
-    //FontSize
-    const font = fontStyle(properties[7].value);
-    companyMap = (company) => {
-        if (company === "Ancestry") {
-            return ancestryMap;
+    fontHeadline = () => {
+        if (font === "Noteworthy") {
+            return "110px"
         }
-        if (company === "23andMe") {
-            return ttMap;
+        if (font === "MyriadPro-Bold") {
+            return "110px"
         }
-        if (company === "MyHeritageDNA") {
-            return MyHeritageMap;
+        if (font === "Funnier") {
+            return "85px"
+        }
+        if (font === "Noteworhty Bold") {
+            return "110px"
         }
     };
-    const map = companyMap(properties[0].value);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -71,21 +72,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
         if (font === "Noteworhty Bold") {
             return "35pt"
-        }
-    };
-
-    fontHeadline = () => {
-        if (font === "Noteworthy") {
-            return "110px"
-        }
-        if (font === "MyriadPro-Bold") {
-            return "110px"
-        }
-        if (font === "Funnier") {
-            return "85px"
-        }
-        if (font === "Noteworhty Bold") {
-            return "110px"
         }
     };
 
@@ -140,47 +126,50 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
-    <!DOCTYPE html> 
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>23andMe</title>
     <style>
     .fontColor {
-        color:${fontColor(colorProduct)};
+        color:#A7A9AB;
         font-family:${font};
+        text-align: center;
         font-size: ${fontSizeRegion(font)};
     }
+    
     .fontStatement{
-        color:${fontColor(colorProduct)};
+        color:#A7A9AB;
         font-family:${statement === "Replicate the map on both sides" ? "MyriadPro-Bold" : font};
         font-size: ${statement === "Replicate the map on both sides" ? "80px" : fontStatement()};
-        text-align: center; 
+        text-align: center;
         justify-content: center;
         align-items: center;
         margin-top: ${topStatement()};
     }
+    
     .fontColorRegion {
-        color:${fontColor(colorProduct)};
+        color: #FFFFFF;
         font-family:${font};
-        border: 2px solid ${lineMaps(colorProduct)};
-        font-size: ${fontSizeNumber()};
+        border: 2px solid #BBBDC0;
+        font-size: ${fontSizeNumber()};   
     }
-     
+    
     .fontColorHeadline {
         color:${fontColor(colorProduct)};
         font-family:${font} ;
         text-align: center; 
         font-size:${fontHeadline()};
-        margin-bottom: ${font === "Funnier" ? "100px" : "0px"};
     }
     
-    .fontColorNumber {
-        font-family:${font};
-        color: white;
+   .fontColorNumber {
+        color: #FFFFFF;
         font-size: ${fontSizeNumber()};
+        border: 2px solid #BBBDC0;
+        font-family:${font};
     }
-
+    
     .secondPart{
         text-align: center; 
         justify-content: center;
@@ -192,9 +181,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         margin-top:${bottomStatement()};
     }
     
+    
     @font-face {
     font-family: 'Futura';
-    src:url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
+    src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
         url('https://moolab.ml/Fonts/Futura-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
@@ -249,42 +239,51 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-    <body style="height:33in;width: 17in;background-color: black;align-items: center;text-align: center;justify-content: center">
-        <div style="width: 13in;height: 11in;margin-left: 1.9in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
-            <h1 class='fontColorHeadline' style="text-align: center;">${headline}</h1>
-            <div style="width: 100%;text-align: center;">
-                ${map}
+<body style="height:33in;width: 17in;background-color: black;align-items: center;text-align: center;justify-content: center">
+<div style="width: 13in;height: 11in;margin-left: 1.9in;margin-top:${font === "Funnier" ? "3.2in" : "4in"};">  
+    <div style="width: 100%;text-align: center;">
+        ${map}
+    </div>
+    <div style="margin-top: 50px;margin-right: 17px">
+        <div style="display: flex; justify-content: space-around;">
+            <div class="fontColorRegion" style="height:60px; width:100%;border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
+                ${firstRegionNumber}%
             </div>
-            <div style="margin-top: 50px;">
-                <div style="display: flex; justify-content: space-around;">
-                    <div class="fontColorNumber" style="height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
-                        ${firstRegionNumber}%
-                    </div>
-                </div>
-                <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
-                    <div style="width:100%;height:60px;display: flex; justify-content: center">
-                        <div class="fontColor">${firstRegionName}</div>
-                    </div>
-                </div>
+            <div class="fontColorRegion" style="height:60px; width:100%; border-radius: 20px; background-color: #851f62;align-items: center;text-align: center;display: flex;justify-content: center;">
+                ${secondRegionNumber}%
             </div>
         </div>
-  
-    <div class="secondPart">  
+        <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+            <div style="width:100%;height:60px;display: flex; justify-content: center">
+                <div class="fontColor">${firstRegionName}</div>
+            </div>
+            <div style="width:100%;height:60px; display: flex; justify-content: center">
+                <div class="fontColor">${secondRegionName}</div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+<div class="secondPart">  
         <div class="fontStatement" style="width:13in;">
-           <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementOne}</div>
+            <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementOne}</div>
             <div style="margin-top: ${statement === "Replicate the map on both sides" ? "200px" : fontSpaceStatement()};" >${personalStatementTwo}</div>
             <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementThree}</div>
         </div>
-    </div>
-   
+</div> 
+
 <script>    
     $(function () {
         $(document).ready(function () {
-            $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
+            $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","#BBBDC0");
             $("#regions").attr("fill", "transparent");
-            //Primary color
-            $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
-            $("${firstRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
+            //Primary color            
+            $("${firstRegionNameSelector}").attr("fill", "#0A3542");
+            $("${firstRegionNameSelector}").attr("stroke", "#BBBDC0");
+            
+            $("${secondRegionNameSelector}").attr("fill", "#851F62");
+            $("${secondRegionNameSelector}").attr("stroke", "#BBBDC0");
+            //second color  
           });
     });
 </script>
@@ -297,7 +296,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         height: 3168,
         deviceScaleFactor: 3,
     });
-
     await page.screenshot({path: `public/${name}.png`});
     await browser.close();
 };
