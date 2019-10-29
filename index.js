@@ -322,7 +322,7 @@ app.post('/printfull', jsonParser, function (req, res) {
                         "variant_id": sku,
                         "quantity": 1,
                         "files": [{
-                            "url": "https://87cdc2c4.ngrok.io/" + nameFile + ".png"
+                            "url": "https://0bd4377d.ngrok.io/" + nameFile + ".png"
                         }]
                     }]
                 },
@@ -352,7 +352,7 @@ app.post('/printfull', jsonParser, function (req, res) {
                         "variant_id": sku,
                         "quantity": 1,
                         "files": [{
-                            "url": "https://e00b2858.ngrok.io/" + nameFile + ".png"
+                            "url": "https://0bd4377d.ngrok.io/" + nameFile + ".png"
                         }]
                     }]
                 },

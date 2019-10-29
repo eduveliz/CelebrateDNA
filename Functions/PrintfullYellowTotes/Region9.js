@@ -5,13 +5,11 @@ const regionNames = require('../RegionNames/RegionNames');
 const fontStyle = require('../FontStyle/FontStyle');
 const fontColor = require('../FontColor/FontColor');
 const lineMaps = require('../LinesMap/LineMaps');
-const colorProductSelect = require('../Color/Color');
-const ancestryMap = require('../AncestryMap');
-const ttMap = require('../TTMap');
-const MyHeritageMap = require('../MyHeritageMap');
+const companyMap = require('../CompanyMap/CompanyMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const properties = toArray(propiedades.line_items[0].properties);
+    const map = companyMap(properties[0]);
     const name = nameFile;
 
     const firstRegionName = properties[1];
@@ -62,18 +60,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[27];
     //FontSize
     const font = fontStyle(properties[23]);
-    companyMap = (company) => {
-        if (company === "Ancestry") {
-            return ancestryMap;
-        }
-        if (company === "23andMe") {
-            return ttMap;
-        }
-        if (company === "MyHeritageDNA") {
-            return MyHeritageMap;
-        }
-    };
-    const map = companyMap(properties[0]);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -287,7 +273,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 <div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
 <h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
 
-<div style="width: 100%;text-align: center;">
+<div style="width: 100%;text-align: center;;margin-top: 10px">
     ${map}
 </div>
 

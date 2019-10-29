@@ -1,6 +1,6 @@
-const ancestryMap = require('../AncestryMap');
-const ttMap = require('../TTMap');
-const MyHeritageMap = require('../MyHeritageMap');
+const ancestryMap = require('../MapsTote/AncestryMap');
+const ttMap = require('../MapsTote/TTMap');
+const MyHeritageMap = require('../MapsTote/MyHeritageMap');
 
 module.exports = companyMap = (company) => {
     switch (company) {

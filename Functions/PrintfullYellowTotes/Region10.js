@@ -5,17 +5,12 @@ const regionNames = require('../RegionNames/RegionNames');
 const fontStyle = require('../FontStyle/FontStyle');
 const fontColor = require('../FontColor/FontColor');
 const colorProductSelect = require('../Color/Color');
-const ancestryMap = require('../AncestryMap');
-const ttMap = require('../TTMap');
-const MyHeritageMap = require('../MyHeritageMap');
+const companyMap = require('../CompanyMap/CompanyMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const properties = toArray(propiedades.line_items[0].properties);
+    const map = companyMap(properties[0]);
     const name = nameFile;
-
-    properties.forEach(function (item, index, array) {
-        console.log(item, index);
-    });
 
     const firstRegionName = properties[1];
     const firstRegionNameSelector = regionNames(properties[1]);
@@ -70,18 +65,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     //FontSize
     const font = fontStyle(properties[25]);
-    companyMap = (company) => {
-        if (company === "Ancestry") {
-            return ancestryMap;
-        }
-        if (company === "23andMe") {
-            return ttMap;
-        }
-        if (company === "MyHeritageDNA") {
-            return MyHeritageMap;
-        }
-    };
-    const map = companyMap(properties[0]);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -297,7 +280,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     ${map}
 </div>
 
-<div style="display: flex; justify-content:space-between;width:98%;margin-top: 50px;padding: 5px">
+<div style="display: flex; justify-content:space-between;width:98%;margin-top: 20px;padding: 5px">
     <div id="firstGroup" style="width: 100%;">
         <div style="height:60px; width:100%;display: flex; justify-content: initial;margin-bottom:7pt">
             <div class="fontColor" style="width: 50%;text-align: center;display: flex;justify-content: center;align-items:center ">${firstRegionName}</div>
@@ -431,6 +414,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </body>
 </html>
 `);
-    await page.screenshot({path: `public/printfull/${name}.png`});
+    await page.screenshot({path: `public/${name}.png`});
     await browser.close();
 };

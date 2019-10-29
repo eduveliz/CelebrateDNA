@@ -3,15 +3,13 @@ const colorBackground = require('../ColorsBackground/BrightMap');
 const regionNames = require('../RegionNames/RegionNames');
 const fontStyle = require('../FontStyle/FontStyle');
 const fontColor = require('../FontColor/FontColor');
-const colorProductSelect = require('../Color/Color');
 const lineMaps = require('../LinesMap/LineMaps');
-const ancestryMap = require('../AncestryMap');
-const ttMap = require('../TTMap');
-const MyHeritageMap = require('../MyHeritageMap');
+const companyMap = require('../CompanyMap/CompanyMap');
 const toArray = require('lodash.toarray');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const properties = toArray(propiedades.line_items[0].properties);
+    const map = companyMap(properties[0]);
     const name = nameFile;
     const firstRegionName = properties[1].value;
     const firstRegionNameSelector = regionNames(properties[1].value);
@@ -28,21 +26,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[9].value;
     const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : properties[10].value;
     const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[11].value;
-
     //FontSize
     const font = fontStyle(properties[7].value);
-    companyMap = (company) => {
-        if (company === "Ancestry") {
-            return ancestryMap;
-        }
-        if (company === "23andMe") {
-            return ttMap;
-        }
-        if (company === "MyHeritageDNA") {
-            return MyHeritageMap;
-        }
-    };
-    const map = companyMap(properties[0].value);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
