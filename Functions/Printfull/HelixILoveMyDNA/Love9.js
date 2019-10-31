@@ -1,111 +1,103 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
-const colorBackground = require('../../ColorsBackground/BrightMap');
 const fontStyle = require('../../FontStyle/FontStyle');
-const fontSize = require('../../FontSize/ILoveMyDNA/FontSizeLove8');
-const colorProductSelect = require('../../Color/Color');
+const fontSize = require('../../FontSize/ILoveMyDNA/FontSizeLove9');
 
-module.exports = createPreview = async (propiedades) => {
-    const name = propiedades.nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
+module.exports = createPreview = async (nameFile, propiedades) => {
+    const name = nameFile;
+    const datos = toArray(propiedades.line_items[0].properties);
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
+    const firstRegionName = datos[0].value;
+    const firstRegionNumber = datos[1].value;
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
+    const secondRegionName = datos[2].value;
+    const secondRegionNumber = datos[3].value;
 
-    const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNumber = propiedades.regions[3].porcentaje;
+    const threeRegionName = datos[4].value;
+    const threeRegionNumber = datos[5].value;
 
-    const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNumber = propiedades.regions[4].porcentaje;
+    const fourRegionName = datos[6].value;
+    const fourRegionNumber = datos[7].value;
 
-    const sixRegionName = propiedades.regions[5].region;
-    const sixRegionNumber = propiedades.regions[5].porcentaje;
+    const fiveRegionName = datos[8].value;
+    const fiveRegionNumber = datos[9].value;
 
-    const sevenRegionName = propiedades.regions[6].region;
-    const sevenRegionNumber = propiedades.regions[6].porcentaje;
+    const sixRegionName = datos[10].value;
+    const sixRegionNumber = datos[11].value;
 
-    const eightRegionName = propiedades.regions[7].region;
-    const eightRegionNumber = propiedades.regions[7].porcentaje;
+    const sevenRegionName = datos[12].value;
+    const sevenRegionNumber = datos[13].value;
 
-    const colorProduct = colorProductSelect(propiedades.colorProduct);
+    const eightRegionName = datos[14].value;
+    const eightRegionNumber = datos[15].value;
+
+    const nineRegionName = datos[16].value;
+    const nineRegionNumber = datos[17].value;
+
+    const color = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
 
     imageColor = (color) => {
-        if (color === "Navy") {
+        if (color === "Navy ") {
             return 'https://moolab.ml/DNA/rojo.png';
         }
-        if (color === "White") {
+        if (color === "White ") {
             return "https://moolab.ml/DNA/white.png"
         }
-        if (color === "Black") {
+        if (color === "Black ") {
             return "https://moolab.ml/DNA/amarillo.png"
         }
-        if (color === "White with Green/Yellow") {
+        if (color === "White with Green") {
             return "https://moolab.ml/DNA/verde.png"
         }
-        if (color === "Navy with Orange & White") {
+        if (color === "Navy with Orange & White ") {
             return "https://moolab.ml/DNA/naranja.png"
         }
-        if (color === "Navy with Grey & White") {
+        if (color === "Navy with Grey & White ") {
             return "https://moolab.ml/DNA/azul.png"
         }
     };
 
     fontColor = (color) => {
-        if (color === "Navy") {
+        if (color === "Navy ") {
             return "white";
         }
-        if (color === "White") {
+        if (color === "White ") {
             return "#2C2B6E"
         }
-        if (color === "Black") {
+        if (color === "Black ") {
             return "#E0AC3B"
         }
-        if (color === "White with Green/Yellow") {
+        if (color === "White with Green") {
             return "#1D6A50"
         }
-        if (color === "Navy with Orange & White") {
+        if (color === "Navy with Orange & White ") {
             return "white"
         }
-        if (color === "Navy with Grey & White") {
+        if (color === "Navy with Grey & White ") {
             return "white"
         }
     };
 
     fontTop = (font) => {
         if (font === "Embossing") {
-            return "340px";
+            return "390px";
         }
         if (font === "Funnier") {
-            return "355px"
+            return "430px"
         } else {
-            return "220px"
+            return "330px"
         }
     };
 
-    shadow = () => {
-        if (propiedades.colorProduct === 'Navy with Orange & White') {
-            return 'text-shadow:3px 3px 0 #DE603C,-1px -1px 0 #DE603C,1px -1px 0 #DE603C,-1px 1px 0 #DE603C,1px 1px 0 #DE603C;'
-        }
-        if (propiedades.colorProduct === 'Navy') {
-            return 'text-shadow:3px 3px 0 #AFB4B9,-1px -1px 0 #AFB4B9,1px -1px 0 #AFB4B9,-1px 1px 0 #AFB4B9,1px 1px 0 #AFB4B9;'
-        }
-        if (propiedades.colorProduct === 'Navy with Grey & White') {
-            return 'text-shadow:3px 3px 0 #AFB4B9,-1px -1px 0 #AFB4B9,1px -1px 0 #AFB4B9,-1px 1px 0 #AFB4B9,1px 1px 0 #AFB4B9;'
-        }
-    };
-    const fontColors = fontColor(propiedades.colorProduct);
-    const font = fontStyle(propiedades.fontStyle);
+    const fontColors = fontColor(color);
+    const font = fontStyle(datos[18].value.toString());
     const top = fontTop(font);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
         width: 1152,
         height: 1536,
-        deviceScaleFactor: 1,
+        deviceScaleFactor: 3,
     });
     await page.setContent(`<!DOCTYPE html>
 <html lang="en">
@@ -114,19 +106,19 @@ module.exports = createPreview = async (propiedades) => {
     <title>Title</title>
 </head>
 <style>
-  .region {
+    .region {
         z-index: 1;
         position: absolute;
         width: 720px;   
-        ${shadow()};    
         height: 528px;
         text-align: center;
-        left: ${font === "Embossing" || font === "Funnier" ? "400px" : "350px"};
+        left: ${font === "Embossing" || font === "Funnier" ? "400px" : "330px"};
         color: ${fontColors};
         top: ${top};
         font-family: ${font};
         font-size: ${fontSize(font)};
     }
+
     @font-face {
         font-family: 'Futura';
         src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
@@ -183,9 +175,8 @@ module.exports = createPreview = async (propiedades) => {
         font-style: normal;
     }
 </style>
-<body style="width: 12in;height:16in;background-color:${colorProduct}">
-<div style="display: flex;margin-left: 70px">
-    <img style="width: 7.14in;height: 12.92in" src="${imageColor(propiedades.colorProduct)}">
+<div style="display: flex;margin-left: 70px;margin-top: 1.1in">
+    <img style="width: 7.14in;height: 12.92in" src="${imageColor(color)}">
     <div class="region">
         <div style="margin-top: 10px">${firstRegionName} ${firstRegionNumber}%</div>
         <div style="margin-top: 10px">${secondRegionName} ${secondRegionNumber}%</div>
@@ -195,17 +186,13 @@ module.exports = createPreview = async (propiedades) => {
         <div style="margin-top: 10px">${sixRegionName} ${sixRegionNumber}%</div>
         <div style="margin-top: 10px">${sevenRegionName} ${sevenRegionNumber}%</div>
         <div style="margin-top: 10px">${eightRegionName} ${eightRegionNumber}%</div>
-    </div>                                             
-</div>
-<div style="margin-top: 20px;color: ${fontColors};">
-<h1>1.  T-shirt colors are approximated and not actual color. </h1>
-<h1>2.  Image is not actual size so the font may appear much smaller than in actuality.  </h1>
-<h1>3.  See models on the product page for better representation of graphic size and position.</h1>
-<h1 style="text-align: center">Intellectual Property. All Rights Reserved 2019.  CelebrateDNA™</h1>
+        <div style="margin-top: 10px">${nineRegionName} ${nineRegionNumber}%</div>
+    </div>
 </div>
 </body>
 </html>
 `);
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.evaluate(() => document.body.style.background = 'transparent');
+    await page.screenshot({path: `public/${name}.png`, omitBackground: true});
     await browser.close();
 };

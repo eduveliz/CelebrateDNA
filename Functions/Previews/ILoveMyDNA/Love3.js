@@ -15,6 +15,7 @@ module.exports = createPreview = async (propiedades) => {
 
     const threeRegionName = propiedades.regions[2].region;
     const threeRegionNumber = propiedades.regions[2].porcentaje;
+
     const colorProduct = colorProductSelect(propiedades.colorProduct);
 
     imageColor = (color) => {
@@ -81,9 +82,6 @@ module.exports = createPreview = async (propiedades) => {
             return 'text-shadow:3px 3px 0 #AFB4B9,-1px -1px 0 #AFB4B9,1px -1px 0 #AFB4B9,-1px 1px 0 #AFB4B9,1px 1px 0 #AFB4B9;'
         }
     };
-
-    console.log(propiedades.colorProduct);
-
 
     const fontColors = fontColor(propiedades.colorProduct);
     const font = fontStyle(propiedades.fontStyle);
