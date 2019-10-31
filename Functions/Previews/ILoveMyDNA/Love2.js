@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontSize = require('../../FontSize/ILoveMyDNA/FontSizeLove2');
 const colorProductSelect = require('../../Color/Color');
-
+//
 module.exports = createPreview = async (propiedades) => {
     const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
