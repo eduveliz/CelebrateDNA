@@ -4,7 +4,6 @@ const colorBackground = require('../../ColorsBackground/BrightMap');
 const regionNames = require('../../RegionNames/RegionNames');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
-const colorProductSelect = require('../../Color/Color');
 const companyMap = require('../../CompanyMap/CompanyMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
@@ -68,16 +67,25 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "18pt"
+            return "17pt"
         }
         if (font === "MyriadPro-Bold") {
-            return "18pt"
+            return "17pt"
         }
         if (font === "Funnier") {
-            return "13pt"
+            return "14pt"
         }
-        if (font === "Noteworhty Bold") {
-            return "20pt"
+    };
+
+    fontSizeNumber = () => {
+        if (font === "Noteworthy") {
+            return "16pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "17pt"
+        }
+        if (font === "Funnier") {
+            return "16pt"
         }
     };
 
@@ -93,22 +101,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
         if (font === "Noteworhty Bold") {
             return "110px"
-        }
-    };
-
-
-    fontSizeNumber = () => {
-        if (font === "Noteworthy") {
-            return "16pt"
-        }
-        if (font === "MyriadPro-Bold") {
-            return "20pt"
-        }
-        if (font === "Funnier") {
-            return "16pt"
-        }
-        if (font === "Noteworhty Bold") {
-            return "35pt"
         }
     };
 

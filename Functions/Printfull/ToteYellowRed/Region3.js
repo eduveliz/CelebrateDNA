@@ -41,13 +41,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return "35pt"
+            return "28pt"
         }
         if (font === "MyriadPro-Bold") {
-            return "35pt"
+            return "36pt"
         }
         if (font === "Funnier") {
-            return "30pt"
+            return "26pt"
         }
         if (font === "Noteworhty Bold") {
             return "35pt"
@@ -61,10 +61,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return "40pt"
         }
         if (font === "Funnier") {
-            return "26pt"
-        }
-        if (font === "Noteworhty Bold") {
-            return "40pt"
+            return "28pt"
         }
     };
 
@@ -252,10 +249,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </div>
 <div style="margin-top: 50px">
     <div style="display: flex; justify-content: space-around;">
-        <div class="fontColorNumber" style="color:white;height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="color:white;height:0.521in; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
         ${firstRegionNumber}%
         </div>
-        <div class="fontColorNumber" style="color:white;height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="color:white;height:0.521in; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
          ${secondRegionNumber}%
         </div>
         <div class="fontColorNumber" style="color:white;height:60px; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;">

@@ -52,13 +52,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "40pt"
+            return "50pt"
         }
         if (font === "MyriadPro-Bold") {
-            return "40pt"
+            return "50pt"
         }
         if (font === "Funnier") {
-            return "30pt"
+            return "36pt"
         }
         if (font === "Noteworhty Bold") {
             return "40pt"
@@ -67,13 +67,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return "35pt"
+            return "28pt"
         }
         if (font === "MyriadPro-Bold") {
-            return "35pt"
+            return "38pt"
         }
         if (font === "Funnier") {
-            return "30pt"
+            return "26pt"
         }
         if (font === "Noteworhty Bold") {
             return "35pt"
@@ -244,15 +244,15 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 <body style="height:33in;width: 17in;align-items: center;text-align: center;justify-content: center">
 <div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
 <h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
-<div style="width: 100%;text-align: center;margin-top: 10px">
+<div style="width: 100%;text-align: center;margin-top: 7px">
     ${map}
 </div>
     <div style="margin-top: 50px;margin-right: 17px">
         <div style="display: flex; justify-content: space-around;">
-            <div class="fontColorNumber" style="height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
+            <div class="fontColorNumber" style="height:0.521in; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
                 ${firstRegionNumber}%
             </div>
-            <div class="fontColorNumber" style="height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
+            <div class="fontColorNumber" style="height:0.521in; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
                 ${secondRegionNumber}%
             </div>
         </div>

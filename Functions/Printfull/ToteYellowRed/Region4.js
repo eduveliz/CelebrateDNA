@@ -47,28 +47,25 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "28pt"
+            return "32pt"
         }
         if (font === "MyriadPro-Bold") {
-            return "30pt"
+            return "32pt"
         }
         if (font === "Funnier") {
-            return "26pt"
-        }
-        if (font === "Noteworhty Bold") {
-            return "30pt"
+            return "22pt"
         }
     };
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return "28pt"
+            return "26pt"
         }
         if (font === "MyriadPro-Bold") {
-            return "35pt"
+            return "34pt"
         }
         if (font === "Funnier") {
-            return "30pt"
+            return "24pt"
         }
         if (font === "Noteworhty Bold") {
             return "28pt"
@@ -256,22 +253,22 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 <body style="height:33in;width: 17in;align-items: center;text-align: center;justify-content: center">
  <div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
 <h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
-<div style="width: 100%;text-align: center;margin-top: 10px">
+<div style="width: 100%;text-align: center;margin-top: 7px">
     ${map}
 </div>
 
 <div style="margin-top: 50px">
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
-        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:0.521in; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:60px; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:0.521in; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${secondRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:60px; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:0.521in; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${threeRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:60px; width:100%;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:0.521in; width:100%;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${fourRegionNumber}%
         </div>
     </div>
