@@ -274,7 +274,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 <body style="height:33in;width: 17in;align-items: center;text-align: center;justify-content: center">
  <div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
     <h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
-    <div style="width: 100%;text-align: center;margin-top: 10px">
+    <div style="width: 100%;text-align: center;margin-top: 7px">
         ${map}
     </div>
    

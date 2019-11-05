@@ -251,14 +251,14 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="height:33in;width: 17in;align-items: center;text-align: center;justify-content: center">
- <div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
+ <div style="width: 13in;height: 11in;margin-left: 1.9in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
 <h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
 <div style="width: 100%;text-align: center;margin-top: 7px">
     ${map}
 </div>
 
 <div style="margin-top: 50px">
-    <div style="display: flex; justify-content: space-around;margin-right: 20px">
+    <div style="display: flex; justify-content: space-around;">
         <div class='fontColorNumber' style="color:white;margin-top: 30px;height:0.521in; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber}%
         </div>
@@ -272,7 +272,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             ${fourRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-right: 20px">
+    <div style="display: flex; justify-content: space-around">
         <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
             <div class='fontColor'>${firstRegionName}</div>
         </div>
@@ -282,7 +282,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
             <div class='fontColor'>${threeRegionName}</div>
         </div>
-        <div style=" width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
             <div class='fontColor'>${fourRegionName}</div>
         </div>
     </div>

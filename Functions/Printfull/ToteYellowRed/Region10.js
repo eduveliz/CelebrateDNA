@@ -272,7 +272,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     ${map}
 </div>
 
-<div style="display: flex; justify-content:space-between;width:98%;margin-top: 20px;padding: 5px">
+<div style="display: flex; justify-content:space-between;width:98%;margin-top: 10px;padding: 5px">
     <div id="firstGroup" style="width: 100%;">
         <div style="height:60px; width:100%;display: flex; justify-content: initial;margin-bottom:7pt">
             <div class="fontColor" style="width: 50%;text-align: center;display: flex;justify-content: center;align-items:center ">${firstRegionName}</div>
