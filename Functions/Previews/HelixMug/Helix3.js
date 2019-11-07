@@ -180,8 +180,8 @@ module.exports = createPreview = async (propiedades) => {
     </div>
     <div class="secondLevel">
     <div style="width: 100%">
-       <div class="region">${firstRegionNumber}%</div>
-       <div class="region">${firstRegionName}</div>
+        <div class="region">${firstRegionName}</div>
+    <div class="region">${firstRegionNumber}%</div>
     </div>
     <div style="width: 100%">
         <div class="region">${secondRegionNumber}%</div>

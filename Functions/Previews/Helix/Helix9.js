@@ -34,6 +34,9 @@ module.exports = createPreview = async (propiedades) => {
     const eightRegionName = propiedades.regions[7].region;
     const eightRegionNumber = propiedades.regions[7].porcentaje;
 
+    const nineRegionName = propiedades.regions[8].region;
+    const nineRegionNumber = propiedades.regions[8].porcentaje;
+
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
     const colorProduct = propiedades.colorProduct;

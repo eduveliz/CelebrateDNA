@@ -1,14 +1,9 @@
 const puppeteer = require('puppeteer');
-const toArray = require('lodash.toarray');
-const colorBackground = require('../../ColorsBackground/BrightMap');
 const fontStyle = require('../../FontStyle/FontStyle');
-const fontColor = require('.//FontColor');
-const colorProductSelect = require('../../Color/Color');
-const imageHelix = require('.//ImageHelix');
+const imageHelix = require('./ImageHelix');
 
 
 module.exports = createPreview = async (propiedades) => {
-    //Regions  */ RegionsNamesSelectors is for Jquery/*
     const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNumber = propiedades.regions[0].porcentaje;
@@ -19,51 +14,59 @@ module.exports = createPreview = async (propiedades) => {
     const threeRegionName = propiedades.regions[2].region;
     const threeRegionNumber = propiedades.regions[2].porcentaje;
 
-    const backgroundColor = colorBackground(propiedades.color);
-    const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = propiedades.colorProduct;
-    //Headline
-    const headline = propiedades.headLine;
-    const firstName = propiedades.personalHeadline;
-    //FontSize
-    const font = fontStyle(propiedades.fontStyle);
+    const fourRegionName = propiedades.regions[3].region;
+    const fourRegionNumber = propiedades.regions[3].porcentaje;
 
-    fontSize = (font) => {
-        if (font === "Noteworthy") {
-            return "90pt"
-        }
-        if (font === "Baskerville") {
-            return "80pt"
-        }
-        if (font === "Funnier") {
-            return "62pt"
-        }
-    };
+    const fiveRegionName = propiedades.regions[4].region;
+    const fiveRegionNumber = propiedades.regions[4].porcentaje;
+
+    const sixRegionName = propiedades.regions[5].region;
+    const sixRegionNumber = propiedades.regions[5].porcentaje;
+
+    const sevenRegionName = propiedades.regions[6].region;
+    const sevenRegionNumber = propiedades.regions[6].porcentaje;
+
+    const eightRegionName = propiedades.regions[7].region;
+    const eightRegionNumber = propiedades.regions[7].porcentaje;
+
+    const nineRegionName = propiedades.regions[8].region;
+    const nineRegionNumber = propiedades.regions[8].porcentaje;
+
+    const tenRegionName = propiedades.regions[9].region;
+    const tenRegionNumber = propiedades.regions[9].porcentaje;
+
+    const headline = propiedades.headLine;
+
+    const font = fontStyle(propiedades.fontStyle);
+    let size = propiedades.size;
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "35pt"
+            return size === "11oz" ? "16pt" : "16pt";
         }
-        if (font === "Baskerville") {
-            return "42pt"
-        }
-        if (font === "Myriad Pro Bold") {
-            return "42pt"
+        if (font === "MyriadPro-Bold") {
+            return size === "11oz" ? "16pt" : "14pt";
         }
         if (font === "Funnier") {
-            return "30pt"
+            return size === "11oz" ? "10pt" : "10pt";
         }
+    };
+
+    fontSpace = () => {
+        return font === "Noteworthy" ? '-10px' : '0'
     };
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
-        width: 1152,
-        height: 1536,
+        width: 864,
+        height: 420,
         deviceScaleFactor: 1,
     });
 
-    await page.setContent(`<html lang="en">
+    await page.setContent(`
+    <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -82,32 +85,26 @@ module.exports = createPreview = async (propiedades) => {
         text-align: center;
         height: 300px;
     }
-
     .dna {
         color: red;
     }
-
     .name {
         color: blue;
     }
-
     .region {
-        color: ${fontColor(colorProduct)};
+        color: #6D6E70;
         font-size: ${fontSizeRegion(font)};
         font-family:${font};
         text-align: center;
     }
-
     .firstLevel {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        margin-bottom: 30px;
     }
 
     .secondLevel {
         display: flex;
-        margin-top: 30px;
         justify-content: space-between;
         width: 100%;
     }
@@ -167,40 +164,64 @@ module.exports = createPreview = async (propiedades) => {
   }
 </style>
 
-<body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
-<div  style="   z-index:1;width:100%;height: 20%;position:absolute;display:block;background-image:url('https://moolab.ml/Water/water.png');">
-</div>
-<div style="margin-top: 100px">
-    <div class="firstLevel">
-    </div>
-    <div style="display: flex">
-        <div style="width: 12in">
-            <img style="width: 12in" src="${imageHelix(headline)}">
-        </div>
-    </div>
-    <div class="secondLevel">
+<body style=" 9in; height:3.5in;text-align: center;align-items: center">
+<div class="firstLevel">
     <div style="width: 100%">
-       <div class="region">${firstRegionNumber}%</div>
-       <div class="region">${firstRegionName}</div>
+        <div class="region">${firstRegionName}</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${firstRegionNumber}%</div>
     </div>
     <div style="width: 100%">
-        <div class="region">${secondRegionNumber}%</div>
         <div class="region">${secondRegionName}</div>
-    </div> 
-     <div style="width: 100%">
-         <div class="region">${threeRegionNumber}%</div>
-        <div class="region">${threeRegionName}</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${secondRegionNumber} %</div>
     </div>
+    <div style="width: 100%">
+        <div class="region">${threeRegionName}</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${threeRegionNumber}%</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${fourRegionName}</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${fourRegionNumber} %</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${fiveRegionName}</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${fiveRegionNumber} %</div>
     </div>
 </div>
-<div style="margin-top: 300px;color: ${fontColor(colorProduct)};">
-<h1>1.  T-shirt colors are approximated and not actual color. </h1>
-<h1>2.  Image is not actual size so the font may appear much smaller than in actuality.  </h1>
-<h1>3.  See models on the product page for better representation of graphic size and position.</h1>
-<h1>Intellectual Property. All Rights Reserved 2019.  CelebrateDNA™</h1>
+
+
+<div style="display: flex">
+    <div>
+        <img style="width: 9in" src="${imageHelix(headline)}">
+    </div>
+</div>
+
+
+<div class="secondLevel">
+    <div style="width: 100%">
+        <div class="region">${sixRegionNumber}%</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${sixRegionName}</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${sevenRegionNumber}%</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${sevenRegionName}</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${eightRegionNumber}%</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${eightRegionName}</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${nineRegionNumber}%</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${nineRegionName}</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${tenRegionNumber}%</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${tenRegionName}</d
+    </div>
 </div>
 </body>
-</html>`);
+</html>
+
+    `);
     await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };

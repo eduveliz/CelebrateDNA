@@ -52,16 +52,13 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "50pt"
+            return "48pt"
         }
         if (font === "MyriadPro-Bold") {
             return "50pt"
         }
         if (font === "Funnier") {
             return "36pt"
-        }
-        if (font === "Noteworhty Bold") {
-            return "40pt"
         }
     };
 
@@ -128,6 +125,18 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
 
+    capsuleAndNumber = () => {
+        if (font === "MyriadPro-Bold") {
+            return "40px";
+        }
+        if (font === "Funnier") {
+            return "30px";
+        }
+        if (font === "Noteworthy") {
+            return "30px";
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -140,6 +149,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     .fontColor {
         color:${fontColor(colorProduct)};
         font-family:${font};
+        margin-bottom: 40pt;
         font-size: ${fontSizeRegion(font)};
     }
     
@@ -182,6 +192,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         margin-left: 1.9in;
         transform: rotate(180deg);
         margin-top:${bottomStatement()};
+    }
+    
+    .capsulesAndRegions {
+        margin-top: ${capsuleAndNumber()};
+        margin-right: 17px;
     }
   
   @font-face {
@@ -247,7 +262,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 <div style="width: 100%;text-align: center;margin-top: 7px">
     ${map}
 </div>
-    <div style="margin-top: 50px;margin-right: 17px">
+    
+    <div class="capsulesAndRegions">
         <div style="display: flex; justify-content: space-around;">
             <div class="fontColorNumber" style="height:0.521in; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
                 ${firstRegionNumber}%
@@ -257,15 +273,17 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             </div>
         </div>
         <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
-            <div style="width:100%;height:60px;display: flex; justify-content: center">
+            <div style="width:100%;height:60px;display: flex; justify-content: center;">
                 <div class="fontColor">${firstRegionName}</div>
             </div>
-            <div style="width:100%;height:60px; display: flex; justify-content: center">
+            <div style="width:100%;height:60px; display: flex; justify-content: center;">
                 <div class="fontColor">${secondRegionName}</div>
             </div>
         </div>
     </div>
 </div>
+
+
 <div class="secondPart">  
         <div class="fontStatement" style="width:13in;">
             <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementOne}</div>

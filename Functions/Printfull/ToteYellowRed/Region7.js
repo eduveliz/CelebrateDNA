@@ -143,6 +143,18 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
 
+    capsuleAndNumber = () => {
+        if (font === "MyriadPro-Bold") {
+            return "100px";
+        }
+        if (font === "Funnier") {
+            return "50px";
+        }
+        if (font === "Noteworthy") {
+            return "50px";
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -202,6 +214,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         font-size: ${fontSizeNumber()};
     }
     
+    .capsuleAndNumber{
+       margin-top: ${capsuleAndNumber()};
+       margin-right: 20px;
+    }
     .secondPart{
         text-align: center; 
         justify-content: center;
@@ -278,7 +294,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         ${map}
     </div>
    
- <div style="margin-top: 50px;margin-right: 20px">
+ <div class="capsuleAndNumber">
      <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="color:white;height:0.376in; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
          ${firstRegionNumber}%

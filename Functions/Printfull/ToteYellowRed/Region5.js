@@ -69,9 +69,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         if (font === "Funnier") {
             return "18pt"
         }
-        if (font === "Noteworhty Bold") {
-            return "28pt"
-        }
     };
 
     fontHeadline = () => {
@@ -265,7 +262,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     ${map}
 </div>
 
-<div style="margin-top: 50px;margin-right: 14px">
+<div style="margin-top: 40px;margin-right: 14px">
     <div style="display: flex; justify-content: space-around;">
         <div class='fontColorNumber' style="color:white;margin-top: 30px;height:0.521in; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber}%

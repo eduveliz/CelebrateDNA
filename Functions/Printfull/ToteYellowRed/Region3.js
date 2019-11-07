@@ -55,7 +55,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "40pt"
+            return "38pt"
         }
         if (font === "MyriadPro-Bold") {
             return "40pt"
@@ -127,6 +127,19 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return "5in";
         }
     };
+
+    capsuleAndNumber = () => {
+        if (font === "MyriadPro-Bold") {
+            return "50px";
+        }
+        if (font === "Funnier") {
+            return " 43px";
+        }
+        if (font === "Noteworthy") {
+            return "43px";
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -184,6 +197,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         transform: rotate(180deg);
         margin-top:${bottomStatement()};
     }
+    
+    .capsuleAndNumber{
+       margin-top: ${capsuleAndNumber()};
+    }
+    
          @font-face {
     font-family: 'Futura';
     src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
@@ -247,7 +265,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 <div style="width: 100%;text-align: center;margin-top: 10px">
     ${map}
 </div>
-<div style="margin-top: 50px">
+<div class="capsuleAndNumber">
     <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="color:white;height:0.521in; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
         ${firstRegionNumber}%
@@ -255,7 +273,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         <div class="fontColorNumber" style="color:white;height:0.521in; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
          ${secondRegionNumber}%
         </div>
-        <div class="fontColorNumber" style="color:white;height:60px; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="color:white;height:0.521in; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;">
          ${threeRegionNumber}%
         </div>
     </div>

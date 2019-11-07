@@ -9,6 +9,7 @@ const previewSelector = require('./Functions/Previews/Maps/BrigthMaps/ttPreviewS
 const earthSelector = require('./Functions/Previews/Maps/Earth Tone/earthPreviewSelector');
 const helixSelector = require('./Functions/Previews/Helix/HelixSelector');
 const helixVerticalSelector = require('./Functions/Previews/HelixVertical/HelixVerticalSelector');
+const helixSelectorMug = require('./Functions/Previews/HelixMug/HelixSelector');
 const donut = require('./Functions/Previews/Donut/DonutSelector');
 const love = require('./Functions/Previews/ILoveMyDNA/LoveSelector');
 const YellowSelector = require('./Functions/Previews/Totes/Yellow/RegionSelector');
@@ -102,6 +103,15 @@ app.post('/black', jsonParser, function (req, res) {
     const id = 123;
     const regionNumber = req.body.regions.length;
     RegionSelector(regionNumber, id, req.body).then(() => {
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    });
+});
+
+app.post('/mugHelix', jsonParser, function (req, res) {
+    console.log("creating Mug Helix... ".red + req.body.nameFile);
+    console.log(req.body);
+    const regionNumber = req.body.regions.length;
+    return helixSelectorMug(regionNumber, req.body).then(() => {
         res.end('{"success" : "Updated Successfully", "status" : 200}');
     });
 });

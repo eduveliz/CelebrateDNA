@@ -16,9 +16,6 @@ module.exports = createPreview = async (propiedades) => {
     const secondRegionName = propiedades.regions[1].region;
     const secondRegionNumber = propiedades.regions[1].porcentaje;
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
-
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
     const colorProduct = propiedades.colorProduct;
@@ -28,17 +25,6 @@ module.exports = createPreview = async (propiedades) => {
     //FontSize
     const font = fontStyle(propiedades.fontStyle);
 
-    fontSize = (font) => {
-        if (font === "Noteworthy") {
-            return "90pt"
-        }
-        if (font === "Baskerville") {
-            return "80pt"
-        }
-        if (font === "Funnier") {
-            return "62pt"
-        }
-    };
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -47,14 +33,14 @@ module.exports = createPreview = async (propiedades) => {
         if (font === "Baskerville") {
             return "42pt"
         }
-        if (font === "Myriad Pro Bold") {
-            return "42pt"
-        }
         if (font === "Funnier") {
-            return "30pt"
+            return "38pt"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "50pt"
         }
     };
-
+    console.log(font);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -93,8 +79,8 @@ module.exports = createPreview = async (propiedades) => {
 
     .region {
         color: ${fontColor(colorProduct)};
-        font-size: ${fontSizeRegion(font)};
         font-family:${font};
+        font-size: ${fontSizeRegion(font)};
         text-align: center;
     }
 
@@ -102,13 +88,13 @@ module.exports = createPreview = async (propiedades) => {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
     }
 
     .secondLevel {
         display: flex;
-        margin-top: 30px;
         justify-content: space-between;
+        margin-top: 10px;
         width: 100%;
     }
       @font-face {
@@ -168,7 +154,7 @@ module.exports = createPreview = async (propiedades) => {
 </style>
 
 <body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
-<div  style="   z-index:1;width:100%;height: 20%;position:absolute;display:block;background-image:url('https://moolab.ml/Water/water.png');">
+<div  style="   z-index:1;width:100%;height: 20%;position:absolute;display:block;background-image: url('https://moolab.ml/Water/water.png');">
 </div>
 <div style="margin-top: 100px">
     <div class="firstLevel">
@@ -180,16 +166,12 @@ module.exports = createPreview = async (propiedades) => {
     </div>
     <div class="secondLevel">
     <div style="width: 100%">
-       <div class="region">${firstRegionNumber}%</div>
-       <div class="region">${firstRegionName}</div>
+        <div class="region">${firstRegionNumber}%</div>       
+        <div class="region">${firstRegionName}</div>
     </div>
     <div style="width: 100%">
-        <div class="region">${secondRegionNumber}%</div>
+         <div class="region">${secondRegionNumber}%</div>
         <div class="region">${secondRegionName}</div>
-    </div> 
-     <div style="width: 100%">
-         <div class="region">${threeRegionNumber}%</div>
-        <div class="region">${threeRegionName}</div>
     </div>
     </div>
 </div>
@@ -199,6 +181,7 @@ module.exports = createPreview = async (propiedades) => {
 <h1>3.  See models on the product page for better representation of graphic size and position.</h1>
 <h1>Intellectual Property. All Rights Reserved 2019.  CelebrateDNA™</h1>
 </div>
+
 </body>
 </html>`);
     await page.screenshot({path: `previews/${name}.png`});

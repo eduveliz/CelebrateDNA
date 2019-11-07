@@ -1,11 +1,6 @@
 const puppeteer = require('puppeteer');
-const toArray = require('lodash.toarray');
-const colorBackground = require('../../ColorsBackground/BrightMap');
 const fontStyle = require('../../FontStyle/FontStyle');
-const fontColor = require('.//FontColor');
-const colorProductSelect = require('../../Color/Color');
-const imageHelix = require('.//ImageHelix');
-
+const imageHelix = require('./ImageHelix');
 
 module.exports = createPreview = async (propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
@@ -19,51 +14,38 @@ module.exports = createPreview = async (propiedades) => {
     const threeRegionName = propiedades.regions[2].region;
     const threeRegionNumber = propiedades.regions[2].porcentaje;
 
-    const backgroundColor = colorBackground(propiedades.color);
-    const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = propiedades.colorProduct;
-    //Headline
+    const fourRegionName = propiedades.regions[3].region;
+    const fourRegionNumber = propiedades.regions[3].porcentaje;
     const headline = propiedades.headLine;
-    const firstName = propiedades.personalHeadline;
-    //FontSize
+    let size = propiedades.size;
     const font = fontStyle(propiedades.fontStyle);
-
-    fontSize = (font) => {
-        if (font === "Noteworthy") {
-            return "90pt"
-        }
-        if (font === "Baskerville") {
-            return "80pt"
-        }
-        if (font === "Funnier") {
-            return "62pt"
-        }
-    };
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "35pt"
+            return size === "11oz" ? "20pt" : "22pt";
         }
-        if (font === "Baskerville") {
-            return "42pt"
-        }
-        if (font === "Myriad Pro Bold") {
-            return "42pt"
+        if (font === "MyriadPro-Bold") {
+            return size === "11oz" ? "22pt" : "24pt";
         }
         if (font === "Funnier") {
-            return "30pt"
+            return size === "11oz" ? "16pt" : "18pt";
         }
+    };
+
+    fontSpace = () => {
+        return font === "Noteworthy" ? '-10px' : '0'
     };
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
-        width: 1152,
-        height: 1536,
+        width: 864,
+        height: 420,
         deviceScaleFactor: 1,
     });
 
-    await page.setContent(`<html lang="en">
+    await page.setContent(`<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -92,7 +74,7 @@ module.exports = createPreview = async (propiedades) => {
     }
 
     .region {
-        color: ${fontColor(colorProduct)};
+        color: #6D6E70;
         font-size: ${fontSizeRegion(font)};
         font-family:${font};
         text-align: center;
@@ -102,12 +84,10 @@ module.exports = createPreview = async (propiedades) => {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        margin-bottom: 30px;
     }
 
     .secondLevel {
         display: flex;
-        margin-top: 30px;
         justify-content: space-between;
         width: 100%;
     }
@@ -167,40 +147,37 @@ module.exports = createPreview = async (propiedades) => {
   }
 </style>
 
-<body style="width: 12in;height:16.04in;background-color: ${colorProductSelect(colorProduct)}">
-<div  style="   z-index:1;width:100%;height: 20%;position:absolute;display:block;background-image:url('https://moolab.ml/Water/water.png');">
-</div>
-<div style="margin-top: 100px">
-    <div class="firstLevel">
+<body style=" 9in; height:3.5in;">
+<div class="firstLevel">
+    <div style="width:50%;">
+        <div class="region">${firstRegionName}</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${firstRegionNumber}%</div>
     </div>
-    <div style="display: flex">
-        <div style="width: 12in">
-            <img style="width: 12in" src="${imageHelix(headline)}">
-        </div>
-    </div>
-    <div class="secondLevel">
-    <div style="width: 100%">
-       <div class="region">${firstRegionNumber}%</div>
-       <div class="region">${firstRegionName}</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${secondRegionNumber}%</div>
+    <div style="width: 50%">
         <div class="region">${secondRegionName}</div>
-    </div> 
-     <div style="width: 100%">
-         <div class="region">${threeRegionNumber}%</div>
-        <div class="region">${threeRegionName}</div>
-    </div>
+        <div class="region" style="margin-top: ${fontSpace()}">${secondRegionNumber}%</div>
     </div>
 </div>
-<div style="margin-top: 300px;color: ${fontColor(colorProduct)};">
-<h1>1.  T-shirt colors are approximated and not actual color. </h1>
-<h1>2.  Image is not actual size so the font may appear much smaller than in actuality.  </h1>
-<h1>3.  See models on the product page for better representation of graphic size and position.</h1>
-<h1>Intellectual Property. All Rights Reserved 2019.  CelebrateDNA™</h1>
+
+<div style="display: flex;">
+    <div>
+        <img style="width: 9in;" src="${imageHelix(headline)}">
+    </div>
+</div>
+
+<div class="secondLevel">
+    <div style="width: 50%">
+        <div class="region">${threeRegionNumber}%</div>    
+        <div class="region" style="margin-top: ${fontSpace()}">${threeRegionName}</div>
+    </div>
+    <div style="width: 50%">
+        <div class="region">${fourRegionNumber}%</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${fourRegionName}</div>
+    </div>
 </div>
 </body>
-</html>`);
+</html>
+`);
     await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };

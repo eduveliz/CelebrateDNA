@@ -92,8 +92,17 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         if (font === "Funnier") {
             return "85px"
         }
-        if (font === "Noteworhty Bold") {
-            return "110px"
+    };
+
+    headlineTop = () => {
+        if (font === "Noteworthy") {
+            return "3in"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "2.9in"
+        }
+        if (font === "Funnier") {
+            return "3.2in";
         }
     };
 
@@ -120,6 +129,19 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return "30px"
         }
     };
+
+    marginTopMap = () => {
+        if (font === "Noteworthy") {
+            return "10px"
+        }
+        if (font === "MyriadPro-Bold") {
+            return "40px";
+        }
+        if (font === "Funnier") {
+            return "10px"
+        }
+    };
+
 
     topStatement = () => {
         if (font === "MyriadPro-Bold") {
@@ -209,7 +231,6 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         margin-top:${bottomStatement()};
     }
     
-    
         @font-face {
     font-family: 'Futura';
     src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
@@ -268,9 +289,9 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="height:33in;width: 17in;align-items: center;text-align: center;justify-content: center">
- <div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
+ <div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${headlineTop()};">  
 <h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
-<div style="width: 100%;text-align: center;margin-top: 10px">
+<div style="width: 100%;text-align: center;margin-top: ${marginTopMap()}">
     ${map}
 </div>
 

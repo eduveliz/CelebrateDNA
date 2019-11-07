@@ -137,6 +137,18 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
 
+    capsuleAndNumber = () => {
+        if (font === "MyriadPro-Bold") {
+            return "70px";
+        }
+        if (font === "Funnier") {
+            return "50px";
+        }
+        if (font === "Noteworthy") {
+            return "50px";
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -156,7 +168,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         color:${fontColor(colorProduct)};
         font-family:${font};
         font-size: ${fontSizeRegion(font)};
-        text-align: center;
+        text-align: center; 
         align-items: center;
     }
     .fontColorRegion {
@@ -164,6 +176,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         font-family:${font};
         border: 2px solid ${lineMaps(colorProduct)};
         font-size: ${fontSizeNumber()};   
+    }
+    
+    .capsuleAndNumber{
+       margin-top: ${capsuleAndNumber()};
+       margin-right: 12px;
     }
     
     .fontStatement{
@@ -259,13 +276,12 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="height:33in;width: 17in;align-items: center;text-align: center;justify-content: center">
-
  <div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
 <h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
     <div style="width: 100%;text-align: center; margin-top: 10px">
         ${map}
     </div>
-<div style="margin-top: 50px;margin-right: 12px">
+<div class="capsuleAndNumber">
     <div style="display: flex; justify-content: space-around;">
         <div class='fontColorNumber' style="color:white;height:0.376in;margin-top: 30px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
            ${firstRegionNumber}%
