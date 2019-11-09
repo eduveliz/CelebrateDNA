@@ -1,57 +1,77 @@
 const puppeteer = require('puppeteer');
+const toArray = require('lodash.toarray');
 const fontStyle = require('../../FontStyle/FontStyle');
 const imageHelix = require('./ImageHelix');
 
-module.exports = createPreview = async (propiedades) => {
-    const name = propiedades.nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
+module.exports = createPreview = async (nameFile, propiedades) => {
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
+    const name = nameFile;
+    const datos = toArray(propiedades.line_items[0].properties);
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
+    const firstRegionName = datos[1];
+    const firstRegionNumber = datos[2];
 
-    const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNumber = propiedades.regions[3].porcentaje;
+    const secondRegionName = datos[3];
+    const secondRegionNumber = datos[4];
 
-    const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNumber = propiedades.regions[4].porcentaje;
+    const threeRegionName = datos[5];
+    const threeRegionNumber = datos[6];
 
-    const headline = propiedades.headLine;
-    let size = propiedades.size;
-    const font = fontStyle(propiedades.fontStyle);
+    const fourRegionName = datos[7];
+    const fourRegionNumber = datos[8];
+
+    const fiveRegionName = datos[9];
+    const fiveRegionNumber = datos[10];
+
+    const sixRegionName = datos[11];
+    const sixRegionNumber = datos[12];
+
+    const sevenRegionName = datos[13];
+    const sevenRegionNumber = datos[14];
+
+    const eightRegionName = datos[15];
+    const eightRegionNumber = datos[16];
+
+    const nineRegionName = datos[17];
+    const nineRegionNumber = datos[18];
+
+    //Headline
+    const headline = datos[19];
+    //FontSize
+    const font = fontStyle(datos[20]);
+    let size = propiedades.line_items[0].title.split('- ')[1];
+    let h = size === "11oz" ? 336 : 364.8;
 
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "24pt" : "20pt";
+            return size === "11oz" ? "16pt" : "16pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "24pt" : "20pt";
+            return size === "11oz" ? "14pt" : "16pt";
         }
         if (font === "Funnier") {
-            return size === "11oz" ? "18pt" : "16pt";
+            return size === "11oz" ? "12pt" : "12pt";
         }
     };
 
     fontSpace = () => {
-        return font === "Noteworthy" ? '-15px' : '0'
+        return font === "Noteworthy" ? '-10px' : '0'
     };
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
         width: 864,
-        height: 450,
-        deviceScaleFactor: 1,
+        height: parseInt(h, 10),
+        deviceScaleFactor: 3,
     });
 
     await page.setContent(`<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">    <title>Title</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <style>
     .textDNA {
@@ -77,19 +97,19 @@ module.exports = createPreview = async (propiedades) => {
     }
 
     .region {
-         color: #6D6E70;
-        font-size: ${fontSizeRegion(font)};
+        color: #6D6E70;
         font-family:${font};
+        font-size: ${fontSizeRegion(font)};
         text-align: center;
     }
 
     .firstLevel {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         width: 100%;
     }
 
-    .secondLevel {
+    .secondLevel {     
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -150,43 +170,60 @@ module.exports = createPreview = async (propiedades) => {
   }
 </style>
 
-<body style=" 9in; height:3.5in;">
+<body style="width: 9in; height:${size === "11oz" ? 336 : 364.8}">
 <div class="firstLevel">
-    <div style="width:50%;">
+    <div style="width: 100%;">
         <div class="region">${firstRegionName}</div>
         <div class="region" style="margin-top: ${fontSpace()}">${firstRegionNumber}%</div>
     </div>
-    <div style="width:50%;">
+    <div style="width: 100%;">
         <div class="region">${secondRegionName}</div>
         <div class="region" style="margin-top: ${fontSpace()}">${secondRegionNumber}%</div>
+    </div>
+    <div style="width: 100%;">
+        <div class="region">${threeRegionName}</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${threeRegionNumber}%</div>
+    </div>
+    <div style="width: 100%;">
+        <div class="region">${fourRegionName}</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${fourRegionNumber}%</div>
     </div>
 </div>
 
 
 <div style="display: flex">
     <div>
-        <img style="width: 9in;" src="${imageHelix(headline)}">
+      <img style="width: 9.1in;height: 2.1in" src="${imageHelix(headline)}">
     </div>
 </div>
 
 
 <div class="secondLevel">
     <div style="width: 100%">
-        <div class="region" >${threeRegionNumber}%</div>
-        <div class="region" style="margin-top: ${fontSpace()}">${threeRegionName}</div>
-    </div>
-    <div style="width: 100%">
-        <div class="region">${fourRegionNumber}%</div>
-        <div class="region" style="margin-top: ${fontSpace()}">${fourRegionName}</div>
-    </div>
-    <div style="width: 100%">
         <div class="region">${fiveRegionNumber}%</div>
         <div class="region" style="margin-top: ${fontSpace()}">${fiveRegionName}</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${sixRegionNumber}%</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${sixRegionName}</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${sevenRegionNumber}%</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${sevenRegionName}</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${eightRegionNumber}%</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${eightRegionName}</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${nineRegionNumber}%</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${nineRegionName}</div>
     </div>
 </div>
 </body>
 </html>
 `);
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.screenshot({path: `public/${name}.png`, omitBackground: true});
+    console.log("Complete");
     await browser.close();
 };

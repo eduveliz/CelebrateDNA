@@ -1,38 +1,48 @@
 const puppeteer = require('puppeteer');
+const toArray = require('lodash.toarray');
 const fontStyle = require('../../FontStyle/FontStyle');
 const imageHelix = require('./ImageHelix');
 
-module.exports = createPreview = async (propiedades) => {
-    const name = propiedades.nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
+module.exports = createPreview = async (nameFile, propiedades) => {
+    const name = nameFile;
+    const datos = toArray(propiedades.line_items[0].properties);
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
+    const firstRegionName = datos[1];
+    const firstRegionNumber = datos[2];
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
+    const secondRegionName = datos[3];
+    const secondRegionNumber = datos[4];
 
-    const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNumber = propiedades.regions[3].porcentaje;
+    const threeRegionName = datos[5];
+    const threeRegionNumber = datos[6];
 
-    const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNumber = propiedades.regions[4].porcentaje;
+    const fourRegionName = datos[7];
+    const fourRegionNumber = datos[8];
 
-    const headline = propiedades.headLine;
-    let size = propiedades.size;
-    const font = fontStyle(propiedades.fontStyle);
+    const fiveRegionName = datos[9];
+    const fiveRegionNumber = datos[10];
 
+    const sixRegionName = datos[11];
+    const sixRegionNumber = datos[12];
+
+    //Headline
+    const headline = datos[13];
+    const firstName = "";
+    //FontSize
+
+    let size = propiedades.line_items[0].title.split('- ')[1];
+    let h = size === "11oz" ? 336 : 364.8;
+    const font = fontStyle(datos[14]);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "24pt" : "20pt";
+            return size === "11oz" ? "20pt" : "22pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "24pt" : "20pt";
+            return size === "11oz" ? "20pt" : "24pt";
         }
         if (font === "Funnier") {
-            return size === "11oz" ? "18pt" : "16pt";
+            return size === "11oz" ? "14pt" : "18pt";
         }
     };
 
@@ -44,18 +54,19 @@ module.exports = createPreview = async (propiedades) => {
     const page = await browser.newPage();
     await page.setViewport({
         width: 864,
-        height: 450,
-        deviceScaleFactor: 1,
+        height: parseInt(h, 10),
+        deviceScaleFactor: 3,
     });
 
     await page.setContent(`<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">    <title>Title</title>
+    <meta charset="UTF-8">   
+    <title>Title</title>
 </head>
 <style>
     .textDNA {
-        font-size: 24pt;
+        font-size: 22pt;
         width: 260px;
         font-family: "Bangla MN", serif;
         margin-top: 289px;
@@ -77,7 +88,7 @@ module.exports = createPreview = async (propiedades) => {
     }
 
     .region {
-         color: #6D6E70;
+        color: #6D6E70;
         font-size: ${fontSizeRegion(font)};
         font-family:${font};
         text-align: center;
@@ -85,6 +96,7 @@ module.exports = createPreview = async (propiedades) => {
 
     .firstLevel {
         display: flex;
+        margin-top: -10px;
         justify-content: space-between;
         width: 100%;
     }
@@ -150,31 +162,31 @@ module.exports = createPreview = async (propiedades) => {
   }
 </style>
 
-<body style=" 9in; height:3.5in;">
+<body style="width: 9in; height:${size === "11oz" ? 336 : 364.8}">
 <div class="firstLevel">
-    <div style="width:50%;">
+    <div style="width: 100%">
         <div class="region">${firstRegionName}</div>
         <div class="region" style="margin-top: ${fontSpace()}">${firstRegionNumber}%</div>
     </div>
-    <div style="width:50%;">
+    <div style="width: 100%">
         <div class="region">${secondRegionName}</div>
         <div class="region" style="margin-top: ${fontSpace()}">${secondRegionNumber}%</div>
+    </div>
+    <div style="width: 100%">
+        <div class="region">${threeRegionName}</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${threeRegionNumber}%</div>
     </div>
 </div>
 
 
 <div style="display: flex">
     <div>
-        <img style="width: 9in;" src="${imageHelix(headline)}">
+        <img style="width: 9.1in;height: 2.1in" src="${imageHelix(headline)}">
     </div>
 </div>
 
 
 <div class="secondLevel">
-    <div style="width: 100%">
-        <div class="region" >${threeRegionNumber}%</div>
-        <div class="region" style="margin-top: ${fontSpace()}">${threeRegionName}</div>
-    </div>
     <div style="width: 100%">
         <div class="region">${fourRegionNumber}%</div>
         <div class="region" style="margin-top: ${fontSpace()}">${fourRegionName}</div>
@@ -183,10 +195,16 @@ module.exports = createPreview = async (propiedades) => {
         <div class="region">${fiveRegionNumber}%</div>
         <div class="region" style="margin-top: ${fontSpace()}">${fiveRegionName}</div>
     </div>
+    <div style="width: 100%">
+        <div class="region">${sixRegionNumber}%</div>
+        <div class="region" style="margin-top: ${fontSpace()}">${sixRegionName}</div>
+    </div>
 </div>
+
 </body>
 </html>
 `);
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.screenshot({path: `public/${name}.png`, omitBackground: true});
+    console.log("Complete");
     await browser.close();
 };

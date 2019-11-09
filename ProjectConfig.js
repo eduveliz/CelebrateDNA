@@ -3,10 +3,9 @@ const printfullSelected = require('./PrintfullProduct/PrintFullSelected.js');
 module.exports = env = (config, req) => {
     const {line_items, shipping_address} = req.body;
     const itemsNumber = line_items[0].properties;
-
     const nameFile = Date.now();
-    const sku = line_items[0].sku;
     const id = line_items[0].product_id.toString();
+    const sku = line_items[0].title.split('- ')[1] === "11oz" ? "1320" : "4830";
 
     const env = {
         name: config === "dev" ? "EduardoTest" : shipping_address.first_name,
@@ -16,7 +15,7 @@ module.exports = env = (config, req) => {
         countryCode: config === "dev" ? "US" : shipping_address.country_code,
         zip: config === "dev" ? "91311" : shipping_address.zip,
         sku: sku,
-        host: config === "dev" ? "https://3bab363c.ngrok.io/" : "https://moolab.ml/",
+        host: config === "dev" ? "https://327097dd.ngrok.io/" : "https://moolab.ml/",
     };
 
     // const prod = {
