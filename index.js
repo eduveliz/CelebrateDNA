@@ -19,6 +19,8 @@ const cors = require('cors');
 
 app.use(cors());
 app.use(express.static('public'));
+app.use(express.json({limit: '50mb'}));
+
 
 app.get("/", jsonParser, function (req, res) {
     res.send("Server on");
@@ -117,7 +119,7 @@ app.post('/mugHelix', jsonParser, function (req, res) {
 });
 
 app.post('/printfull', jsonParser, function (req, res) {
-    projectConfig("prod", req);
+    projectConfig("dev", req);
     return res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
