@@ -4,7 +4,6 @@ const fontStyle = require('../../FontStyle/FontStyle');
 const imageHelix = require('./ImageHelix');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
-
     const name = nameFile;
     const datos = toArray(propiedades.line_items[0].properties);
 
@@ -192,13 +191,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     </div>
 </div>
 
-
 <div style="display: flex">
     <div>
-        <img style="width: 9.1in;height: 2.1in" src="${imageHelix(headline)}">
+       <img style="width: 9in;height: 2.2in" src="${imageHelix(headline)}">
     </div>
 </div>
-
 
 <div class="secondLevel">
     <div style="width: 100%">

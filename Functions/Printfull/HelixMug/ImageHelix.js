@@ -6,7 +6,7 @@ module.exports = image = (headline) => {
     } else if (headline === "My DNA Rocks") {
         return "https://moolab.ml/HelixHorizontal/rocks.png";
     } else if (headline === "Rocking My Roots") {
-        return "https://moolab.ml/HelixHorizontal/roots.png";
+        return "https://moolab.ml/HelixHorizontal/Rocking.png";
     } else if (headline === "Dig Your Roots!") {
         return "https://moolab.ml/HelixHorizontal/dig.png";
     } else {

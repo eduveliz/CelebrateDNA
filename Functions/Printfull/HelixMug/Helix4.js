@@ -6,7 +6,6 @@ const imageHelix = require('./ImageHelix');
 module.exports = createPreview = async (nameFile, propiedades) => {
     const name = nameFile;
     const datos = toArray(propiedades.line_items[0].properties);
-    console.log("datos".yellow, propiedades);
 
     const firstRegionName = datos[1];
     const firstRegionNumber = datos[2];
@@ -30,10 +29,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "20pt" : "22pt";
+            return size === "11oz" ? "19pt" : "20pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "22pt" : "24pt";
+            return size === "11oz" ? "20pt" : "24pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "16pt" : "18pt";
@@ -90,14 +89,15 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     .firstLevel {
         display: flex;
-        margin-top: -10px;
+        margin-top: ${font === "Funnier" ? "-20px" : '-10px'};
         justify-content: space-between;
         width: 100%;
     }
 
     .secondLevel {
         display: flex; 
-        justify-content: space-between;
+        margin-top: ${font === "Funnier" ? "15px" : '0px'};
+        justify-content: space-between; 
         width: 100%;
     }
       @font-face {
@@ -157,6 +157,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </style>
 
 <body style="width: 9in; height:${size === "11oz" ? 336 : 364.8}">
+<div style="margin-top:${font === "Funnier" ? "0.3in" : "0"}">
 <div class="firstLevel">
     <div style="width:50%;">
         <div class="region">${firstRegionName}</div>
@@ -170,7 +171,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
 <div style="display: flex">
     <div>
-        <img style="width: 9.1in;height: 2.1in" src="${imageHelix(headline)}">
+        <img style="width: 9in;height: 2.1in" src="${imageHelix(headline)}">
     </div>
 </div>
 
@@ -179,10 +180,11 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         <div class="region">${threeRegionNumber}%</div>    
         <div class="region" style="margin-top: ${fontSpace()}">${threeRegionName}</div>
     </div>
-    <div style="width: 50%">
+    <div style="width: 50%">    
         <div class="region">${fourRegionNumber}%</div>
         <div class="region" style="margin-top: ${fontSpace()}">${fourRegionName}</div>
     </div>
+</div>
 </div>
 </body>
 </html>

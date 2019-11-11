@@ -22,7 +22,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const fiveRegionName = datos[9];
     const fiveRegionNumber = datos[10];
 
-    const headline = datos[11].value;
+    const headline = datos[11];
 
     let size = propiedades.line_items[0].title.split('- ')[1];
     let h = size === "11oz" ? 336 : 364.8;
@@ -31,7 +31,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "20pt" : "24pt";
+            return size === "11oz" ? "19pt" : "22pt";
         }
         if (font === "MyriadPro-Bold") {
             return size === "11oz" ? "20pt" : "24pt";
@@ -157,6 +157,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </style>
 
 <body style="width: 9in; height:${size === "11oz" ? 336 : 364.8}">
+<div style="margin-top:${font === "Funnier" ? "0.3in" : "0"}">
 <div class="firstLevel">
     <div style="width:50%;">
         <div class="region">${firstRegionName}</div>
@@ -171,7 +172,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
 <div style="display: flex">
     <div>
-        <img style="width: 9.1in;height: 2.1in" src="${imageHelix(headline)}">
+    <img style="width: 9in;height: 2.1in" src="${imageHelix(headline)}">
     </div>
 </div>
 
@@ -189,6 +190,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         <div class="region">${fiveRegionNumber}%</div>
         <div class="region" style="margin-top: ${fontSpace()}">${fiveRegionName}</div>
     </div>
+</div>
 </div>
 </body>
 </html>

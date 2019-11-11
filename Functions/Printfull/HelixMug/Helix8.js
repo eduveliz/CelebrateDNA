@@ -41,10 +41,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "16pt" : "20pt";
+            return size === "11oz" ? "18pt" : "20pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "16pt" : "18pt";
+            return size === "11oz" ? "17pt" : "18pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "12pt" : "20pt";
@@ -101,12 +101,15 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     .firstLevel {
         display: flex;
+        margin-top: ${font === "Funnier" ? "-12px" : '0px'};
+        margin-bottom:${font === "Funnier" ? "18px" : '0px'}; 
         justify-content: space-around;
         width: 100%;
     }
 
     .secondLevel {    
         display: flex;
+        margin-top: ${font === "Funnier" ? "15px" : '0px'};
         justify-content: space-between;
         width: 100%;
     }
@@ -167,6 +170,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </style>
 
 <body style="width: 9in; height:${size === "11oz" ? 336 : 364.8}">
+<div style="margin-top:${font === "Funnier" ? "0.4in" : "0"}">
 <div class="firstLevel">
     <div style="width: 100%;">
         <div class="region" >${firstRegionName}</div>
@@ -189,7 +193,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
 <div style="display: flex">
     <div>
-        <img style="width: 9.1in;height: 2.1in" src="${imageHelix(headline)}">
+        <img style="width: 9in;height: 2.1in" src="${imageHelix(headline)}">
     </div>
 </div>
 
@@ -211,6 +215,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         <div class="region">${eightRegionNumber}%</div>
         <div class="region" style="margin-top: ${fontSpace()}">${eightRegionName}</div>
     </div>
+</div>
 </div>
 </body>
 </html>
