@@ -30,7 +30,7 @@ module.exports = idProduct = (id, env, itemsNumber, properties, nameFile) => {
             helixLove(env, itemsNumber, properties, nameFile);
             break;
         case "1860907204651" || "4317967155271":
-            console.log("Tote Yellow".blue);
+            console.log("Tote Yellow test".blue);
             toteYellow(env, itemsNumber, properties, nameFile);
             break;
         case "1251069329451":

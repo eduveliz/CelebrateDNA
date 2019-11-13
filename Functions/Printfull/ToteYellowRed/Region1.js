@@ -8,6 +8,8 @@ const companyMap = require('../../CompanyMap/CompanyMap');
 const toArray = require('lodash.toarray');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
+    console.log("region 1 ".red);
+
     const properties = toArray(propiedades.line_items[0].properties);
     const map = companyMap(properties[0]);
     const name = nameFile;

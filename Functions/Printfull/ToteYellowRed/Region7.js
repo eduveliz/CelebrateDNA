@@ -195,7 +195,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         font-family:${font} ;
         text-align: center; 
         font-size:${fontHeadline()};
-         margin-bottom: ${font === "Funnier" ? "100px" : "0px"};
+        margin-bottom: ${font === "Funnier" ? "85px" : "0px"};
     }
     
     .fontStatement{

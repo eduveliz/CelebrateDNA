@@ -101,7 +101,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     .firstLevel {
         display: flex;
-        margin-top: ${font === "MyriadPro-Bold" ? "-11px" : '0px'};
+        margin-top: ${font === "MyriadPro-Bold" ? "-10px" : '0px'};
         margin-bottom:${font === "Funnier" ? "18px" : '0px'}; 
         justify-content: space-around;
         width: 100%;
@@ -109,7 +109,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     .secondLevel {    
         display: flex;
-        margin-top: ${font === "MyriadPro-Bold" ? "13px" : '0px'};
+        margin-top: ${font === "MyriadPro-Bold" ? "8px" : '0px'};
         justify-content: space-between;
         width: 100%;
     }

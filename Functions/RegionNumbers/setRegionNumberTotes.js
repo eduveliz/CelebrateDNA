@@ -1,5 +1,5 @@
 module.exports = regionNumber = (cantidad) => {
-    if (cantidad === 10) {
+    if (cantidad === 12) {
         return 1;
     }
     if (cantidad === 14) {
