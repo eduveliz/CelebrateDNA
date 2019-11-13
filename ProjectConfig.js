@@ -5,7 +5,7 @@ module.exports = env = (config, req) => {
     const itemsNumber = line_items[0].properties;
     const nameFile = Date.now();
     const id = line_items[0].product_id.toString();
-    const sku = line_items[0].title.split('- ')[1] === "11oz" ? "1320" : "4830";
+    const sku = sku;  // line_items[0].title.split('- ')[1] === "11oz" ? "1320" : "4830";
 
     const env = {
         name: config === "dev" ? "EduardoTest" : shipping_address.first_name,
@@ -15,7 +15,7 @@ module.exports = env = (config, req) => {
         countryCode: config === "dev" ? "US" : shipping_address.country_code,
         zip: config === "dev" ? "91311" : shipping_address.zip,
         sku: sku,
-        host: config === "dev" ? "https://93579166.ngrok.io/" : "https://moolab.ml/",
+        host: config === "dev" ? "https://a5e7f563.ngrok.io/" : "https://moolab.ml/",
     };
 
     // const prod = {
