@@ -37,6 +37,12 @@ module.exports = idProduct = (id, env, itemsNumber, properties, nameFile) => {
             console.log("Mug Helix".blue);
             helixMug(env, itemsNumber, properties, nameFile);
             break;
+
+        case "1208772263979":
+            console.log("Mug Map".blue);
+            // helixMug(env, itemsNumber, properties, nameFile);
+            break;
+
         case "1859664674859":
             console.log("Tote Bold".blue);
             toteBold(env, itemsNumber, properties, nameFile);

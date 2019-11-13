@@ -118,6 +118,15 @@ app.post('/mugHelix', jsonParser, function (req, res) {
     });
 });
 
+app.post('/mugMap', jsonParser, function (req, res) {
+    console.log("creating Mug Map... ".red + req.body.nameFile);
+    console.log(req.body);
+    const regionNumber = req.body.regions.length;
+    // return helixSelectorMug(regionNumber, req.body).then(() => {
+    //     res.end('{"success" : "Updated Successfully", "status" : 200}');
+    // });
+});
+
 app.post('/printfull', jsonParser, function (req, res) {
     projectConfig("dev", req);
     return res.end('{"success" : "Updated Successfully", "status" : 200}');

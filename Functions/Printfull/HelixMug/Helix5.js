@@ -34,7 +34,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return size === "11oz" ? "19pt" : "22pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "20pt" : "24pt";
+            return size === "11oz" ? "18pt" : "23pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "16pt" : "18pt";
@@ -172,7 +172,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
 <div style="display: flex">
     <div>
-    <img style="width: 9in;height: 2.1in" src="${imageHelix(headline)}">
+     <img style="width: 9in;height: 2.2in" src="${imageHelix(headline)}">      
     </div>
 </div>
 

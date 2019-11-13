@@ -48,7 +48,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return size === "11oz" ? "16pt" : "16pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "16pt" : "18pt";
+            return size === "11oz" ? "18pt" : "22pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "12pt" : "12pt";
@@ -105,7 +105,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     .firstLevel {
         display: flex;
-        margin-top: ${font === "Funnier" ? "-10px" : '-8px'};
+        margin-top: ${font === "MyriadPro-Bold" ? "-20px" : '-8px'};
         margin-bottom:${font === "Funnier" ? "18px" : '0px'}; 
         justify-content: space-around;
         width: 100%;    
@@ -113,7 +113,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     .secondLevel {     
         display: flex;
-        margin-top: ${font === "Funnier" ? "15px" : '0px'};
+        margin-bottom: ${font === "MyriadPro-Bold" ? "15px" : '0px'};
         justify-content: space-between;
         width: 100%;
     }
@@ -196,7 +196,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
 <div style="display: flex">
     <div>
-       <img style="width: 9in;height: 2.2in" src="${imageHelix(headline)}">
+         <img style="width: 9in;height: 2.2in" src="${imageHelix(headline)}">   
     </div>
 </div>
 

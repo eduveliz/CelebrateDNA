@@ -29,10 +29,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "19pt" : "20pt";
+            return size === "11oz" ? "18pt" : "20.5pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "20pt" : "24pt";
+            return size === "11oz" ? "19pt" : "23pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "16pt" : "18pt";

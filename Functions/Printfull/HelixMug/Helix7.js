@@ -38,10 +38,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "18pt" : "20pt";
+            return size === "11oz" ? "18pt" : "18.5pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "18pt" : "20pt";
+            return size === "11oz" ? "18pt" : "22pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "14pt" : "14pt";
@@ -105,6 +105,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
     .secondLevel {
         display: flex;
+        margin-bottom: 5px;
         justify-content: space-between;
         width: 100%;
     }
@@ -184,7 +185,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 
 <div style="display: flex">
     <div>
-       <img style="width: 9in;height: 2.2in" src="${imageHelix(headline)}">
+   <img style="width: 9in;height: 2.2in" src="${imageHelix(headline)}">      
     </div>
 </div>
 
