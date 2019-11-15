@@ -186,7 +186,6 @@ module.exports = createPreview = async (propiedades) => {
     <div style="height: 0.668in; width: 0.716in;position: absolute;top: 2.3in; left: 0.52in">
           <img height="66px" width="69px" src="https://moolab.ml/mug/compass.png">
     </div>
-
 <div>
     <div style="display: flex; justify-content: space-around;margin-right: 15px">
         <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
