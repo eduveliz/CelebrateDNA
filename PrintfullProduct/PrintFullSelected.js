@@ -9,7 +9,7 @@ const helixMug = require('./../PrintfullProduct/HelixMug');
 
 module.exports = idProduct = (id, env, itemsNumber, properties, nameFile) => {
     switch (id) {
-        case "1857838415915" || "1859574300715":
+        case "1857838415915" || "1859574300715" || "4349944496199":
             console.log("Brigth Map TT".blue);
             brightMap(env, itemsNumber, properties, nameFile);
             break;

@@ -14,6 +14,8 @@ const donut = require('./Functions/Previews/Donut/DonutSelector');
 const love = require('./Functions/Previews/ILoveMyDNA/LoveSelector');
 const YellowSelector = require('./Functions/Previews/Totes/Yellow/RegionSelector');
 const RegionSelector = require('./Functions/Previews/Totes/Black/RegionSelector');
+
+const mugMapSelector = require('./Functions/Previews/MapsMug/BrigthMaps/ttPreviewSelector');
 const colors = require('colors');
 const cors = require('cors');
 
@@ -122,9 +124,9 @@ app.post('/mugMap', jsonParser, function (req, res) {
     console.log("creating Mug Map... ".red + req.body.nameFile);
     console.log(req.body);
     const regionNumber = req.body.regions.length;
-    // return helixSelectorMug(regionNumber, req.body).then(() => {
-    //     res.end('{"success" : "Updated Successfully", "status" : 200}');
-    // });
+    return mugMapSelector(regionNumber, req.body).then(() => {
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    });
 });
 
 app.post('/printfull', jsonParser, function (req, res) {

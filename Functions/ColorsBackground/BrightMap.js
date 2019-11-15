@@ -70,5 +70,20 @@ module.exports = colorBackground = (color) => {
         case "Sea green":
             return hexValueColor = "#547B80";
             break;
+        case "Royal Blue":
+            return hexValueColor = "#295293";
+            break;
+        case "Light Blue":
+            return hexValueColor = "#abbad9";
+            break;
+        case "Sports Grey":
+            return hexValueColor = "#9b969c";
+            break;
+        case "Light Blue":
+            return hexValueColor = "#abbad9";
+            break;
+        case "Indigo Blue":
+            return hexValueColor = "#4e5c75";
+            break;
     }
 };
