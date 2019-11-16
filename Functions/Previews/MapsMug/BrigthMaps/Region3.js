@@ -8,6 +8,7 @@ const colorProductSelect = require('../../../Color/Color');
 const ancestryMap = require('../../../MapsSVGMug/AncestryMap');
 const ttMap = require('../../../MapsSVGMug/TTMap');
 const myHeritageMap = require('../../../MapsSVGMug/MyHeritageMap');
+const compasSelector = require('../compassSelector');
 
 module.exports = createPreview = async (propiedades) => {
     const name = propiedades.nameFile;
@@ -27,9 +28,9 @@ module.exports = createPreview = async (propiedades) => {
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = fontColor(colorProduct);
     //Headline
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
-    //FontSize
     const font = fontStyle(propiedades.fontStyle);
+    const headline = compasSelector(propiedades.headLine, font);
+    let personalHeadline = propiedades.headLine === "First name / DNA" ? propiedades.personalHeadline : "";
 
     let size = "11oz";
 
@@ -85,6 +86,38 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+    compassTop = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "1.63in"
+        } else {
+            return "1.9in"
+        }
+    };
+
+    compassLeft = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "0.25in"
+        } else {
+            return "0.52in"
+        }
+    };
+
+    compassH = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "90px"
+        } else {
+            return "115px"
+        }
+    };
+    compassW = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "90px"
+        } else {
+            return "115px"
+        }
+    };
+
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -119,6 +152,12 @@ module.exports = createPreview = async (propiedades) => {
         font-family:${font} ;
         text-align: center; 
         font-size:${fontHeadline()};
+    }
+    
+    .perosnalHeadline{
+        font-family: ${font} ;
+        font-size: ${font === "Funnier" ? "13pt" : '17pt'};
+        color: #6D6E70;
     }
     
         @font-face {
@@ -183,9 +222,12 @@ module.exports = createPreview = async (propiedades) => {
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
-    <div style="height: 0.668in; width: 0.716in;position: absolute;top: 2.3in; left: 0.52in">
-          <img height="66px" width="69px" src="https://moolab.ml/mug/compass.png">
+
+    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: ${compassLeft()}">
+          <div class="perosnalHeadline">${personalHeadline}</div>
+          <img height="115px" width="115px" src="${headline}">
     </div>
+    
 <div>
     <div style="display: flex; justify-content: space-around;margin-right: 15px">
         <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
@@ -199,13 +241,13 @@ module.exports = createPreview = async (propiedades) => {
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "5pt"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 0pt" : "0pt"}">
             <div class="fontColor" style="text-align: center">${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "5pt"}">
+        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 0pt" : "0pt"}">
             <div class="fontColor" style="text-align: center">${secondRegionName}</div>
         </div>
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "5pt"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 0pt" : "0pt"}">
             <div class="fontColor"  style="text-align: center">${threeRegionName}</div>
         </div>
     </div>
@@ -231,10 +273,9 @@ module.exports = createPreview = async (propiedades) => {
 </body>
 </html>
 `);
-
     await page.setViewport({
         width: 864,
-        height: 360,
+        height: 350,
         deviceScaleFactor: 1,
     });
     await page.screenshot({path: `previews/${name}.png`});

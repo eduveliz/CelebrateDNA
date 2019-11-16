@@ -8,6 +8,7 @@ const colorProductSelect = require('../../../Color/Color');
 const ancestryMap = require('../../../MapsSVGMug/AncestryMap');
 const ttMap = require('../../../MapsSVGMug/TTMap');
 const myHeritageMap = require('../../../MapsSVGMug/MyHeritageMap');
+const compasSelector = require('../compassSelector');
 
 module.exports = createPreview = async (propiedades) => {
     const name = propiedades.nameFile;
@@ -24,9 +25,9 @@ module.exports = createPreview = async (propiedades) => {
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = fontColor(colorProduct);
     //Headline
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
-    //FontSize
     const font = fontStyle(propiedades.fontStyle);
+    const headline = compasSelector(propiedades.headLine, font);
+    let personalHeadline = propiedades.headLine === "First name / DNA" ? propiedades.personalHeadline : "";
 
     let size = "11oz";
 
@@ -53,7 +54,7 @@ module.exports = createPreview = async (propiedades) => {
         if (font === "Funnier") {
             return size === "11oz" ? "14pt" : "10pt";
         }
-    }
+    };
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
@@ -64,6 +65,14 @@ module.exports = createPreview = async (propiedades) => {
         }
         if (font === "Funnier") {
             return size === "11oz" ? "10pt" : "10pt"
+        }
+    };
+
+    compassTop = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "1.63in"
+        } else {
+            return "1.9in"
         }
     };
 
@@ -110,6 +119,12 @@ module.exports = createPreview = async (propiedades) => {
         text-align: center; 
         font-size:${fontHeadline()};
     }
+    .perosnalHeadline{
+        font-family: Noteworthy ;
+        font-size: 19pt;
+        color: #6D6E70;
+    }
+    
           @font-face {
     font-family: 'Futura';
     src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
@@ -171,21 +186,22 @@ module.exports = createPreview = async (propiedades) => {
     <div>
         ${map}
     </div>
-    <div style="height: 0.668in; width: 0.716in;position: absolute;top: 2.3in; left: 0.52in">
-    <span id="demo1">Eduardo</span>
-          <img height="66px" width="69px" src="https://moolab.ml/mug/compass.png">
+    
+    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: 0.52in">
+          <div class="perosnalHeadline">${personalHeadline}</div>
+          <img height="100px" width="100px" src="${headline}">
     </div>
     
 <div style="margin-right: 17px">
     <div style="display: flex; justify-content: space-around;">
-        <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">  
             ${firstRegionNumber}%
         </div>
         <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${secondRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 10pt" : "0pt"}">
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 0pt" : "0pt"}">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
             <div class="fontColor" >${firstRegionName}</div>
         </div>
@@ -213,7 +229,7 @@ module.exports = createPreview = async (propiedades) => {
 `);
     await page.setViewport({
         width: 864,
-        height: 360,
+        height: 350,
         deviceScaleFactor: 1,
     });
     await page.screenshot({path: `previews/${name}.png`});

@@ -9,6 +9,7 @@ const colorProductSelect = require('../../../Color/Color');
 const ancestryMap = require('../../../MapsSVGMug/AncestryMap');
 const ttMap = require('../../../MapsSVGMug/TTMap');
 const myHeritageMap = require('../../../MapsSVGMug/MyHeritageMap');
+const compasSelector = require('../compassSelector');
 
 module.exports = createPreview = async (propiedades) => {
     const name = propiedades.nameFile;
@@ -44,10 +45,10 @@ module.exports = createPreview = async (propiedades) => {
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = fontColor(colorProduct);
     //Headline
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
-    //FontSize
     const font = fontStyle(propiedades.fontStyle);
-
+    const headline = compasSelector(propiedades.headLine, font);
+    let personalHeadline = propiedades.headLine === "First name / DNA" ? propiedades.personalHeadline : "";
+    //FontSize
     let size = "11oz";
 
     companyMap = (company) => {
@@ -101,11 +102,20 @@ module.exports = createPreview = async (propiedades) => {
             return "110px"
         }
     };
+
+    compassTop = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "1.63in"
+        } else {
+            return "1.9in"
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
         width: 864,
-        height: 360,
+        height: 350,
         deviceScaleFactor: 1,
     });
 
@@ -144,6 +154,12 @@ module.exports = createPreview = async (propiedades) => {
         font-family:${font} ;
         text-align: center; 
         font-size:${fontHeadline()};
+    }
+    
+    .perosnalHeadline{
+        font-family: Noteworthy ;
+        font-size: 19pt;
+        color: #6D6E70;
     }
           @font-face {
     font-family: 'Futura';
@@ -207,8 +223,9 @@ module.exports = createPreview = async (propiedades) => {
     ${map}
 </div>
 
-    <div style="height: 0.668in; width: 0.716in;position: absolute;top: 2.3in; left: 0.52in">
-          <img height="66px" width="69px" src="https://moolab.ml/mug/compass.png">
+    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: 0.52in">
+          <div class="perosnalHeadline">${personalHeadline}</div>
+          <img height="100px" width="100px" src="${headline}">
     </div>
 
 <div style="margin-right: 20px">
@@ -236,7 +253,7 @@ module.exports = createPreview = async (propiedades) => {
         </div>
     </div>
     
-    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "5pt"}">
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0pt"}">
         <div style="width:100%;height:60px;display: flex; justify-content: center   ">
             <div class="fontColor" >${firstRegionName}</div>
         </div>

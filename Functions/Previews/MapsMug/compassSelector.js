@@ -11,7 +11,7 @@ module.exports = image = (headline, font) => {
         return "https://moolab.ml/mug/mpRockin.png";
     } else if (headline === "First name / DNA" && font === "MyriadPro-Bold") {
         return "https://moolab.ml/mug/mpPersonalized.png";
-    } else if (headline === "First name / DNA" && font === "Funnier") {
+    } else if (headline === "Celebrating / My DNA!" && font === "Funnier") {
         return "https://moolab.ml/mug/fCelebrating.png";
     } else if (headline === "Rockin'/My DNA!" && font === "Funnier") {
         return "https://moolab.ml/mug/fRockin.png";

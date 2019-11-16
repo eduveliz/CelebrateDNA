@@ -16,6 +16,7 @@ const YellowSelector = require('./Functions/Previews/Totes/Yellow/RegionSelector
 const RegionSelector = require('./Functions/Previews/Totes/Black/RegionSelector');
 
 const mugMapSelector = require('./Functions/Previews/MapsMug/BrigthMaps/ttPreviewSelector');
+const mugMapEartSelector = require('./Functions/Previews/MapsMug/Earth Tone/earthPreviewSelector');
 const colors = require('colors');
 const cors = require('cors');
 
@@ -125,6 +126,15 @@ app.post('/mugMap', jsonParser, function (req, res) {
     console.log(req.body);
     const regionNumber = req.body.regions.length;
     return mugMapSelector(regionNumber, req.body).then(() => {
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    });
+});
+
+app.post('/mugMapEart', jsonParser, function (req, res) {
+    console.log("creating Mug Map Eart... ".red + req.body.nameFile);
+    console.log(req.body);
+    const regionNumber = req.body.regions.length;
+    return mugMapEartSelector(regionNumber, req.body).then(() => {
         res.end('{"success" : "Updated Successfully", "status" : 200}');
     });
 });

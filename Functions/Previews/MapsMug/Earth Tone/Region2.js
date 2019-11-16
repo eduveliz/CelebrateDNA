@@ -6,11 +6,15 @@ const fontStyle = require('../../../FontStyle/FontStyle');
 const fontColor = require('../../../FontColor/FontColor');
 const lineMaps = require('../../../LinesMap/LineMaps');
 const colorProductSelect = require('../../../Color/Color');
-const ancestryMap = require('../../../MapsSVG/AncestryMap');
-const ttMap = require('../../../MapsSVG/TTMap');
-const myHeritageMap = require('../../../MapsSVG/MyHeritageMap');
+const ancestryMap = require('../../../MapsSVGMug/AncestryMap');
+const ttMap = require('../../../MapsSVGMug/TTMap');
+const myHeritageMap = require('../../../MapsSVGMug/MyHeritageMap');
+const compasSelector = require('../compassSelector');
 
 module.exports = createPreview = async (propiedades) => {
+
+
+    console.log("aque".red)
     const name = propiedades.nameFile;
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
@@ -25,9 +29,11 @@ module.exports = createPreview = async (propiedades) => {
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = fontColor(colorProduct);
     //Headline
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
-    //FontSize
     const font = fontStyle(propiedades.fontStyle);
+    const headline = compasSelector(propiedades.headLine, font);
+    let personalHeadline = propiedades.headLine === "First name / DNA" ? propiedades.personalHeadline : "";
+
+    let size = "11oz";
     companyMap = (company) => {
         if (company === "Ancestry") {
             return ancestryMap;
@@ -44,31 +50,33 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "40pt"
+            return size === "11oz" ? "14pt" : "14pt";
         }
         if (font === "MyriadPro-Bold") {
-            return "40pt"
+            return size === "11oz" ? "14pt" : "14pt";
         }
         if (font === "Funnier") {
-            return "30pt"
+            return size === "11oz" ? "14pt" : "10pt";
         }
-        if (font === "Noteworhty Bold") {
-            return "40pt"
-        }
-    }
+    };
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return "35pt"
+            return size === "11oz" ? "10pt" : "10pt";
         }
         if (font === "MyriadPro-Bold") {
-            return "35pt"
+            return size === "11oz" ? "14pt" : "14pt";
         }
         if (font === "Funnier") {
-            return "30pt"
+            return size === "11oz" ? "10pt" : "10pt"
         }
-        if (font === "Noteworhty Bold") {
-            return "35pt"
+    };
+
+    compassTop = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "1.63in"
+        } else {
+            return "1.9in"
         }
     };
 
@@ -97,13 +105,15 @@ module.exports = createPreview = async (propiedades) => {
     <title>23andMe</title>
     <style>
     .fontColor {
-        color:${fontColor(colorProduct)};
+        color: #6D6E70;
         font-family:${font} ;
         font-size: ${fontSizeRegion(font)};
     }
     .fontColorNumber {
         color:${fontColor(colorProduct)};
         font-family:${font} ;
+        height: ${size === "11oz" ? "0.1788in" : "0.1788"} ;
+        width:${size === "11oz" ? "4.4381in" : "4.4381in"};
         border: 2px solid ${lineMaps(colorProduct)};
         font-size: ${fontSizeNumber()};
     }
@@ -113,6 +123,13 @@ module.exports = createPreview = async (propiedades) => {
         text-align: center; 
         font-size:${fontHeadline()};
     }
+    
+        .perosnalHeadline{
+        font-family: Noteworthy ;
+        font-size: 19pt;
+        color: #6D6E70;
+    }
+    
           @font-face {
     font-family: 'Futura';
     src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
@@ -170,18 +187,22 @@ module.exports = createPreview = async (propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)} ">
-<h1 class='fontColorHeadline'>${headline}</h1>
-<div style="width: 100%;text-align: center;">
+<body style="width:9in;height:3.5in;background-color: ${colorProductSelect(colorProduct)} ">
+<div>
     ${map}
 </div>
 
-<div style="margin-top: 50px;margin-right: 17px">
+    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: 0.52in">
+          <div class="perosnalHeadline">${personalHeadline}</div>
+          <img height="100px" width="100px" src="${headline}">
+    </div>
+
+<div style="margin-right: 17px">
     <div style="display: flex; justify-content: space-around;">
-        <div class="fontColorNumber" style="color:white;height:60px; width:100%;border-radius: 20px; background-color: #616C44;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #616C44;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber}%
         </div>
-        <div class="fontColorNumber" style="color:white;height:60px; width:100%; border-radius: 20px; background-color: #6D0008;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="color:white; border-radius: 20px; background-color: #6D0008;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${secondRegionNumber}%
         </div>
     </div>
@@ -212,8 +233,8 @@ module.exports = createPreview = async (propiedades) => {
 `);
 
     await page.setViewport({
-        width: 1152,
-        height: 1536,
+        width: 864,
+        height: 350,
         deviceScaleFactor: 1,
     });
     await page.screenshot({path: `previews/${name}.png`});

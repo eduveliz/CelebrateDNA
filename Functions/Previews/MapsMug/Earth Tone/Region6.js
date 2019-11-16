@@ -6,9 +6,10 @@ const fontStyle = require('../../../FontStyle/FontStyle');
 const fontColor = require('../../../FontColor/FontColor');
 const colorProductSelect = require('../../../Color/Color');
 const lineMaps = require('../../../LinesMap/LineMaps');
-const ancestryMap = require('../../../MapsSVG/AncestryMap');
-const ttMap = require('../../../MapsSVG/TTMap');
-const myHeritageMap = require('../../../MapsSVG/MyHeritageMap');
+const ancestryMap = require('../../../MapsSVGMug/AncestryMap');
+const ttMap = require('../../../MapsSVGMug/TTMap');
+const myHeritageMap = require('../../../MapsSVGMug/MyHeritageMap');
+const compasSelector = require('../compassSelector');
 
 module.exports = createPreview = async (propiedades) => {
     const name = propiedades.nameFile;
@@ -39,12 +40,12 @@ module.exports = createPreview = async (propiedades) => {
     const colorProduct = propiedades.colorProduct;
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = fontColor(colorProduct);
-
     //Headline
-    const headline = propiedades.headLine === "Personalized headline" ? propiedades.personalHeadline : propiedades.headLine;
-    //FontSize
     const font = fontStyle(propiedades.fontStyle);
-    const typeFont = font === "Funnier" ? "30px" : "38px";
+    const headline = compasSelector(propiedades.headLine, font);
+    let personalHeadline = propiedades.headLine === "First name / DNA" ? propiedades.personalHeadline : "";
+
+    let size = "11oz";
 
     companyMap = (company) => {
         if (company === "Ancestry") {
@@ -61,30 +62,28 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "20pt"
+            return size === "11oz" ? "8pt" : "8pt";
         }
         if (font === "MyriadPro-Bold") {
-            return "20pt"
+            return size === "11oz" ? "8pt" : "8pt";
         }
         if (font === "Funnier") {
-            return "16pt"
+            return size === "11oz" ? "6pt" : "6pt";
         }
-        if (font === "Noteworhty Bold") {
-            return "20pt"
-        }
-    };
+    }
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return "20pt"
+            return size === "11oz" ? "10pt" : "10pt";
         }
         if (font === "MyriadPro-Bold") {
-            return "20pt"
+            return size === "11oz" ? "14pt" : "14pt";
         }
         if (font === "Funnier") {
-            return "15pt"
+            return size === "11oz" ? "10pt" : "10pt"
         }
     };
+
     fontHeadline = () => {
         if (font === "Noteworthy") {
             return "110px"
@@ -100,11 +99,20 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+    compassTop = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "1.63in"
+        } else {
+            return "1.9in"
+        }
+    };
+
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
-        width: 1152,
-        height: 1536,
+        width: 864,
+        height: 350,
         deviceScaleFactor: 1,
     });
 
@@ -126,6 +134,8 @@ module.exports = createPreview = async (propiedades) => {
         font-family:${font} ;
         border: 2px solid ${lineMaps(colorProduct)};
         font-size: ${fontSizeNumber()};
+         height: ${size === "11oz" ? "0.1788in" : "0.1788"};
+        width:${size === "11oz" ? "2.9622in" : "4.4381in"};
     }
     
     .fontColorHeadline {
@@ -133,6 +143,12 @@ module.exports = createPreview = async (propiedades) => {
         font-family:${font} ;
         text-align: center; 
         font-size:${fontHeadline()};
+    }
+    
+    .perosnalHeadline{
+        font-family: Noteworthy ;
+        font-size: 19pt;
+        color: #6D6E70;
     }
     
         @font-face {
@@ -192,34 +208,39 @@ module.exports = createPreview = async (propiedades) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:1152px;height:1536px;background-color: ${colorProductSelect(colorProduct)} ">
-<h1 class='fontColorHeadline'>${headline}</h1>
+<body style="width:9in;height:3.5in;background-color: ${colorProductSelect(colorProduct)} ">
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
 
-<div style="margin-top: 50px;margin-right: 12px">
+    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: 0.52in">
+          <div class="perosnalHeadline">${personalHeadline}</div>
+          <img height="100px" width="100px" src="${headline}">
+    </div>
+
+
+<div style="margin-right: 12px">
     <div style="display: flex; justify-content: space-around;">
-        <div class='fontColorNumber' style="color:white;height:40px; width:100%;border-radius: 20px; background-color: #616c44;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white;border-radius: 20px; background-color: #616c44;align-items: center;text-align: center;display: flex;justify-content: center;">
            ${firstRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="color:white;height:40px; width:100%; border-radius: 20px; background-color: #6d0008;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white; border-radius: 20px; background-color: #6d0008;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${secondRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="color:white;height:40px; width:100%;  border-radius: 20px; background-color: #a25562;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white;  border-radius: 20px; background-color: #a25562;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${threeRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="color:white;height:40px; width:100%;  border-radius: 20px; background-color: #5c4955;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white;  border-radius: 20px; background-color: #5c4955;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${fourRegionNumber}%
         </div>
-        <div class='fontColorNumber' style="color:white;height:40px; width:100%; border-radius: 20px;background-color: #b19e3f;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class='fontColorNumber' style="color:white; border-radius: 20px;background-color: #b19e3f;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${fiveRegionNumber}%
         </div>
-        <div class="fontColorNumber" style="color:white;height:40px; width:100%; border-radius: 20px; background-color: #603813;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorNumber" style="color:white; border-radius: 20px; background-color: #603813;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${sixRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "5pt"}">
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0pt"}">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
             <div class='fontColor' style="display: flex;text-align: center;justify-content: center">${firstRegionName}</div>
         </div>
