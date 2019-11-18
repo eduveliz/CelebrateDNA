@@ -10,34 +10,34 @@ const companyMap = require('../../CompanyMap/CompanyMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const properties = toArray(propiedades.line_items[0].properties);
-    const map = companyMap(properties[0]);
+    const map = companyMap(properties[0].value);
     const name = nameFile;
 
-    const firstRegionName = properties[1];
-    const firstRegionNameSelector = regionNames(properties[1]);
-    const firstRegionNumber = properties[2];
+    const firstRegionName = properties[1].value;
+    const firstRegionNameSelector = regionNames(properties[1].value);
+    const firstRegionNumber = properties[2].value;
 
-    const secondRegionName = properties[3];
-    const secondRegionNameSelector = regionNames(properties[3]);
-    const secondRegionNumber = properties[4];
+    const secondRegionName = properties[3].value;
+    const secondRegionNameSelector = regionNames(properties[3].value);
+    const secondRegionNumber = properties[4].value;
 
-    const threeRegionName = properties[5];
-    const threeRegionNameSelector = regionNames(properties[5]);
-    const threeRegionNumber = properties[6];
+    const threeRegionName = properties[5].value;
+    const threeRegionNameSelector = regionNames(properties[5].value);
+    const threeRegionNumber = properties[6].value;
 
-    const backgroundColor = colorBackground(properties[7]);
+    const backgroundColor = colorBackground(properties[7].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = properties[10];
+    const colorProduct = properties[10].value;
     //Headline
-    const headline = properties[8] === "Personalized headline" ? properties[9] : properties[8];
+    const headline = properties[8].value === "Personalized headline" ? properties[9].value : properties[8].value;
 
-    const statement = properties[12];
-    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[13];
-    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : properties[14];
-    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[15];
+    const statement = properties[12].value;
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[13].value;
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : properties[14].value;
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[15].value;
 
     //FontSize
-    const font = fontStyle(properties[11]);
+    const font = fontStyle(properties[11].value);
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {

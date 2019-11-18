@@ -10,39 +10,39 @@ const companyMap = require('../../CompanyMap/CompanyMap');
 module.exports = createPreview = async (nameFile, propiedades) => {
     const properties = toArray(propiedades.line_items[0].properties);
     const name = nameFile;
-    const map = companyMap(properties[0]);
-    const firstRegionName = properties[1];
-    const firstRegionNameSelector = regionNames(properties[1]);
-    const firstRegionNumber = properties[2];
+    const map = companyMap(properties[0].value);
+    const firstRegionName = properties[1].value;
+    const firstRegionNameSelector = regionNames(properties[1].value);
+    const firstRegionNumber = properties[2].value;
 
-    const secondRegionName = properties[3];
-    const secondRegionNameSelector = regionNames(properties[3]);
-    const secondRegionNumber = properties[4];
+    const secondRegionName = properties[3].value;
+    const secondRegionNameSelector = regionNames(properties[3].value);
+    const secondRegionNumber = properties[4].value;
 
-    const threeRegionName = properties[5];
+    const threeRegionName = properties[5].value;
     const threeRegionNameSelector = regionNames(properties[5]);
-    const threeRegionNumber = properties[6];
+    const threeRegionNumber = properties[6].value;
 
-    const fourRegionName = properties[7];
-    const fourRegionNameSelector = regionNames(properties[7]);
-    const fourRegionNumber = properties[8];
+    const fourRegionName = properties[7].value;
+    const fourRegionNameSelector = regionNames(properties[7].value);
+    const fourRegionNumber = properties[8].value;
 
-    const fiveRegionName = properties[9];
-    const fiveRegionNameSelector = regionNames(properties[9]);
-    const fiveRegionNumber = properties[10];
+    const fiveRegionName = properties[9].value;
+    const fiveRegionNameSelector = regionNames(properties[9].value);
+    const fiveRegionNumber = properties[10].value;
 
-    const backgroundColor = colorBackground(properties[11]);
+    const backgroundColor = colorBackground(properties[11].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = properties[14];
+    const colorProduct = properties[14].value;
     //Headline
-    const headline = properties[12] === "Personalized headline" ? properties[13] : properties[12];
+    const headline = properties[12] === "Personalized headline" ? properties[13].value : properties[12].value;
 
-    const statement = properties[16];
-    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[17];
-    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : properties[18];
-    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[19];
+    const statement = properties[16].value;
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[17].value;
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : properties[18].value;
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[19].value;
     //FontSize
-    const font = fontStyle(properties[15]);
+    const font = fontStyle(properties[15].value);
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {

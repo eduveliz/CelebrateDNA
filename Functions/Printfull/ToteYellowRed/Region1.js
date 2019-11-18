@@ -11,7 +11,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     console.log("region 1 ".red);
 
     const properties = toArray(propiedades.line_items[0].properties);
-    const map = companyMap(properties[0]);
+    const map = companyMap(properties[0].value);
     const name = nameFile;
     const firstRegionName = properties[1].value;
     const firstRegionNameSelector = regionNames(properties[1].value);

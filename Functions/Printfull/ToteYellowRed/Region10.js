@@ -8,62 +8,62 @@ const companyMap = require('../../CompanyMap/CompanyMap');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
     const properties = toArray(propiedades.line_items[0].properties);
-    const map = companyMap(properties[0]);
+    const map = companyMap(properties[0].value);
     const name = nameFile;
 
-    const firstRegionName = properties[1];
-    const firstRegionNameSelector = regionNames(properties[1]);
-    const firstRegionNumber = properties[2];
+    const firstRegionName = properties[1].value;
+    const firstRegionNameSelector = regionNames(properties[1].value);
+    const firstRegionNumber = properties[2].value;
 
-    const secondRegionName = properties[3];
-    const secondRegionNameSelector = regionNames(properties[3]);
-    const secondRegionNumber = properties[4];
+    const secondRegionName = properties[3].value;
+    const secondRegionNameSelector = regionNames(properties[3].value);
+    const secondRegionNumber = properties[4].value;
 
-    const threeRegionName = properties[5];
-    const threeRegionNameSelector = regionNames(properties[5]);
-    const threeRegionNumber = properties[6];
+    const threeRegionName = properties[5].value;
+    const threeRegionNameSelector = regionNames(properties[5].value);
+    const threeRegionNumber = properties[6].value;
 
-    const fourRegionName = properties[7];
-    const fourRegionNameSelector = regionNames(properties[7]);
-    const fourRegionNumber = properties[8];
+    const fourRegionName = properties[7].value;
+    const fourRegionNameSelector = regionNames(properties[7].value);
+    const fourRegionNumber = properties[8].value;
 
-    const fiveRegionName = properties[9];
-    const fiveRegionNameSelector = regionNames(properties[9]);
-    const fiveRegionNumber = properties[10];
+    const fiveRegionName = properties[9].value;
+    const fiveRegionNameSelector = regionNames(properties[9].value);
+    const fiveRegionNumber = properties[10].value;
 
-    const sixRegionName = properties[11];
-    const sixRegionNameSelector = regionNames(properties[11]);
-    const sixRegionNumber = properties[12];
+    const sixRegionName = properties[11].value;
+    const sixRegionNameSelector = regionNames(properties[11].value);
+    const sixRegionNumber = properties[12].value;
 
-    const sevenRegionName = properties[13];
-    const sevenRegionNameSelector = regionNames(properties[13]);
-    const sevenRegionNumber = properties[14];
+    const sevenRegionName = properties[13].value;
+    const sevenRegionNameSelector = regionNames(properties[13].value);
+    const sevenRegionNumber = properties[14].value;
 
-    const eightRegionName = properties[15];
-    const eightRegionNameSelector = regionNames(properties[15]);
-    const eightRegionNumber = properties[16];
+    const eightRegionName = properties[15].value;
+    const eightRegionNameSelector = regionNames(properties[15].value);
+    const eightRegionNumber = properties[16].value;
 
-    const nineRegionName = properties[17];
-    const nineRegionNameSelector = regionNames(properties[17]);
-    const nineRegionNumber = properties[18];
+    const nineRegionName = properties[17].value;
+    const nineRegionNameSelector = regionNames(properties[17].value);
+    const nineRegionNumber = properties[18].value;
 
-    const tenRegionName = properties[19];
-    const tenRegionNameSelector = regionNames(properties[19]);
-    const tenRegionNumber = properties[20];
+    const tenRegionName = properties[19].value;
+    const tenRegionNameSelector = regionNames(properties[19].value);
+    const tenRegionNumber = properties[20].value;
 
-    const backgroundColor = colorBackground(properties[21]);
+    const backgroundColor = colorBackground(properties[21].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";
-    const colorProduct = properties[24];
+    const colorProduct = properties[24].value;
     //Headline
-    const headline = properties[22] === "Personalized headline" ? properties[23] : properties[22];
+    const headline = properties[22].value === "Personalized headline" ? properties[23].value : properties[22].value;
 
-    const statement = properties[26];
-    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[27];
-    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : properties[28];
-    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[29];
+    const statement = properties[26].value;
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[27].value;
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "The image to the left will be duplicated on both sides of tote." : properties[28].value;
+    const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[29].value;
 
     //FontSize
-    const font = fontStyle(properties[25]);
+    const font = fontStyle(properties[25].value);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
