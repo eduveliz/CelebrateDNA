@@ -140,7 +140,7 @@ app.post('/mugMapEart', jsonParser, function (req, res) {
 });
 
 app.post('/printfull', jsonParser, function (req, res) {
-    projectConfig("dev", req);
+    projectConfig("prod", req);
     return res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
