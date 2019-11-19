@@ -6,7 +6,9 @@ const fontColor = require('../../FontStyle/FontStyle');
 const colorProductSelect = require('../../Color/Color');
 
 module.exports = createPreview = async (propiedades) => {
-    const name = propiedades.nameFile;
+    const name = nameFile;
+    const datos = toArray(propiedades);
+
     const firstRegionName = propiedades.regions[0].region;
     const firstRegionNumber = propiedades.regions[0].porcentaje;
 

@@ -13,48 +13,48 @@ const region3 = require('./Region3');
 const region2 = require('./Region2');
 const region1 = require('./Region1');
 
-module.exports = ttPreviewSelector = async (regionNumber, properties, nameFile) => {
+module.exports = ttPreviewSelector = async (regionNumber, properties, nameFile, orderInfo) => {
 
     if (regionNumber === 1) {
-        return region1(nameFile, properties)
+        return region1(nameFile, properties, orderInfo)
     }
     if (regionNumber === 2) {
-        return region2(nameFile, properties)
+        return region2(nameFile, properties, orderInfo)
     }
     if (regionNumber === 3) {
-        return region3(nameFile, properties)
+        return region3(nameFile, properties, orderInfo)
     }
     if (regionNumber === 4) {
-        return region4(nameFile, properties)
+        return region4(nameFile, properties, orderInfo)
     }
     if (regionNumber === 5) {
-        return region5(nameFile, properties)
+        return region5(nameFile, properties, orderInfo)
     }
     if (regionNumber === 6) {
-        return region6(nameFile, properties)
+        return region6(nameFile, properties, orderInfo)
     }
     if (regionNumber === 7) {
-        return region7(nameFile, properties)
+        return region7(nameFile, properties, orderInfo)
     }
     if (regionNumber === 8) {
-        return region8(nameFile, properties)
+        return region8(nameFile, properties, orderInfo)
     }
     if (regionNumber === 9) {
-        return region9(nameFile, properties)
+        return region9(nameFile, properties, orderInfo)
     }
     if (regionNumber === 10) {
-        return region10(nameFile, properties)
+        return region10(nameFile, properties, orderInfo)
     }
     if (regionNumber === 11) {
-        return region11(nameFile, properties)
+        return region11(nameFile, properties, orderInfo)
     }
     if (regionNumber === 12) {
-        return region12(nameFile, properties)
+        return region12(nameFile, properties, orderInfo)
     }
     if (regionNumber === 13) {
-        return region13(nameFile, properties)
+        return region13(nameFile, properties, orderInfo)
     }
     if (regionNumber === 14) {
-        return region14(nameFile, properties)
+        return region14(nameFile, properties, orderInfo)
     }
 };

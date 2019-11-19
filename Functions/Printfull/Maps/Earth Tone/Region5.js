@@ -10,8 +10,8 @@ const ancestryMap = require('../../../MapsSVG/AncestryMap');
 const ttMap = require('../../../MapsSVG/TTMap');
 const myHeritageMap = require('../../../MapsSVG/MyHeritageMap');
 
-module.exports = createPreview = async (nameFile, propiedades) => {
-    const datos = toArray(propiedades.line_items[0].properties);
+module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
+    const datos = toArray(propiedades);
     const name = nameFile;
     //Regions  */ RegionsNamesSelectors is for Jquery/*
     const firstRegionName = datos[1].value;
@@ -34,7 +34,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const fiveRegionNameSelector = regionName(datos[9].value);
     const fiveRegionNumber = datos[10].value;
 
-    const colorProduct = propiedades.line_items[0].name.split('- ').pop().split('/')[0].toString();
+    const colorProduct = orderInfo.name.split('- ').pop().split('/')[0].toString();
     const backgroundColor = colorBackground(datos[11].value);
     const backgroundLineWorld = fontColor(colorProduct);
     //Headline

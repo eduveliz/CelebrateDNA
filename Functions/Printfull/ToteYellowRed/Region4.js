@@ -7,8 +7,8 @@ const fontColor = require('../../FontColor/FontColor');
 const lineMaps = require('../../LinesMap/LineMaps');
 const companyMap = require('../../CompanyMap/CompanyMap');
 
-module.exports = createPreview = async (nameFile, propiedades) => {
-    const properties = toArray(propiedades.line_items[0].properties);
+module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
+    const properties = toArray(propiedades);
     const map = companyMap(properties[0].value);
     const name = nameFile;
 

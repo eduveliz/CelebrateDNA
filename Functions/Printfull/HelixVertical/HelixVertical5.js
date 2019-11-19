@@ -5,9 +5,9 @@ const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontStyle/FontStyle');
 const colorProductSelect = require('../../Color/Color');
 
-module.exports = createPreview = async (nameFile, propiedades) => {
+module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     const name = nameFile;
-    const datos = toArray(propiedades.line_items[0].properties);
+    const datos = toArray(propiedades);
 
     const firstRegionName = datos[1].value;
     const firstRegionNumber = datos[2].value;
@@ -25,7 +25,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const fiveRegionNumber = datos[10].value;
 
     //Background Map
-    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
+    const colorProduct = orderInfo.name.split('- ').pop().split('/')[0].toString();
     //Headline
     const headline = datos[11].value === "Personalized headline" ? datos[12].value : datos[11].value;
 

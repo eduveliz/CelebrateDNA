@@ -7,11 +7,10 @@ const colorProductSelect = require('../../Color/Color');
 const imageHelix = require('../../Previews/Helix/ImageHelix');
 
 
-module.exports = createPreview = async (nameFile, propiedades) => {
+module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
     console.log("region 2");
-    const datos = toArray(propiedades.line_items[0].properties);
-    console.log(datos);
+    const datos = toArray(propiedades);
     const name = nameFile;
     const firstRegionName = datos[1].value;
     const firstRegionNumber = datos[2].value;
@@ -19,7 +18,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const secondRegionName = datos[3].value;
     const secondRegionNumber = datos[4].value;
 
-    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
+    const colorProduct = orderInfo.name.split('- ').pop().split('/')[0].toString();
     console.log("color", colorProduct);
     //Headline
     const headline = datos[5].value;

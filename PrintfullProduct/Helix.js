@@ -3,8 +3,8 @@ const setNumber = require('./../Functions/RegionNumbers/setRegionNumberHelix');
 const toArray = require('lodash.toarray');
 const axios = require('axios');
 
-module.exports = product = (env, cantidad, req, nameFile) => {
-    helixSelectorPrintFull(setNumber(toArray(cantidad).length), req.body, nameFile).then(() => {
+module.exports = product = (env, cantidad, req, nameFile, orderInfo) => {
+    helixSelectorPrintFull(setNumber(toArray(cantidad).length), req, nameFile, orderInfo).then(() => {
         return axios.post('https://api.printful.com/orders', {
                 "recipient": {
                     "name": env.name,

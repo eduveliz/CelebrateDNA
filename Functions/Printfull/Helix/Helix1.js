@@ -5,14 +5,12 @@ const fontColor = require('../../Previews/Helix/FontColor');
 const colorProductSelect = require('../../Color/Color');
 const toArray = require('lodash.toarray');
 
-module.exports = createPreview = async (nameFile, propiedades) => {
-    console.log("region one");
-    const datos = toArray(propiedades.line_items[0].properties);
+module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
+    const datos = toArray(propiedades);
     const name = nameFile;
     const firstRegionName = datos[1].value;
     const firstRegionNumber = datos[2].value;
-    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
-
+    const colorProduct = orderInfo.name.split('- ').pop().split('/')[0].toString();
     //Headline
     const headline = datos[3].value;
     //FontSize

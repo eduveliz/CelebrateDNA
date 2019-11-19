@@ -5,9 +5,9 @@ const fontStyle = require('../../FontStyle/FontStyle');
 const fontSize = require('../../FontSize/ILoveMyDNA/FontSizeLove3');
 const colorProductSelect = require('../../Color/Color');
 
-module.exports = createPreview = async (nameFile, propiedades) => {
+module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     const name = nameFile;
-    const datos = toArray(propiedades.line_items[0].properties);
+    const datos = toArray(propiedades);
 
     const firstRegionName = datos[0].value;
     const firstRegionNumber = datos[1].value;
@@ -18,7 +18,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const threeRegionName = datos[4].value;
     const threeRegionNumber = datos[5].value;
 
-    const color = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
+    const color = orderInfo.name.split('- ').pop().split('/')[0].toString();
 
     const colorProduct = colorProductSelect(color);
 

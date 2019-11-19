@@ -9,39 +9,35 @@ const helix3 = require('./HelixVertical3');
 const helix2 = require('./HelixVertical2');
 const helix1 = require('./HelixVertical1');
 
-module.exports = helixSelector = async (regionNumber, properties, nameFile) => {
-
-    console.log("region selected".blue);
-    console.log("regionNumber", regionNumber);
-
+module.exports = helixSelector = async (regionNumber, properties, nameFile, orderInfo) => {
     if (regionNumber === 10) {
-        return helix10(nameFile, properties)
+        return helix10(nameFile, properties, orderInfo)
     }
     if (regionNumber === 9) {
-        return helix9(nameFile, properties)
+        return helix9(nameFile, properties, orderInfo)
     }
     if (regionNumber === 8) {
-        return helix8(nameFile, properties)
+        return helix8(nameFile, properties, orderInfo)
     }
     if (regionNumber === 7) {
-        return helix7(nameFile, properties)
+        return helix7(nameFile, properties, orderInfo)
     }
     if (regionNumber === 6) {
-        return helix6(nameFile, properties)
+        return helix6(nameFile, properties, orderInfo)
     }
     if (regionNumber === 5) {
-        return helix5(nameFile, properties)
+        return helix5(nameFile, properties, orderInfo)
     }
     if (regionNumber === 4) {
-        return helix4(nameFile, properties)
+        return helix4(nameFile, properties, orderInfo)
     }
     if (regionNumber === 3) {
-        return helix3(nameFile, properties)
+        return helix3(nameFile, properties, orderInfo)
     }
     if (regionNumber === 2) {
-        return helix2(nameFile, properties)
+        return helix2(nameFile, properties, orderInfo)
     }
     if (regionNumber === 1) {
-        return helix1(nameFile, properties)
+        return helix1(nameFile, properties, orderInfo)
     }
 };

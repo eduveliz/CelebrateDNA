@@ -6,10 +6,10 @@ const fontColor = require('../../Previews/Helix/FontColor');
 const colorProductSelect = require('../../Color/Color');
 const imageHelix = require('../../Previews/Helix/ImageHelix');
 
-module.exports = createPreview = async (nameFile, propiedades) => {
+module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
     const name = nameFile;
-    const datos = toArray(propiedades.line_items[0].properties);
+    const datos = toArray(propiedades);
 
     const firstRegionName = datos[1].value;
     const firstRegionNumber = datos[2].value;
@@ -43,7 +43,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     //Headline
     const headline = datos[21].value;
 
-    const colorProduct = propiedades.line_items[0].title.split('- ').pop().split('/')[0];
+    const colorProduct = orderInfo.name.split('- ').pop().split('/')[0].toString();
     //FontSize
     const font = fontStyle(datos[22].value);
 

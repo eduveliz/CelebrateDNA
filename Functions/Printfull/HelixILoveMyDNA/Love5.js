@@ -3,9 +3,10 @@ const toArray = require('lodash.toarray');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontSize = require('../../FontSize/ILoveMyDNA/FontSizeLove5');
 
-module.exports = createPreview = async (nameFile, propiedades) => {
+module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     const name = nameFile;
-    const datos = toArray(propiedades.line_items[0].properties);
+    const datos = toArray(propiedades);
+
     const firstRegionName = datos[0].value;
     const firstRegionNumber = datos[1].value;
 
@@ -21,7 +22,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const fiveRegionName = datos[8].value;
     const fiveRegionNumber = datos[9].value;
 
-    const color = propiedades.line_items[0].title.split('- ').pop().split('/')[0].toString();
+    const color = orderInfo.name.split('- ').pop().split('/')[0].toString();
 
     imageColor = (color) => {
         if (color === "Navy ") {

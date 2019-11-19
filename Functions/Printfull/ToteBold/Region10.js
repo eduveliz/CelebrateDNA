@@ -6,49 +6,50 @@ const ancestryMap = require('../../MapsSVG/AncestryMap');
 const ttMap = require('../../MapsSVG/TTMap');
 const MyHeritageMap = require('../../MapsSVG/MyHeritageMap');
 
-module.exports = createPreview = async (nameFile, propiedades) => {
-    //Regions  */ RegionsNamesSelectors is for Jquery/*
+module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
+    const properties = toArray(propiedades);
 
     const name = propiedades.nameFile;
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNameSelector = regionNames(propiedades.regions[1].region);
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
+    const firstRegionName = properties[1];
+    const firstRegionNameSelector = regionNames(properties[1]);
+    const firstRegionNumber = properties[2];
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNameSelector = regionNames(propiedades.regions[2].region);
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
+    const secondRegionName = properties[3];
+    const secondRegionNameSelector = regionNames(properties[3]);
+    const secondRegionNumber = properties[4];
 
-    const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNameSelector = regionNames(propiedades.regions[3].region);
-    const fourRegionNumber = propiedades.regions[3].porcentaje;
+    const threeRegionName = properties[5];
+    const threeRegionNameSelector = regionNames(properties[5]);
+    const threeRegionNumber = properties[6];
 
-    const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNameSelector = regionNames(propiedades.regions[4].region);
-    const fiveRegionNumber = propiedades.regions[4].porcentaje;
+    const fourRegionName = properties[7];
+    const fourRegionNameSelector = regionNames(properties[7]);
+    const fourRegionNumber = properties[8];
 
-    const sixRegionName = propiedades.regions[5].region;
-    const sixRegionNameSelector = regionNames(propiedades.regions[5].region);
-    const sixRegionNumber = propiedades.regions[5].porcentaje;
+    const fiveRegionName = properties[9];
+    const fiveRegionNameSelector = regionNames(properties[9]);
+    const fiveRegionNumber = properties[10];
 
-    const sevenRegionName = propiedades.regions[6].region;
-    const sevenRegionNameSelector = regionNames(propiedades.regions[6].region);
-    const sevenRegionNumber = propiedades.regions[6].porcentaje;
+    const sixRegionName = properties[11];
+    const sixRegionNameSelector = regionNames(properties[11]);
+    const sixRegionNumber = properties[12];
 
-    const eightRegionName = propiedades.regions[7].region;
-    const eightRegionNameSelector = regionNames(propiedades.regions[7].region);
-    const eightRegionNumber = propiedades.regions[7].porcentaje;
+    const sevenRegionName = properties[13];
+    const sevenRegionNameSelector = regionNames(properties[13]);
+    const sevenRegionNumber = properties[14];
 
-    const nineRegionName = propiedades.regions[8].region;
-    const nineRegionNameSelector = regionNames(propiedades.regions[8].region);
-    const nineRegionNumber = propiedades.regions[8].porcentaje;
+    const eightRegionName = properties[15];
+    const eightRegionNameSelector = regionNames(properties[15]);
+    const eightRegionNumber = properties[16];
 
-    const tenRegionName = propiedades.regions[9].region;
-    const tenRegionNameSelector = regionNames(propiedades.regions[9].region);
-    const tenRegionNumber = propiedades.regions[9].porcentaje;
+    const nineRegionName = properties[17];
+    const nineRegionNameSelector = regionNames(properties[17]);
+    const nineRegionNumber = properties[18];
+
+    const tenRegionName = properties[19];
+    const tenRegionNameSelector = regionNames(properties[20]);
+    const tenRegionNumber = properties[21];
 
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = backgroundColor === "transparent" ? "black" : "none";

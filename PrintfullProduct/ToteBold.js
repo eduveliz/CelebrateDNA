@@ -3,8 +3,8 @@ const setNumberMaps = require('../Functions/RegionNumbers/setRegionNumberTotesBo
 const toArray = require('lodash.toarray');
 const axios = require('axios');
 
-module.exports = product = (env, cantidad, req, nameFile) => {
-    boldPrintfullSelector(setNumberMaps(toArray(cantidad).length), nameFile, req.body).then(() => {
+module.exports = product = (env, cantidad, req, nameFile, orderInfo) => {
+    boldPrintfullSelector(setNumberMaps(toArray(cantidad).length), nameFile, req, orderInfo).then(() => {
         return axios.post('https://api.printful.com/orders', {
                 "recipient": {
                     "name": env.name,

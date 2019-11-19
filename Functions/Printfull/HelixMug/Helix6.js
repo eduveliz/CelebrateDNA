@@ -3,9 +3,9 @@ const toArray = require('lodash.toarray');
 const fontStyle = require('../../FontStyle/FontStyle');
 const imageHelix = require('./ImageHelix');
 
-module.exports = createPreview = async (nameFile, propiedades) => {
+module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     const name = nameFile;
-    const datos = toArray(propiedades.line_items[0].properties);
+    const datos = toArray(propiedades);
 
     const firstRegionName = datos[1];
     const firstRegionNumber = datos[2];
@@ -29,8 +29,8 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const headline = datos[13];
     const firstName = "";
     //FontSize
+    let size = orderInfo.name.split('- ')[1];
 
-    let size = propiedades.line_items[0].title.split('- ')[1];
     let h = size === "11oz" ? 336 : 364.8;
     const font = fontStyle(datos[14]);
 
