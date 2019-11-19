@@ -101,6 +101,42 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+    compassTop = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "1.8in"
+        } else {
+            return "1.8in"
+        }
+    };
+
+    compassLeft = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "0.52in"
+        } else {
+            return "0.52in"
+        }
+    };
+
+    compassH = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "90px"
+        } else {
+            return "115px"
+        }
+    };
+    compassW = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "90px"
+        } else {
+            return "115px"
+        }
+    };
+
+    compasHeadline = () => {
+        return font === "Funnier" ? "13pt" : "15pt";
+    };
+
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -134,11 +170,10 @@ module.exports = createPreview = async (propiedades) => {
     }
     
     .perosnalHeadline{
-        font-family: Noteworthy ;
-        font-size: 19pt;
+        font-family: ${font} ;
+        font-size: ${compasHeadline()};
         color: #6D6E70;
     }
-   
           @font-face {
     font-family: 'Futura';
     src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
@@ -201,9 +236,9 @@ module.exports = createPreview = async (propiedades) => {
     ${map}
 </div>
 
-    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: 0.52in">
+    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: ${compassLeft()}">
           <div class="perosnalHeadline">${personalHeadline}</div>
-          <img height="100px" width="100px" src="${headline}">
+          <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
 
 <div>

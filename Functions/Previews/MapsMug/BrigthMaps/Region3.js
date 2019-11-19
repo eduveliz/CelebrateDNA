@@ -88,15 +88,15 @@ module.exports = createPreview = async (propiedades) => {
 
     compassTop = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "1.63in"
+            return "1.8in"
         } else {
-            return "1.9in"
+            return "1.8in"
         }
     };
 
     compassLeft = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "0.25in"
+            return "0.52in"
         } else {
             return "0.52in"
         }
@@ -115,6 +115,10 @@ module.exports = createPreview = async (propiedades) => {
         } else {
             return "115px"
         }
+    };
+
+    compasHeadline = () => {
+        return font === "Funnier" ? "13pt" : "15pt";
     };
 
 
@@ -156,7 +160,7 @@ module.exports = createPreview = async (propiedades) => {
     
     .perosnalHeadline{
         font-family: ${font} ;
-        font-size: ${font === "Funnier" ? "13pt" : '17pt'};
+        font-size: ${compasHeadline()};
         color: #6D6E70;
     }
     
@@ -225,7 +229,7 @@ module.exports = createPreview = async (propiedades) => {
 
     <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: ${compassLeft()}">
           <div class="perosnalHeadline">${personalHeadline}</div>
-          <img height="115px" width="115px" src="${headline}">
+          <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
     
 <div>

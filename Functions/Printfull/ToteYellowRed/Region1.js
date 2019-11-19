@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const colorBackground = require('../../ColorsBackground/BrightMap');
-const regionNames = require('../../RegionNames/RegionNames');
+const regionNames = require('../../RegionNames/RegionNamesClass');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
 const lineMaps = require('../../LinesMap/LineMaps');
@@ -8,8 +8,6 @@ const companyMap = require('../../CompanyMap/CompanyMap');
 const toArray = require('lodash.toarray');
 
 module.exports = createPreview = async (nameFile, propiedades) => {
-    console.log("region 1 ".red);
-
     const properties = toArray(propiedades.line_items[0].properties);
     const map = companyMap(properties[0].value);
     const name = nameFile;
@@ -123,6 +121,19 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
 
+    bottomStatementMap = () => {
+        if (font === "MyriadPro-Bold") {
+            return "5.1in"
+        }
+        if (font === "Funnier") {
+            return "4.7in"
+        }
+        if (font === "Noteworthy") {
+            return "5.1in";
+        }
+    };
+
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -176,6 +187,15 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         margin-left: 1.9in;
         transform: rotate(180deg);
         margin-top:${bottomStatement()};
+    }
+    
+    .secondMap {
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        transform: rotate(180deg);
+        margin-top:${bottomStatementMap()};
+        display: ${statement === "Replicate the map on both sides" ? '' : 'none'};
     }
     
     @font-face {
@@ -255,6 +275,27 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             </div>
         </div>
   
+    <div class="secondMap">
+    <div style="width: 13in;height: 11in;margin-left: 1.9in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
+            <h1 class='fontColorHeadline' style="text-align: center;">${headline}</h1>
+            <div style="width: 100%;text-align: center;">
+                ${map}
+            </div>
+            <div style="margin-top: 50px;">
+                <div style="display: flex; justify-content: space-around;">
+                    <div class="fontColorNumber" style="height:60px; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
+                        ${firstRegionNumber}%
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+                    <div style="width:100%;height:60px;display: flex; justify-content: center">
+                        <div class="fontColor">${firstRegionName}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
     <div class="secondPart">  
         <div class="fontStatement" style="width:13in;">
            <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementOne}</div>
@@ -267,7 +308,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     $(function () {
         $(document).ready(function () {
             $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
+            $(".worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
+            
             $("#regions").attr("fill", "transparent");
+            $(".regions").attr("fill", "transparent");
             //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
             $("${firstRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");

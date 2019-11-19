@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
-const regionNames = require('../../RegionNames/RegionNames');
+const regionNames = require('../../RegionNames/RegionNamesClass');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
 const lineMaps = require('../../LinesMap/LineMaps');
@@ -48,7 +48,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     const personalStatementThree = statement === "Replicate the map on both sides" ? "" : properties[21].value;
 
     //FontSize
-    const font = fontStyle(properties[17]);
+    const font = fontStyle(properties[17].value);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -137,6 +137,20 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
 
+    bottomStatementMap = () => {
+        if (font === "MyriadPro-Bold") {
+            return "5.1in"
+        }
+        if (font === "Funnier") {
+            return "4.7in"
+        }
+        if (font === "Noteworthy") {
+            return "5.1in";
+        }
+    };
+
+
+
     capsuleAndNumber = () => {
         if (font === "MyriadPro-Bold") {
             return "70px";
@@ -206,6 +220,16 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         color: white;
         font-size: ${fontSizeNumber()};
     }
+    
+    .secondMap {
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        transform: rotate(180deg);
+        margin-top:${bottomStatementMap()};
+        display: ${statement === "Replicate the map on both sides" ? '' : 'none'};
+    }
+    
     
     .secondPart{
         text-align: center; 
@@ -328,6 +352,60 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </div>
 </div>
 
+
+<div class="secondMap">
+ <div style="width: 13in;height: 11in;margin-left: 2.1in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
+<h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
+<div style="width: 100%;text-align: center;margin-top: 10px">
+    ${map}
+</div>
+ <div class="capsuleAndNumber">
+     <div style="display: flex; justify-content: space-around;">
+        <div class="fontColorNumber" style="color:white;height:0.376in; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
+         ${firstRegionNumber}%
+        </div>
+        <div class="fontColorNumber" style="color:white;height:0.376in; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
+         ${secondRegionNumber}%
+        </div>
+        <div class="fontColorNumber" style="color:white;height:0.376in; width:100%; border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;">
+        ${threeRegionNumber}%
+        </div>
+        <div  class="fontColorNumber" style="color:white;height:0.376in; width:100%;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;">
+       ${fourRegionNumber}%
+        </div>
+        <div class="fontColorNumber" style="color:white;height:0.376in; width:100%; border-radius: 20px;background-color: #00833D;align-items: center;text-align: center;display: flex;justify-content: center;">
+       ${fiveRegionNumber}%
+        </div>
+        <div class="fontColorNumber" style="color:white;height:0.376in; width:100%;  border-radius: 20px; background-color: #9794D2;align-items: center;text-align: center;display: flex;justify-content: center;">
+        ${sixRegionNumber}%
+        </div>
+    </div>
+    
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "5pt"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center">
+            <div class="fontColor" >${firstRegionName}</div>
+        </div>
+        <div style="width:100%;height:60px; display: flex; justify-content: center">
+            <div class="fontColor" >${secondRegionName}</div>
+        </div>
+        <div style="height:60px; width:100%;display: flex; justify-content: center">
+            <div class="fontColor" >${threeRegionName}</div>
+        </div>
+        <div style=" width:100%;height:60px;display: flex; justify-content: center">
+            <div class="fontColor" >${fourRegionName}</div>
+        </div>
+        <div style=" width:100%;height:60px;display: flex; justify-content: center">
+            <div class="fontColor" >${fiveRegionName}</div>
+        </div>
+        <div style="width:100%; height:60px;display: flex; justify-content: center">
+             <div class="fontColor">${sixRegionName}</div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
 <div class="secondPart">  
         <div class="fontStatement" style="width:13in;">
             <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementOne}</div>
@@ -340,7 +418,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     $(function () {
         $(document).ready(function () {
             $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
+            $(".worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
+            
             $("#regions").attr("fill", "transparent");
+            $(".regions").attr("fill", "transparent");
             
             //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#27A9E1");

@@ -132,8 +132,8 @@ module.exports = createPreview = async (propiedades) => {
     }
     
     .perosnalHeadline{
-        font-family: Noteworthy ;
-        font-size: 19pt;
+        font-family: ${font} ;
+        font-size: ${compasHeadline()};
         color: #6D6E70;
     }
     
@@ -200,9 +200,9 @@ module.exports = createPreview = async (propiedades) => {
     ${map}
 </div>
 
-    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: 0.52in">
+    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: ${compassLeft()}">
           <div class="perosnalHeadline">${personalHeadline}</div>
-          <img height="100px" width="100px" src="${headline}">
+          <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
 
 

@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
-const regionNames = require('../../RegionNames/RegionNames');
+const regionNames = require('../../RegionNames/RegionNamesClass');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
 const lineMaps = require('../../LinesMap/LineMaps');
@@ -135,6 +135,18 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         }
     };
 
+    bottomStatementMap = () => {
+        if (font === "MyriadPro-Bold") {
+            return "5.1in"
+        }
+        if (font === "Funnier") {
+            return "4.7in"
+        }
+        if (font === "Noteworthy") {
+            return "5.1in";
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -192,7 +204,16 @@ module.exports = createPreview = async (nameFile, propiedades) => {
         transform: rotate(180deg);
         margin-top:${bottomStatement()};
     }
-
+    
+    .secondMap {
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        transform: rotate(180deg);
+        margin-top:${bottomStatementMap()};
+        display: ${statement === "Replicate the map on both sides" ? '' : 'none'};
+    }
+    
         @font-face {
     font-family: 'Futura';
     src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
@@ -289,6 +310,47 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 </div>
 </div>
 
+
+<div class="secondMap">
+<div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
+<h1 class='fontColorHeadline' style="text-align: center;">${headline} </h1>
+<div style="width: 100%;text-align: center;margin-top: 7px">
+    ${map}
+</div>
+
+<div style="margin-top: 20px">
+    <div style="display: flex; justify-content: space-around;align-items: center">
+        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:0.521in; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${firstRegionNumber}%
+        </div>
+        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:0.521in; width:100%; border-radius: 20px; background-color: #6C61AA;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${secondRegionNumber}%
+        </div>
+        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:0.521in; width:100%;  border-radius: 20px; background-color: #BE1E2D;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${threeRegionNumber}%
+        </div>
+        <div class='fontColorNumber' style="color:white;margin-top: 30px;height:0.521in; width:100%;  border-radius: 20px; background-color: #F9AF41;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${fourRegionNumber}%
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-around;align-items: center">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+            <div class='fontColor'>${firstRegionName}</div>
+        </div>
+        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+            <div class='fontColor'>${secondRegionName}</div>
+        </div>
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+            <div class='fontColor'>${threeRegionName}</div>
+        </div>
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+            <div class='fontColor'>${fourRegionName}</div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
 <div class="secondPart">  
         <div class="fontStatement" style="width:13in;">
             <div style="margin-top: ${fontSpaceStatement()};" >${personalStatementOne}</div>
@@ -301,7 +363,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     $(function () {
         $(document).ready(function () {
             $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
+            $(".worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
+            
             $("#regions").attr("fill", "transparent");
+            $(".regions").attr("fill", "transparent");
             //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#27A9E1");
             $("${secondRegionNameSelector}").attr("fill","#6C61AA");
