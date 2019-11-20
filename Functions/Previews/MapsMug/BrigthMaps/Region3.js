@@ -26,7 +26,7 @@ module.exports = createPreview = async (propiedades) => {
 
     const colorProduct = propiedades.colorProduct;
     const backgroundColor = colorBackground(propiedades.color);
-    const backgroundLineWorld = fontColor(colorProduct);
+    const backgroundLineWorld = backgroundColor === "transparent" ? "#6D6E70" : "none";
     //Headline
     const font = fontStyle(propiedades.fontStyle);
     const headline = compasSelector(propiedades.headLine, font);
@@ -57,7 +57,7 @@ module.exports = createPreview = async (propiedades) => {
         if (font === "Funnier") {
             return size === "11oz" ? "10pt" : "10pt";
         }
-    }
+    };
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
@@ -88,7 +88,8 @@ module.exports = createPreview = async (propiedades) => {
 
     compassTop = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "1.8in"
+            let down = font !== "Funnier" ? "1.8in" : "1.9in";
+            return down;
         } else {
             return "1.8in"
         }
@@ -118,9 +119,8 @@ module.exports = createPreview = async (propiedades) => {
     };
 
     compasHeadline = () => {
-        return font === "Funnier" ? "13pt" : "15pt";
+        return font === "Funnier" ? "13pt" : "17pt";
     };
-
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -160,6 +160,9 @@ module.exports = createPreview = async (propiedades) => {
     
     .perosnalHeadline{
         font-family: ${font} ;
+        align-items: center;
+        text-align: center;
+        margin-bottom:${font === "Funnier" ? "5px" : "1px"} ;
         font-size: ${compasHeadline()};
         color: #6D6E70;
     }
@@ -245,13 +248,13 @@ module.exports = createPreview = async (propiedades) => {
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 0pt" : "0pt"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 2pt" : "0pt"}">
             <div class="fontColor" style="text-align: center">${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 0pt" : "0pt"}">
+        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 2pt" : "0pt"}">
             <div class="fontColor" style="text-align: center">${secondRegionName}</div>
         </div>
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 0pt" : "0pt"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 2pt" : "0pt"}">
             <div class="fontColor"  style="text-align: center">${threeRegionName}</div>
         </div>
     </div>

@@ -27,7 +27,7 @@ module.exports = createPreview = async (propiedades) => {
 
     const colorProduct = propiedades.colorProduct;
     const backgroundColor = colorBackground(propiedades.color);
-    const backgroundLineWorld = fontColor(colorProduct);
+    const backgroundLineWorld = backgroundColor === "transparent" ? "#6D6E70" : "none";
     //Headline
     const font = fontStyle(propiedades.fontStyle);
     const headline = compasSelector(propiedades.headLine, font);
@@ -61,7 +61,7 @@ module.exports = createPreview = async (propiedades) => {
     };
 
 
-    fontSizeRegion = (font) => {
+    fontSizeRegion = () => {
         if (font === "Noteworthy") {
             return size === "11oz" ? "12pt" : "14pt";
         }
@@ -71,7 +71,7 @@ module.exports = createPreview = async (propiedades) => {
         if (font === "Funnier") {
             return size === "11oz" ? "10pt" : "10pt";
         }
-    }
+    };
 
     fontHeadline = () => {
         if (font === "Noteworthy") {
@@ -90,9 +90,10 @@ module.exports = createPreview = async (propiedades) => {
 
     compassTop = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "1.63in"
+            let down = font !== "Funnier" ? "1.8in" : "1.9in";
+            return down;
         } else {
-            return "1.9in"
+            return "1.8in"
         }
     };
     const browser = await puppeteer.launch();
@@ -107,11 +108,11 @@ module.exports = createPreview = async (propiedades) => {
     .fontColor {
         color: #6D6E70;
         font-family:${font} ;
-        font-size: ${fontSizeRegion(font)};
+        font-size: ${fontSizeRegion()};
     }
     
     .fontRegion {
-      font-size:${fontSizeRegion(font)} ;
+      font-size:${fontSizeRegion()} ;
       font-family:${font};
     }
     
@@ -133,6 +134,9 @@ module.exports = createPreview = async (propiedades) => {
     
     .perosnalHeadline{
         font-family: ${font} ;
+        align-items: center;
+        text-align: center;
+        margin-bottom:${font === "Funnier" ? "5px" : "1px"} ;
         font-size: ${compasHeadline()};
         color: #6D6E70;
     }
@@ -219,13 +223,13 @@ module.exports = createPreview = async (propiedades) => {
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 2pt" : "0"}">
             <div class="fontColor">${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 2pt" : "0"}">
             <div class="fontColor">${secondRegionName}</div>
         </div>
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 2pt" : "0"}">
             <div class="fontColor">${threeRegionName}</div>
         </div>
     </div>

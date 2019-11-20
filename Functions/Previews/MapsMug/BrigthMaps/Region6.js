@@ -39,7 +39,7 @@ module.exports = createPreview = async (propiedades) => {
 
     const colorProduct = propiedades.colorProduct;
     const backgroundColor = colorBackground(propiedades.color);
-    const backgroundLineWorld = fontColor(colorProduct);
+    const backgroundLineWorld = backgroundColor === "transparent" ? "#6D6E70" : "none";
 
     const font = fontStyle(propiedades.fontStyle);
     const headline = compasSelector(propiedades.headLine, font);
@@ -60,17 +60,17 @@ module.exports = createPreview = async (propiedades) => {
     };
     const map = companyMap(propiedades.company);
 
-    fontSizeRegion = (font) => {
+    fontSizeRegion = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "8pt" : "8pt";
+            return size === "11oz" ? "10pt" : "8pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "8pt" : "8pt";
+            return size === "11oz" ? "10pt" : "8pt";
         }
         if (font === "Funnier") {
-            return size === "11oz" ? "6pt" : "6pt";
+            return size === "11oz" ? "8pt" : "6pt";
         }
-    }
+    };
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
@@ -99,14 +99,6 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
-    compassTop = () => {
-        if (propiedades.headLine === "First name / DNA") {
-            return "1.8in"
-        } else {
-            return "1.8in"
-        }
-    };
-
     compassLeft = () => {
         if (propiedades.headLine === "First name / DNA") {
             return "0.52in"
@@ -131,13 +123,14 @@ module.exports = createPreview = async (propiedades) => {
     };
 
     compasHeadline = () => {
-        return font === "Funnier" ? "13pt" : "15pt";
+        return font === "Funnier" ? "13pt" : "17pt";
     };
 
 
     compassTop = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "1.63in"
+            let down = font !== "Funnier" ? "1.8in" : "1.9in";
+            return down;
         } else {
             return "1.9in"
         }
@@ -162,7 +155,7 @@ module.exports = createPreview = async (propiedades) => {
         color: #6D6E70;
         font-family:${font};
         text-align: center;
-        font-size: ${fontSizeRegion(font)};
+        font-size: ${fontSizeRegion()};
     }
     .fontColorNumber {
         color:${fontColor(colorProduct)};
@@ -182,6 +175,9 @@ module.exports = createPreview = async (propiedades) => {
      
     .perosnalHeadline{
         font-family: ${font} ;
+        align-items: center;
+        text-align: center;
+        margin-bottom:${font === "Funnier" ? "5px" : "1px"} ;
         font-size: ${compasHeadline()};
         color: #6D6E70;
     }
@@ -274,7 +270,7 @@ module.exports = createPreview = async (propiedades) => {
             ${sixRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0pt"}">
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 2pt" : "0pt"}">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
             <div class='fontColor' style="display: flex;text-align: center;justify-content: center">${firstRegionName}</div>
         </div>
