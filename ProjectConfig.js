@@ -2,7 +2,7 @@ const printfullSelected = require('./PrintfullProduct/PrintFullSelected.js');
 
 module.exports = env = (config, req) => {
     const {line_items, shipping_address} = req.body;
-    line_items.map(order => {
+    line_items.map(async order => {
         const orderInfo = order;
         const itemsNumber = order.properties;
         const nameFile = Date.now();
@@ -17,11 +17,10 @@ module.exports = env = (config, req) => {
             countryCode: config === "dev" ? "US" : shipping_address.country_code,
             zip: config === "dev" ? "91311" : shipping_address.zip,
             sku: sku,
-            host: config === "dev" ? "https://7fa9005d.ngrok.io/" : "https://moolab.ml/",
+            host: config === "dev" ? "https://00014e57.ngrok.io/" : "https://00014e57.ngrok.io/",
         };
 
         console.log(order.properties);
-        return printfullSelected(id, env, itemsNumber, order.properties, nameFile, orderInfo)
+        await printfullSelected(id, env, itemsNumber, order.properties, nameFile, orderInfo)
     });
-    // return printfullSelected(id, env, itemsNumber, req, nameFile);
 };

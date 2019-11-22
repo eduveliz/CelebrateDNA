@@ -56,13 +56,13 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "12pt" : "11pt";
+            return size === "11oz" ? "15pt" : "11pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "12pt" : "11pt";
+            return size === "11oz" ? "13pt" : "11pt";
         }
         if (font === "Funnier") {
-            return size === "11oz" ? "10pt" : "8pt";
+            return size === "11oz" ? "11pt" : "8pt";
         }
     };
 
@@ -95,18 +95,10 @@ module.exports = createPreview = async (propiedades) => {
 
     compassTop = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "1.63in"
-        } else {
-            return "1.9in"
-        }
-    };
-
-    compassTop = () => {
-        if (propiedades.headLine === "First name / DNA") {
             let down = font !== "Funnier" ? "1.8in" : "1.9in";
             return down;
         } else {
-            return "1.8in"
+            return "1.9in"
         }
     };
 
@@ -114,27 +106,26 @@ module.exports = createPreview = async (propiedades) => {
         if (propiedades.headLine === "First name / DNA") {
             return "0.52in"
         } else {
-            return "0.52in"
+            return "0.42in"
         }
     };
 
     compassH = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "90px"
+            return "90.8736px"
         } else {
-            return "115px"
+            return "105.8736px"
         }
     };
     compassW = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "90px"
+            return "69.3984px"
         } else {
-            return "115px"
+            return "105.3984px"
         }
     };
-
     compasHeadline = () => {
-        return font === "Funnier" ? "13pt" : "17pt";
+        return font === "Funnier" ? "11pt" : "15pt";
     };
 
     const browser = await puppeteer.launch();
@@ -239,8 +230,7 @@ module.exports = createPreview = async (propiedades) => {
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
-
-    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: ${compassLeft()}">
+    <div style="position: absolute;top: ${compassTop()}; left: ${compassLeft()};">
           <div class="perosnalHeadline">${personalHeadline}</div>
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
@@ -261,16 +251,16 @@ module.exports = createPreview = async (propiedades) => {
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 2pt" : "0"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "0"}">
             <div class='fontColor'>${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 2pt" : "0"}">
+        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "0"}">
             <div class='fontColor'>${secondRegionName}</div>
         </div>
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 2pt" : "0"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "0"}">
             <div class='fontColor'>${threeRegionName}</div>
         </div>
-        <div style=" width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 2pt" : "0"}">
+        <div style=" width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "0"}">
             <div class='fontColor'>${fourRegionName}</div>
         </div>
     </div>

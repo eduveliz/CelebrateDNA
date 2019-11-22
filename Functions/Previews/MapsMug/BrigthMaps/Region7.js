@@ -66,13 +66,13 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "10pt" : "9pt";
+            return size === "11oz" ? "12pt" : "9pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "10pt" : "9pt";
+            return size === "11oz" ? "13pt" : "9pt";
         }
         if (font === "Funnier") {
-            return size === "11oz" ? "7pt" : "7pt";
+            return size === "11oz" ? "9pt" : "7pt";
         }
     };
 
@@ -103,33 +103,6 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
-    compassLeft = () => {
-        if (propiedades.headLine === "First name / DNA") {
-            return "0.52in"
-        } else {
-            return "0.52in"
-        }
-    };
-
-    compassH = () => {
-        if (propiedades.headLine === "First name / DNA") {
-            return "90px"
-        } else {
-            return "115px"
-        }
-    };
-    compassW = () => {
-        if (propiedades.headLine === "First name / DNA") {
-            return "90px"
-        } else {
-            return "115px"
-        }
-    };
-
-    compasHeadline = () => {
-        return font === "Funnier" ? "13pt" : "17pt";
-    };
-
     compassTop = () => {
         if (propiedades.headLine === "First name / DNA") {
             let down = font !== "Funnier" ? "1.8in" : "1.9in";
@@ -137,6 +110,33 @@ module.exports = createPreview = async (propiedades) => {
         } else {
             return "1.9in"
         }
+    };
+
+    compassLeft = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "0.52in"
+        } else {
+            return "0.42in"
+        }
+    };
+
+    compassH = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "90.8736px"
+        } else {
+            return "105.8736px"
+        }
+    };
+    compassW = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "69.3984px"
+        } else {
+            return "105.3984px"
+        }
+    };
+
+    compasHeadline = () => {
+        return font === "Funnier" ? "11pt" : "15pt";
     };
 
     const browser = await puppeteer.launch();
@@ -254,7 +254,7 @@ module.exports = createPreview = async (propiedades) => {
     ${map}
 </div>
 
-    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: ${compassLeft()}">
+    <div style="position: absolute;top: ${compassTop()}; left: ${compassLeft()};">
           <div class="perosnalHeadline">${personalHeadline}</div>
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>

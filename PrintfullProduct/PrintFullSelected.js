@@ -4,10 +4,12 @@ const helix = require('./../PrintfullProduct/Helix');
 const helixVertical = require('./../PrintfullProduct/HelixVertical');
 const helixLove = require('./../PrintfullProduct/IloveMyDna');
 const toteYellow = require('./../PrintfullProduct/ToteYellowRed');
+const toteRed = require('./../PrintfullProduct/ToteRed');
 const toteBold = require('./../PrintfullProduct/ToteBold');
 const helixMug = require('./../PrintfullProduct/HelixMug');
 
 module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderInfo) => {
+    console.log(id);
     switch (id) {
         case "1857838415915" || "1859574300715" || "4349944496199":
             console.log("Brigth Map TT".blue);
@@ -29,9 +31,13 @@ module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderI
             console.log("Helix Love ".blue);
             helixLove(env, itemsNumber, properties, nameFile, orderInfo);
             break;
-        case "1860907204651" || "4317967155271" || "4317967155271":
+        case "1860907204651" || "4317967155271":
             console.log("Tote Yellow test".blue);
             toteYellow(env, itemsNumber, properties, nameFile, orderInfo);
+            break;
+        case  "1860994760747":
+            console.log("Tote red test".blue);
+            toteRed(env, itemsNumber, properties, nameFile, orderInfo);
             break;
         case "1251069329451":
             console.log("Mug Helix".blue);

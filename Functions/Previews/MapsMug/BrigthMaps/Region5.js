@@ -81,13 +81,13 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "10pt" : "9pt";
+            return size === "11oz" ? "12pt" : "9pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "10pt" : "9pt";
+            return size === "11oz" ? "12pt" : "9pt";
         }
         if (font === "Funnier") {
-            return size === "11oz" ? "8pt" : "7pt";
+            return size === "11oz" ? "10pt" : "7pt";
         }
     };
 
@@ -103,42 +103,41 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+    compassTop = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            let down = font !== "Funnier" ? "1.8in" : "1.9in";
+            return down;
+        } else {
+            return "1.8in"
+        }
+    };
+
     compassLeft = () => {
         if (propiedades.headLine === "First name / DNA") {
             return "0.52in"
         } else {
-            return "0.52in"
+            return "0.42in"
         }
     };
 
     compassH = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "90px"
+            return "90.8736px"
         } else {
             return "115px"
         }
     };
     compassW = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "90px"
+            return "69.3984px"
         } else {
-            return "115px"
+            return "80px"
         }
     };
 
     compasHeadline = () => {
-        return font === "Funnier" ? "13pt" : "17pt";
+        return font === "Funnier" ? "11pt" : "15pt";
     };
-
-    compassTop = () => {
-        if (propiedades.headLine === "First name / DNA") {
-            let down = font !== "Funnier" ? "1.8in" : "1.9in";
-            return down;
-        } else {
-            return "1.9in"
-        }
-    };
-
     await page.setContent(`
     <!DOCTYPE html>
 <html lang="en">
@@ -173,7 +172,7 @@ module.exports = createPreview = async (propiedades) => {
         font-family: ${font} ;
         align-items: center;
         text-align: center;
-        margin-bottom:${font === "Funnier" ? "5px" : "1px"} ;
+        margin-bottom:${font === "Funnier" ? "5px" : "-2px"} ;
         font-size: ${compasHeadline()};
         color: #6D6E70;
     }
@@ -239,8 +238,7 @@ module.exports = createPreview = async (propiedades) => {
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
-
-    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: ${compassLeft()}">
+    <div style="position: absolute;top: ${compassTop()}; left: ${compassLeft()};">
           <div class="perosnalHeadline">${personalHeadline}</div>
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
@@ -301,8 +299,6 @@ module.exports = createPreview = async (propiedades) => {
             //three color
             $("${fiveRegionNameSelector}").attr("fill", "#00833D");
             $("${fiveRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
-            
-            //four color
         });
     });
 </script>
