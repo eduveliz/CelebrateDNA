@@ -24,9 +24,9 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 
     const threeRegionName = datos[5].value;
     const threeRegionNameSelector = regionName(datos[5]);
-    const threeRegionNumber = datos[6];
+    const threeRegionNumber = datos[6].value;
 
-    const fourRegionName = datos[7];
+    const fourRegionName = datos[7].value;
     const fourRegionNameSelector = regionName(datos[7].value);
     const fourRegionNumber = datos[8].value;
 
@@ -36,6 +36,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 
     const sixRegionName = datos[11].value;
     const sixRegionNameSelector = regionName(datos[11].value);
+    value;
     const sixRegionNumber = datos[12].value;
 
     const colorProduct = orderInfo.name.split('- ').pop().split('/')[0].toString();
