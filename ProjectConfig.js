@@ -20,7 +20,7 @@ module.exports = env = (config, req) => {
             host: config === "dev" ? "https://www.moolab.ml/" : "https://www.moolab.ml/",
         };
 
-        console.log(order.properties);
+        // console.log(order.properties);
         await printfullSelected(id, env, itemsNumber, order.properties, nameFile, orderInfo)
     });
 };

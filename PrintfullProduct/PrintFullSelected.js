@@ -37,7 +37,7 @@ module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderI
             break;
         case  "1860994760747":
             console.log("Tote red test".blue);
-            toteRed(env, itemsNumber, properties, nameFile, orderInfo);
+            toteYellow(env, itemsNumber, properties, nameFile, orderInfo);
             break;
         case "1251069329451":
             console.log("Mug Helix".blue);
