@@ -151,10 +151,16 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
             return "43px";
         }
     };
-
+    console.log("1");
     const browser = await puppeteer.launch();
+    console.log("2");
     const page = await browser.newPage();
-    await page.setContent(`
+    console.log("3");
+
+    const html = "";
+
+    try {
+        await page.setContent(`
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -370,13 +376,19 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </script>
 </body>
 </html>
-`);
+`, {waitUntil: 'load', timeout: 0});
+    } catch (e) {
+        console.log(e)
+    }
 
+    console.log("4");
     await page.setViewport({
         width: 1632,
         height: 3168,
         deviceScaleFactor: 3,
     });
+    console.log("5");
     await page.screenshot({path: `public/${name}.png`});
+    console.log("6");
     await browser.close();
 };

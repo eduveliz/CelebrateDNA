@@ -79,7 +79,8 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         deviceScaleFactor: 3,
     });
 
-    await page.setContent(`<!DOCTYPE html>
+    try {
+        await page.setContent(`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -236,7 +237,11 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </div>
 </body>
 </html>
-`);
+`, {waitUntil: 'load', timeout: 0})
+    } catch (e) {
+        console.log(e)
+    }
+
     await page.evaluate(() => document.body.style.background = 'transparent');
     await page.screenshot({path: `public/${name}.png`, omitBackground: true});
     await browser.close();

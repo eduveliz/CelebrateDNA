@@ -36,7 +36,6 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 
     const sixRegionName = datos[11].value;
     const sixRegionNameSelector = regionName(datos[11].value);
-    value;
     const sixRegionNumber = datos[12].value;
 
     const colorProduct = orderInfo.name.split('- ').pop().split('/')[0].toString();
@@ -111,7 +110,9 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         deviceScaleFactor: 3,
     });
 
-    await page.setContent(`
+
+    try {
+        await page.setContent(`
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -277,7 +278,11 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </script>
 </body>
 </html>
-`);
+`, {waitUntil: 'load', timeout: 0});
+    } catch (e) {
+        console.log(e);
+    }
+
     await page.evaluate(() => document.body.style.background = 'transparent');
     await page.screenshot({path: `public/${name}.png`, omitBackground: true});
     await browser.close();

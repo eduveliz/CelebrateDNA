@@ -17,7 +17,7 @@ module.exports = env = (config, req) => {
             countryCode: config === "dev" ? "US" : shipping_address.country_code,
             zip: config === "dev" ? "91311" : shipping_address.zip,
             sku: sku,
-            host: config === "dev" ? "https://moolab.ml/" : "https://moolab.ml/",
+            host: config === "dev" ? "https://www.moolab.ml/" : "https://www.moolab.ml/",
         };
 
         console.log(order.properties);

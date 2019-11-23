@@ -36,7 +36,6 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     const nineRegionName = datos[17].value;
     const nineRegionNumber = datos[18].value;
 
-
     //Background Map
     const colorProduct = orderInfo.name.split('- ').pop().split('/')[0].toString();
     //Headline
@@ -78,7 +77,9 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     };
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.setContent(`
+
+    try {
+        await page.setContent(`
     <!DOCTYPE html> 
 <!DOCTYPE html>
 <html lang="en">
@@ -203,7 +204,11 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </div>
 </body>
 </html>
-`);
+`, {waitUntil: 'load', timeout: 0});
+
+    } catch (e) {
+        console.log(e);
+    }
 
     await page.setViewport({
         width: 1152,

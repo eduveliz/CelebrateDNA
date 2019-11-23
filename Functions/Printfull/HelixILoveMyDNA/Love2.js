@@ -56,8 +56,6 @@ module.exports = createPreview = async (propiedades) => {
             return "#B6B5B8"
         }
     };
-
-
     const fontColors = fontColor(propiedades.colorProduct);
     const font = fontStyle(propiedades.fontStyle);
     const browser = await puppeteer.launch();
@@ -67,7 +65,9 @@ module.exports = createPreview = async (propiedades) => {
         height: 1536,
         deviceScaleFactor: 3,
     });
-    await page.setContent(`<!DOCTYPE html>
+
+    try {
+        await page.setContent(`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -152,7 +152,11 @@ module.exports = createPreview = async (propiedades) => {
 </div>
 </body>
 </html>
-`);
+`, {waitUntil: 'load', timeout: 0})
+    } catch (e) {
+        console.log(e);
+    }
+
     await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };

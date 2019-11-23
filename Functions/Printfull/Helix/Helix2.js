@@ -50,7 +50,8 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         deviceScaleFactor: 3,
     });
 
-    await page.setContent(`<html lang="en">
+    try {
+        await page.setContent(`<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -176,7 +177,12 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </div>
 
 </body>
-</html>`);
+</html>`, {waitUntil: 'load', timeout: 0});
+    } catch (e) {
+        console.log(e)
+    }
+
+
     await page.evaluate(() => document.body.style.background = 'transparent');
     await page.screenshot({path: `public/${name}.png`, omitBackground: true});
     await browser.close();

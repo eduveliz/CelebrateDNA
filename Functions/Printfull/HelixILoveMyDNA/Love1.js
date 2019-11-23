@@ -62,7 +62,9 @@ module.exports = createPreview = async (propiedades) => {
         height: 1536,
         deviceScaleFactor: 3,
     });
-    await page.setContent(`<!DOCTYPE html><html lang="en">
+
+    try {
+        await page.setContent(`<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -144,7 +146,10 @@ module.exports = createPreview = async (propiedades) => {
     </div>
 </div>
 </body>
-</html>`);
+</html>`, {waitUntil: 'load', timeout: 0})
+    } catch (e) {
+        console.log(e);
+    }
     await page.screenshot({path: `previews/${name}.png`});
     await browser.close();
 };

@@ -94,7 +94,9 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.setContent(`
+
+    try {
+        await page.setContent(`
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -219,7 +221,10 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </script>
 </body>
 </html>
-`);
+`, {waitUntil: 'load', timeout: 0})
+    } catch (e) {
+        console.log(e);
+    }
 
     await page.setViewport({
         width: 1152,
