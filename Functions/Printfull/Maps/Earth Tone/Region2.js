@@ -43,7 +43,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
             return myHeritageMap;
         }
     };
-    const map = companyMap(datos[0]);
+    const map = companyMap(datos[0].value);
 
 
     fontSizeRegion = (font) => {
