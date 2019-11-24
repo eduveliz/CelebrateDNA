@@ -13,7 +13,7 @@ const myHeritageMap = require('../../../MapsSVG/MyHeritageMap');
 module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     const datos = toArray(propiedades);
     const name = nameFile;
-    //Regions  */ RegionsNamesSelectors is for Jquery/*
+
     const firstRegionName = datos[1].value;
     const firstRegionNameSelector = regionName(datos[1].value);
     const firstRegionNumber = datos[2].value;

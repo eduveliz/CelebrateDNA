@@ -20,7 +20,7 @@ module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderI
             earthMap(env, itemsNumber, properties, nameFile, orderInfo);
             break;
         case "4370898747463":
-            console.log("Earth Map Test".blue);
+            console.log("Earth Map".blue);
             earthMap(env, itemsNumber, properties, nameFile, orderInfo);
             break;
         case "1864978006059" || "1865315287083":

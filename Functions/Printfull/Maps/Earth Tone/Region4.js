@@ -12,7 +12,7 @@ const myHeritageMap = require('../../../MapsSVG/MyHeritageMap');
 
 module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     const datos = toArray(propiedades);
-    console.log(datos);
+    const name = nameFile;
     //Regions  */ RegionsNamesSelectors is for Jquery/*
     const firstRegionName = datos[1].value;
     const firstRegionNameSelector = regionName(datos[1].value);
@@ -255,6 +255,6 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         deviceScaleFactor: 3,
     });
     await page.evaluate(() => document.body.style.background = 'transparent');
-    await page.screenshot({path: `public/${nameFile}.png`, omitBackground: true});
+    await page.screenshot({path: `public/${name}.png`, omitBackground: true});
     await browser.close();
 };
