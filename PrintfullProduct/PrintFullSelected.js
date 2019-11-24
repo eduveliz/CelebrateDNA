@@ -17,7 +17,11 @@ module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderI
             break;
         case "1859442409515" || "1859617882155":
             console.log("Earth Map TT".blue);
-            return earthMap(env, itemsNumber, properties, nameFile, orderInfo);
+            earthMap(env, itemsNumber, properties, nameFile, orderInfo);
+            break;
+        case "4370898747463":
+            console.log("Earth Map Test".blue);
+            earthMap(env, itemsNumber, properties, nameFile, orderInfo);
             break;
         case "1864978006059" || "1865315287083":
             console.log("Helix Horizontal".blue);

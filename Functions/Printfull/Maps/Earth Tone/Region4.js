@@ -255,6 +255,6 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         deviceScaleFactor: 3,
     });
     await page.evaluate(() => document.body.style.background = 'transparent');
-    await page.screenshot({path: `public/${name}.png`, omitBackground: true});
+    await page.screenshot({path: `public/${nameFile}.png`, omitBackground: true});
     await browser.close();
 };
