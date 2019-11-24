@@ -107,7 +107,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     await page.setViewport({
         width: 1152,
         height: 1536,
-        deviceScaleFactor: 1,
+        deviceScaleFactor: 3,
     });
 
     try {
