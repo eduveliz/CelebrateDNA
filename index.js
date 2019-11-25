@@ -20,6 +20,9 @@ const mugMapEartSelector = require('./Functions/Previews/MapsMug/Earth Tone/eart
 const colors = require('colors');
 const cors = require('cors');
 
+const emitter = new EventEmitter();
+emitter.setMaxListeners(100);
+
 app.use(cors());
 app.use(express.static('public'));
 app.use(express.json({limit: '50mb'}));
@@ -141,6 +144,7 @@ app.post('/mugMapEart', jsonParser, function (req, res) {
 
 app.post('/printfull', jsonParser, function (req, res) {
     projectConfig("prod", req);
+    console.log( moment().format('MMMM Do YYYY, h:mm:ss a'));
     return res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
