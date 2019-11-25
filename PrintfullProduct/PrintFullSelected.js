@@ -11,11 +11,23 @@ const helixMug = require('./../PrintfullProduct/HelixMug');
 module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderInfo) => {
     console.log(id);
     switch (id) {
-        case "1857838415915" || "1859574300715" || "4349944496199":
+        case "1857838415915":
             console.log("Brigth Map TT".blue);
             return brightMap(env, itemsNumber, properties, nameFile, orderInfo);
             break;
-        case "1859442409515" || "1859617882155":
+        case "1859574300715" || "4349944496199":
+            console.log("Brigth Map TT".blue);
+            return brightMap(env, itemsNumber, properties, nameFile, orderInfo);
+            break;
+        case "4349944496199":
+            console.log("Brigth Map TT".blue);
+            return brightMap(env, itemsNumber, properties, nameFile, orderInfo);
+            break;
+        case "1859442409515":
+            console.log("Earth Map TT".blue);
+            earthMap(env, itemsNumber, properties, nameFile, orderInfo);
+            break;
+        case "1859617882155":
             console.log("Earth Map TT".blue);
             earthMap(env, itemsNumber, properties, nameFile, orderInfo);
             break;
@@ -23,19 +35,35 @@ module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderI
             console.log("Earth Map".blue);
             earthMap(env, itemsNumber, properties, nameFile, orderInfo);
             break;
-        case "1864978006059" || "1865315287083":
+        case "1864978006059":
             console.log("Helix Horizontal".blue);
             return helix(env, itemsNumber, properties, nameFile, orderInfo);
             break;
-        case "1865318268971" || "1864993439787":
+        case "1865315287083":
+            console.log("Helix Horizontal".blue);
+            return helix(env, itemsNumber, properties, nameFile, orderInfo);
+            break;
+        case "1865318268971":
             console.log("Helix Vertical".blue);
             return helixVertical(env, itemsNumber, properties, nameFile, orderInfo);
             break;
-        case "1865350643755" || "1865381838891":
+        case "1864993439787":
+            console.log("Helix Vertical".blue);
+            return helixVertical(env, itemsNumber, properties, nameFile, orderInfo);
+            break;
+        case "1865350643755" :
             console.log("Helix Love ".blue);
             helixLove(env, itemsNumber, properties, nameFile, orderInfo);
             break;
-        case "1860907204651" || "4317967155271":
+        case "1865381838891":
+            console.log("Helix Love ".blue);
+            helixLove(env, itemsNumber, properties, nameFile, orderInfo);
+            break;
+        case "1860907204651":
+            console.log("Tote Yellow test".blue);
+            toteYellow(env, itemsNumber, properties, nameFile, orderInfo);
+            break;
+        case "4317967155271":
             console.log("Tote Yellow test".blue);
             toteYellow(env, itemsNumber, properties, nameFile, orderInfo);
             break;
