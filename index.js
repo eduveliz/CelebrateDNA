@@ -18,10 +18,9 @@ const RegionSelector = require('./Functions/Previews/Totes/Black/RegionSelector'
 const mugMapSelector = require('./Functions/Previews/MapsMug/BrigthMaps/ttPreviewSelector');
 const mugMapEartSelector = require('./Functions/Previews/MapsMug/Earth Tone/earthPreviewSelector');
 const colors = require('colors');
-const cors = require('cors');
+const cors = require('cors')
 
-const emitter = new EventEmitter();
-emitter.setMaxListeners(100);
+process.setMaxListeners(Infinity);
 
 app.use(cors());
 app.use(express.static('public'));
