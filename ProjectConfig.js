@@ -2,10 +2,10 @@ const printfullSelected = require('./PrintfullProduct/PrintFullSelected.js');
 
 module.exports = env = (config, req) => {
     const {line_items, shipping_address} = req.body;
-    line_items.map(async order => {
+    line_items.map(async (order, index) => {
         const orderInfo = order;
         const itemsNumber = order.properties;
-        const nameFile = Date.now();
+        const nameFile = Date.now() + index;
         const id = order.product_id.toString();
         const sku = order.sku;  // line_items[0].title.split('- ')[1] === "11oz" ? "1320" : "4830";
 

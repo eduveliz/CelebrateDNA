@@ -20,7 +20,7 @@ const mugMapEartSelector = require('./Functions/Previews/MapsMug/Earth Tone/eart
 const colors = require('colors');
 const cors = require('cors')
 
-process.setMaxListeners(Infinity);
+process.setMaxListeners(100);
 
 app.use(cors());
 app.use(express.static('public'));

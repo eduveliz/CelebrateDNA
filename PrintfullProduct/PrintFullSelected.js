@@ -25,15 +25,15 @@ module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderI
             break;
         case "1859442409515":
             console.log("Earth Map TT".blue);
-            earthMap(env, itemsNumber, properties, nameFile, orderInfo);
+            return earthMap(env, itemsNumber, properties, nameFile, orderInfo);
             break;
         case "1859617882155":
             console.log("Earth Map TT".blue);
-            earthMap(env, itemsNumber, properties, nameFile, orderInfo);
+            return earthMap(env, itemsNumber, properties, nameFile, orderInfo);
             break;
         case "4370898747463":
             console.log("Earth Map".blue);
-            earthMap(env, itemsNumber, properties, nameFile, orderInfo);
+            return earthMap(env, itemsNumber, properties, nameFile, orderInfo);
             break;
         case "1864978006059":
             console.log("Helix Horizontal".blue);
@@ -53,23 +53,23 @@ module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderI
             break;
         case "1865350643755" :
             console.log("Helix Love ".blue);
-            helixLove(env, itemsNumber, properties, nameFile, orderInfo);
+            return helixLove(env, itemsNumber, properties, nameFile, orderInfo);
             break;
         case "1865381838891":
             console.log("Helix Love ".blue);
-            helixLove(env, itemsNumber, properties, nameFile, orderInfo);
+            return helixLove(env, itemsNumber, properties, nameFile, orderInfo);
             break;
         case "1860907204651":
             console.log("Tote Yellow test".blue);
-            toteYellow(env, itemsNumber, properties, nameFile, orderInfo);
+            return toteYellow(env, itemsNumber, properties, nameFile, orderInfo);
             break;
         case "4317967155271":
             console.log("Tote Yellow test".blue);
-            toteYellow(env, itemsNumber, properties, nameFile, orderInfo);
+            return toteYellow(env, itemsNumber, properties, nameFile, orderInfo);
             break;
         case  "1860994760747":
             console.log("Tote red test".blue);
-            toteYellow(env, itemsNumber, properties, nameFile, orderInfo);
+            return toteYellow(env, itemsNumber, properties, nameFile, orderInfo);
             break;
         case "1251069329451":
             console.log("Mug Helix".blue);
