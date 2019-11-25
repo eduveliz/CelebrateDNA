@@ -10,12 +10,14 @@ const helixMug = require('./../PrintfullProduct/HelixMug');
 
 module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderInfo) => {
     console.log(id);
-    switch (id) {
+
+    try {
+        switch (id) {
         case "1857838415915":
             console.log("Brigth Map TT".blue);
             return brightMap(env, itemsNumber, properties, nameFile, orderInfo);
             break;
-        case "1859574300715" || "4349944496199":
+            case "1859574300715":
             console.log("Brigth Map TT".blue);
             return brightMap(env, itemsNumber, properties, nameFile, orderInfo);
             break;
@@ -83,5 +85,8 @@ module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderI
             console.log("Tote Bold".blue);
             return toteBold(env, itemsNumber, properties, nameFile, orderInfo);
             break;
+        }
+    } catch (e) {
+        console.log(e)
     }
 };

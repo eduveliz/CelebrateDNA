@@ -86,6 +86,11 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
+    await page.setViewport({
+        width: 1152,
+        height: 1536,
+        deviceScaleFactor: 3,
+    });
 
     try {
         await page.setContent(`
@@ -208,11 +213,6 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         console.log(e);
     }
 
-    await page.setViewport({
-        width: 1152,
-        height: 1536,
-        deviceScaleFactor: 3,
-    });
     await page.evaluate(() => document.body.style.background = 'transparent');
     await page.screenshot({path: `public/${name}.png`, omitBackground: true});
     await browser.close();

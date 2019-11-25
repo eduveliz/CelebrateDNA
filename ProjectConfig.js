@@ -5,7 +5,7 @@ module.exports = env = (config, req) => {
     line_items.map(async (order, index) => {
         const orderInfo = order;
         const itemsNumber = order.properties;
-        const nameFile = Date.now() + index;
+        const nameFile = Date.now() + "z" + index;
         const id = order.product_id.toString();
         const sku = order.sku;  // line_items[0].title.split('- ')[1] === "11oz" ? "1320" : "4830";
 
@@ -20,6 +20,10 @@ module.exports = env = (config, req) => {
             host: config === "dev" ? "https://www.moolab.ml/" : "https://www.moolab.ml/",
         };
 
-        await printfullSelected(id, env, itemsNumber, order.properties, nameFile, orderInfo)
+        try {
+            await printfullSelected(id, env, itemsNumber, order.properties, nameFile, orderInfo)
+        } catch (e) {
+            console.log(e)
+        }
     });
 };
