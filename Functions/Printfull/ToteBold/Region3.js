@@ -243,13 +243,13 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
    </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="height:33in;width: 17in;background-color: black; align-items: center;text-align: center;justify-content: center">
+<body style="height:33in;width: 17in;background-color: black; align-items: center;text-align: center;justify-content: center">  
 <div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "4in"};">  
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
-
-<div style="margin-top: 50px">
+    
+<div style="margin-top: 90px">
     <div style="display: flex; justify-content: space-around;margin-right: 15px">
         <div class="fontColorRegion" style="height:60px; width:100%;border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
         ${firstRegionNumber}%

@@ -279,7 +279,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     ${map}
 </div>
 
-<div style="margin-top: 50px;margin-right: 20px">
+<div style="margin-top: 90px;margin-right: 20px">
     <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber}%

@@ -10,7 +10,6 @@ const helixMug = require('./../PrintfullProduct/HelixMug');
 
 module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderInfo) => {
     console.log(id);
-
     try {
         switch (id) {
         case "1857838415915":

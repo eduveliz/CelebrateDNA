@@ -121,10 +121,10 @@ module.exports = createPreview = async (propiedades) => {
 
     compassHeadlineBottom = () => {
         if (font === "Noteworthy") {
-            return "-2px";
+            return "-1px";
         }
         if (font === "MyriadPro-Bold") {
-            return "4px";
+            return "2px";
         }
         if (font === "Funnier") {
             return "5px"
