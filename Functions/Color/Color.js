@@ -55,5 +55,8 @@ module.exports = colorProduct = (colorSelected) => {
         case "Athletic Heather":
             return color = "#C5C5C7";
             break;
+        case "StormGrey":
+            return fontColor = "#9E9FA0";
+            break;
     }
 };
