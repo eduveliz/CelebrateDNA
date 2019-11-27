@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
 const fontStyle = require('../../FontStyle/FontStyle');
-const fontColor = require('../../FontStyle/FontStyle');
+const fontColor = require('../../FontColor/FontColor');
 const colorProductSelect = require('../../Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
@@ -20,6 +20,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 
     //Background Map
     const colorProduct = orderInfo.name.split('- ').pop().split('/')[0].toString();
+    console.log("test",fontColor(colorProduct));
 //Headline
 
     const headline = datos[7].value === "Personalized headline" ? datos[8].value : datos[7].value;
@@ -39,15 +40,6 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
             return "52pt"
         }
     };
-
-    colorFont = () => {
-        if (colorProduct === "Navy " || colorProduct === "Black " || colorProduct === "Steel Blue ") {
-            return "White"
-        } else {
-            return "#58585B"
-        }
-    };
-
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -90,7 +82,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         font-size: ${fontSize(font)};
         font-family: ${font};
         text-align: center;
-        color:${colorFont(font)}
+        color:${fontColor(colorProduct)}
     }
     
   @font-face {
@@ -155,13 +147,13 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         <img style="width: 7.14in;height: 12.92in" src="https://moolab.ml/Twister.png">
     </div>
     <div class="regions">
-        <div style="margin-left: 10%;color:${colorFont(font)}; flex: 1; width: 750px;height: 40px">
+        <div style="margin-left: 10%;color:${fontColor(colorProduct)}; flex: 1; width: 750px;height: 40px">
             ${firstRegionName} ${firstRegionNumber}%
         </div>
-        <div style="margin-left:-15%; color: ${colorFont(font)};flex: 1;width: 750px;height: 40px">
+        <div style="margin-left:-15%; color: ${fontColor(colorProduct)};flex: 1;width: 750px;height: 40px">
              ${secondRegionName} ${secondRegionNumber}%
         </div>
-        <div style="margin-left: -5%;color:${colorFont(font)};flex: 1;width: 750px;height: 40px">
+        <div style="margin-left: -5%;color:${fontColor(colorProduct)};flex: 1;width: 750px;height: 40px">
             ${threeRegionName} ${threeRegionNumber}%
         </div>
     </div>

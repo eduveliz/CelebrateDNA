@@ -34,6 +34,12 @@ module.exports = fontColor = (colorSelected) => {
         case "Steel Blue":
             return fontColor = "#FFFFFF";
             break;
+        case "Sport Grey":
+            return fontColor = "#58585B";
+            break;
+        case "Sport Grey ":
+            return fontColor = "#58585B";
+            break;
         case "Steel Blue ":
             return fontColor = "#FFFFFF";
             break;
@@ -95,6 +101,12 @@ module.exports = fontColor = (colorSelected) => {
             return fontColor = "#BD4537";
             break;
         case "WatermelonHeart":
+            return fontColor = "#DB6679";
+            break;
+        case "Black":
+            return fontColor = "#DB6679";
+            break;
+        case "Black ":
             return fontColor = "#DB6679";
             break;
 

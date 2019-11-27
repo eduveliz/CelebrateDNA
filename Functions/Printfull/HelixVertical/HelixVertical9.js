@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
 const fontStyle = require('../../FontStyle/FontStyle');
-const fontColor = require('../../FontStyle/FontStyle');
+const fontColor = require('../../FontColor/FontColor');
 const colorProductSelect = require('../../Color/Color');
 
 module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
@@ -106,7 +106,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
      font-size: ${fontSize(font)};
     font-family: ${font};
     text-align: center;
-    color:${colorFont(font)}
+        color:${fontColor(colorProduct)}
     }
     
   @font-face {
@@ -171,31 +171,31 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         <img style="width: 7.14in;height: 12.92in" src="https://moolab.ml/Twister.png">
     </div>
     <div class="regions">
-        <div style="margin-left: 10%;color:${colorFont(font)}; flex: 1; width: 700px;height: 40px">
+        <div style="margin-left: 10%;color:${fontColor(colorProduct)}; flex: 1; width: 700px;height: 40px">
             ${firstRegionName} ${firstRegionNumber}%
         </div>
-        <div style="margin-left:-4%;color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left:-4%;color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
              ${secondRegionName} ${secondRegionNumber}%
         </div>
-        <div style="margin-left: -15%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left: -15%;  color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
             ${threeRegionName} ${threeRegionNumber}%
         </div>
-        <div style="margin-left: -25%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left: -25%;  color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
             ${fourRegionName} ${fourRegionNumber}%
         </div>
-        <div style="margin-left: -20%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left: -20%;  color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
             ${fiveRegionName} ${fiveRegionNumber}%
         </div>
-        <div style="margin-left: -15%;   color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left: -15%;   color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
             ${sixRegionName} ${sixRegionNumber}%
         </div>
-        <div style="margin-left: -10%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left: -10%;  color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
             ${sevenRegionName} ${sevenRegionNumber}%
         </div>
-        <div style="margin-left: -5%;  color:${colorFont(font)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left: -5%;  color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
             ${eightRegionName} ${eightRegionNumber}%
         </div>
-        <div style="margin-left: 5%;color:${colorFont(font)};flex: 1;width: 700px;height: 40px"> 
+        <div style="margin-left: 5%;color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px"> 
             ${nineRegionName} ${nineRegionNumber}%
         </div>
     </div>
