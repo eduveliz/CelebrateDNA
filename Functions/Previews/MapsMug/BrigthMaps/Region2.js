@@ -115,6 +115,19 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+
+    compassHeadlineBottom = () => {
+        if (font === "Noteworthy") {
+            return "-2px";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "4px";
+        }
+        if (font === "Funnier") {
+            return "5px"
+        }
+    };
+
     compasHeadline = () => {
         return font === "Funnier" ? "11pt" : "17pt";
     };
@@ -152,7 +165,7 @@ module.exports = createPreview = async (propiedades) => {
         align-items: center;
         margin-left: -8px;
         text-align: center;
-        margin-bottom:${compassHeadline()} ;
+        margin-bottom:${compassHeadlineBottom()} ;
         font-size: ${compasHeadline()};
         color: #6D6E70;
     }
