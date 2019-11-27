@@ -55,7 +55,7 @@ module.exports = colorProduct = (colorSelected) => {
         case "Athletic Heather":
             return color = "#C5C5C7";
             break;
-        case "StormGrey":
+        case "Storm Grey":
             return color = "#9E9FA0";
             break;
     }
