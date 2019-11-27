@@ -104,10 +104,10 @@ module.exports = fontColor = (colorSelected) => {
             return fontColor = "#DB6679";
             break;
         case "Black":
-            return fontColor = "#DB6679";
+            return fontColor = "#FFFFFF";
             break;
         case "Black ":
-            return fontColor = "#DB6679";
+            return fontColor = "#FFFFFF";
             break;
 
     }
