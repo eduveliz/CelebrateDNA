@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
 const fontStyle = require('../../FontStyle/FontStyle');
-const fontColor = require('../../FontStyle/FontStyle');
+const fontColor = require('../../FontColor/FontColor');
 const colorProductSelect = require('../../Color/Color');
 
 module.exports = createPreview = async (propiedades) => {
@@ -87,7 +87,7 @@ module.exports = createPreview = async (propiedades) => {
         font-size: ${fontSize(font)};
         font-family: ${font};
         text-align: center;
-        color:${colorFont(font)}
+        color:${fontColor(colorProduct)}
     }
     
   @font-face {
@@ -151,13 +151,13 @@ module.exports = createPreview = async (propiedades) => {
         <img style="width: 7.14in;height: 12.92in" src="https://moolab.ml/Twister.png">
     </div>
     <div class="regions">
-        <div style="margin-left: 10%;color:${colorFont(font)}; flex: 1; width: 750px;height: 40px">
+        <div style="margin-left: 10%;color:${fontColor(colorProduct)}; flex: 1; width: 750px;height: 40px">
             ${firstRegionName} ${firstRegionNumber}%
         </div>
-        <div style="margin-left:-15%; color: ${colorFont(font)};flex: 1;width: 750px;height: 40px">
+        <div style="margin-left:-15%; color: ${fontColor(colorProduct)};flex: 1;width: 750px;height: 40px">
              ${secondRegionName} ${secondRegionNumber}%
         </div>
-        <div style="margin-left: -5%;color:${colorFont(font)};flex: 1;width: 750px;height: 40px">
+        <div style="margin-left: -5%;color:${fontColor(colorProduct)};flex: 1;width: 750px;height: 40px">
             ${threeRegionName} ${threeRegionNumber}%
         </div>
     </div>
