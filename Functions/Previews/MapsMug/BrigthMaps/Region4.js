@@ -59,7 +59,7 @@ module.exports = createPreview = async (propiedades) => {
             return size === "11oz" ? "15pt" : "11pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "13pt" : "11pt";
+            return size === "11oz" ? "15pt" : "11pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "11pt" : "8pt";
@@ -125,7 +125,7 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
     compasHeadline = () => {
-        return font === "Funnier" ? "11pt" : "15pt";
+        return font === "Funnier" ? "11pt" : "17pt";
     };
 
     const browser = await puppeteer.launch();
@@ -163,8 +163,9 @@ module.exports = createPreview = async (propiedades) => {
     .perosnalHeadline{
         font-family: ${font} ;
         align-items: center;
+        margin-left: -8px;
         text-align: center;
-        margin-bottom:${font === "Funnier" ? "5px" : "1px"} ;
+        margin-bottom:${compassHeadline()} ;
         font-size: ${compasHeadline()};
         color: #6D6E70;
     }
@@ -236,7 +237,7 @@ module.exports = createPreview = async (propiedades) => {
     </div>
 
 <div>
-    <div style="display: flex; justify-content: space-around;margin-right: 20px">
+    <div style="display: flex; justify-content: space-around;margin-right: 8px;margin-top: ${font === "Funnier" || font === "MyriadPro-Bold" ? "4pt" : "0pt"}">
         <div class='fontColorNumber' style="color:white; width:100%;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber}%
         </div>
@@ -250,17 +251,17 @@ module.exports = createPreview = async (propiedades) => {
             ${fourRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-right: 20px">
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "0"}">
+    <div style="display: flex; justify-content: space-around;margin-right: 8px">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "-2.5pt"}">
             <div class='fontColor'>${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "0"}">
+        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "-2.5pt"}">
             <div class='fontColor'>${secondRegionName}</div>
         </div>
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "0"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "-2.5pt"}">
             <div class='fontColor'>${threeRegionName}</div>
         </div>
-        <div style=" width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "0"}">
+        <div style=" width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "-2.5pt"}">
             <div class='fontColor'>${fourRegionName}</div>
         </div>
     </div>
@@ -291,7 +292,7 @@ module.exports = createPreview = async (propiedades) => {
 `);
 
     await page.setViewport({
-        width: 864,
+        width: 873,
         height: 350,
         deviceScaleFactor: 1,
     });

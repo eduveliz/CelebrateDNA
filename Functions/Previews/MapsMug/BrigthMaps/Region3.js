@@ -52,7 +52,7 @@ module.exports = createPreview = async (propiedades) => {
             return size === "11oz" ? "13pt" : "14pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "12pt" : "14pt";
+            return size === "11oz" ? "14pt" : "14pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "11pt" : "10pt";
@@ -61,7 +61,7 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "10pt" : "10pt";
+            return size === "11oz" ? "11pt" : "10pt";
         }
         if (font === "MyriadPro-Bold") {
             return size === "11oz" ? "14pt" : "14pt";
@@ -119,7 +119,7 @@ module.exports = createPreview = async (propiedades) => {
     };
 
     compasHeadline = () => {
-        return font === "Funnier" ? "11pt" : "15pt";
+        return font === "Funnier" ? "11pt" : "17pt";
     };
 
     const browser = await puppeteer.launch();
@@ -161,8 +161,9 @@ module.exports = createPreview = async (propiedades) => {
     .perosnalHeadline{
         font-family: ${font} ;
         align-items: center;
+        margin-left: -8px;
         text-align: center;
-        margin-bottom:${font === "Funnier" ? "5px" : "1px"} ;
+        margin-bottom:${compassHeadline()} ;
         font-size: ${compasHeadline()};
         color: #6D6E70;
     }
@@ -248,13 +249,13 @@ module.exports = createPreview = async (propiedades) => {
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "0pt"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 5pt" : "0pt"}">
             <div class="fontColor" style="text-align: center">${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "0pt"}">
+        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 5pt" : "0pt"}">
             <div class="fontColor" style="text-align: center">${secondRegionName}</div>
         </div>
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "0pt"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 5pt" : "0pt"}">
             <div class="fontColor"  style="text-align: center">${threeRegionName}</div>
         </div>
     </div>

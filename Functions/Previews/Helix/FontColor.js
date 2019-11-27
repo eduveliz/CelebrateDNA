@@ -11,6 +11,10 @@ module.exports = fontColor = (color) => {
         return "white";
     } else if (color === "Steel Blue") {
         return "white";
+    } else if (color === "Indigo Blue") {
+        return "white";
+    } else if (color === "Indigo Blue ") {
+        return "white";
     } else {
         return "#58585B";
     }

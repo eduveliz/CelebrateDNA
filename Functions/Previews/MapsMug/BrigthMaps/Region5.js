@@ -74,7 +74,7 @@ module.exports = createPreview = async (propiedades) => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
-        width: 864,
+        width: 873,
         height: 350,
         deviceScaleFactor: 1,
     });
@@ -84,7 +84,7 @@ module.exports = createPreview = async (propiedades) => {
             return size === "11oz" ? "12pt" : "9pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "12pt" : "9pt";
+            return size === "11oz" ? "14pt" : "9pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "10pt" : "7pt";
@@ -135,8 +135,20 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+    compassHeadlineBottom = () => {
+        if (font === "Noteworthy") {
+            return "-2px";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "4px";
+        }
+        if (font === "Funnier") {
+            return "5px"
+        }
+    };
+
     compasHeadline = () => {
-        return font === "Funnier" ? "11pt" : "15pt";
+        return font === "Funnier" ? "11pt" : "17pt";
     };
     await page.setContent(`
     <!DOCTYPE html>
@@ -171,8 +183,9 @@ module.exports = createPreview = async (propiedades) => {
     .perosnalHeadline{
         font-family: ${font} ;
         align-items: center;
+        margin-left: -8px;
         text-align: center;
-        margin-bottom:${font === "Funnier" ? "5px" : "-2px"} ;
+        margin-bottom:${compassHeadlineBottom()};
         font-size: ${compasHeadline()};
         color: #6D6E70;
     }
@@ -243,7 +256,7 @@ module.exports = createPreview = async (propiedades) => {
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
 
-<div style="margin-right: 14px">
+<div style="margin-right: 8px;margin-top: ${font === "Funnier" || font === "MyriadPro-Bold" ? "4pt" : "4pt"}">
     <div style="display: flex; justify-content: space-around;">
         <div class='fontColorNumber' style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber}%

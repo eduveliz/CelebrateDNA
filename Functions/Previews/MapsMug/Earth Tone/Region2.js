@@ -53,7 +53,7 @@ module.exports = createPreview = async (propiedades) => {
             return size === "11oz" ? "14pt" : "14pt";
         }
         if (font === "Funnier") {
-            return size === "11oz" ? "14pt" : "10pt";
+            return size === "11oz" ? "12pt" : "10pt";
         }
     };
 

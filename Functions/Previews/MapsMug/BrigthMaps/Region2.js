@@ -52,7 +52,7 @@ module.exports = createPreview = async (propiedades) => {
             return size === "11oz" ? "14pt" : "14pt";
         }
         if (font === "Funnier") {
-            return size === "11oz" ? "13pt" : "10pt";
+            return size === "11oz" ? "12pt" : "10pt";
         }
     };
 
@@ -116,7 +116,7 @@ module.exports = createPreview = async (propiedades) => {
     };
 
     compasHeadline = () => {
-        return font === "Funnier" ? "11pt" : "15pt";
+        return font === "Funnier" ? "11pt" : "17pt";
     };
 
     const browser = await puppeteer.launch();
@@ -148,10 +148,11 @@ module.exports = createPreview = async (propiedades) => {
         font-size:${fontHeadline()};
     }
     .perosnalHeadline{
-        font-family: ${font};
+        font-family: ${font} ;
         align-items: center;
+        margin-left: -8px;
         text-align: center;
-        margin-bottom:${font === "Funnier" ? "5px" : "1px"} ;
+        margin-bottom:${compassHeadline()} ;
         font-size: ${compasHeadline()};
         color: #6D6E70;
     }
@@ -232,7 +233,7 @@ module.exports = createPreview = async (propiedades) => {
             ${secondRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 2.5pt" : "0pt"}">
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? "4pt" : "0pt"}">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
             <div class="fontColor" >${firstRegionName}</div>
         </div>
