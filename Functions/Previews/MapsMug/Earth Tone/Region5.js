@@ -74,10 +74,22 @@ module.exports = createPreview = async (propiedades) => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
-        width: 864,
+        width: 873,
         height: 350,
         deviceScaleFactor: 1,
     });
+
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return size === "11oz" ? "12pt" : "9pt";
+        }
+        if (font === "MyriadPro-Bold") {
+            return size === "11oz" ? "14pt" : "9pt";
+        }
+        if (font === "Funnier") {
+            return size === "11oz" ? "10pt" : "7pt";
+        }
+    };
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
@@ -91,21 +103,10 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
-    fontSizeRegion = () => {
-        if (font === "Noteworthy") {
-            return size === "11oz" ? "10pt" : "9pt";
-        }
-        if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "10pt" : "9pt";
-        }
-        if (font === "Funnier") {
-            return size === "11oz" ? "8pt" : "7pt";
-        }
-    };
-
     compassTop = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "1.8in"
+            let down = font !== "Funnier" ? "1.8in" : "1.9in";
+            return down;
         } else {
             return "1.8in"
         }
@@ -115,38 +116,40 @@ module.exports = createPreview = async (propiedades) => {
         if (propiedades.headLine === "First name / DNA") {
             return "0.52in"
         } else {
-            return "0.52in"
+            return "0.42in"
         }
     };
 
     compassH = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "90px"
+            return "90.8736px"
         } else {
             return "115px"
         }
     };
     compassW = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "90px"
+            return "69.3984px"
         } else {
-            return "115px"
+            return "80px"
+        }
+    };
+
+    compassHeadlineBottom = () => {
+        if (font === "Noteworthy") {
+            return "-1px";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "2px";
+        }
+        if (font === "Funnier") {
+            return "5px"
         }
     };
 
     compasHeadline = () => {
         return font === "Funnier" ? "13pt" : "17pt";
     };
-
-    compassTop = () => {
-        if (propiedades.headLine === "First name / DNA") {
-            let down = font !== "Funnier" ? "1.8in" : "1.9in";
-            return down;
-        } else {
-            return "1.9in"
-        }
-    };
-
     await page.setContent(`
     <!DOCTYPE html>
 <html lang="en">
@@ -158,7 +161,7 @@ module.exports = createPreview = async (propiedades) => {
        color: #6D6E70;
         font-family:${font};
         text-align: center;
-        font-size: ${fontSizeRegion()};
+        font-size: ${fontSizeRegion(font)};
     }
     
     .fontColorNumber {
@@ -180,8 +183,9 @@ module.exports = createPreview = async (propiedades) => {
     .perosnalHeadline{
         font-family: ${font} ;
         align-items: center;
+        margin-left: -8px;
         text-align: center;
-        margin-bottom:${font === "Funnier" ? "5px" : "1px"} ;
+        margin-bottom:${compassHeadlineBottom()};
         font-size: ${compasHeadline()};
         color: #6D6E70;
     }
@@ -247,13 +251,12 @@ module.exports = createPreview = async (propiedades) => {
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
-
-    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: ${compassLeft()}">
+    <div style="position: absolute;top: ${compassTop()}; left: ${compassLeft()};">
           <div class="perosnalHeadline">${personalHeadline}</div>
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
 
-<div style="margin-right: 14px">
+<div style="margin-right: 8px;margin-top: ${font === "Funnier" || font === "MyriadPro-Bold" ? "4pt" : "4pt"}">
     <div style="display: flex; justify-content: space-around;">
         <div class='fontColorNumber' style="color:white;border-radius: 20px; background-color: #616c44;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber}%

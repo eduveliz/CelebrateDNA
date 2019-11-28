@@ -45,7 +45,7 @@ module.exports = createPreview = async (propiedades) => {
     const map = companyMap(propiedades.company);
 
 
-    fontSizeRegion = () => {
+    fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
             return size === "11oz" ? "14pt" : "14pt";
         }
@@ -95,9 +95,10 @@ module.exports = createPreview = async (propiedades) => {
 
     compassTop = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "1.8in"
+            let down = font !== "Funnier" ? "1.8in" : "1.9in";
+            return down;
         } else {
-            return "1.8in"
+            return "1.9in"
         }
     };
 
@@ -111,21 +112,34 @@ module.exports = createPreview = async (propiedades) => {
 
     compassH = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "90px"
+            return "90.8736px"
         } else {
-            return "115px"
+            return "105.8736px"
         }
     };
     compassW = () => {
         if (propiedades.headLine === "First name / DNA") {
-            return "90px"
+            return "69.3984px"
         } else {
-            return "115px"
+            return "105.3984px"
         }
     };
 
+    compassHeadlineBottom = () => {
+        if (font === "Noteworthy") {
+            return "-1px";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "2px";
+        }
+        if (font === "Funnier") {
+            return "5px"
+        }
+    };
+
+
     compasHeadline = () => {
-        return font === "Funnier" ? "13pt" : "17pt";
+        return font === "Funnier" ? "11pt" : "17pt";
     };
 
     const browser = await puppeteer.launch();
@@ -242,7 +256,7 @@ module.exports = createPreview = async (propiedades) => {
             ${secondRegionNumber}%
         </div>
     </div>
-  <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 2pt" : "0pt"}">
+  <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 4pt" : "0pt"}">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
             <div class="fontColor" >${firstRegionName}</div>
         </div>

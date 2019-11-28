@@ -48,28 +48,27 @@ module.exports = createPreview = async (propiedades) => {
     };
     const map = companyMap(propiedades.company);
 
+    fontSizeRegion = (font) => {
+        if (font === "Noteworthy") {
+            return size === "11oz" ? "13pt" : "14pt";
+        }
+        if (font === "MyriadPro-Bold") {
+            return size === "11oz" ? "14pt" : "14pt";
+        }
+        if (font === "Funnier") {
+            return size === "11oz" ? "11pt" : "10pt";
+        }
+    };
+
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "10pt" : "10pt";
+            return size === "11oz" ? "11pt" : "10pt";
         }
         if (font === "MyriadPro-Bold") {
             return size === "11oz" ? "14pt" : "14pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "10pt" : "10pt"
-        }
-    };
-
-
-    fontSizeRegion = () => {
-        if (font === "Noteworthy") {
-            return size === "11oz" ? "12pt" : "14pt";
-        }
-        if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "12pt" : "14pt";
-        }
-        if (font === "Funnier") {
-            return size === "11oz" ? "10pt" : "10pt";
         }
     };
 
@@ -93,9 +92,50 @@ module.exports = createPreview = async (propiedades) => {
             let down = font !== "Funnier" ? "1.8in" : "1.9in";
             return down;
         } else {
-            return "1.8in"
+            return "1.9in"
         }
     };
+
+    compassLeft = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "0.52in"
+        } else {
+            return "0.42in"
+        }
+    };
+
+    compassH = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "90.8736px"
+        } else {
+            return "105.8736px"
+        }
+    };
+    compassW = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            return "69.3984px"
+        } else {
+            return "105.3984px"
+        }
+    };
+
+
+    compassHeadlineBottom = () => {
+        if (font === "Noteworthy") {
+            return "-1px";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "2px";
+        }
+        if (font === "Funnier") {
+            return "5px"
+        }
+    };
+
+    compasHeadline = () => {
+        return font === "Funnier" ? "11pt" : "17pt";
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -108,21 +148,21 @@ module.exports = createPreview = async (propiedades) => {
     .fontColor {
         color: #6D6E70;
         font-family:${font} ;
-        font-size: ${fontSizeRegion()};
+        font-size: ${fontSizeRegion(font)};
     }
     
     .fontRegion {
-      font-size:${fontSizeRegion()} ;
+      font-size:${fontSizeRegion(font)} ;
       font-family:${font};
     }
     
     .fontColorNumber {
         color:${fontColor(colorProduct)};
         font-family:${font} ;
-        height: ${size === "11oz" ? "0.1788in" : "0.1788"};
-        width:${size === "11oz" ? "2.9622in" : "4.4381in"};
         border: 2px solid ${lineMaps(colorProduct)};
         font-size: ${fontSizeNumber()};
+        height: ${size === "11oz" ? "0.1788in" : "0.1788"};
+        width:${size === "11oz" ? "2.9622in" : "4.4381in"};
     }
     
     .fontColorHeadline {
@@ -135,8 +175,9 @@ module.exports = createPreview = async (propiedades) => {
     .perosnalHeadline{
         font-family: ${font} ;
         align-items: center;
+        margin-left: -8px;
         text-align: center;
-        margin-bottom:${font === "Funnier" ? "5px" : "1px"} ;
+        margin-bottom:${compassHeadlineBottom()} ;
         font-size: ${compasHeadline()};
         color: #6D6E70;
     }
@@ -204,7 +245,7 @@ module.exports = createPreview = async (propiedades) => {
     ${map}
 </div>
 
-    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: ${compassLeft()}">
+    <div style="position: absolute;top: ${compassTop()}; left: ${compassLeft()};">
           <div class="perosnalHeadline">${personalHeadline}</div>
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
@@ -223,14 +264,14 @@ module.exports = createPreview = async (propiedades) => {
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 2pt" : "0"}">
-            <div class="fontColor">${firstRegionName}</div>
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 5pt" : "0pt"}">
+            <div class="fontColor" style="text-align: center">${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 2pt" : "0"}">
-            <div class="fontColor">${secondRegionName}</div>
+        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 5pt" : "0pt"}">
+            <div class="fontColor" style="text-align: center">${secondRegionName}</div>
         </div>
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 2pt" : "0"}">
-            <div class="fontColor">${threeRegionName}</div>
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 5pt" : "0pt"}">
+            <div class="fontColor"  style="text-align: center">${threeRegionName}</div>
         </div>
     </div>
 </div>
