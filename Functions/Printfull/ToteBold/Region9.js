@@ -9,52 +9,52 @@ const companyMap = require('../../CompanyMap/CompanyMap');
 module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     const properties = toArray(propiedades);
     const name = nameFile;
-    const map = companyMap(properties[0]);
+    const map = companyMap(properties[0].value);
 
-    const firstRegionName = properties[1];
-    const firstRegionNameSelector = regionNames(properties[1]);
-    const firstRegionNumber = properties[2];
+    const firstRegionName = properties[1].value;
+    const firstRegionNameSelector = regionNames(properties[1].value);
+    const firstRegionNumber = properties[2].value;
 
-    const secondRegionName = properties[3];
-    const secondRegionNameSelector = regionNames(properties[3]);
-    const secondRegionNumber = properties[4];
+    const secondRegionName = properties[3].value;
+    const secondRegionNameSelector = regionNames(properties[3].value);
+    const secondRegionNumber = properties[4].value;
 
-    const threeRegionName = properties[5];
-    const threeRegionNameSelector = regionNames(properties[5]);
-    const threeRegionNumber = properties[6];
+    const threeRegionName = properties[5].value;
+    const threeRegionNameSelector = regionNames(properties[5].value);
+    const threeRegionNumber = properties[6].value;
 
-    const fourRegionName = properties[7];
-    const fourRegionNameSelector = regionNames(properties[7]);
-    const fourRegionNumber = properties[8];
+    const fourRegionName = properties[7].value;
+    const fourRegionNameSelector = regionNames(properties[7].value);
+    const fourRegionNumber = properties[8].value;
 
-    const fiveRegionName = properties[9];
-    const fiveRegionNameSelector = regionNames(properties[9]);
-    const fiveRegionNumber = properties[10];
+    const fiveRegionName = properties[9].value;
+    const fiveRegionNameSelector = regionNames(properties[9].value);
+    const fiveRegionNumber = properties[10].value;
 
-    const sixRegionName = properties[11];
-    const sixRegionNameSelector = regionNames(properties[11]);
-    const sixRegionNumber = properties[12];
+    const sixRegionName = properties[11].value;
+    const sixRegionNameSelector = regionNames(properties[11].value);
+    const sixRegionNumber = properties[12].value;
 
-    const sevenRegionName = properties[13];
-    const sevenRegionNameSelector = regionNames(properties[13]);
-    const sevenRegionNumber = properties[14];
+    const sevenRegionName = properties[13].value;
+    const sevenRegionNameSelector = regionNames(properties[13].value);
+    const sevenRegionNumber = properties[14].value;
 
-    const eightRegionName = properties[15];
-    const eightRegionNameSelector = regionNames(properties[15]);
-    const eightRegionNumber = properties[16];
+    const eightRegionName = properties[15].value;
+    const eightRegionNameSelector = regionNames(properties[15].value);
+    const eightRegionNumber = properties[16].value;
 
-    const nineRegionName = properties[17];
-    const nineRegionNameSelector = regionNames(properties[17]);
-    const nineRegionNumber = properties[18];
+    const nineRegionName = properties[17].value;
+    const nineRegionNameSelector = regionNames(properties[17].value);
+    const nineRegionNumber = properties[18].value;
 
-    const backgroundColor = colorBackground(properties[19]);
-    const font = fontStyle(properties[20]);
-    const statement = properties[21];
-    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[22];
-    const personalStatementTwo = statement === "Replicate the map on both sides" ? "" : properties[23];
+    const backgroundColor = colorBackground(properties[19].value);
+    const font = fontStyle(properties[20].value);
+    const statement = properties[21].value;
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[22].value;
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "" : properties[23].value;
     const personalStatementThree = statement === "Replicate the map on both sides"
         ? "The image will be duplicated on both sides of tote."
-        : properties[24];
+        : properties[24].value;
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -143,6 +143,18 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         }
     };
 
+    bottomStatementMap = () => {
+        if (font === "MyriadPro-Bold") {
+            return "2in";
+        }
+        if (font === "Funnier") {
+            return "2in";
+        }
+        if (font === "Noteworthy") {
+            return "2in";
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
@@ -151,7 +163,8 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         deviceScaleFactor: 3,
     });
 
-    await page.setContent(`
+    try {
+        await page.setContent(`
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -214,6 +227,15 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         margin-left: 1.9in;
         transform: rotate(180deg);
         margin-top:${bottomStatement()};
+    }
+    
+    .secondMap {
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        transform: rotate(180deg);
+        margin-top:${bottomStatementMap()};
+        display: ${statement === "Replicate the map on both sides" ? '' : 'none'};
     }
     
         @font-face {
@@ -340,6 +362,76 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     </div>
 </div>
 </div>
+
+
+<div class="secondMap">
+<div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3.2in"};">
+<div style="width: 100%;text-align: center;">
+    ${map}
+</div>
+
+<div style="margin-top: 90px;margin-right: 20px">
+    <div style="display: flex; justify-content: space-around;">
+        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${firstRegionNumber}%
+        </div>
+        <div class="fontColorNumber"  style="height:38px; width:100%; border-radius: 20px; background-color: #851f62;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${secondRegionNumber}%
+        </div>
+        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #68672b;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${threeRegionNumber}%
+        </div>
+        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #1b224e;align-items: center;text-align: center;display: flex;justify-content: center;">
+             ${fourRegionNumber}%
+        </div>
+        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #096f8e;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${fiveRegionNumber}%
+        </div>
+        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #823d3e;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${sixRegionNumber}%
+        </div>
+        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #350f29;align-items: center;text-align: center;display: flex;justify-content: center;">
+             ${sevenRegionNumber}%
+        </div>
+        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #a4469a;align-items: center;text-align: center;display: flex;justify-content: center;">
+             ${eightRegionNumber}%
+        </div>
+        <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #731512;align-items: center;text-align: center;display: flex;justify-content: center;">
+            ${nineRegionNumber}%
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "5pt"}">
+        <div style="height:60px; width:100%;display: flex; justify-content: center">
+            <div class='fontColor' >${firstRegionName}</div>
+        </div>
+        <div style="height:60px; width:100%;display: flex; justify-content: center">
+            <div class='fontColor' >${secondRegionName}</div>
+        </div>
+        <div style="height:60px; width:100%;display: flex; justify-content: center">
+            <div class='fontColor' >${threeRegionName}</div>
+        </div>
+        <div style="height:60px; width:100%;display: flex; justify-content: center">
+            <div class='fontColor'>${fourRegionName}</div>
+        </div>
+        <div style="height:60px; width:100%;display: flex; justify-content: center">
+            <div class='fontColor' >${fiveRegionName}</div>
+        </div>
+        <div style="height:60px; width:100%;display: flex; justify-content: center">
+            <div class='fontColor' >${sixRegionName}</div>
+        </div>
+        <div style="height:60px; width:100%;display: flex; justify-content: center">
+            <div class='fontColor' >${sevenRegionName}</div>
+        </div>
+        <div style="height:60px; width:100%;display: flex; justify-content: center">
+            <div class='fontColor' >${eightRegionName}</div>
+        </div>
+        <div style="height:60px; width:100%;display: flex; justify-content: center">
+            <div class='fontColor' >${nineRegionName}</div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
    
 <div class="secondPart">  
         <div class="fontStatement" style="width:13in;">
@@ -352,8 +444,10 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 <script>    
     $(function () {
         $(document).ready(function () {
-            $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","#BBBDC0");
-            $("#regions").attr("fill", "transparent");
+               $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","#BBBDC0");
+            $(".worldMap").attr("fill", "${backgroundColor}").attr("stroke","#BBBDC0");
+              $("#regions").attr("fill", "transparent");
+                $(".regions").attr("fill", "transparent");
             
             $("${firstRegionNameSelector}").attr("fill", "#0A3542");
             $("${firstRegionNameSelector}").attr("stroke", "#BBBDC0");
@@ -386,7 +480,10 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </script>
 </body>
 </html>
-`);
+`, {waitUntil: 'load', timeout: 0})
+    } catch (e) {
+        console.log(e);
+    }
     await page.screenshot({path: `public/${name}.png`});
     await browser.close();
 };

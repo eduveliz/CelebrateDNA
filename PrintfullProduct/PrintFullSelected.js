@@ -7,6 +7,7 @@ const toteYellow = require('./../PrintfullProduct/ToteYellowRed');
 const toteRed = require('./../PrintfullProduct/ToteRed');
 const toteBold = require('./../PrintfullProduct/ToteBold');
 const helixMug = require('./../PrintfullProduct/HelixMug');
+const mapMug = require('./../PrintfullProduct/BrigthMug');
 
 module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderInfo) => {
     console.log(id);
@@ -78,7 +79,11 @@ module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderI
             break;
         case "1208772263979":
             console.log("Mug Map".blue);
-            // helixMug(env, itemsNumber, properties, nameFile);
+            mapMug(env, itemsNumber, properties, nameFile);
+            break;
+            case "":
+                console.log("Mug Map".blue);
+                helixMug(env, itemsNumber, properties, nameFile);
             break;
         case "1859664674859":
             console.log("Tote Bold".blue);
