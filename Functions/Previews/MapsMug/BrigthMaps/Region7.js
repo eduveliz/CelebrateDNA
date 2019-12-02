@@ -147,6 +147,18 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+    regionUp = () => {
+        if (font === "Noteworthy") {
+            return "-3pt";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "5pt";
+        }
+        if (font === "Funnier") {
+            return "6pt"
+        }
+    };
+
     compasHeadline = () => {
         return font === "Funnier" ? "11pt" : "17pt";
     };
@@ -272,7 +284,7 @@ module.exports = createPreview = async (propiedades) => {
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
 
-<div style="margin-right: 8px;margin-top: ${font === "Funnier" || font === "MyriadPro-Bold" ? "4pt" : "4pt"}">
+<div style="margin-right: 8px;margin-top: ${regionUp()}">
      <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
          ${firstRegionNumber}%
@@ -297,7 +309,7 @@ module.exports = createPreview = async (propiedades) => {
         </div>
     </div>
     
-    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 2pt" : "0pt"}">
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? "3pt" : "0pt"}">
         <div style="width:100%;height:60px;display: flex; justify-content: center   ">
             <div class="fontColor" >${firstRegionName}</div>
         </div>

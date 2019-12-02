@@ -102,6 +102,21 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+    regionUp = () => {
+        if (font === "Noteworthy") {
+            return "-3pt";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "0pt";
+        }
+        if (font === "Funnier") {
+            return "4pt"
+        }
+    };
+
+    console.log(regionUp());
+
+
     compassLeft = () => {
         if (propiedades.headLine === "First name / DNA") {
             return "0.52in"

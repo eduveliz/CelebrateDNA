@@ -68,6 +68,15 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+    compassTop = () => {
+        if (propiedades.headLine === "First name / DNA") {
+            let down = font !== "Funnier" ? "1.8in" : "1.9in";
+            return down;
+        } else {
+            return "1.8in"
+        }
+    };
+
     fontHeadline = () => {
         if (font === "Noteworthy") {
             return "110px"
@@ -114,6 +123,20 @@ module.exports = createPreview = async (propiedades) => {
             return "105.3984px"
         }
     };
+
+    regionUp = () => {
+        if (font === "Noteworthy") {
+            return "-3pt";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "0pt";
+        }
+        if (font === "Funnier") {
+            return "4pt"
+        }
+    };
+
+    console.log(regionUp());
 
 
     compassHeadlineBottom = () => {
@@ -246,7 +269,7 @@ module.exports = createPreview = async (propiedades) => {
             ${secondRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? "4pt" : "0pt"}">
+    <div style="display: flex; justify-content: space-around;margin-top:${regionUp()}">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
             <div class="fontColor" >${firstRegionName}</div>
         </div>

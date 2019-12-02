@@ -119,6 +119,20 @@ module.exports = createPreview = async (propiedades) => {
     };
 
 
+    regionUp = () => {
+        if (font === "Noteworthy") {
+            return "-3pt";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "0pt";
+        }
+        if (font === "Funnier") {
+            return "4pt"
+        }
+    };
+
+    console.log(regionUp());
+
     compassHeadlineBottom = () => {
         if (font === "Noteworthy") {
             return "-1px";
@@ -249,6 +263,7 @@ module.exports = createPreview = async (propiedades) => {
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
     
+
 <div>
     <div style="display: flex; justify-content: space-around;margin-right: 15px">
         <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
