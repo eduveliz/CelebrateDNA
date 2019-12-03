@@ -10,14 +10,14 @@ module.exports = env = (config, req) => {
         const sku = order.sku;  // line_items[0].title.split('- ')[1] === "11oz" ? "1320" : "4830";
 
         const env = {
-            name: config === "dev" ? "EduardoTest" : shipping_address.first_name,
+            name: config === "dev" ? "Mug test" : shipping_address.first_name,
             address1: config === "dev" ? "19749 Dearborn St" : shipping_address.address1,
             city: config === "dev" ? "Chatsworth" : shipping_address.city,
             stateCode: config === "dev" ? "CA" : shipping_address.province_code,
             countryCode: config === "dev" ? "US" : shipping_address.country_code,
             zip: config === "dev" ? "91311" : shipping_address.zip,
             sku: sku,
-            host: config === "dev" ? "https://www.moolab.ml/" : "https://www.moolab.ml/",
+            host: config === "dev" ? "https://eb6cd9a0.ngrok.io/" : "https://eb6cd9a0.ngrok.io/",
         };
 
         try {

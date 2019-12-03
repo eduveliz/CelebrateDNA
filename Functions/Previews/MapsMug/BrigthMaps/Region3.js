@@ -118,7 +118,6 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
-
     regionUp = () => {
         if (font === "Noteworthy") {
             return "-3pt";

@@ -75,11 +75,11 @@ module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderI
             break;
         case "1251069329451":
             console.log("Mug Helix".blue);
-            return helixMug(env, itemsNumber, properties, nameFile);
+            return helixMug(env, itemsNumber, properties, nameFile, orderInfo);
             break;
         case "1208772263979":
             console.log("Mug Map".blue);
-            mapMug(env, itemsNumber, properties, nameFile);
+            mapMug(env, itemsNumber, properties, nameFile, orderInfo);
             break;
             // case "":
             //     console.log("Mug Map".blue);

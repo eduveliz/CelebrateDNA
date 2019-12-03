@@ -1,4 +1,4 @@
-module.exports = mapa = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8.93in\" height=\"3.04in\" viewBox=\"0 0 642.64 219.2\">\n" +
+module.exports = mapa = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8.93in\" height=\"2.8in\" viewBox=\"0 0 642.64 219.2\">\n" +
     "  <title>myHeritage</title>\n" +
     "  <g id=\"worldMap\">\n" +
     "    <g>\n" +

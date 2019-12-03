@@ -119,7 +119,6 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
-
     regionUp = () => {
         if (font === "Noteworthy") {
             return "-3pt";
@@ -302,6 +301,7 @@ module.exports = createPreview = async (propiedades) => {
             //second color
             $("${threeRegionNameSelector}").attr("fill", "#A25562");      
             $("${threeRegionNameSelector}").attr("stroke", "${lineMaps(colorProduct)}");
+            
         });
     });
 </script>

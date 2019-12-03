@@ -28,12 +28,11 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     const backgroundColor = colorBackground(datos[7]);
     const backgroundLineWorld = backgroundColor === "transparent" ? "#6D6E70" : "none";
     //Headline
-
-    const font = fontStyle(datos[4]);
+    const font = fontStyle(datos[8]);
     const headline = compasSelector(datos[5], font);
-    let personalHeadline = datos[5] === "First name / DNA" ? datos[6] : "";
 
-    let size = "11oz";
+    let personalHeadline = datos[5] === "First name / DNA" ? datos[6] : "";
+    const size = orderInfo.title.split('- ').pop().split('/')[0].toString();
 
     companyMap = (company) => {
         if (company === "Ancestry") {
@@ -88,16 +87,16 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     };
 
     compassTop = () => {
-        if (propiedades.headLine === "First name / DNA") {
+        if (datos[5] === "First name / DNA") {
             let down = font !== "Funnier" ? "1.8in" : "1.9in";
             return down;
         } else {
-            return "1.9in"
+            return "1.7in"
         }
     };
 
     compassLeft = () => {
-        if (propiedades.headLine === "First name / DNA") {
+        if (datos[5] === "First name / DNA") {
             return "0.52in"
         } else {
             return "0.42in"
@@ -105,20 +104,19 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     };
 
     compassH = () => {
-        if (propiedades.headLine === "First name / DNA") {
+        if (datos[5] === "First name / DNA") {
             return "90.8736px"
         } else {
             return "105.8736px"
         }
     };
     compassW = () => {
-        if (propiedades.headLine === "First name / DNA") {
+        if (datos[5] === "First name / DNA") {
             return "69.3984px"
         } else {
             return "105.3984px"
         }
     };
-
 
     compassHeadlineBottom = () => {
         if (font === "Noteworthy") {
@@ -241,7 +239,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
     
-<div style="margin-right: 17px">
+<div style="margin-right: 17px;margin-top: 3px">
     <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">  
             ${firstRegionNumber}%
@@ -259,6 +257,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
         </div>
     </div>
 </div>
+
 <script>    
     $(function () {
         $(document).ready(function () {
@@ -278,9 +277,9 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
 `);
     await page.setViewport({
         width: 864,
-        height: 350,
-        deviceScaleFactor: 1,
+        height: 336,
+        deviceScaleFactor: 3,
     });
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.screenshot({path: `public/${name}.png`});
     await browser.close();
 };

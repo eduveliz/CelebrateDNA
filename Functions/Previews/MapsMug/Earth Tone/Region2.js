@@ -50,7 +50,7 @@ module.exports = createPreview = async (propiedades) => {
             return size === "11oz" ? "14pt" : "14pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "14pt" : "14pt";
+            return size === "11oz" ? "15pt" : "14pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "12pt" : "10pt";
@@ -127,7 +127,7 @@ module.exports = createPreview = async (propiedades) => {
 
     regionUp = () => {
         if (font === "Noteworthy") {
-            return "-3pt";
+            return "-2pt";
         }
         if (font === "MyriadPro-Bold") {
             return "0pt";

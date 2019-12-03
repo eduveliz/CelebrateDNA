@@ -525,8 +525,6 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     } catch (e) {
         console.log(e);
     }
-
-
     ;
     await page.screenshot({path: `public/${name}.png`});
     await browser.close();

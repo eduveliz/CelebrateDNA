@@ -40,7 +40,7 @@ module.exports = createPreview = async (propiedades) => {
     const colorProduct = propiedades.colorProduct;
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = backgroundColor === "transparent" ? "#6D6E70" : "none";
-    //Headline
+
     const font = fontStyle(propiedades.fontStyle);
     const headline = compasSelector(propiedades.headLine, font);
     let personalHeadline = propiedades.headLine === "First name / DNA" ? propiedades.personalHeadline : "";
@@ -65,7 +65,7 @@ module.exports = createPreview = async (propiedades) => {
             return size === "11oz" ? "12pt" : "8pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "13pt" : "8pt";
+            return size === "11oz" ? "12pt" : "8pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "9pt" : "6pt";

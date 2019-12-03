@@ -36,7 +36,6 @@ module.exports = createPreview = async (propiedades) => {
     const colorProduct = propiedades.colorProduct;
     const backgroundColor = colorBackground(propiedades.color);
     const backgroundLineWorld = backgroundColor === "transparent" ? "#6D6E70" : "none";
-    //Headline
     const font = fontStyle(propiedades.fontStyle);
     const headline = compasSelector(propiedades.headLine, font);
     let personalHeadline = propiedades.headLine === "First name / DNA" ? propiedades.personalHeadline : "";

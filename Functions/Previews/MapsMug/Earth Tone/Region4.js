@@ -57,7 +57,7 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "15pt" : "11pt";
+            return size === "11oz" ? "14pt" : "11pt";
         }
         if (font === "MyriadPro-Bold") {
             return size === "11oz" ? "15pt" : "11pt";
@@ -116,7 +116,6 @@ module.exports = createPreview = async (propiedades) => {
     };
 
     console.log(regionUp());
-
 
     compassLeft = () => {
         if (propiedades.headLine === "First name / DNA") {
@@ -266,7 +265,7 @@ module.exports = createPreview = async (propiedades) => {
     </div>
 
 <div>
-  <div style="display: flex; justify-content: space-around;margin-right: 8px;margin-top: ${font === "Funnier" || font === "MyriadPro-Bold" ? "4pt" : "0pt"}">
+  <div style="display: flex; justify-content: space-around;margin-right: 8px;margin-top: ${font === "Funnier" || font === "MyriadPro-Bold" ? "4pt" : "3pt"}">
         <div class='fontColorNumber' style="color:white;border-radius: 20px; background-color: #616c44;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber}%
         </div>
@@ -281,16 +280,16 @@ module.exports = createPreview = async (propiedades) => {
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-right: 8px">
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "-2.5pt"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "-2.2pt"}">
             <div class='fontColor'>${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "-2.5pt"}">
+        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "-2.2pt"}">
             <div class='fontColor'>${secondRegionName}</div>
         </div>
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "-2.5pt"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "-2.2pt"}">
             <div class='fontColor'>${threeRegionName}</div>
         </div>
-        <div style=" width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "-2.5pt"}">
+        <div style=" width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 3pt" : "-2.2pt"}">
             <div class='fontColor'>${fourRegionName}</div>
         </div>
     </div>
@@ -321,7 +320,7 @@ module.exports = createPreview = async (propiedades) => {
 
     await page.setViewport({
         width: 873,
-        height: 350,
+        height: 352,
         deviceScaleFactor: 1,
     });
     await page.screenshot({path: `previews/${name}.png`});

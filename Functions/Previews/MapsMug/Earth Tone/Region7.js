@@ -64,7 +64,6 @@ module.exports = createPreview = async (propiedades) => {
     };
     const map = companyMap(propiedades.company);
 
-
     fontSizeRegion = () => {
         if (font === "Noteworthy") {
             return size === "11oz" ? "12pt" : "9pt";
@@ -153,10 +152,10 @@ module.exports = createPreview = async (propiedades) => {
             return "-3pt";
         }
         if (font === "MyriadPro-Bold") {
-            return "0pt";
+            return "5pt";
         }
         if (font === "Funnier") {
-            return "4pt"
+            return "6pt"
         }
     };
 
@@ -168,7 +167,7 @@ module.exports = createPreview = async (propiedades) => {
     const page = await browser.newPage();
     await page.setViewport({
         width: 873,
-        height: 340,
+        height: 350,
         deviceScaleFactor: 1,
     });
 
