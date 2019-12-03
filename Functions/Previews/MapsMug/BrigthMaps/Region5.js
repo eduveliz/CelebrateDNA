@@ -124,14 +124,14 @@ module.exports = createPreview = async (propiedades) => {
         if (propiedades.headLine === "First name / DNA") {
             return "90.8736px"
         } else {
-            return "115px"
+            return "105.8736px"
         }
     };
     compassW = () => {
         if (propiedades.headLine === "First name / DNA") {
             return "69.3984px"
         } else {
-            return "80px"
+            return "105.3984px"
         }
     };
 
