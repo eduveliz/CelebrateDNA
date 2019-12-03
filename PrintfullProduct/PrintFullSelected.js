@@ -61,6 +61,20 @@ module.exports = idProduct = (id, env, itemsNumber, properties, nameFile, orderI
             console.log("Helix Love ".blue);
             return helixLove(env, itemsNumber, properties, nameFile, orderInfo);
             break;
+            case "31374479982663":
+                console.log("Helix Love ".blue);
+                return helixLove(env, itemsNumber, properties, nameFile, orderInfo);
+                break;
+            case "31374480343111":
+                console.log("Helix Love ".blue);
+                return helixLove(env, itemsNumber, properties, nameFile, orderInfo);
+                break;
+            case "31374480539719":
+                console.log("Helix Love ".blue);
+                return helixLove(env, itemsNumber, properties, nameFile, orderInfo);
+                break;
+
+
         case "1860907204651":
             console.log("Tote Yellow test".blue);
             return toteYellow(env, itemsNumber, properties, nameFile, orderInfo);
