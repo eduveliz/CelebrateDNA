@@ -6,9 +6,9 @@ const fontStyle = require('../../../FontStyle/FontStyle');
 const fontColor = require('../../../FontColor/FontColor');
 const colorProductSelect = require('../../../Color/Color');
 const lineMaps = require('../../../LinesMap/LineMaps');
-const ancestryMap = require('../../../MapsSVGMug/AncestryMap');
-const ttMap = require('../../../MapsSVGMug/TTMap');
-const myHeritageMap = require('../../../MapsSVGMug/MyHeritageMap');
+const ancestryMap = require('../../../MapsMugPrintAnc/AncestryMap.js');
+const ttMap = require('../../../MapsMugPrintAnc/TTMap');
+const myHeritageMap = require('../../../MapsMugPrintAnc/MyHeritageMap');
 const compasSelector = require('../compassSelector');
 
 module.exports = createPreview = async (propiedades) => {

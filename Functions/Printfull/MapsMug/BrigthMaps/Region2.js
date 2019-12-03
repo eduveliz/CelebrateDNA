@@ -6,9 +6,9 @@ const fontColor = require('../../../FontColor/FontColor');
 const lineMaps = require('../../../LinesMap/LineMaps');
 const toArray = require('lodash.toarray');
 const colorProductSelect = require('../../../Color/Color');
-const ancestryMap = require('../../../MapsSVGMug/AncestryMap');
-const ttMap = require('../../../MapsSVGMug/TTMap');
-const myHeritageMap = require('../../../MapsSVGMug/MyHeritageMap');
+const ancestryMap = require('../../../MapsMugPrintAnc/AncestryMap.js');
+const ttMap = require('../../../MapsMugPrintAnc/TTMap');
+const myHeritageMap = require('../../../MapsMugPrintAnc/MyHeritageMap');
 const compasSelector = require('../compassSelector');
 
 module.exports = createPreview = async (nameFile, properties, orderInfo) => {
@@ -239,7 +239,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
     
-<div style="margin-right: 17px;margin-top: 3px">
+<div style="margin-right: 17px;margin-top: 10px">
     <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">  
             ${firstRegionNumber}%

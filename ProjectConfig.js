@@ -17,7 +17,7 @@ module.exports = env = (config, req) => {
             countryCode: config === "dev" ? "US" : shipping_address.country_code,
             zip: config === "dev" ? "91311" : shipping_address.zip,
             sku: sku,
-            host: config === "dev" ? "https://eb6cd9a0.ngrok.io/" : "https://eb6cd9a0.ngrok.io/",
+            host: config === "dev" ? "https://www.moolab.ml/" : "https://www.moolab.ml/",
         };
 
         try {

@@ -1,4 +1,4 @@
-module.exports = mapa = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8.95in\" height=\"3.01in\" viewBox=\"0 0 644.65 216.9\">\n" +
+module.exports = mapa = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8.95in\" height=\"2.8in\" viewBox=\"0 0 644.65 216.9\">\n" +
     "  <title>ancestry11</title>\n" +
     "  <g id=\"worldMap\" data-name=\"Layer 1 copy 3\">\n" +
     "    <path class=\"cls-17\" d=\"M558.91,87v0h0Z\" transform=\"translate(-1.08 -0.96)\"/>\n" +
