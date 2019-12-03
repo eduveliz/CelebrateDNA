@@ -32,7 +32,7 @@ module.exports = createPreview = async (propiedades) => {
     const font = fontStyle(propiedades.fontStyle);
     const headline = compasSelector(propiedades.headLine, font);
     let personalHeadline = propiedades.headLine === "First name / DNA" ? propiedades.personalHeadline : "";
-    //FontSize
+
     let size = "11oz";
 
     companyMap = (company) => {
@@ -119,6 +119,20 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+
+    regionUp = () => {
+        if (font === "Noteworthy") {
+            return "-3pt";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "0pt";
+        }
+        if (font === "Funnier") {
+            return "4pt"
+        }
+    };
+
+    console.log(regionUp());
 
     compassHeadlineBottom = () => {
         if (font === "Noteworthy") {

@@ -6,6 +6,7 @@ const region3 = require('./Region3');
 const region2 = require('./Region2');
 
 module.exports = helixSelector = async (regionNumber, properties, nameFile, orderInfo) => {
+    console.log(regionNumber);
     if (regionNumber === 2) {
         return region2(nameFile, properties, orderInfo)
     }

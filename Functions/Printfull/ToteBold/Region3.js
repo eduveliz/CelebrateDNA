@@ -10,29 +10,29 @@ const companyMap = require('../../CompanyMap/CompanyMap');
 module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     const properties = toArray(propiedades);
     const name = nameFile;
-    const map = companyMap(properties[0].value);
+    const map = companyMap(properties[0]);
 
-    const firstRegionName = properties[1].value;
-    const firstRegionNameSelector = regionNames(properties[1].value);
-    const firstRegionNumber = properties[2].value;
+    const firstRegionName = properties[1];
+    const firstRegionNameSelector = regionNames(properties[1]);
+    const firstRegionNumber = properties[2];
 
-    const secondRegionName = properties[3].value;
-    const secondRegionNameSelector = regionNames(properties[3].value);
-    const secondRegionNumber = properties[4].value;
+    const secondRegionName = properties[3];
+    const secondRegionNameSelector = regionNames(properties[3]);
+    const secondRegionNumber = properties[4];
 
-    const threeRegionName = properties[5].value;
-    const threeRegionNameSelector = regionNames(properties[5].value);
-    const threeRegionNumber = properties[6].value;
+    const threeRegionName = properties[5];
+    const threeRegionNameSelector = regionNames(properties[5]);
+    const threeRegionNumber = properties[6];
 
     //Background Map
-    const backgroundColor = colorBackground(properties[7].value);
-    const font = fontStyle(properties[8].value);
-    const statement = properties[9].value;
-    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[10].value;
-    const personalStatementTwo = statement === "Replicate the map on both sides" ? "" : properties[11].value;
+    const backgroundColor = colorBackground(properties[7]);
+    const font = fontStyle(properties[8]);
+    const statement = properties[9];
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[10];
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "" : properties[11];
     const personalStatementThree = statement === "Replicate the map on both sides"
         ? "The image will be duplicated on both sides of tote."
-        : properties[12].value;
+        : properties[12];
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
@@ -137,7 +137,6 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
             return "2in";
         }
     };
-
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -271,15 +270,15 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     ${map}
 </div>
     
-<div style="margin-top: 90px">
+<div style="margin-top: 120px">
     <div style="display: flex; justify-content: space-around;margin-right: 15px">
-        <div class="fontColorRegion" style="height:60px; width:100%;border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorRegion" style="font-size : 35px;height:60px; width:100%;border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
         ${firstRegionNumber}%
         </div>
-        <div class="fontColorRegion"  style="height:60px; width:100%; border-radius: 20px; background-color: #851f62;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorRegion"  style="font-size: 35px;height:60px; width:100%; border-radius: 20px; background-color: #851f62;align-items: center;text-align: center;display: flex;justify-content: center;">
          ${secondRegionNumber}%
         </div>
-        <div class="fontColorRegion"  style="height:60px; width:100%;  border-radius: 20px; background-color: #68672b;align-items: center;text-align: center;display: flex;justify-content: center;">
+        <div class="fontColorRegion"  style=" font-size:35px;height:60px; width:100%;  border-radius: 20px; background-color: #68672b;align-items: center;text-align: center;display: flex;justify-content: center;">
          ${threeRegionNumber}%
         </div>
     </div>
@@ -303,7 +302,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         ${map}
     </div>
         
-    <div style="margin-top: 90px">
+    <div style="margin-top: 120px">
         <div style="display: flex; justify-content: space-around;margin-right: 15px">
             <div class="fontColorRegion" style="height:60px; width:100%;border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber}%
@@ -329,7 +328,6 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     </div>
     </div>
     </div>
-
 
 <div class="secondPart">  
         <div class="fontStatement" style="width:13in;">

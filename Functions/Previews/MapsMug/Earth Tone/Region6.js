@@ -260,7 +260,7 @@ module.exports = createPreview = async (propiedades) => {
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
 
-<div style="margin-right: 8px;margin-top: ${font === "Funnier" || font === "MyriadPro-Bold" ? "4pt" : "4pt"}">
+<div style="margin-right: 8px;margin-top: ${font === "Funnier" || font === "MyriadPro-Bold" ? "4pt" : "3.2pt"}">
     <div style="display: flex; justify-content: space-around;">
         <div class='fontColorNumber' style="color:white;border-radius: 20px; background-color: #616c44;align-items: center;text-align: center;display: flex;justify-content: center;">
            ${firstRegionNumber}%

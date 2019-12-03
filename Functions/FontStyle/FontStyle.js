@@ -4,6 +4,9 @@ module.exports = fontStyle = (fontSelected) => {
         case "Noteworthy":
             return fontStyle = "Noteworthy";
             break;
+        case "Noteworthy ":
+            return fontStyle = "Noteworthy";
+            break;
         case "Baskerville":
             return fontStyle = "Baskerville";
             break;

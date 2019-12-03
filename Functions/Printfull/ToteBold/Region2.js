@@ -29,7 +29,6 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         ? "The image will be duplicated on both sides of tote."
         : properties[10].value;
 
-
     fontHeadline = () => {
         if (font === "Noteworthy") {
             return "110px"
@@ -264,11 +263,11 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </head>
 <body style="height:33in;width: 17in;background-color: black;align-items: center;text-align: center;justify-content: center">
 
-<div style="width: 13in;height: 11in;margin-left: 2.1in;margin-top:${font === "Funnier" ? "3.2in" : "4in"};">  
+<div style="width: 13in;height: 11in;margin-left: 1.9in;margin-top:${font === "Funnier" ? "3.2in" : "4in"};">  
     <div style="width: 100%;text-align: center;">
         ${map}
     </div>
-    <div style="margin-top: 50px;margin-right: 17px">
+    <div style="margin-top: 120px;margin-right: 17px">
         <div style="display: flex; justify-content: space-around;">
             <div class="fontColorRegion" style="height:60px; width:100%;border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
                 ${firstRegionNumber}%
@@ -289,11 +288,11 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </div>
    
 <div class="secondMap">
-<div style="width: 13in;height: 11in;margin-left: 2.2in;margin-top:${font === "Funnier" ? "3.2in" : "4in"};">  
+<div style="width: 13in;height: 11in;margin-left: 1.9in;margin-top:${font === "Funnier" ? "3.2in" : "4in"};">  
     <div style="width: 100%;text-align: center;">
         ${map}
     </div>
-    <div style="margin-top: 50px;margin-right: 17px">
+    <div style="margin-top: 120px;margin-right: 17px">
         <div style="display: flex; justify-content: space-around;">
             <div class="fontColorRegion" style="height:60px; width:100%;border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
                 ${firstRegionNumber}%

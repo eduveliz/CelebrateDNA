@@ -38,7 +38,7 @@ module.exports = createPreview = async (propiedades) => {
     const font = fontStyle(propiedades.fontStyle);
     const headline = compasSelector(propiedades.headLine, font);
     let personalHeadline = propiedades.headLine === "First name / DNA" ? propiedades.personalHeadline : "";
-    //FontSize
+
     let size = "11oz";
 
     companyMap = (company) => {
@@ -52,6 +52,7 @@ module.exports = createPreview = async (propiedades) => {
             return myHeritageMap;
         }
     };
+
     const map = companyMap(propiedades.company);
 
     fontSizeRegion = (font) => {
@@ -101,6 +102,21 @@ module.exports = createPreview = async (propiedades) => {
             return "1.9in"
         }
     };
+
+    regionUp = () => {
+        if (font === "Noteworthy") {
+            return "-3pt";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "0pt";
+        }
+        if (font === "Funnier") {
+            return "4pt"
+        }
+    };
+
+    console.log(regionUp());
+
 
     compassLeft = () => {
         if (propiedades.headLine === "First name / DNA") {
@@ -250,7 +266,7 @@ module.exports = createPreview = async (propiedades) => {
     </div>
 
 <div>
-    <div style="display: flex; justify-content: space-around;margin-right: 20px">
+  <div style="display: flex; justify-content: space-around;margin-right: 8px;margin-top: ${font === "Funnier" || font === "MyriadPro-Bold" ? "4pt" : "0pt"}">
         <div class='fontColorNumber' style="color:white;border-radius: 20px; background-color: #616c44;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber}%
         </div>

@@ -12,24 +12,20 @@ const myHeritageMap = require('../../../MapsSVGMug/MyHeritageMap');
 const compasSelector = require('../compassSelector');
 
 module.exports = createPreview = async (nameFile, properties, orderInfo) => {
-
     const name = nameFile;
-
     const datos = toArray(properties);
 
-    console.log(datos);
+    const firstRegionName = datos[1];
+    const firstRegionNameSelector = regionNames(datos[1]);
+    const firstRegionNumber = datos[2];
 
-    const firstRegionName = datos[0];
-    const firstRegionNameSelector = regionNames(datos[0]);
-    const firstRegionNumber = datos[1];
-
-    const secondRegionName = datos[2];
-    const secondRegionNameSelector = regionNames(datos[2]);
-    const secondRegionNumber = datos[3];
+    const secondRegionName = datos[3];
+    const secondRegionNameSelector = regionNames(datos[3]);
+    const secondRegionNumber = datos[4];
 
     //Background Map
     const colorProduct = datos[7];
-    const backgroundColor = colorBackground(propiedades.color);
+    const backgroundColor = colorBackground(datos[7]);
     const backgroundLineWorld = backgroundColor === "transparent" ? "#6D6E70" : "none";
     //Headline
 

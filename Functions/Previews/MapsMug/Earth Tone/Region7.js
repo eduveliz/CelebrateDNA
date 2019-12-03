@@ -148,6 +148,18 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+    regionUp = () => {
+        if (font === "Noteworthy") {
+            return "-3pt";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "0pt";
+        }
+        if (font === "Funnier") {
+            return "4pt"
+        }
+    };
+
     compasHeadline = () => {
         return font === "Funnier" ? "11pt" : "17pt";
     };
@@ -156,7 +168,7 @@ module.exports = createPreview = async (propiedades) => {
     const page = await browser.newPage();
     await page.setViewport({
         width: 873,
-        height: 350,
+        height: 340,
         deviceScaleFactor: 1,
     });
 
@@ -273,7 +285,7 @@ module.exports = createPreview = async (propiedades) => {
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
 
-<div style="margin-right: 8px;margin-top: ${font === "Funnier" || font === "MyriadPro-Bold" ? "4pt" : "4pt"}">
+<div style="margin-right: 8px;margin-top: ${regionUp()}">
      <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #616c44;align-items: center;text-align: center;display: flex;justify-content: center;">
          ${firstRegionNumber}%

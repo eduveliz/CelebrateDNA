@@ -31,6 +31,7 @@ module.exports = createPreview = async (propiedades) => {
     let personalHeadline = propiedades.headLine === "First name / DNA" ? propiedades.personalHeadline : "";
 
     let size = "11oz";
+
     companyMap = (company) => {
         if (company === "Ancestry") {
             return ancestryMap;
@@ -43,7 +44,6 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
     const map = companyMap(propiedades.company);
-
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -106,7 +106,7 @@ module.exports = createPreview = async (propiedades) => {
         if (propiedades.headLine === "First name / DNA") {
             return "0.52in"
         } else {
-            return "0.52in"
+            return "0.42in"
         }
     };
 
@@ -124,6 +124,21 @@ module.exports = createPreview = async (propiedades) => {
             return "105.3984px"
         }
     };
+
+    regionUp = () => {
+        if (font === "Noteworthy") {
+            return "-3pt";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "0pt";
+        }
+        if (font === "Funnier") {
+            return "4pt"
+        }
+    };
+
+    console.log(regionUp());
+
 
     compassHeadlineBottom = () => {
         if (font === "Noteworthy") {
@@ -174,8 +189,9 @@ module.exports = createPreview = async (propiedades) => {
     .perosnalHeadline{
         font-family: ${font};
         align-items: center;
+        margin-left: -8px;
         text-align: center;
-        margin-bottom:${font === "Funnier" ? "5px" : "1px"} ;
+        margin-bottom:${compassHeadlineBottom()} ;
         font-size: ${compasHeadline()};
         color: #6D6E70;
     }
@@ -242,7 +258,7 @@ module.exports = createPreview = async (propiedades) => {
     ${map}
 </div>
 
-    <div style="height: 0.668in; width: 0.716in;position: absolute;top: ${compassTop()}; left: ${compassLeft()}">
+    <div style="position: absolute;top: ${compassTop()}; left: ${compassLeft()};">
           <div class="perosnalHeadline">${personalHeadline}</div>
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
@@ -256,7 +272,7 @@ module.exports = createPreview = async (propiedades) => {
             ${secondRegionNumber}%
         </div>
     </div>
-  <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 4pt" : "0pt"}">
+    <div style="display: flex; justify-content: space-around;margin-top:${regionUp()}">
         <div style="width:100%;height:60px;display: flex; justify-content: center">
             <div class="fontColor" >${firstRegionName}</div>
         </div>
@@ -281,7 +297,6 @@ module.exports = createPreview = async (propiedades) => {
 </body>
 </html>
 `);
-
     await page.setViewport({
         width: 864,
         height: 350,

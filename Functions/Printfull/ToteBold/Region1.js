@@ -269,11 +269,11 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </head>
  <body style="height:33in;width: 17in;align-items: center;text-align: center;justify-content: center;background-color: black">
  
-<div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "4in"};">  
+<div style="width: 13in;height: 11in;margin-left: 1.9in;margin-top:${font === "Funnier" ? "3.2in" : "4in"};">  
 <div style="text-align: center;">
     ${map}
 </div>
-        <div style="margin-top: 50px;margin-right: 20px">
+        <div style="margin-top: 120px;margin-right: 20px">
             <div style="display: flex; justify-content: space-around;">
                 <div class="fontColorNumber" style="height:60px; width:100%;border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
                     ${firstRegionNumber}%
@@ -288,15 +288,12 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         
         
 </div>
-   
-   
-   
         <div class="secondMap">
             <div style="width: 13in;height: 11in;margin-left: 2.2in;margin-top:${font === "Funnier" ? "3.2in" : "3in"};">  
            <div style="text-align: center;">
                 ${map}
             </div>
-            <div style="margin-top: 50px;margin-right: 20px">
+            <div style="margin-top: 120px;margin-right: 20px">
                 <div style="display: flex; justify-content: space-around;">
                     <div class="fontColorNumber" style="height:60px; width:100%;border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
                         ${firstRegionNumber}%
