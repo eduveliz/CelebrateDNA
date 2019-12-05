@@ -64,7 +64,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
 
     fontSizeRegion = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "100pt" : "8pt";
+            return size === "11oz" ? "11pt" : "8pt";
         }
         if (font === "MyriadPro-Bold") {
             return size === "11oz" ? "8pt" : "8pt";
@@ -106,7 +106,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
             let down = font !== "Funnier" ? "1.8in" : "1.9in";
             return down;
         } else {
-            return "1.7in"
+            return "1.8in"
         }
     };
 
@@ -114,7 +114,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
         if (datos[13] === "First name / DNA") {
             return "0.52in"
         } else {
-            return "0.42in"
+            return "0.32in"
         }
     };
 
@@ -252,8 +252,8 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:9in;height:3.5in;background-color: ${colorProductSelect(colorProduct)} ">
-<div style="justify-content:center;text-align: center;align-items: center;margin-top: -1px;margin-right: 3px">
+<body style="width:9in;height:3.5in;background-color: ${colorProductSelect(colorProduct)};margin-top: 2px ">
+<div style="margin-right: 15px">
     ${map}
 </div>
 

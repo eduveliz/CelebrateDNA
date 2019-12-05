@@ -106,11 +106,11 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     };
 
     compassTop = () => {
-        if (datos[15] === "First name / DNA") {
+        if (datos[13] === "First name / DNA") {
             let down = font !== "Funnier" ? "1.8in" : "1.9in";
             return down;
         } else {
-            return "1.7in"
+            return "1.8in"
         }
     };
 
@@ -118,7 +118,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
         if (datos[15] === "First name / DNA") {
             return "0.52in"
         } else {
-            return "0.42in"
+            return "0.32in"
         }
     };
 
@@ -193,9 +193,9 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
         color:${fontColor(colorProduct)};
         font-family:${font};
         border: 2px solid ${lineMaps(colorProduct)};
-        font-size: ${fontSizeNumber()};
-        height: ${size === "11oz" ? "0.1788in" : "0.1788in"};
-        width:${size === "11oz" ? "1.2633in" : "1.2633in"};
+        font-size: ${fontSizeNumber()}; 
+        height: ${size === "11oz" ? "0.1388in" : "0.1788"};
+        width:${size === "11oz" ? "2.9622in" : "4.4381in"};
     }
     
     .fontColor {
@@ -278,7 +278,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:9in;height:3.5in;background-color: ${colorProductSelect(colorProduct)} ">
+<body style="width:9in;height:3.5in;background-color: ${colorProductSelect(colorProduct)};margin-top: 2px ">
 <div style="justify-content:center;text-align: center;align-items: center;margin-top: -1px">
     ${map}
 </div>
@@ -288,7 +288,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
 
-<div style="margin-right: 10px;margin-top:2px ">
+<div style="margin-right: 10px;margin-top:2px">
      <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
          ${firstRegionNumber}%

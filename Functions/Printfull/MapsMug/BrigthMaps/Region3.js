@@ -52,7 +52,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "12pt" : "14pt";
+            return size === "11oz" ? "14pt" : "14pt";
         }
         if (font === "MyriadPro-Bold") {
             return size === "11oz" ? "12pt" : "14pt";
@@ -102,7 +102,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
         if (datos[7] === "First name / DNA") {
             return "0.52in"
         } else {
-            return "0.42in"
+            return "0.32in"
         }
     };
 
@@ -162,8 +162,8 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
         color:${fontColor(colorProduct)};
         font-family:${font} ;
         border: 2px solid ${lineMaps(colorProduct)};
-        font-size: ${fontSizeNumber()};
-        height: ${size === "11oz" ? "0.1788in" : "0.1788"};
+        font-size: ${fontSizeNumber()};     
+        height: ${size === "11oz" ? "0.1388in" : "0.1788"};
         width:${size === "11oz" ? "2.9622in" : "4.4381in"};
     }
     
@@ -241,7 +241,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
    </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:9in;height:3.5in;background-color: ${colorProductSelect(colorProduct)} ">
+<body style="width:9in;height:3.5in;background-color: ${colorProductSelect(colorProduct)};margin-top: 2px ">
 
 <div style="width: 100%;text-align: center;">
     ${map}
@@ -252,8 +252,8 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
     
-<div style="margin-right: 17px;margin-top: 5px">
-    <div style="display: flex; justify-content: space-around;">
+<div style="margin-right: 17px;margin-top: 2px">
+     <div style="display: flex; justify-content: space-around;margin-right: 8px;margin-top:${font === "Funnier" ? " 2pt" : "-2pt"}">
         <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
         ${firstRegionNumber}%
         </div>
@@ -264,14 +264,14 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
          ${threeRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-right: 20px">
-        <div style="${size === "11oz" ? "2.9622in" : "4.4381in"};height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 5pt" : "-1pt"}">
+  <div style="display: flex; justify-content: space-around;margin-right: 8px;margin-top:${font === "Funnier" ? " 2pt" : "0.2pt"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;">
             <div class="fontColor" style="text-align: center">${firstRegionName}</div>
         </div>
-        <div style="width:${size === "11oz" ? "2.9622in" : "4.4381in"};height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 5pt" : "-1pt"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;">
             <div class="fontColor" style="text-align: center">${secondRegionName}</div>
         </div>
-        <div style="width:${size === "11oz" ? "2.9622in" : "4.4381in"};height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 5pt" : "-1pt"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;">    
             <div class="fontColor"  style="text-align: center">${threeRegionName}</div>
         </div>
     </div>

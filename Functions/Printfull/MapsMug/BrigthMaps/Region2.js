@@ -99,7 +99,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
         if (datos[5] === "First name / DNA") {
             return "0.52in"
         } else {
-            return "0.42in"
+            return "0.32in"
         }
     };
 
@@ -151,7 +151,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     .fontColorNumber {
         color:${fontColor(colorProduct)};
         font-family:${font} ;
-        height: ${size === "11oz" ? "0.1788in" : "0.1788"} ;
+        height: ${size === "11oz" ? "0.1388in" : "0.1388in"} ;
         width:${size === "11oz" ? "4.4381in" : "4.4381in"};
         border: 2px solid ${lineMaps(colorProduct)};
         font-size: ${fontSizeNumber()};
@@ -229,7 +229,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body style="width:9in;height:3.5in;background-color: ${colorProductSelect(colorProduct)} ">
+<body style="width:9in;height:3.5in;background-color: ${colorProductSelect(colorProduct)};margin-top: 2px ">
     <div>
         ${map}
     </div>
@@ -239,7 +239,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
     
-<div style="margin-right: 17px;margin-top: 5px">
+<div style="margin-right: 17px;margin-top: 2px">
     <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">  
             ${firstRegionNumber}%
@@ -248,7 +248,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
             ${secondRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? "4pt" : "0pt"}">
+  <div style="display: flex; justify-content: space-around;margin-right: 8px;margin-top:${font === "Funnier" ? " 2pt" : "-2pt"}">
         <div style="width:${size === "11oz" ? "2.9622in" : "4.4381in"};height:60px;display: flex; justify-content: center">
             <div class="fontColor" >${firstRegionName}</div>
         </div>
