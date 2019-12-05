@@ -55,7 +55,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
             return size === "11oz" ? "14pt" : "14pt";
         }
         if (font === "Funnier") {
-            return size === "11oz" ? "12pt" : "10pt";
+            return size === "11oz" ? "14pt" : "10pt";
         }
     };
 
@@ -239,7 +239,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
     
-<div style="margin-right: 17px;margin-top: 10px">
+<div style="margin-right: 17px;margin-top: 5px">
     <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">  
             ${firstRegionNumber}%
@@ -249,10 +249,10 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? "4pt" : "0pt"}">
-        <div style="width:100%;height:60px;display: flex; justify-content: center">
+        <div style="width:${size === "11oz" ? "2.9622in" : "4.4381in"};height:60px;display: flex; justify-content: center">
             <div class="fontColor" >${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center">
+        <div style="width:${size === "11oz" ? "2.9622in" : "4.4381in"};height:60px; display: flex; justify-content: center">
             <div class="fontColor" >${secondRegionName}</div>
         </div>
     </div>

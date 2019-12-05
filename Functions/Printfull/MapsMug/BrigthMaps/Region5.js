@@ -5,43 +5,45 @@ const fontStyle = require('../../../FontStyle/FontStyle');
 const fontColor = require('../../../FontColor/FontColor');
 const lineMaps = require('../../../LinesMap/LineMaps');
 const colorProductSelect = require('../../../Color/Color');
+const toArray = require('lodash.toarray');
 const ancestryMap = require('../../../MapsMugPrintAnc/AncestryMap.js');
 const ttMap = require('../../../MapsMugPrintAnc/TTMap');
 const myHeritageMap = require('../../../MapsMugPrintAnc/MyHeritageMap');
 const compasSelector = require('../compassSelector');
 
-module.exports = createPreview = async (propiedades) => {
-    const name = propiedades.nameFile;
+module.exports = createPreview = async (nameFile, properties, orderInfo) => {
+    const name = nameFile;
+    const datos = toArray(properties);
     //Regions  */ RegionsNamesSelectors is for Jquery/*
-    const firstRegionName = propiedades.regions[0].region;
-    const firstRegionNameSelector = regionNames(propiedades.regions[0].region);
-    const firstRegionNumber = propiedades.regions[0].porcentaje;
+    const firstRegionName = datos[1];
+    const firstRegionNameSelector = regionNames(datos[1]);
+    const firstRegionNumber = datos[2];
 
-    const secondRegionName = propiedades.regions[1].region;
-    const secondRegionNameSelector = regionNames(propiedades.regions[1].region);
-    const secondRegionNumber = propiedades.regions[1].porcentaje;
+    const secondRegionName = datos[3];
+    const secondRegionNameSelector = regionNames(datos[3]);
+    const secondRegionNumber = datos[4];
 
-    const threeRegionName = propiedades.regions[2].region;
-    const threeRegionNameSelector = regionNames(propiedades.regions[2].region);
-    const threeRegionNumber = propiedades.regions[2].porcentaje;
+    const threeRegionName = datos[5];
+    const threeRegionNameSelector = regionNames(datos[5]);
+    const threeRegionNumber = datos[6];
 
-    const fourRegionName = propiedades.regions[3].region;
-    const fourRegionNameSelector = regionNames(propiedades.regions[3].region);
-    const fourRegionNumber = propiedades.regions[3].porcentaje;
+    const fourRegionName = datos[7];
+    const fourRegionNameSelector = regionNames(datos[7]);
+    const fourRegionNumber = datos[8];
 
-    const fiveRegionName = propiedades.regions[4].region;
-    const fiveRegionNameSelector = regionNames(propiedades.regions[4].region);
-    const fiveRegionNumber = propiedades.regions[4].porcentaje;
+    const fiveRegionName = datos[9];
+    const fiveRegionNameSelector = regionNames(datos[9]);
+    const fiveRegionNumber = datos[10];
 
-    const colorProduct = propiedades.colorProduct;
-    const backgroundColor = colorBackground(propiedades.color);
+    const colorProduct = datos[13];
+    const backgroundColor = colorBackground(datos[13]);
     const backgroundLineWorld = backgroundColor === "transparent" ? "#6D6E70" : "none";
     //Headline
-    const font = fontStyle(propiedades.fontStyle);
-    const headline = compasSelector(propiedades.headLine, font);
-    let personalHeadline = propiedades.headLine === "First name / DNA" ? propiedades.personalHeadline : "";
+    const font = fontStyle(datos[14]);
+    const headline = compasSelector(datos[11], font);
+    let personalHeadline = datos[11] === "First name / DNA" ? datos[12] : "";
 
-    let size = "11oz";
+    const size = orderInfo.title.split('- ').pop().split('/')[0].toString();
 
     companyMap = (company) => {
         if (company === "Ancestry") {
@@ -70,24 +72,24 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
-    const map = companyMap(propiedades.company);
+    const map = companyMap(datos[0]);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({
-        width: 873,
-        height: 350,
-        deviceScaleFactor: 1,
+        width: 864,
+        height: 336,
+        deviceScaleFactor: 3,
     });
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "12pt" : "9pt";
+            return size === "11oz" ? "9pt" : "9pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "14pt" : "9pt";
+            return size === "11oz" ? "9pt" : "9pt";
         }
         if (font === "Funnier") {
-            return size === "11oz" ? "10pt" : "7pt";
+            return size === "11oz" ? "7pt" : "7pt";
         }
     };
 
@@ -104,16 +106,16 @@ module.exports = createPreview = async (propiedades) => {
     };
 
     compassTop = () => {
-        if (propiedades.headLine === "First name / DNA") {
+        if (datos[5] === "First name / DNA") {
             let down = font !== "Funnier" ? "1.8in" : "1.9in";
             return down;
         } else {
-            return "1.8in"
+            return "1.7in"
         }
     };
 
     compassLeft = () => {
-        if (propiedades.headLine === "First name / DNA") {
+        if (datos[11] === "First name / DNA") {
             return "0.52in"
         } else {
             return "0.42in"
@@ -121,14 +123,14 @@ module.exports = createPreview = async (propiedades) => {
     };
 
     compassH = () => {
-        if (propiedades.headLine === "First name / DNA") {
+        if (datos[11] === "First name / DNA") {
             return "90.8736px"
         } else {
             return "115px"
         }
     };
     compassW = () => {
-        if (propiedades.headLine === "First name / DNA") {
+        if (datos[11] === "First name / DNA") {
             return "69.3984px"
         } else {
             return "80px"
@@ -170,7 +172,7 @@ module.exports = createPreview = async (propiedades) => {
         border: 2px solid ${lineMaps(colorProduct)};
         font-size: ${fontSizeNumber()};
         height: ${size === "11oz" ? "0.1788in" : "0.1788"};
-        width:${size === "11oz" ? "2.9622in" : "4.4381in"};
+        width:${size === "11oz" ? "1.78in" : "1.78"};
     }
     
     .fontColorHeadline {
@@ -256,7 +258,7 @@ module.exports = createPreview = async (propiedades) => {
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
 
-<div style="margin-right: 8px;margin-top: ${font === "Funnier" || font === "MyriadPro-Bold" ? "4pt" : "4pt"}">
+<div style="margin-top: ${font === "Funnier" || font === "MyriadPro-Bold" ? "4pt" : "6pt"}">
     <div style="display: flex; justify-content: space-around;">
         <div class='fontColorNumber' style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
             ${firstRegionNumber}%
@@ -318,6 +320,6 @@ module.exports = createPreview = async (propiedades) => {
 </body>
 </html>
 `);
-    await page.screenshot({path: `previews/${name}.png`});
+    await page.screenshot({path: `public/${name}.png`});
     await browser.close();
 };
