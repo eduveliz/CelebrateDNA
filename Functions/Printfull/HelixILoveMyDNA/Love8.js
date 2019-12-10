@@ -87,7 +87,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     };
 
     const fontColors = fontColor(color);
-    const font = fontStyle(datos[16].value.toString());
+    const font = fontStyle(datos[16].value);
     const top = fontTop(font);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

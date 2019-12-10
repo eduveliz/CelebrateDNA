@@ -138,6 +138,18 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
         return font === "Funnier" ? "11pt" : "17pt";
     };
 
+    marginTopRegion = () => {
+        if (font === "Noteworthy") {
+            return "-2pt";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "0.2pt";
+        }
+        if (font === "Funnier") {
+            return "2pt"
+        }
+    };
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(`
@@ -252,12 +264,12 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
     
-        <div style="position: absolute;top:112px; right: 2px;height: 120px">
-      <img height="120px" src="https://www.moolab.ml/page.png">
+      <div style="position: absolute;top:112px; right: 1.5px;height: 100px">
+      <img height="100px" src="https://www.moolab.ml/page.png">
      </div>
     
 <div style="margin-right: 17px;margin-top: 2px">
-     <div style="display: flex; justify-content: space-around;margin-right: 8px;margin-top:${font === "Funnier" ? " 2pt" : "-2pt"}">
+     <div style="display: flex; justify-content: space-around;margin-right: 8px;margin-top:${font === "Funnier" ? " 2pt" : "-3pt"}">
         <div class="fontColorNumber" style="color:white;border-radius: 20px; background-color: #27A9E1;align-items: center;text-align: center;display: flex;justify-content: center;">
         ${firstRegionNumber}%
         </div>
@@ -268,7 +280,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
          ${threeRegionNumber}%
         </div>
     </div>
-  <div style="display: flex; justify-content: space-around;margin-right: 8px;margin-top:${font === "Funnier" ? " 2pt" : "0.2pt"}">
+  <div style="display: flex; justify-content: space-around;margin-right: 17px;margin-top:${marginTopRegion()}">
         <div style="width:100%;height:60px;display: flex; justify-content: center;">
             <div class="fontColor" style="text-align: center">${firstRegionName}</div>
         </div>

@@ -42,7 +42,6 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
             return "https://moolab.ml/DNA/azul.png"
         }
     };
-    console.log(imageColor(color.toString()));
     fontColor = (color) => {
         if (color === "Navy ") {
             return "white";
@@ -76,7 +75,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     };
 
     const fontColors = fontColor(color);
-    const font = fontStyle(datos[6].value.toString());
+    const font = fontStyle(datos[6].value);
     const top = fontTop(font);
 
     const browser = await puppeteer.launch();

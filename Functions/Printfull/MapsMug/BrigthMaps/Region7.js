@@ -68,10 +68,10 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
 
     fontSizeRegion = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "7pt" : "7pt";
+            return size === "11oz" ? "12pt" : "7pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "9pt" : "7pt";
+            return size === "11oz" ? "12pt" : "7pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "8pt" : "7pt";
@@ -164,6 +164,19 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
         }
         if (font === "Funnier") {
             return "12px"
+        }
+    };
+
+
+    marginTopRegion = () => {
+        if (font === "Noteworthy") {
+            return "-2pt";
+        }
+        if (font === "MyriadPro-Bold") {
+            return "-2pt";
+        }
+        if (font === "Funnier") {
+            return "2pt"
         }
     };
 
@@ -287,6 +300,10 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
           <div class="perosnalHeadline">${personalHeadline}</div>
           <img height=${compassH()} width=${compassW()} src="${headline}">
     </div>
+    
+      <div style="position: absolute;top:112px; right: 1.5px;height: 100px">
+      <img height="100px" src="https://www.moolab.ml/page.png">
+     </div>
 
 <div style="margin-right: 10px;margin-top:2px">
      <div style="display: flex; justify-content: space-around;">
@@ -313,7 +330,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
         </div>
     </div>
     
-    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 2pt" : "0pt"}">
+    <div style="display: flex; justify-content: space-around;margin-top:${marginTopRegion()}">
         <div style="width:100%;height:60px;display: flex; justify-content: center   ">
             <div class="fontColor" >${firstRegionName}</div>
         </div>
