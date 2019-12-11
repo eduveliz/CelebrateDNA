@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
-const regionNames = require('../../RegionNames/RegionNames');
+const regionNames = require('../../RegionNames/RegionNamesClass');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
 const companyMap = require('../../CompanyMap/CompanyMap');
@@ -58,10 +58,10 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return "14pt"
+            return "20pt"
         }
         if (font === "MyriadPro-Bold") {
-            return "14pt"
+            return "16pt"
         }
         if (font === "Funnier") {
             return "10pt"
@@ -296,7 +296,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="height:33in;width: 17in;background-color: black;align-items: center;text-align: center;justify-content: center">
-<div style="width: 13in;height: 11in;margin-left: 1.9in;margin-top:${font === "Funnier" ? "3.2in" : "4in"};">
+<div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3.5in"};">  
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
@@ -365,7 +365,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 
 
 <div class="secondMap">
-<div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3.2in"};">
+    <div style="width: 13in;height: 11in;margin-left: 2.2in;margin-top:${font === "Funnier" ? "3.2in" : "4.2in"};">  
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>

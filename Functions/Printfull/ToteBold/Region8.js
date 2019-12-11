@@ -295,13 +295,13 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="height:33in;width: 17in;background-color: black;align-items: center;text-align: center;justify-content: center">
-<div style="width: 13in;height: 11in;margin-left: 1.9in;margin-top:${font === "Funnier" ? "3.2in" : "4in"};">
+<div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3.5in"};">  
 
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
 
-<div style="margin-top: 120px;margin-right: 20px">
+<div style="margin-top: 140px;margin-right: 20px">
     <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
         ${firstRegionNumber}%
@@ -358,13 +358,13 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </div>
 
 <div class="secondMap">
-<div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3.2in"};">
+    <div style="width: 13in;height: 11in;margin-left: 2.2in;margin-top:${font === "Funnier" ? "3.2in" : "4.2in"};">  
 
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
 
-<div style="margin-top: 120px;margin-right: 20px">
+<div style="margin-top: 140px;margin-right: 20px">
     <div style="display: flex; justify-content: space-around;">
         <div class="fontColorNumber" style="height:38px; width:100%; border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
         ${firstRegionNumber}%

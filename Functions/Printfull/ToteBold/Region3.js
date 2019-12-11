@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
-const regionNames = require('../../RegionNames/RegionNames');
+const regionNames = require('../../RegionNames/RegionNamesClass');
 const fontStyle = require('../../FontStyle/FontStyle');
 const fontColor = require('../../FontColor/FontColor');
 const companyMap = require('../../CompanyMap/CompanyMap');
@@ -10,29 +10,29 @@ const companyMap = require('../../CompanyMap/CompanyMap');
 module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     const properties = toArray(propiedades);
     const name = nameFile;
-    const map = companyMap(properties[0]);
+    const map = companyMap(properties[0].value);
 
-    const firstRegionName = properties[1];
-    const firstRegionNameSelector = regionNames(properties[1]);
-    const firstRegionNumber = properties[2];
+    const firstRegionName = properties[1].value;
+    const firstRegionNameSelector = regionNames(properties[1].value);
+    const firstRegionNumber = properties[2].value;
 
-    const secondRegionName = properties[3];
-    const secondRegionNameSelector = regionNames(properties[3]);
-    const secondRegionNumber = properties[4];
+    const secondRegionName = properties[3].value;
+    const secondRegionNameSelector = regionNames(properties[3].value);
+    const secondRegionNumber = properties[4].value;
 
-    const threeRegionName = properties[5];
-    const threeRegionNameSelector = regionNames(properties[5]);
-    const threeRegionNumber = properties[6];
+    const threeRegionName = properties[5].value;
+    const threeRegionNameSelector = regionNames(properties[5].value);
+    const threeRegionNumber = properties[6].value;
 
     //Background Map
-    const backgroundColor = colorBackground(properties[7]);
-    const font = fontStyle(properties[8]);
-    const statement = properties[9];
-    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[10];
-    const personalStatementTwo = statement === "Replicate the map on both sides" ? "" : properties[11];
+    const backgroundColor = colorBackground(properties[7].value);
+    const font = fontStyle(properties[8].value);
+    const statement = properties[9].value;
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[10].value;
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "" : properties[11].value;
     const personalStatementThree = statement === "Replicate the map on both sides"
         ? "The image will be duplicated on both sides of tote."
-        : properties[12];
+        : properties[12].value;
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
@@ -265,7 +265,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="height:33in;width: 17in;background-color: black; align-items: center;text-align: center;justify-content: center">  
-<div style="width: 13in;height: 11in;margin-left: 2.1in;margin-top:${font === "Funnier" ? "3.2in" : "4in"};">  
+<div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "3.5in"};">  
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
@@ -283,13 +283,13 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-right: 20px">
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "-2pt"}">
             <div class="fontColor">${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}"">
+        <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "-2pt"}">
             <div class="fontColor">${secondRegionName}</div>
         </div>
-        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+        <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "-2pt"}">
             <div class="fontColor">${threeRegionName}</div>
         </div>
     </div>
@@ -297,7 +297,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </div>
 
     <div class="secondMap">
-    <div style="width: 13in;height: 11in;margin-left: 2.2in;margin-top:${font === "Funnier" ? "3.2in" : "3.2in"};">  
+    <div style="width: 13in;height: 11in;margin-left: 2.2in;margin-top:${font === "Funnier" ? "3.2in" : "4.2in"};">  
     <div style="width: 100%;text-align: center;">
         ${map}
     </div>
@@ -315,13 +315,13 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
             </div>
         </div>
         <div style="display: flex; justify-content: space-around;margin-right: 20px">
-            <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+            <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "-2pt"}">
                 <div class="fontColor">${firstRegionName}</div>
             </div>
-            <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}"">
+            <div style="width:100%;height:60px; display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "-2pt"}">
                 <div class="fontColor">${secondRegionName}</div>
             </div>
-            <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+            <div style="width:100%;height:60px;display: flex; justify-content: center;margin-top:${font === "Funnier" ? " 9pt" : "-2pt"}">
                 <div class="fontColor">${threeRegionName}</div>
             </div>
         </div>

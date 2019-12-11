@@ -6,7 +6,6 @@ const fontColor = require('./FontColor');
 const colorProductSelect = require('../../Color/Color');
 const imageHelix = require('./ImageHelix');
 
-
 module.exports = createPreview = async (propiedades) => {
     //Regions  */ RegionsNamesSelectors is for Jquery/*
     const name = propiedades.nameFile;

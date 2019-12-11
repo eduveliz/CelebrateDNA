@@ -11,35 +11,35 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     const name = nameFile;
     const map = companyMap(properties[0]);
 
-    const firstRegionName = properties[1].value;
-    const firstRegionNameSelector = regionNames(properties[1].value);
-    const firstRegionNumber = properties[2].value;
+    const firstRegionName = properties[1];
+    const firstRegionNameSelector = regionNames(properties[1]);
+    const firstRegionNumber = properties[2];
 
-    const secondRegionName = properties[3].value;
-    const secondRegionNameSelector = regionNames(properties[3].value);
-    const secondRegionNumber = properties[4].value;
+    const secondRegionName = properties[3];
+    const secondRegionNameSelector = regionNames(properties[3]);
+    const secondRegionNumber = properties[4];
 
-    const threeRegionName = properties[5].value;
-    const threeRegionNameSelector = regionNames(properties[5].value);
-    const threeRegionNumber = properties[6].value;
+    const threeRegionName = properties[5];
+    const threeRegionNameSelector = regionNames(properties[5]);
+    const threeRegionNumber = properties[6];
 
-    const fourRegionName = properties[7].value;
-    const fourRegionNameSelector = regionNames(properties[7].value);
-    const fourRegionNumber = properties[8].value;
+    const fourRegionName = properties[7];
+    const fourRegionNameSelector = regionNames(properties[7]);
+    const fourRegionNumber = properties[8];
 
-    const fiveRegionName = properties[9].value;
-    const fiveRegionNameSelector = regionNames(properties[9].value);
-    const fiveRegionNumber = properties[10].value;
+    const fiveRegionName = properties[9];
+    const fiveRegionNameSelector = regionNames(properties[9]);
+    const fiveRegionNumber = properties[10];
 
     //Background Map
-    const backgroundColor = colorBackground(properties[11].value);
-    const font = fontStyle(properties[12].value);
-    const statement = properties[13].value;
-    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[14].value;
-    const personalStatementTwo = statement === "Replicate the map on both sides" ? "" : properties[15].value;
+    const backgroundColor = colorBackground(properties[11]);
+    const font = fontStyle(properties[12]);
+    const statement = properties[13];
+    const personalStatementOne = statement === "Replicate the map on both sides" ? "" : properties[14];
+    const personalStatementTwo = statement === "Replicate the map on both sides" ? "" : properties[15];
     const personalStatementThree = statement === "Replicate the map on both sides"
         ? "The image will be duplicated on both sides of tote."
-        : properties[16].value;
+        : properties[16];
     //FontSize
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
@@ -304,7 +304,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
             ${fiveRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "1pt"}">
         <div style="width:100%;height:60px;display: flex; justify-content: center;text-align: center;">
             <div class='fontColor' >${firstRegionName}</div>
         </div>
@@ -349,7 +349,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
             ${fiveRegionNumber}%
         </div>
     </div>
-    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "0"}">
+    <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 9pt" : "1pt"}">
         <div style="width:100%;height:60px;display: flex; justify-content: center;text-align: center;">
             <div class='fontColor' >${firstRegionName}</div>
         </div>

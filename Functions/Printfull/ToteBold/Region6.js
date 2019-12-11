@@ -50,22 +50,22 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
             return "18pt"
         }
         if (font === "MyriadPro-Bold") {
-            return "18pt"
+            return "21pt"
         }
         if (font === "Funnier") {
-            return "16pt"
+            return "20pt"
         }
     };
 
-    fontSizeNumber = () => {
+    fontSizeNumber = (font) => {
         if (font === "Noteworthy") {
             return "20pt"
         }
         if (font === "MyriadPro-Bold") {
-            return "20pt"
+            return "24pt"
         }
         if (font === "Funnier") {
-            return "15pt"
+            return "16pt"
         }
     };
 
@@ -195,7 +195,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     .fontColorNumber {
         font-family:${font};
         color: #FFFFFF;
-        font-size: ${fontSizeNumber()};
+        font-size: ${fontSizeNumber(font)};
         border: 2px solid #BBBDC0;
     }
     
@@ -283,7 +283,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
     ${map}
 </div>
 
-<div style="margin-top: 120px">
+<div style="margin-top: 150px">
     <div style="display: flex; justify-content: space-around;">
         <div class='fontColorNumber' style="height:38px; width:100%;border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
            ${firstRegionNumber}%
@@ -328,12 +328,12 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </div>
 
 <div class="secondMap" >
-<div style="width: 13in;height: 11in;margin-left: 2.2in;margin-top:${font === "Funnier" ? "3.2in" : "3.2in"};"> 
+<div style="width: 13in;height: 11in;margin-left: 2.2in;margin-top:${font === "Funnier" ? "3.2in" : "3.5in"};">  
 <div style="width: 100%;text-align: center;">
     ${map}
 </div>
 
-<div style="margin-top: 120px">
+<div style="margin-top: 150px">
     <div style="display: flex; justify-content: space-around;">
         <div class='fontColorNumber' style="height:38px; width:100%;border-radius: 20px; background-color: #0a3542;align-items: center;text-align: center;display: flex;justify-content: center;">
            ${firstRegionNumber}%

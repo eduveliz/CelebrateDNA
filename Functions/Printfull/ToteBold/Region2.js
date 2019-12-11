@@ -263,7 +263,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </head>
 <body style="height:33in;width: 17in;background-color: black;align-items: center;text-align: center;justify-content: center">
 
-<div style="width: 13in;height: 11in;margin-left: 1.9in;margin-top:${font === "Funnier" ? "3.2in" : "4in"};">  
+<div style="width: 13in;height: 11in;margin-left: 2in;margin-top:${font === "Funnier" ? "3.2in" : "4in"};">  
     <div style="width: 100%;text-align: center;">
         ${map}
     </div>
@@ -288,7 +288,7 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
 </div>
    
 <div class="secondMap">
-<div style="width: 13in;height: 11in;margin-left: 1.9in;margin-top:${font === "Funnier" ? "3.2in" : "4in"};">  
+<div style="width: 13in;height: 11in;margin-left: 2.2in;margin-top:${font === "Funnier" ? "3.2in" : "3.2in"};">  
     <div style="width: 100%;text-align: center;">
         ${map}
     </div>
