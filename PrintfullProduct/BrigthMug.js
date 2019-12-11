@@ -15,7 +15,7 @@ module.exports = product = (env, cantidad, req, nameFile, orderInfo) => {
                     "zip": env.zip
                 },
                 "items": [{
-                    "variant_id": env.sku,
+                    "variant_id": 1320,
                     "quantity": 1,
                     "files": [{
                         "url": env.host + nameFile + ".png"
