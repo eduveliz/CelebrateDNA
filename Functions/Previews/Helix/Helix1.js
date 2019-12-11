@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const fontStyle = require('../../FontStyle/FontStyle');
 const imageHelix = require('.//ImageHelix');
-const fontColor = require('.//FontColor');
+const fontColor = require('./FontColor');
 const colorProductSelect = require('../../Color/Color');
 
 module.exports = createPreview = async (propiedades) => {

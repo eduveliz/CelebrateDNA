@@ -2,9 +2,9 @@ const puppeteer = require('puppeteer');
 const toArray = require('lodash.toarray');
 const colorBackground = require('../../ColorsBackground/BrightMap');
 const fontStyle = require('../../FontStyle/FontStyle');
-const fontColor = require('.//FontColor');
+const fontColor = require('./FontColor');
 const colorProductSelect = require('../../Color/Color');
-const imageHelix = require('.//ImageHelix');
+const imageHelix = require('./ImageHelix');
 
 
 module.exports = createPreview = async (propiedades) => {
