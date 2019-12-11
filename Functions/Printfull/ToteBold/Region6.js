@@ -50,10 +50,10 @@ module.exports = createPreview = async (nameFile, propiedades, orderInfo) => {
             return "18pt"
         }
         if (font === "MyriadPro-Bold") {
-            return "21pt"
+            return "19pt"
         }
         if (font === "Funnier") {
-            return "20pt"
+            return "18pt"
         }
     };
 
