@@ -61,5 +61,8 @@ module.exports = colorProduct = (colorSelected) => {
         case "Sport Grey":
             return color = "#9E9FA0";
             break;
+        case "Heather Deep Teal":
+            return color = "#426275";
+            break;
     }
 };
