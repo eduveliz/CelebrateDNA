@@ -15,32 +15,32 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     const name = nameFile;
     const datos = toArray(properties);
     //Regions  */ RegionsNamesSelectors is for Jquery/*
-    const firstRegionName = datos[1];
-    const firstRegionNameSelector = regionNames(datos[1]);
-    const firstRegionNumber = datos[2];
+    const firstRegionName = datos[1].value;
+    const firstRegionNameSelector = regionNames(datos[1].value);
+    const firstRegionNumber = datos[2].value;
 
-    const secondRegionName = datos[3];
-    const secondRegionNameSelector = regionNames(datos[3]);
-    const secondRegionNumber = datos[4];
+    const secondRegionName = datos[3].value;
+    const secondRegionNameSelector = regionNames(datos[3].value);
+    const secondRegionNumber = datos[4].value;
 
-    const threeRegionName = datos[5];
-    const threeRegionNameSelector = regionNames(datos[5]);
-    const threeRegionNumber = datos[6];
+    const threeRegionName = datos[5].value;
+    const threeRegionNameSelector = regionNames(datos[5].value);
+    const threeRegionNumber = datos[6].value;
 
-    const fourRegionName = datos[7];
-    const fourRegionNameSelector = regionNames(datos[7]);
-    const fourRegionNumber = datos[8];
+    const fourRegionName = datos[7].value;
+    const fourRegionNameSelector = regionNames(datos[7].value);
+    const fourRegionNumber = datos[8].value;
 
     //Background Map
-    const colorProduct = datos[11];
-    const backgroundColor = colorBackground(datos[11]);
+    const colorProduct = datos[11].value;
+    const backgroundColor = colorBackground(datos[11].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? "#6D6E70" : "none";
     //Headline
-    const font = fontStyle(datos[12]);
-    const headline = compasSelector(datos[9], font);
-    let personalHeadline = datos[9] === "First name / DNA" ? datos[10] : "";
+    const font = fontStyle(datos[12].value);
+    const headline = compasSelector(datos[9].value, font);
+    let personalHeadline = datos[9].value === "First name / DNA" ? datos[10].value : "";
 
-    const size = orderInfo.title.split('- ').pop().split('/')[0].toString();
+    const size = orderInfo.name.split('- ').pop().split('/')[0].toString();
 
     companyMap = (company) => {
         if (company === "Ancestry") {
@@ -53,8 +53,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
             return myHeritageMap;
         }
     };
-
-    const map = companyMap(datos[0]);
+    const map = companyMap(datos[0].value);
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
@@ -96,7 +95,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     };
 
     compassTop = () => {
-        if (datos[9] === "First name / DNA") {
+        if (datos[9].value === "First name / DNA") {
             let down = font !== "Funnier" ? "1.8in" : "1.9in";
             return down;
         } else {
@@ -105,7 +104,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     };
 
     compassLeft = () => {
-        if (datos[9] === "First name / DNA") {
+        if (datos[9].value === "First name / DNA") {
             return "0.52in"
         } else {
             return "0.32in"
@@ -113,14 +112,14 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     };
 
     compassH = () => {
-        if (datos[9] === "First name / DNA") {
+        if (datos[9].value === "First name / DNA") {
             return "90.8736px"
         } else {
             return "105.8736px"
         }
     };
     compassW = () => {
-        if (datos[9] === "First name / DNA") {
+        if (datos[9].value === "First name / DNA") {
             return "69.3984px"
         } else {
             return "105.3984px"
@@ -157,7 +156,9 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.setContent(`
+
+    try {
+        await page.setContent(`
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -319,7 +320,10 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
 </script>
 </body>
 </html>
-`);
+`, {waitUntil: 'load', timeout: 0});
+    } catch (e) {
+        console.log(e);
+    }
 
     await page.setViewport({
         width: 864,

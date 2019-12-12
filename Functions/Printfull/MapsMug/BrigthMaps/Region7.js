@@ -15,43 +15,43 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     const name = nameFile;
     const datos = toArray(properties);
 
-    const firstRegionName = datos[1];
-    const firstRegionNameSelector = regionNames(datos[1]);
-    const firstRegionNumber = datos[2];
+    const firstRegionName = datos[1].value;
+    const firstRegionNameSelector = regionNames(datos[1].value);
+    const firstRegionNumber = datos[2].value;
 
-    const secondRegionName = datos[3];
-    const secondRegionNameSelector = regionNames(datos[3]);
-    const secondRegionNumber = datos[4];
+    const secondRegionName = datos[3].value;
+    const secondRegionNameSelector = regionNames(datos[3].value);
+    const secondRegionNumber = datos[4].value;
 
-    const threeRegionName = datos[5];
-    const threeRegionNameSelector = regionNames(datos[5]);
-    const threeRegionNumber = datos[6];
+    const threeRegionName = datos[5].value;
+    const threeRegionNameSelector = regionNames(datos[5].value);
+    const threeRegionNumber = datos[6].value;
 
-    const fourRegionName = datos[7];
-    const fourRegionNameSelector = regionNames(datos[7]);
-    const fourRegionNumber = datos[8];
+    const fourRegionName = datos[7].value;
+    const fourRegionNameSelector = regionNames(datos[7].value);
+    const fourRegionNumber = datos[8].value;
 
-    const fiveRegionName = datos[9];
-    const fiveRegionNameSelector = regionNames(datos[9]);
-    const fiveRegionNumber = datos[10];
+    const fiveRegionName = datos[9].value;
+    const fiveRegionNameSelector = regionNames(datos[9].value);
+    const fiveRegionNumber = datos[10].value;
 
-    const sixRegionName = datos[11];
-    const sixRegionNameSelector = regionNames(datos[11]);
-    const sixRegionNumber = datos[12];
+    const sixRegionName = datos[11].value;
+    const sixRegionNameSelector = regionNames(datos[11].value);
+    const sixRegionNumber = datos[12].value;
 
-    const sevenRegionName = datos[13];
-    const sevenRegionNameSelector = regionNames(datos[13]);
-    const sevenRegionNumber = datos[14];
+    const sevenRegionName = datos[13].value;
+    const sevenRegionNameSelector = regionNames(datos[13].value);
+    const sevenRegionNumber = datos[14].value;
 
-    const colorProduct = datos[17];
-    const backgroundColor = colorBackground(datos[17]);
+    const colorProduct = datos[17].value;
+    const backgroundColor = colorBackground(datos[17].value);
     const backgroundLineWorld = backgroundColor === "transparent" ? "#6D6E70" : "none";
     //Headline
-    const font = fontStyle(datos[18]);
-    const headline = compasSelector(datos[15], font);
-    let personalHeadline = datos[15] === "First name / DNA" ? datos[16] : "";
+    const font = fontStyle(datos[18].value);
+    const headline = compasSelector(datos[15].value, font);
+    let personalHeadline = datos[15].value === "First name / DNA" ? datos[16].value : "";
     //FontSize
-    const size = orderInfo.title.split('- ').pop().split('/')[0].toString();
+    const size = orderInfo.name.split('- ').pop().split('/')[0].toString();
 
     companyMap = (company) => {
         if (company === "Ancestry") {
@@ -64,7 +64,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
             return myHeritageMap;
         }
     };
-    const map = companyMap(datos[0]);
+    const map = companyMap(datos[0].value);
 
     fontSizeRegion = () => {
         if (font === "Noteworthy") {
@@ -106,7 +106,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     };
 
     compassTop = () => {
-        if (datos[13] === "First name / DNA") {
+        if (datos[13].value === "First name / DNA") {
             let down = font !== "Funnier" ? "1.8in" : "1.9in";
             return down;
         } else {
@@ -115,7 +115,7 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     };
 
     compassLeft = () => {
-        if (datos[15] === "First name / DNA") {
+        if (datos[15].value === "First name / DNA") {
             return "0.52in"
         } else {
             return "0.32in"
@@ -123,14 +123,14 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     };
 
     compassH = () => {
-        if (datos[15] === "First name / DNA") {
+        if (datos[15].value === "First name / DNA") {
             return "90.8736px"
         } else {
             return "105.8736px"
         }
     };
     compassW = () => {
-        if (datos[15] === "First name / DNA") {
+        if (datos[15].value === "First name / DNA") {
             return "69.3984px"
         } else {
             return "105.3984px"
@@ -188,7 +188,8 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
         deviceScaleFactor: 3,
     });
 
-    await page.setContent(`
+    try {
+        await page.setContent(`
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -387,8 +388,10 @@ module.exports = createPreview = async (nameFile, properties, orderInfo) => {
     });
 </script>
 </body>
-</html>
-`);
+</html>`, {waitUntil: 'load', timeout: 0});
+    } catch (e) {
+        console.log(e);
+    }
     await page.screenshot({path: `public/${name}.png`});
     await browser.close();
 };
