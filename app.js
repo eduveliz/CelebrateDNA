@@ -37,7 +37,7 @@ app.get('/previews/:id', jsonParser, function (req, res) {
     console.log("created ".yellow + id.blue);
     setTimeout(() => {
         res.sendFile(path.join(__dirname + '/previews/' + id + '.png'));
-    }, 3000)
+    }, 8000)
 });
 
 app.post('/brigth', jsonParser, function (req, res) {
