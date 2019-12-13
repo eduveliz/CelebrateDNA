@@ -18,7 +18,7 @@ const RegionSelector = require('./Functions/Previews/Totes/Black/RegionSelector'
 const mugMapSelector = require('./Functions/Previews/MapsMug/BrigthMaps/ttPreviewSelector');
 const mugMapEartSelector = require('./Functions/Previews/MapsMug/Earth Tone/earthPreviewSelector');
 const colors = require('colors');
-const cors = require('cors')
+const cors = require('cors');
 
 process.setMaxListeners(100);
 
@@ -35,7 +35,9 @@ app.get('/previews/:id', jsonParser, function (req, res) {
     const id = req.params.id;
     console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
     console.log("created ".yellow + id.blue);
-    res.sendFile(path.join(__dirname + '/previews/' + id + '.png'));
+    setTimeout(() => {
+        res.sendFile(path.join(__dirname + '/previews/' + id + '.png'));
+    }, 3000)
 });
 
 app.post('/brigth', jsonParser, function (req, res) {
