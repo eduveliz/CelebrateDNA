@@ -144,7 +144,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
     .fontColorRegion {
         color:white;
         font-family:${font};
-        border: 2px solid ${lineMaps(colorProduct)};
+        border: 2px solid #BBBDC0;
         font-size: ${fontSizeNumber()};   
     }
     

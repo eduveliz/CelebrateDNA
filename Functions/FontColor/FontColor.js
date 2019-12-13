@@ -83,7 +83,7 @@ module.exports = fontColor = (colorSelected) => {
             return fontColor = "#FF811B";
             break;
         case "Squash":
-            return fontColor = "#F8D936";
+            return fontColor = "#de9219";
             break;
         case "Dark Grey":
             return fontColor = "#6B6C71";
@@ -92,13 +92,13 @@ module.exports = fontColor = (colorSelected) => {
             return fontColor = "#915926";
             break;
         case "StormGrey":
-            return fontColor = "#747880";
+            return fontColor = "#A7A9AB";
             break;
         case "DarkGrey":
             return fontColor = "#3D4849";
             break;
         case "RedClay ":
-            return fontColor = "#BD4537";
+            return fontColor = "#c5262A";
             break;
         case "WatermelonHeart":
             return fontColor = "#DB6679";
@@ -109,7 +109,12 @@ module.exports = fontColor = (colorSelected) => {
         case "Black ":
             return fontColor = "#FFFFFF";
             break;
-
+        case "Heather Prism Dusty Blue":
+            return fontColor = "#FFFFFF";
+            break;
+        case "Heather Prism Dusty Blue ":
+            return fontColor = "#FFFFFF";
+            break;
     }
 };
 

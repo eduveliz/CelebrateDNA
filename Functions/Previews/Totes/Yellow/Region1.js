@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const colorBackground = require('../../../ColorsBackground/BrightMap');
-const regionNames = require('../../../RegionNames/RegionNames');
+const regionNames = require('../../../RegionNames/RegionNamesClass');
 const fontStyle = require('../../../FontStyle/FontStyle');
 const fontColor = require('../../../FontColor/FontColor');
 const colorProductSelect = require('../../../Color/Color');
