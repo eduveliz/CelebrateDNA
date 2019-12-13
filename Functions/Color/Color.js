@@ -55,17 +55,22 @@ module.exports = colorProduct = (colorSelected) => {
         case "Athletic Heather":
             return color = "#C5C5C7";
             break;
-        case "StormGrey":
-            return color = "#9E9FA0";
-            break;
         case "Sport Grey":
-            return color = "#9E9FA0";
+            return color = "#A7A9AB";
             break;
         case "Heather Deep Teal":
             return color = "#426275";
             break;
         case "Heather Deep Teal":
             return color = "#426275";
+            break;
+        case "StormGrey":
+            console.log("color test")
+            return color = "#A7A9AB";
+            break;
+        case "StormGrey ":
+            console.log("color test")
+            return color = "#A7A9AB";
             break;
     }
 };

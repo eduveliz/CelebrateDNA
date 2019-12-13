@@ -96,10 +96,10 @@ module.exports = createPreview = async (nameFile, propiedades) => {
             return "100pt"
         }
         if (font === "Funnier") {
-            return "120pt";
+            return "100pt";
         }
         if (font === "MyriadPro-Bold") {
-            return "100pt"
+            return "120pt"
         }
     };
 
@@ -276,7 +276,7 @@ module.exports = createPreview = async (nameFile, propiedades) => {
 <script>    
     $(function () {
         $(document).ready(function () {
-            $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","${backgroundLineWorld}");
+            $("#worldMap").attr("fill", "${backgroundColor}").attr("stroke","#BBBDC0");
             $("#regions").attr("fill", "transparent");
             //Primary color
             $("${firstRegionNameSelector}").attr("fill", "#0A3542");

@@ -85,5 +85,8 @@ module.exports = colorBackground = (color) => {
         case "Indigo Blue":
             return hexValueColor = "#4e5c75";
             break;
+        case "StormGrey":
+            return hexValueColor = "#A7A9AB";
+            break;
     }
 };
