@@ -110,10 +110,10 @@ module.exports = fontColor = (colorSelected) => {
             return fontColor = "#FFFFFF";
             break;
         case "Heather Prism Dusty Blue":
-            return fontColor = "#FFFFFF";
+            return fontColor = "#58585b";
             break;
         case "Heather Prism Dusty Blue ":
-            return fontColor = "#FFFFFF";
+            return fontColor = "#58585b";
             break;
     }
 };

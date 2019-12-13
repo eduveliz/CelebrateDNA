@@ -56,7 +56,7 @@ module.exports = createPreview = async (propiedades) => {
     };
 
     colorFont = () => {
-        if (colorProduct === "Navy" || colorProduct === "Black" || colorProduct === "Steel Blue") {
+        if (colorProduct === "Navy" || colorProduct === "Black" || colorProduct === "Steel Blue" || colorProduct === "Indigo Blue" || colorProduct === "Heather Prism Dusty Blue") {
             return "White"
         } else {
             return "#58585B"

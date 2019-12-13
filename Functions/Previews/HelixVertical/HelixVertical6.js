@@ -59,7 +59,7 @@ module.exports = createPreview = async (propiedades) => {
     };
 
     colorFont = () => {
-        if (colorProduct === "Navy" || colorProduct === "Black" || colorProduct === "Steel Blue") {
+        if (colorProduct === "Navy" || colorProduct === "Black" || colorProduct === "Steel Blue" || colorProduct === "Indigo Blue" || colorProduct === "Heather Prism Dusty Blue") {
             return "White"
         } else {
             return "#58585B"
@@ -162,10 +162,10 @@ module.exports = createPreview = async (propiedades) => {
         <div style="margin-left: 10%;color:${fontColor(colorProduct)}; flex: 1; width: 700px;height: 40px">
             ${firstRegionName} ${firstRegionNumber}%
         </div>
-        <div style="margin-left:-15%;color${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left:-15%;color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
              ${secondRegionName} ${secondRegionNumber}%
         </div>
-        <div style="margin-left:-20%;    color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left:-20%;color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
             ${threeRegionName} ${threeRegionNumber}%
         </div>
         <div style="margin-left: -15%;    color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">

@@ -71,8 +71,9 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
+
     colorFont = () => {
-        if (colorProduct === "Navy" || colorProduct === "Black" || colorProduct === "Steel Blue") {
+        if (colorProduct === "Navy" || colorProduct === "Black" || colorProduct === "Steel Blue" || colorProduct === "Indigo Blue") {
             return "White"
         } else {
             return "#58585B"
@@ -171,10 +172,10 @@ module.exports = createPreview = async (propiedades) => {
         <img style="width: 7.14in;height: 12.92in" src="https://moolab.ml/Twister.png">
     </div>
     <div class="regions">
-        <div style="margin-left: 10%;color: white; flex: 1; width: 700px;height: 40px">
+        <div style="margin-left: 10%;color:${fontColor(colorProduct)}; flex: 1; width: 700px;height: 40px">
             ${firstRegionName} ${firstRegionNumber}%
         </div>
-        <div style="margin-left:-4%;   color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left:-4%; color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
              ${secondRegionName} ${secondRegionNumber}%
         </div>
         <div style="margin-left: -15%;  color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
@@ -189,7 +190,7 @@ module.exports = createPreview = async (propiedades) => {
         <div style="margin-left: -15%;  color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
             ${sixRegionName} ${sixRegionNumber}%
         </div>
-        <div style="margin-left: -10%;  color${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
+        <div style="margin-left: -10%;  color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
             ${sevenRegionName} ${sevenRegionNumber}%
         </div>
         <div style="margin-left: -8%;  color:${fontColor(colorProduct)};flex: 1;width: 700px;height: 40px">
