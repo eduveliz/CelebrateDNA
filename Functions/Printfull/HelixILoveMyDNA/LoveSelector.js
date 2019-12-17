@@ -10,6 +10,9 @@ const love9 = require('./Love9');
 const love10 = require('./Love10');
 
 module.exports = loveMyDNA = async (regionNumber, properties, nameFile, orderInfo) => {
+
+    console.log(regionNumber);
+
     if (regionNumber === 1) {
         return love1(nameFile, properties, orderInfo)
     }

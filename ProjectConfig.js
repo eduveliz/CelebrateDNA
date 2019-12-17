@@ -1,29 +1,53 @@
 const printfullSelected = require('./PrintfullProduct/PrintFullSelected.js');
+const axios = require('axios');
 
-module.exports = env = (config, req) => {
+module.exports = env = async (config, req) => {
     const {line_items, shipping_address} = req.body;
-    line_items.map(async (order, index) => {
-        const orderInfo = order;
-        const itemsNumber = order.properties;
-        const nameFile = Date.now() + "z" + index;
-        const id = order.product_id.toString();
-        const sku = order.sku;  // line_items[0].title.split('- ')[1] === "11oz" ? "1320" : "4830";
+    const env = config === "dev" ? "https://deaac33d.ngrok.io/" : "https://www.moolab.ml/";
 
-        const env = {
-            name: config === "dev" ? "Mug test" : shipping_address.first_name,
-            address1: config === "dev" ? "19749 Dearborn St" : shipping_address.address1,
-            city: config === "dev" ? "Chatsworth" : shipping_address.city,
-            stateCode: config === "dev" ? "CA" : shipping_address.province_code,
-            countryCode: config === "dev" ? "US" : shipping_address.country_code,
-            zip: config === "dev" ? "91311" : shipping_address.zip,
-            sku: sku,
-            host: config === "dev" ? "https://www.moolab.ml/" : "https://www.moolab.ml/",
-        };
+    createItems = () => {
+        let order = [];
+        line_items.map(async (orderInfo, index) => {
+            const itemsNumber = orderInfo.properties;
+            const nameFile = Date.now() + "z" + index;
+            const id = orderInfo.product_id.toString();
+            const link = printfullSelected(id, env, itemsNumber, orderInfo.properties, nameFile, orderInfo);
+            link.then(data => {
+                order.push({
+                    "variant_id": orderInfo.sku,
+                    "quantity": orderInfo.quantity,
+                    "files": [{"url": data.toString()}]
+                });
+            });
+        });
+        return order
+    };
+    const order = await createItems();
 
-        try {
-            await printfullSelected(id, env, itemsNumber, order.properties, nameFile, orderInfo)
-        } catch (e) {
-            console.log(e)
-        }
-    });
+    sendOrder = () => {
+        console.log("send");
+        return setTimeout(() => {
+            return axios.post('https://api.printful.com/orders', {
+                    "recipient": {
+                        "name": shipping_address.name.toString(),
+                        "address1": shipping_address.address1.toString(),
+                        "city": shipping_address.city.toString(),
+                        "state_code": shipping_address.province_code.toString(),
+                        "country_code": shipping_address.country_code.toString(),
+                        "zip": shipping_address.zip.toString(),
+                    },
+                    "items": order
+                },
+                {
+                    headers: {Authorization: "Basic b3JrY3VkYm8tcXVqcS0wYzBzOnM4ZWItbW1iZzN5ajRzNjNj"}
+                }).then(() => {
+                console.log("order".random, JSON.stringify(order));
+                console.log("Order Complete!")
+            }).catch(reason => console.log("Error" + reason));
+        }, 10000)
+    };
+
+    return sendOrder();
 };
+
+

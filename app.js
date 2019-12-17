@@ -37,7 +37,7 @@ app.get('/previews/:id', jsonParser, function (req, res) {
     console.log("created ".yellow + id.blue);
     setTimeout(() => {
         res.sendFile(path.join(__dirname + '/previews/' + id + '.png'));
-    }, 8000)
+    }, 2000)
 });
 
 app.post('/brigth', jsonParser, function (req, res) {
@@ -144,7 +144,7 @@ app.post('/mugMapEart', jsonParser, function (req, res) {
 });
 
 app.post('/printfull', jsonParser, function (req, res) {
-    projectConfig("prod", req);
+    projectConfig("dev", req);
     return res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 

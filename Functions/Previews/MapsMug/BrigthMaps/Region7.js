@@ -66,10 +66,10 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "12pt" : "9pt";
+            return size === "11oz" ? "11pt" : "9pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "11pt" : "9pt";
+            return size === "11oz" ? "10pt" : "9pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "8pt" : "7pt";
@@ -81,7 +81,7 @@ module.exports = createPreview = async (propiedades) => {
             return size === "11oz" ? "10pt" : "10pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "12pt" : "14pt";
+            return size === "11oz" ? "11pt" : "14pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "9pt" : "9pt"
@@ -149,7 +149,7 @@ module.exports = createPreview = async (propiedades) => {
 
     regionUp = () => {
         if (font === "Noteworthy") {
-            return "-3pt";
+            return "4pt";
         }
         if (font === "MyriadPro-Bold") {
             return "5pt";
@@ -310,25 +310,25 @@ module.exports = createPreview = async (propiedades) => {
     </div>
     
     <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? "3pt" : "0pt"}">
-        <div style="width:100%;height:60px;display: flex; justify-content: center   ">
+        <div style="width:2.9622in;height:60px;display: flex; justify-content: center   ">
             <div class="fontColor" >${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center">
+        <div style="width:2.9622in;height:60px; display: flex; justify-content: center">
             <div class="fontColor" >${secondRegionName}</div>
         </div>
-        <div style="height:60px; width:100%;display: flex; justify-content: center">
+        <div style="height:60px; width:2.9622in;display: flex; justify-content: center">
             <div class="fontColor" >${threeRegionName}</div>
         </div>
-        <div style=" width:100%;height:60px;display: flex; justify-content: center">
+        <div style=" width:2.9622in;height:60px;display: flex; justify-content: center">
             <div class="fontColor" >${fourRegionName}</div>
         </div>
-        <div style=" width:100%;height:60px;display: flex; justify-content: center">
+        <div style=" width:2.9622in;height:60px;display: flex; justify-content: center">
             <div class="fontColor" >${fiveRegionName}</div>
         </div>
-        <div style="width:100%; height:60px;display: flex; justify-content: center">
+        <div style="width:2.9622in; height:60px;display: flex; justify-content: center">
              <div class="fontColor">${sixRegionName}</div>
         </div>
-        <div style="width:100%;height:60px;display: flex; justify-content: center">
+        <div style="width:2.9622in;height:60px;display: flex; justify-content: center">
             <div  class="fontColor">${sevenRegionName}</div>
         </div>
     </div>

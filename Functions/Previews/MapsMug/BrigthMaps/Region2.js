@@ -129,7 +129,7 @@ module.exports = createPreview = async (propiedades) => {
             return "-2pt";
         }
         if (font === "MyriadPro-Bold") {
-            return "0pt";
+            return "1pt";
         }
         if (font === "Funnier") {
             return "4pt"
@@ -171,7 +171,7 @@ module.exports = createPreview = async (propiedades) => {
     }
     .fontColorNumber {
         color:${fontColor(colorProduct)};
-        font-family:${font} ;
+        font-family:${font};
         height: ${size === "11oz" ? "0.1788in" : "0.1788"} ;
         width:${size === "11oz" ? "4.4381in" : "4.4381in"};
         border: 2px solid ${lineMaps(colorProduct)};
@@ -273,7 +273,7 @@ module.exports = createPreview = async (propiedades) => {
         <div style="width:100%;height:60px;display: flex; justify-content: center">
             <div class="fontColor" >${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center">
+        <div style="width:100%;height:60px; display: flex; justify-content: center">    
             <div class="fontColor" >${secondRegionName}</div>
         </div>
     </div>

@@ -274,19 +274,19 @@ module.exports = createPreview = async (propiedades) => {
         </div>
     </div>
     <div style="display: flex; justify-content: space-around;margin-top:${font === "Funnier" ? " 2pt" : "0pt"}">
-        <div style="width:100%;height:60px;display: flex; justify-content: center;">
+        <div style="width:2.9622in;height:60px;display: flex; justify-content: center;">
             <div class='fontColor'>${firstRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center">
+        <div style="width:2.9622in;height:60px; display: flex; justify-content: center">
             <div class='fontColor'>${secondRegionName}</div>
         </div>
-        <div style="width:100%;height:60px;display: flex; justify-content: center">
+        <div style="width:2.9622in;height:60px;display: flex; justify-content: center">
             <div class='fontColor'>${threeRegionName}</div>
         </div>
-        <div style="width:100%;height:60px; display: flex; justify-content: center">
+        <div style="width:2.9622in;height:60px; display: flex; justify-content: center">
             <div class='fontColor'>${fourRegionName}</div>
         </div>
-        <div style="width:100%;height:60px;display: flex; justify-content: center">
+        <div style="width:2.9622in;height:60px;display: flex; justify-content: center">
             <div class='fontColor'>${fiveRegionName}</div>
         </div>
     </div>
