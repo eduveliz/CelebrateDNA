@@ -72,5 +72,6 @@ module.exports = colorProduct = (colorSelected) => {
             console.log("color test")
             return color = "#A7A9AB";
             break;
+
     }
 };

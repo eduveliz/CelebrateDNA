@@ -11,6 +11,8 @@ const mapMug = require('./../PrintfullProduct/BrigthMug');
 
 module.exports = idProduct = async (id, env, itemsNumber, properties, nameFile, orderInfo) => {
 
+    console.log("selector", itemsNumber)
+
     productSelected = (product) => {
         try {
             product;

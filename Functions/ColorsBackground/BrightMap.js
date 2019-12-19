@@ -88,5 +88,17 @@ module.exports = colorBackground = (color) => {
         case "StormGrey":
             return hexValueColor = "#A7A9AB";
             break;
+        case "Navy blue":
+            console.log("color test");
+            return color = "#213f99";
+            break;
+        case "Navy blue ":
+            console.log("Navy Blue background");
+            return color = "#213f99";
+            break;
+        case "Grey":
+            console.log("Grey background");
+            return color = "#a6a8ab";
+            break;
     }
 };

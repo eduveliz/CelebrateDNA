@@ -3,25 +3,31 @@ const axios = require('axios');
 
 module.exports = env = async (config, req) => {
     const {line_items, shipping_address} = req.body;
-    const env = config === "dev" ? "https://deaac33d.ngrok.io/" : "https://www.moolab.ml/";
+    const env = config === "dev" ? "https://a654362a.ngrok.io/" : "https://www.moolab.ml/";
 
     createItems = () => {
-        let order = [];
-        line_items.map(async (orderInfo, index) => {
-            const itemsNumber = orderInfo.properties;
-            const nameFile = Date.now() + "z" + index;
-            const id = orderInfo.product_id.toString();
-            const link = printfullSelected(id, env, itemsNumber, orderInfo.properties, nameFile, orderInfo);
-            link.then(data => {
-                order.push({
-                    "variant_id": orderInfo.sku,
-                    "quantity": orderInfo.quantity,
-                    "files": [{"url": data.toString()}]
+        try {
+            let order = [];
+            line_items.map(async (orderInfo, index) => {
+                let itemsNumber = orderInfo.properties;
+                const nameFile = Date.now() + "z" + index;
+                const id = orderInfo.product_id.toString();
+                const link = printfullSelected(id, env, itemsNumber, orderInfo.properties, nameFile, orderInfo);
+                link.then(data => {
+                    order.push({
+                        "variant_id": orderInfo.sku,
+                        "quantity": orderInfo.quantity,
+                        "files": [{"url": data.toString()}]
+                    });
                 });
             });
-        });
-        return order
+            return order
+        } catch (e) {
+            console.log(e);
+        }
     };
+
+
     const order = await createItems();
 
     sendOrder = () => {
@@ -44,10 +50,10 @@ module.exports = env = async (config, req) => {
                 console.log("order".random, JSON.stringify(order));
                 console.log("Order Complete!")
             }).catch(reason => console.log("Error" + reason));
-        }, 10000)
+        }, 20000)
     };
 
-    return sendOrder();
+    return setTimeout(() => sendOrder(), 20000)
 };
 
 

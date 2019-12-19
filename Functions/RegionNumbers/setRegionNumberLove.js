@@ -1,4 +1,7 @@
 module.exports = regionNumber = (cantidad) => {
+
+    console.log("quantity", cantidad);
+
     if (cantidad === 7) {
         return 3
     }
