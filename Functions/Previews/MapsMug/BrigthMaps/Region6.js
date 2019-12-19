@@ -62,7 +62,7 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "12pt" : "8pt";
+            return size === "11oz" ? "13.5pt" : "8pt";
         }
         if (font === "MyriadPro-Bold") {
             return size === "11oz" ? "11pt" : "8pt";
@@ -74,7 +74,7 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "10pt" : "10pt";
+            return size === "11oz" ? "13.5pt" : "10pt";
         }
         if (font === "MyriadPro-Bold") {
             return size === "11oz" ? "13pt" : "14pt";
@@ -150,7 +150,7 @@ module.exports = createPreview = async (propiedades) => {
     const page = await browser.newPage();
     await page.setViewport({
         width: 873,
-        height: 350,
+        height: 358,
         deviceScaleFactor: 1,
     });
 
