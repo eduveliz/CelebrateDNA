@@ -100,6 +100,9 @@ module.exports = fontColor = (colorSelected) => {
         case "RedClay ":
             return fontColor = "#c5262A";
             break;
+        case "RedClay":
+            return fontColor = "#c5262A";
+            break;
         case "WatermelonHeart":
             return fontColor = "#DB6679";
             break;
