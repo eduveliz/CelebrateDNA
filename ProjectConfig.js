@@ -3,7 +3,7 @@ const axios = require('axios');
 
 module.exports = env = async (config, req) => {
     const {line_items, shipping_address} = req.body;
-    const env = config === "dev" ? "https://a654362a.ngrok.io/" : "https://www.moolab.ml/";
+    const env = config === "prod" ? "https://a654362a.ngrok.io/" : "https://www.moolab.ml/";
 
     createItems = () => {
         try {
