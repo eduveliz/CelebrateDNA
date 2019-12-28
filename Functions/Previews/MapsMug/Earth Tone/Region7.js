@@ -69,7 +69,7 @@ module.exports = createPreview = async (propiedades) => {
             return size === "11oz" ? "12pt" : "9pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "11pt" : "9pt";
+            return size === "11oz" ? "10pt" : "9pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "8pt" : "7pt";
@@ -78,10 +78,10 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "10pt" : "10pt";
+            return size === "11oz" ? "13.5pt" : "10pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "12pt" : "14pt";
+            return size === "11oz" ? "11pt" : "14pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "9pt" : "9pt"
@@ -149,7 +149,7 @@ module.exports = createPreview = async (propiedades) => {
 
     regionUp = () => {
         if (font === "Noteworthy") {
-            return "-3pt";
+            return "4pt";
         }
         if (font === "MyriadPro-Bold") {
             return "5pt";
@@ -167,7 +167,7 @@ module.exports = createPreview = async (propiedades) => {
     const page = await browser.newPage();
     await page.setViewport({
         width: 873,
-        height: 350,
+        height: 358,
         deviceScaleFactor: 1,
     });
 
@@ -187,7 +187,7 @@ module.exports = createPreview = async (propiedades) => {
     
     .fontColorNumber {
         color:${fontColor(colorProduct)};
-        font-family:${font} ;
+        font-family:${font};
         border: 2px solid ${lineMaps(colorProduct)};
         font-size: ${fontSizeNumber()};
         height: ${size === "11oz" ? "0.1788in" : "0.1788"};

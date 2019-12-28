@@ -59,7 +59,7 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "10pt" : "10pt";
+            return size === "11oz" ? "13.5pt" : "10pt";
         }
         if (font === "MyriadPro-Bold") {
             return size === "11oz" ? "14pt" : "14pt";
@@ -130,7 +130,7 @@ module.exports = createPreview = async (propiedades) => {
             return "-2pt";
         }
         if (font === "MyriadPro-Bold") {
-            return "0pt";
+            return "1pt";
         }
         if (font === "Funnier") {
             return "4pt"
@@ -152,7 +152,6 @@ module.exports = createPreview = async (propiedades) => {
         }
     };
 
-
     compasHeadline = () => {
         return font === "Funnier" ? "11pt" : "17pt";
     };
@@ -173,7 +172,7 @@ module.exports = createPreview = async (propiedades) => {
     }
     .fontColorNumber {
         color:${fontColor(colorProduct)};
-        font-family:${font} ;
+        font-family:${font};
         height: ${size === "11oz" ? "0.1788in" : "0.1788"} ;
         width:${size === "11oz" ? "4.4381in" : "4.4381in"};
         border: 2px solid ${lineMaps(colorProduct)};
@@ -254,10 +253,10 @@ module.exports = createPreview = async (propiedades) => {
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body style="width:9in;height:3.5in;background-color: ${colorProductSelect(colorProduct)} ">
-<div>
-    ${map}
-</div>
-
+    <div>
+        ${map}
+    </div>
+    
     <div style="position: absolute;top: ${compassTop()}; left: ${compassLeft()};">
           <div class="perosnalHeadline">${personalHeadline}</div>
           <img height=${compassH()} width=${compassW()} src="${headline}">

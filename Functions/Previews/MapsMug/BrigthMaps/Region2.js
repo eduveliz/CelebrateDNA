@@ -183,6 +183,7 @@ module.exports = createPreview = async (propiedades) => {
         text-align: center; 
         font-size:${fontHeadline()};
     }
+    
     .perosnalHeadline{
         font-family: ${font} ;
         align-items: center;

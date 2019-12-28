@@ -62,10 +62,10 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeRegion = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "12pt" : "8pt";
+            return size === "11oz" ? "13.5pt" : "8pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "12pt" : "8pt";
+            return size === "11oz" ? "11pt" : "8pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "9pt" : "6pt";
@@ -74,10 +74,10 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "10pt" : "10pt";
+            return size === "11oz" ? "13.5pt" : "10pt";
         }
         if (font === "MyriadPro-Bold") {
-            return size === "11oz" ? "14pt" : "14pt";
+            return size === "11oz" ? "13pt" : "14pt";
         }
         if (font === "Funnier") {
             return size === "11oz" ? "10pt" : "10pt"
@@ -150,7 +150,7 @@ module.exports = createPreview = async (propiedades) => {
     const page = await browser.newPage();
     await page.setViewport({
         width: 873,
-        height: 350,
+        height: 358,
         deviceScaleFactor: 1,
     });
 
@@ -164,8 +164,9 @@ module.exports = createPreview = async (propiedades) => {
     .fontColor {
         color: #6D6E70;
         font-family:${font};
+        font-weight: bold;
         text-align: center;
-         font-size: ${fontSizeRegion()};
+        font-size: ${fontSizeRegion()};
     }
     .fontColorNumber {
         color:${fontColor(colorProduct)};
@@ -182,7 +183,7 @@ module.exports = createPreview = async (propiedades) => {
         text-align: center; 
         font-size:${fontHeadline()};
     }
-    
+     
     .perosnalHeadline{
         font-family: ${font} ;
         align-items: center;

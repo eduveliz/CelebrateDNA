@@ -74,13 +74,13 @@ module.exports = createPreview = async (propiedades) => {
     const page = await browser.newPage();
     await page.setViewport({
         width: 873,
-        height: 350,
+        height: 358,
         deviceScaleFactor: 1,
     });
 
     fontSizeRegion = (font) => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "12pt" : "9pt";
+            return size === "11oz" ? "14.5pt" : "9pt";
         }
         if (font === "MyriadPro-Bold") {
             return size === "11oz" ? "14pt" : "9pt";
@@ -92,7 +92,7 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "10pt" : "10pt";
+            return size === "11oz" ? "13.5pt" : "10pt";
         }
         if (font === "MyriadPro-Bold") {
             return size === "11oz" ? "14pt" : "14pt";
@@ -189,7 +189,7 @@ module.exports = createPreview = async (propiedades) => {
         color: #6D6E70;
     }
     
-           @font-face {
+    @font-face {
     font-family: 'Futura';
     src: url('https://moolab.ml/Fonts/Futura-Bold.woff2') format('woff2'),
         url('https://moolab.ml/Fonts/Futura-Bold.woff') format('woff');

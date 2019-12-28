@@ -69,7 +69,7 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "10pt" : "10pt";
+            return size === "11oz" ? "13.5pt" : "10pt";
         }
         if (font === "MyriadPro-Bold") {
             return size === "11oz" ? "14pt" : "14pt";
@@ -320,7 +320,7 @@ module.exports = createPreview = async (propiedades) => {
 
     await page.setViewport({
         width: 873,
-        height: 352,
+        height: 357,
         deviceScaleFactor: 1,
     });
     await page.screenshot({path: `previews/${name}.png`});

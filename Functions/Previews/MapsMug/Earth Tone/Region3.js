@@ -62,7 +62,7 @@ module.exports = createPreview = async (propiedades) => {
 
     fontSizeNumber = () => {
         if (font === "Noteworthy") {
-            return size === "11oz" ? "11pt" : "10pt";
+            return size === "11oz" ? "13.5pt" : "10pt";
         }
         if (font === "MyriadPro-Bold") {
             return size === "11oz" ? "14pt" : "14pt";
@@ -160,7 +160,7 @@ module.exports = createPreview = async (propiedades) => {
     <style>
     .fontColor {
         color: #6D6E70;
-        font-family:${font} ;
+        font-family:${font};
         font-size: ${fontSizeRegion(font)};
     }
     
